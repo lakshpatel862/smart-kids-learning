@@ -1,229 +1,106 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+let stars = 0;
+let lessons = 0;
+let badges = 0;
+
+function startLearning() {
+    document.querySelector(".cards").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f7f9ff;
-    color: #333;
-}
+function openLesson(topic) {
+    lessons++;
+    stars += 5;
+    updateProgress();
 
-/* Header */
-.header {
-    background: white;
-    padding: 18px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
+    let message = "";
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.parent-btn {
-    border: none;
-    background: #ffcf33;
-    padding: 12px 20px;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/* Welcome */
-.welcome {
-    margin: 25px auto;
-    width: 90%;
-    max-width: 1100px;
-    padding: 45px 25px;
-    text-align: center;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #8fd3ff, #c8a7ff, #ffb6d9);
-}
-
-.welcome h1 {
-    font-size: 38px;
-    margin-bottom: 12px;
-}
-
-.welcome p {
-    font-size: 21px;
-    margin-bottom: 25px;
-}
-
-.welcome-buttons button {
-    border: none;
-    padding: 14px 24px;
-    margin: 6px;
-    border-radius: 25px;
-    font-size: 17px;
-    cursor: pointer;
-    background: white;
-}
-
-/* Main */
-main {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-}
-
-h2 {
-    text-align: center;
-    margin: 35px 0 20px;
-    font-size: 28px;
-}
-
-/* Learning Cards */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.card {
-    background: white;
-    padding: 25px 15px;
-    text-align: center;
-    border-radius: 22px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-}
-
-.icon {
-    font-size: 48px;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    font-size: 21px;
-    margin-bottom: 8px;
-}
-
-.card p {
-    font-size: 14px;
-}
-
-/* Games */
-.game-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.game-card {
-    background: white;
-    padding: 30px 15px;
-    text-align: center;
-    border-radius: 22px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-    cursor: pointer;
-    font-size: 45px;
-}
-
-.game-card h3 {
-    font-size: 22px;
-    margin: 12px 0 7px;
-}
-
-.game-card p {
-    font-size: 14px;
-}
-
-/* Progress */
-.progress {
-    margin: 35px 0;
-}
-
-.progress-box {
-    background: white;
-    padding: 25px;
-    border-radius: 25px;
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-}
-
-.progress-box span {
-    display: block;
-    font-size: 35px;
-}
-
-.progress-box strong {
-    font-size: 28px;
-}
-
-.progress-box p {
-    margin-top: 5px;
-}
-
-/* Footer */
-footer {
-    margin-top: 40px;
-    padding: 30px;
-    text-align: center;
-    background: #222;
-    color: white;
-}
-
-footer p {
-    margin-top: 8px;
-}
-
-/* Mobile */
-@media (max-width: 800px) {
-
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
+    if (topic === "ABC") {
+        message = "🔤 ABC\n\nA - Apple 🍎\nB - Ball ⚽\nC - Cat 🐱";
+    } 
+    else if (topic === "Numbers") {
+        message = "🔢 Numbers\n\n1 - One\n2 - Two\n3 - Three\n4 - Four\n5 - Five";
+    }
+    else if (topic === "Colors") {
+        message = "🎨 Colors\n\n🔴 Red\n🔵 Blue\n🟡 Yellow\n🟢 Green";
+    }
+    else if (topic === "Shapes") {
+        message = "🔷 Shapes\n\n⭕ Circle\n⬜ Square\n🔺 Triangle";
+    }
+    else if (topic === "Animals") {
+        message = "🐶 Animals\n\n🐶 Dog\n🐱 Cat\n🦁 Lion\n🐘 Elephant";
+    }
+    else if (topic === "Fruits") {
+        message = "🍎 Fruits\n\n🍎 Apple\n🍌 Banana\n🍊 Orange\n🍇 Grapes";
+    }
+    else if (topic === "Vehicles") {
+        message = "🚗 Vehicles\n\n🚗 Car\n🚌 Bus\n🚂 Train\n✈️ Aeroplane";
+    }
+    else if (topic === "Drawing") {
+        message = "🖍️ Drawing\n\nUse your creativity and have fun! 🎨";
     }
 
-    .game-section {
-        grid-template-columns: 1fr;
-    }
+    alert(message);
+}
 
-    .welcome h1 {
-        font-size: 28px;
-    }
+function startQuiz() {
+    let answer = prompt(
+        "🧠 QUIZ\n\nWhat comes after A?\n\n1. B\n2. C\n3. D"
+    );
 
-    .welcome p {
-        font-size: 17px;
+    if (answer === "1") {
+        stars += 10;
+        badges++;
+        updateProgress();
+        alert("🎉 Correct!\n⭐ You earned 10 stars!");
+    } 
+    else {
+        alert("😊 Good try!\nCorrect answer is B.");
     }
 }
 
-@media (max-width: 450px) {
+function matchingGame() {
+    let answer = prompt(
+        "🧩 MATCHING GAME\n\nWhich animal says Meow?\n\n1. Dog 🐶\n2. Cat 🐱\n3. Lion 🦁"
+    );
 
-    .cards {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    .card {
-        padding: 18px 8px;
-    }
-
-    .icon {
-        font-size: 38px;
-    }
-
-    .header {
-        padding: 15px;
-    }
-
-    .logo {
-        font-size: 21px;
+    if (answer === "2") {
+        stars += 10;
+        updateProgress();
+        alert("🎉 Correct!\n⭐ You earned 10 stars!");
+    } 
+    else {
+        alert("😊 Try again!");
     }
 }
 
+function dailyChallenge() {
+    let answer = prompt(
+        "⭐ DAILY CHALLENGE\n\nHow many fingers are on one hand?\n\n1. 3\n2. 5\n3. 10"
+    );
 
+    if (answer === "2") {
+        stars += 15;
+        badges++;
+        updateProgress();
+        alert("🏆 Excellent!\n⭐ You earned 15 stars!");
+    } 
+    else {
+        alert("😊 Keep learning!");
+    }
+}
 
+function showParentMessage() {
+    alert(
+        "👨‍👩‍👧 Parent Section\n\n" +
+        "⭐ Stars: " + stars + "\n" +
+        "📚 Lessons: " + lessons + "\n" +
+        "🏆 Badges: " + badges
+    );
+}
 
+function updateProgress() {
+    document.getElementById("stars").textContent = stars;
+    document.getElementById("lessons").textContent = lessons;
+    document.getElementById("badges").textContent = badges;
+}
