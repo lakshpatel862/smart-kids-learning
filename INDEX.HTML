@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Smart Kids Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            🌈 Smart Kids
+        </div>
+
+        <button class="parent-btn" onclick="showParentMessage()">
+            👨‍👩‍👧 Parent
+        </button>
+    </header>
+
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <h1>👋 Hello Little Learner!</h1>
+
+        <p>
+            Learn, Play & Grow Every Day 🚀
+        </p>
+
+        <div class="welcome-buttons">
+            <button onclick="startLearning()">
+                📚 Start Learning
+            </button>
+
+            <button onclick="startQuiz()">
+                🧠 Play Quiz
+            </button>
+        </div>
+    </section>
+
+
+    <!-- Learning Section -->
+    <main>
+
+        <h2>📚 Learn Something New</h2>
+
+        <div class="cards">
+
+            <div class="card" onclick="openLesson('ABC')">
+                <div class="icon">🔤</div>
+                <h3>ABC</h3>
+                <p>Learn English Alphabets</p>
+            </div>
+
+
+            <div class="card" onclick="openLesson('Numbers')">
+                <div class="icon">🔢</div>
+                <h3>Numbers</h3>
+                <p>Learn Numbers 1 to 100</p>
+            </div>
+
+
+            <div class="card" onclick="openLesson('Colors')">
+                <div class="icon">🎨</div>
+                <h3>Colors</h3>
+                <p>Learn Beautiful Colors</p>
+            </div>
+
+
+            <div class="card" onclick="openLesson('Shapes')">
+                <div class="icon">🔷</div>
+                <h3>Shapes</h3>
+                <p>Learn Different Shapes</p>
+            </div>
+
+
+            <div class="card" onclick="openLesson('Animals')">
+                <div class="icon">🐶</div>
+                <h3>Animals</h3>
+                <p>Know Amazing Animals</p>
+            </div>
+
+
+            <div class="card" onclick="openLesson('Fruits')">
+                <div class="icon">🍎</div>
+                <h3>Fruits</h3>
+                <p>Learn Fruits & Their Names</p>
+            </div>
+
+
+            <div class="card" onclick="openLesson('Vehicles')">
+                <div class="icon">🚗</div>
+                <h3>Vehicles</h3>
+                <p>Learn About Vehicles</p>
+            </div>
+
+
+            <div class="card" onclick="openLesson('Drawing')">
+                <div class="icon">🖍️</div>
+                <h3>Drawing</h3>
+                <p>Draw & Color Creatively</p>
+            </div>
+
+        </div>
+
+
+        <!-- Games -->
+        <h2>🎮 Learn Through Games</h2>
+
+        <div class="game-section">
+
+            <div class="game-card" onclick="startQuiz()">
+                🧠
+                <h3>Quiz</h3>
+                <p>Test Your Knowledge</p>
+            </div>
+
+            <div class="game-card" onclick="matchingGame()">
+                🧩
+                <h3>Matching</h3>
+                <p>Match The Correct Answer</p>
+            </div>
+
+            <div class="game-card" onclick="dailyChallenge()">
+                ⭐
+                <h3>Daily Challenge</h3>
+                <p>Complete Today's Challenge</p>
+            </div>
+
+        </div>
+
+
+        <!-- Progress -->
+        <section class="progress">
+
+            <h2>🏆 My Learning Progress</h2>
+
+            <div class="progress-box">
+
+                <div>
+                    <span>⭐</span>
+                    <strong id="stars">0</strong>
+                    <p>Stars</p>
+                </div>
+
+                <div>
+                    <span>📚</span>
+                    <strong id="lessons">0</strong>
+                    <p>Lessons</p>
+                </div>
+
+                <div>
+                    <span>🏆</span>
+                    <strong id="badges">0</strong>
+                    <p>Badges</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>🌈 Smart Kids Learning</h3>
+
+        <p>
+            Learn • Play • Grow
+        </p>
+
+        <p>
+            Made for curious little minds ❤️
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
