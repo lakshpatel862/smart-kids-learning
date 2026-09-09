@@ -1,1 +1,157 @@
+// ===============================
+// Smart Kids Learning - JavaScript
+// ===============================
 
+let stars = 0;
+let lessons = 0;
+let badges = 0;
+
+
+// Start Learning
+function startLearning() {
+    document.querySelector(".cards").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+// Open Lesson
+function openLesson(topic) {
+
+    lessons++;
+    stars += 5;
+
+    updateProgress();
+
+    let message = "";
+
+    if (topic === "ABC") {
+        message = "🔤 Let's learn ABC!\n\nA - Apple 🍎\nB - Ball ⚽\nC - Cat 🐱";
+    }
+
+    else if (topic === "Numbers") {
+        message = "🔢 Let's count!\n\n1️⃣ One\n2️⃣ Two\n3️⃣ Three\n4️⃣ Four\n5️⃣ Five";
+    }
+
+    else if (topic === "Colors") {
+        message = "🎨 Colors!\n\n🔴 Red\n🔵 Blue\n🟡 Yellow\n🟢 Green";
+    }
+
+    else if (topic === "Shapes") {
+        message = "🔷 Shapes!\n\n⭕ Circle\n⬜ Square\n🔺 Triangle\n▭ Rectangle";
+    }
+
+    else if (topic === "Animals") {
+        message = "🐶 Animals!\n\n🐶 Dog\n🐱 Cat\n🦁 Lion\n🐘 Elephant";
+    }
+
+    else if (topic === "Fruits") {
+        message = "🍎 Fruits!\n\n🍎 Apple\n🍌 Banana\n🍊 Orange\n🍇 Grapes";
+    }
+
+    else if (topic === "Vehicles") {
+        message = "🚗 Vehicles!\n\n🚗 Car\n🚌 Bus\n🚂 Train\n✈️ Aeroplane";
+    }
+
+    else if (topic === "Drawing") {
+        message = "🖍️ Drawing time!\n\nUse your creativity and have fun! 🎨";
+    }
+
+    alert(message);
+}
+
+
+// Quiz
+function startQuiz() {
+
+    let answer = prompt(
+        "🧠 QUIZ\n\nWhat comes after A?\n\n1. B\n2. C\n3. D\n\nType 1, 2 or 3:"
+    );
+
+    if (answer === "1") {
+
+        stars += 10;
+        badges++;
+
+        updateProgress();
+
+        alert("🎉 Correct Answer!\n⭐ You earned 10 stars!");
+    }
+
+    else if (answer === "2" || answer === "3") {
+
+        alert("😊 Good try!\nThe correct answer is B.");
+    }
+
+    else {
+
+        alert("Please select 1, 2 or 3.");
+    }
+}
+
+
+// Matching Game
+function matchingGame() {
+
+    let answer = prompt(
+        "🧩 MATCHING GAME\n\nWhich animal says 'Meow'?\n\n1. Dog 🐶\n2. Cat 🐱\n3. Lion 🦁"
+    );
+
+    if (answer === "2") {
+
+        stars += 10;
+        updateProgress();
+
+        alert("🎉 Great Job!\n⭐ You earned 10 stars!");
+    }
+
+    else {
+
+        alert("😊 Try again!\nThe correct answer is Cat 🐱.");
+    }
+}
+
+
+// Daily Challenge
+function dailyChallenge() {
+
+    let answer = prompt(
+        "⭐ DAILY CHALLENGE\n\nHow many fingers are on one hand?\n\n1. 3\n2. 5\n3. 10"
+    );
+
+    if (answer === "2") {
+
+        stars += 15;
+        badges++;
+
+        updateProgress();
+
+        alert("🏆 Excellent!\n⭐ You earned 15 stars!");
+    }
+
+    else {
+
+        alert("😊 Keep learning!\nThe correct answer is 5.");
+    }
+}
+
+
+// Parent Section
+function showParentMessage() {
+
+    alert(
+        "👨‍👩‍👧 Parent Section\n\n" +
+        "⭐ Stars: " + stars + "\n" +
+        "📚 Lessons: " + lessons + "\n" +
+        "🏆 Badges: " + badges
+    );
+}
+
+
+// Update Progress
+function updateProgress() {
+
+    document.getElementById("stars").textContent = stars;
+    document.getElementById("lessons").textContent = lessons;
+    document.getElementById("badges").textContent = badges;
+}
