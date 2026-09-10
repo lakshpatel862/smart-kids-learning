@@ -1,491 +1,1332 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+* {
+    box-sizing: border-box;
+}
 
-    <title>Smart Kids Learning</title>
+body {
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    margin: 0;
 
-<body>
+    font-family: Arial, sans-serif;
 
-<!-- ================= HOME PAGE ================= -->
+    min-height: 100vh;
 
-<div id="homePage">
+    text-align: center;
 
-    <div class="hero">
+    color: #333;
 
-        <div class="cloud cloud1">☁️</div>
-        <div class="cloud cloud2">☁️</div>
+    background:
+        linear-gradient(
+            135deg,
+            #7ddfff,
+            #fff2a8,
+            #ffb8dc,
+            #bda7ff
+        );
 
-        <div class="sun">☀️</div>
+    background-size: 400% 400%;
 
-        <h1>🌈 Smart Kids Learning 🎓</h1>
+    animation: backgroundMove 12s ease infinite;
+}
 
-        <p class="tagline">
-            Learn • Play • Enjoy • Test
-        </p>
 
-        <!-- KIDS PLAYING -->
-        <div class="kidsScene">
+@keyframes backgroundMove {
 
-            <div class="tree">🌳</div>
+    0% {
+        background-position: 0% 50%;
+    }
 
-            <div class="kid kid1">🧒</div>
+    50% {
+        background-position: 100% 50%;
+    }
 
-            <div class="ball">⚽</div>
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
-            <div class="kid kid2">👧</div>
 
-            <div class="flower flower1">🌸</div>
-            <div class="flower flower2">🌼</div>
-            <div class="flower flower3">🌺</div>
+.hidden {
+    display: none !important;
+}
 
-        </div>
 
-    </div>
+/* ================= HOME ================= */
 
+#homePage {
+    min-height: 100vh;
+}
 
-    <!-- ALPHABET -->
 
-    <section class="homeSection alphabetSection">
+/* ================= HERO ================= */
 
-        <h2>🔤 Learn A - Z</h2>
+.hero {
 
-        <p>
-            Click any letter and learn it!
-        </p>
+    position: relative;
 
-        <div id="alphabetGrid"></div>
+    min-height: 390px;
 
-    </section>
+    overflow: hidden;
 
+    padding-top: 35px;
 
-    <!-- NUMBERS -->
+    background:
+        linear-gradient(
+            #6bdcff,
+            #b8f1ff
+        );
 
-    <section class="homeSection numberSection">
+    border-bottom-left-radius: 60px;
 
-        <h2>🔢 Learn Numbers 1 - 1000</h2>
+    border-bottom-right-radius: 60px;
 
-        <p>
-            🌈 Numbers are in rainbow colors
-        </p>
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.18);
+}
 
-        <button class="mainButton numberButton"
-                onclick="openNumbers()">
 
-            🔢 Open Numbers 1 - 1000
+.hero h1 {
 
-        </button>
+    position: relative;
 
-    </section>
+    z-index: 5;
 
+    font-size: 45px;
 
-    <!-- TESTS -->
+    margin: 10px;
 
-    <section class="homeSection testSection">
+    color: #ff3d81;
 
-        <h2>📝 Kids Tests</h2>
+    text-shadow:
+        3px 3px white;
+}
 
-        <p>
-            🎯 Test your learning skills
-        </p>
 
-        <button class="mainButton alphabetTestButton"
-                onclick="openAlphabetTestMenu()">
+.tagline {
 
-            🔤 Alphabet Test
+    position: relative;
 
-        </button>
+    z-index: 5;
 
+    font-size: 22px;
 
-        <button class="mainButton numberTestButton"
-                onclick="startNumberTest()">
+    font-weight: bold;
 
-            🔢 Number Test
+    color: #3949ab;
+}
 
-        </button>
 
-    </section>
+/* SUN */
 
+.sun {
 
-    <footer>
+    position: absolute;
 
-        🌟 Keep Learning & Keep Smiling! 🌟
+    top: 25px;
 
-    </footer>
+    right: 50px;
 
-</div>
+    font-size: 80px;
+}
 
 
+/* CLOUDS */
 
-<!-- ================= LESSON PAGE ================= -->
+.cloud {
 
-<div id="lessonPage" class="hidden">
+    position: absolute;
 
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
-    </button>
+    font-size: 65px;
 
-    <div class="lessonTitle">
+    opacity: 0.9;
+}
 
-        <span id="letter">A</span>
+.cloud1 {
 
-        <span> for </span>
+    top: 40px;
 
-        <span id="word">Apple</span>
+    left: 50px;
+}
 
-    </div>
+.cloud2 {
 
+    top: 100px;
 
-    <div class="lessonBox">
+    right: 220px;
+}
 
-        <div id="bigLetter" class="bigLetter">
-            A
-        </div>
 
-        <div id="smallLetter" class="smallLetter">
-            a
-        </div>
+/* KIDS SCENE */
 
-        <div id="picture" class="picture">
-            🍎
-        </div>
+.kidsScene {
 
-        <h2 id="wordText">
-            Apple
-        </h2>
+    position: relative;
 
-    </div>
+    height: 180px;
 
+    margin-top: 15px;
 
-    <button class="speakBtn"
-            onclick="speakCurrent()">
+    background:
+        linear-gradient(
+            #8be67a,
+            #54bd50
+        );
 
-        🔊 Hear A for Apple
+    border-radius:
+        50% 50% 0 0;
 
-    </button>
+    max-width: 900px;
 
+    margin-left: auto;
 
-    <div class="navigation">
+    margin-right: auto;
+}
 
-        <button onclick="previousLetter()">
-            ⬅️ Previous
-        </button>
 
-        <span id="progress">
-            1 / 26
-        </span>
+.kid {
 
-        <button onclick="nextLetter()">
-            Next ➡️
-        </button>
+    position: absolute;
 
-    </div>
+    font-size: 80px;
 
-</div>
+    bottom: 25px;
 
+    animation: jump 2s infinite;
+}
 
 
-<!-- ================= NUMBERS PAGE ================= -->
+.kid1 {
 
-<div id="numbersPage" class="hidden">
+    left: 32%;
+}
 
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
-    </button>
 
-    <h1>
-        🔢 Numbers 1 - 1000
-    </h1>
+.kid2 {
 
-    <p class="numberInstruction">
-        🌈 Every number has a rainbow color
-    </p>
+    right: 32%;
 
-    <div class="numberTopButtons">
+    animation-delay: 1s;
+}
 
-        <button onclick="speakNumberList()">
-            🔊 Hear Numbers
-        </button>
 
-        <button onclick="startNumberTest()">
-            📝 Number Test
-        </button>
+@keyframes jump {
 
-    </div>
+    0%,100% {
+        transform: translateY(0);
+    }
 
+    50% {
+        transform: translateY(-25px);
+    }
+}
 
-    <div id="numberList"></div>
 
-</div>
+.ball {
 
+    position: absolute;
 
+    left: 48%;
 
-<!-- ================= NUMBER DETAIL ================= -->
+    bottom: 70px;
 
-<div id="numberDetailPage" class="hidden">
+    font-size: 45px;
 
-    <button class="homeBtn" onclick="openNumbers()">
-        ⬅️ Numbers
-    </button>
+    animation: ballMove 2s infinite;
+}
 
 
-    <div class="numberDetailCard">
+@keyframes ballMove {
 
-        <div id="bigNumber">
-            1
-        </div>
+    0%,100% {
+        transform: translate(0,0);
+    }
 
+    50% {
+        transform: translate(70px,-30px);
+    }
+}
 
-        <div id="numberObjects">
-            ⚽
-        </div>
 
+.tree {
 
-        <h2 id="numberWord">
-            One
-        </h2>
+    position: absolute;
 
+    left: 5%;
 
-        <button class="speakBtn"
-                onclick="speakNumber()">
+    bottom: 25px;
 
-            🔊 Hear Number
+    font-size: 90px;
+}
 
-        </button>
 
-    </div>
+.flower {
 
-</div>
+    position: absolute;
 
+    bottom: 20px;
 
+    font-size: 35px;
+}
 
-<!-- ================= ALPHABET TEST MENU ================= -->
+.flower1 {
+    left: 18%;
+}
 
-<div id="alphabetTestMenu"
-     class="hidden testPage">
+.flower2 {
+    right: 20%;
+}
 
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
-    </button>
+.flower3 {
+    right: 8%;
+}
 
 
-    <div class="testMenuCard">
+/* ================= SECTIONS ================= */
 
-        <div class="testEmoji">
-            🧠
-        </div>
+.homeSection {
 
-        <h1>
-            🔤 Alphabet Test
-        </h1>
+    width: 94%;
 
-        <p>
-            Choose your test
-        </p>
+    max-width: 1150px;
 
+    margin: 30px auto;
 
-        <button class="choiceButton"
-                onclick="startAlphabetTest('capital')">
+    padding: 28px;
 
-            🔠 Capital A - Z Test
+    background:
+        rgba(255,255,255,0.88);
 
-        </button>
+    border-radius: 35px;
 
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.15);
+}
 
-        <button class="choiceButton"
-                onclick="startAlphabetTest('small')">
 
-            🔡 Small a - z Test
+.homeSection h2 {
 
-        </button>
+    font-size: 30px;
 
-    </div>
+    margin-bottom: 5px;
+}
 
-</div>
 
+.homeSection p {
 
+    font-size: 18px;
 
-<!-- ================= ALPHABET TEST ================= -->
+    font-weight: bold;
+}
 
-<div id="alphabetTestPage"
-     class="hidden testPage">
 
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
-    </button>
+/* ================= ALPHABET ================= */
 
+#alphabetGrid {
 
-    <h1 id="alphabetTestTitle">
-        🔠 Capital Letter Test
-    </h1>
+    display: grid;
 
+    grid-template-columns:
+        repeat(7, 1fr);
 
-    <div class="testCard">
+    gap: 15px;
 
-        <p id="alphabetQuestionNumber">
-            Question 1 / 26
-        </p>
+    margin-top: 25px;
+}
 
 
-        <div id="alphabetQuestion">
-            A
-        </div>
+.letterBox {
 
+    height: 105px;
 
-        <p>
-            👇 Choose the correct answer
-        </p>
+    display: flex;
 
+    justify-content: center;
 
-        <div id="alphabetAnswers"></div>
+    align-items: center;
 
+    border-radius: 25px;
 
-        <div id="alphabetTestMessage"></div>
+    color: white;
 
-    </div>
+    font-size: 52px;
 
-</div>
+    font-weight: bold;
 
+    cursor: pointer;
 
+    border: 5px solid white;
 
-<!-- ================= NUMBER TEST ================= -->
+    box-shadow:
+        0 8px 15px rgba(0,0,0,0.2);
 
-<div id="numberTestPage"
-     class="hidden testPage">
+    transition: 0.2s;
+}
 
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
-    </button>
 
+.letterBox:hover {
 
-    <h1>
-        🔢 Number Test
-    </h1>
+    transform:
+        translateY(-8px)
+        scale(1.05);
+}
 
 
-    <div class="testCard">
+.letterBox:nth-child(1),
+.letterBox:nth-child(8),
+.letterBox:nth-child(15),
+.letterBox:nth-child(22) {
+    background: #ff4d6d;
+}
 
-        <p id="numberQuestionNumber">
-            Question 1 / 20
-        </p>
 
+.letterBox:nth-child(2),
+.letterBox:nth-child(9),
+.letterBox:nth-child(16),
+.letterBox:nth-child(23) {
+    background: #ff922b;
+}
 
-        <div id="numberQuestion">
-            25
-        </div>
 
+.letterBox:nth-child(3),
+.letterBox:nth-child(10),
+.letterBox:nth-child(17),
+.letterBox:nth-child(24) {
+    background: #ffd43b;
+}
 
-        <p>
-            👇 Choose the correct answer
-        </p>
 
+.letterBox:nth-child(4),
+.letterBox:nth-child(11),
+.letterBox:nth-child(18),
+.letterBox:nth-child(25) {
+    background: #51cf66;
+}
 
-        <div id="numberAnswers"></div>
 
+.letterBox:nth-child(5),
+.letterBox:nth-child(12),
+.letterBox:nth-child(19),
+.letterBox:nth-child(26) {
+    background: #339af0;
+}
 
-        <div id="numberTestMessage"></div>
 
-    </div>
+.letterBox:nth-child(6),
+.letterBox:nth-child(13),
+.letterBox:nth-child(20) {
+    background: #845ef7;
+}
 
-</div>
 
+.letterBox:nth-child(7),
+.letterBox:nth-child(14),
+.letterBox:nth-child(21) {
+    background: #f06595;
+}
 
 
-<!-- ================= RESULT PAGE ================= -->
+/* ================= BUTTONS ================= */
 
-<div id="resultPage"
-     class="hidden resultPage">
+.mainButton {
 
-    <div class="resultCard">
+    display: block;
 
-        <div class="trophy">
-            🏆
-        </div>
+    width: 320px;
 
-        <h1>
-            Test Complete!
-        </h1>
+    max-width: 95%;
 
+    margin: 18px auto;
 
-        <p id="resultTestName">
-            Alphabet Test
-        </p>
+    padding: 18px;
 
+    border: none;
 
-        <div class="scoreCircle">
+    border-radius: 35px;
 
-            <div id="finalScore">
-                20 / 20
-            </div>
+    color: white;
 
-            <small>
-                Score
-            </small>
+    font-size: 21px;
 
-        </div>
+    font-weight: bold;
 
+    cursor: pointer;
 
-        <div class="resultDetails">
+    box-shadow:
+        0 7px 15px rgba(0,0,0,0.2);
 
-            <div class="detailBox">
-                <span>✅</span>
-                <b id="correctCount">20</b>
-                <small>Correct</small>
-            </div>
+    transition: 0.2s;
+}
 
 
-            <div class="detailBox">
-                <span>❌</span>
-                <b id="wrongCount">0</b>
-                <small>Wrong</small>
-            </div>
+.mainButton:hover {
 
+    transform:
+        scale(1.05);
+}
 
-            <div class="detailBox">
-                <span>🎯</span>
-                <b id="percentage">100%</b>
-                <small>Percentage</small>
-            </div>
 
-        </div>
+.numberButton {
 
+    background:
+        linear-gradient(
+            90deg,
+            #ff1744,
+            #ff9800,
+            #00c853,
+            #2196f3,
+            #9c27b0
+        );
+}
 
-        <h2 id="resultMessage">
-            🏆 Perfect Score!
-        </h2>
 
+.alphabetTestButton {
 
-        <p id="resultSubMessage">
-            Amazing!
-        </p>
+    background: #7c4dff;
+}
 
 
-        <button class="resultButton"
-                onclick="goHome()">
+.numberTestButton {
 
-            🏠 Back to Home
+    background: #00a884;
+}
 
-        </button>
 
+/* ================= HOME BUTTON ================= */
 
-        <button class="resultButton tryButton"
-                onclick="restartLastTest()">
+.homeBtn {
 
-            🔄 Try Again
+    position: absolute;
 
-        </button>
+    top: 20px;
 
-    </div>
+    left: 20px;
 
-</div>
+    border: none;
 
+    padding: 14px 22px;
 
+    border-radius: 30px;
 
-<script src="script.js"></script>
+    background: #ff4081;
 
-</body>
-</html>
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 20;
+}
+
+
+/* ================= LESSON ================= */
+
+#lessonPage {
+
+    min-height: 100vh;
+
+    padding: 30px;
+}
+
+
+.lessonTitle {
+
+    margin:
+        65px auto 25px;
+
+    max-width: 700px;
+
+    padding: 20px;
+
+    border-radius: 30px;
+
+    background: #ffe066;
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+.lessonBox {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 40px;
+
+    border: 6px solid #ffd43b;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.2);
+}
+
+
+.bigLetter {
+
+    display: inline-block;
+
+    font-size: 130px;
+
+    color: #ff1744;
+
+    font-weight: bold;
+}
+
+
+.smallLetter {
+
+    display: inline-block;
+
+    font-size: 100px;
+
+    color: #2979ff;
+
+    font-weight: bold;
+
+    margin-left: 20px;
+}
+
+
+.picture {
+
+    font-size: 140px;
+
+    margin: 15px;
+}
+
+
+.lessonBox h2 {
+
+    font-size: 40px;
+
+    color: #ff4081;
+}
+
+
+.speakBtn {
+
+    border: none;
+
+    padding: 18px 30px;
+
+    border-radius: 35px;
+
+    background: #ff9800;
+
+    color: white;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 20px;
+}
+
+
+.navigation {
+
+    margin: 30px auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.navigation button {
+
+    border: none;
+
+    padding: 15px 22px;
+
+    border-radius: 30px;
+
+    background: #2979ff;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+#progress {
+
+    background: white;
+
+    padding: 12px 18px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+}
+
+
+/* ================= NUMBERS ================= */
+
+#numbersPage {
+
+    min-height: 100vh;
+
+    padding: 35px 15px;
+}
+
+
+.numberInstruction {
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+.numberTopButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin: 20px;
+}
+
+
+.numberTopButtons button {
+
+    border: none;
+
+    padding: 15px 25px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    background: #673ab7;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+#numberList {
+
+    max-width: 800px;
+
+    margin: auto;
+}
+
+
+.numberRow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 10px 0;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    background: white;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.15);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.numberRow:hover {
+
+    transform:
+        scale(1.02);
+}
+
+
+.numberValue {
+
+    width: 80px;
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+
+.numberObjects {
+
+    flex: 1;
+
+    text-align: left;
+
+    font-size: 25px;
+
+    word-break: break-word;
+}
+
+
+.numberHear {
+
+    font-size: 25px;
+}
+
+
+/* RAINBOW NUMBER COLORS */
+
+.numberRow:nth-child(7n+1) .numberValue {
+    color: #ff1744;
+}
+
+.numberRow:nth-child(7n+2) .numberValue {
+    color: #ff9100;
+}
+
+.numberRow:nth-child(7n+3) .numberValue {
+    color: #00c853;
+}
+
+.numberRow:nth-child(7n+4) .numberValue {
+    color: #00b8d4;
+}
+
+.numberRow:nth-child(7n+5) .numberValue {
+    color: #2979ff;
+}
+
+.numberRow:nth-child(7n+6) .numberValue {
+    color: #7c4dff;
+}
+
+.numberRow:nth-child(7n) .numberValue {
+    color: #e91e63;
+}
+
+
+/* ================= NUMBER DETAIL ================= */
+
+#numberDetailPage {
+
+    min-height: 100vh;
+
+    padding: 30px;
+}
+
+
+.numberDetailCard {
+
+    max-width: 650px;
+
+    margin: 80px auto;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.2);
+}
+
+
+#bigNumber {
+
+    font-size: 110px;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            red,
+            orange,
+            green,
+            blue,
+            purple
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+
+#numberObjects {
+
+    font-size: 75px;
+
+    margin: 20px;
+
+    word-break: break-word;
+}
+
+
+#numberWord {
+
+    font-size: 38px;
+
+    color: #ff4081;
+}
+
+
+/* ================= TEST ================= */
+
+.testPage {
+
+    min-height: 100vh;
+
+    padding: 40px 15px;
+}
+
+
+.testMenuCard {
+
+    max-width: 600px;
+
+    margin: 80px auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.2);
+}
+
+
+.testEmoji {
+
+    font-size: 80px;
+}
+
+
+.choiceButton {
+
+    display: block;
+
+    width: 350px;
+
+    max-width: 95%;
+
+    margin: 20px auto;
+
+    padding: 20px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #2979ff;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.testCard {
+
+    max-width: 650px;
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.2);
+}
+
+
+#alphabetQuestion {
+
+    font-size: 130px;
+
+    font-weight: bold;
+
+    margin: 20px;
+}
+
+
+#numberQuestion {
+
+    font-size: 100px;
+
+    font-weight: bold;
+
+    margin: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            red,
+            orange,
+            green,
+            blue,
+            purple
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+
+#alphabetAnswers,
+#numberAnswers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+    max-width: 500px;
+
+    margin: auto;
+}
+
+
+.answerButton {
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: #ffe066;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.answerButton:disabled {
+
+    opacity: 0.7;
+
+    cursor: not-allowed;
+}
+
+
+#alphabetTestMessage,
+#numberTestMessage {
+
+    min-height: 35px;
+
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+/* ================= RESULT ================= */
+
+.resultPage {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+.resultCard {
+
+    width: 600px;
+
+    max-width: 95%;
+
+    background: white;
+
+    padding: 35px 25px;
+
+    border-radius: 45px;
+
+    border: 7px solid #ffd43b;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.25);
+}
+
+
+.trophy {
+
+    font-size: 85px;
+}
+
+
+.scoreCircle {
+
+    width: 190px;
+
+    height: 190px;
+
+    margin: 25px auto;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe066,
+            #ff922b
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+#finalScore {
+
+    font-size: 45px;
+
+    font-weight: bold;
+}
+
+
+.resultDetails {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.detailBox {
+
+    width: 145px;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    background: #f1f3f5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.detailBox span {
+
+    font-size: 28px;
+}
+
+
+.detailBox b {
+
+    font-size: 25px;
+}
+
+
+.detailBox small {
+
+    font-weight: bold;
+
+    font-size: 15px;
+}
+
+
+#resultMessage {
+
+    color: #ff6b00;
+
+    font-size: 30px;
+}
+
+
+.resultButton {
+
+    display: block;
+
+    width: 300px;
+
+    max-width: 95%;
+
+    margin: 12px auto;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ff4081;
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.tryButton {
+
+    background: #2979ff;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    padding: 30px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px) {
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .sun {
+        right: 10px;
+        font-size: 55px;
+    }
+
+    .cloud1 {
+        left: 5px;
+    }
+
+    .cloud2 {
+        right: 70px;
+    }
+
+    .kid {
+        font-size: 60px;
+    }
+
+    .tree {
+        font-size: 60px;
+    }
+
+    #alphabetGrid {
+        grid-template-columns:
+            repeat(4,1fr);
+    }
+
+    .letterBox {
+        height: 75px;
+        font-size: 35px;
+    }
+
+    .homeSection {
+        padding: 18px;
+    }
+
+    .mainButton {
+        width: 95%;
+    }
+
+    .lessonTitle {
+        font-size: 30px;
+    }
+
+    .bigLetter {
+        font-size: 90px;
+    }
+
+    .smallLetter {
+        font-size: 70px;
+    }
+
+    .picture {
+        font-size: 100px;
+    }
+
+    #alphabetAnswers,
+    #numberAnswers {
+        grid-template-columns: 1fr;
+    }
+
+    #numberQuestion {
+        font-size: 70px;
+    }
+
+    .resultDetails {
+        gap: 5px;
+    }
+
+    .detailBox {
+        width: 31%;
+        padding: 10px 4px;
+    }
+
+    .detailBox b {
+        font-size: 20px;
+    }
+
+}
