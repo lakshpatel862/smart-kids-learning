@@ -2,17 +2,11 @@
     box-sizing: border-box;
 }
 
-
 body {
-
     margin: 0;
-
     font-family: Arial, sans-serif;
-
     text-align: center;
-
     color: #333;
-
     min-height: 100vh;
 
     background:
@@ -30,7 +24,6 @@ body {
         backgroundMove 12s ease infinite;
 }
 
-
 @keyframes backgroundMove {
 
     0% {
@@ -46,29 +39,17 @@ body {
     }
 }
 
-
 .hidden {
     display: none !important;
 }
 
 
-/* ==================================================
-   HOME
-================================================== */
-
-#homePage {
-    min-height: 100vh;
-}
-
+/* HOME */
 
 .hero {
-
     position: relative;
-
     min-height: 390px;
-
     overflow: hidden;
-
     padding-top: 30px;
 
     background:
@@ -78,93 +59,54 @@ body {
         );
 
     border-bottom-left-radius: 60px;
-
     border-bottom-right-radius: 60px;
 
     box-shadow:
         0 12px 30px rgba(0,0,0,0.18);
 }
 
-
 .hero h1 {
-
     position: relative;
-
     z-index: 5;
-
     font-size: 45px;
-
     color: #ff3d81;
-
-    text-shadow:
-        3px 3px white;
+    text-shadow: 3px 3px white;
 }
 
-
 .tagline {
-
     position: relative;
-
     z-index: 5;
-
     font-size: 22px;
-
     font-weight: bold;
-
     color: #3949ab;
 }
 
-
-/* SUN */
-
 .sun {
-
     position: absolute;
-
     top: 20px;
-
     right: 45px;
-
     font-size: 80px;
 }
 
-
-/* CLOUDS */
-
 .cloud {
-
     position: absolute;
-
     font-size: 65px;
 }
 
-
 .cloud1 {
-
     top: 40px;
-
     left: 40px;
 }
 
-
 .cloud2 {
-
     top: 95px;
-
     right: 220px;
 }
 
-
-/* KIDS */
-
 .kidsScene {
-
     position: relative;
-
     max-width: 900px;
-
     height: 180px;
-
     margin: 15px auto 0;
 
     background:
@@ -173,51 +115,36 @@ body {
             #4ebc4f
         );
 
-    border-radius:
-        50% 50% 0 0;
+    border-radius: 50% 50% 0 0;
 }
 
-
 .kid {
-
     position: absolute;
-
     bottom: 25px;
-
     font-size: 80px;
 
     animation:
         jump 2s infinite;
 }
 
-
 .kid1 {
     left: 32%;
 }
 
-
 .kid2 {
-
     right: 32%;
-
     animation-delay: 1s;
 }
 
-
 .ball {
-
     position: absolute;
-
     left: 48%;
-
     bottom: 70px;
-
     font-size: 45px;
 
     animation:
         ballMove 2s infinite;
 }
-
 
 @keyframes jump {
 
@@ -230,7 +157,6 @@ body {
     }
 }
 
-
 @keyframes ballMove {
 
     0%,100% {
@@ -242,56 +168,38 @@ body {
     }
 }
 
-
 .tree {
-
     position: absolute;
-
     left: 5%;
-
     bottom: 25px;
-
     font-size: 90px;
 }
 
-
 .flower {
-
     position: absolute;
-
     bottom: 20px;
-
     font-size: 35px;
 }
-
 
 .flower1 {
     left: 18%;
 }
 
-
 .flower2 {
     right: 20%;
 }
-
 
 .flower3 {
     right: 8%;
 }
 
 
-/* ==================================================
-   HOME SECTIONS
-================================================== */
+/* SECTIONS */
 
 .homeSection {
-
     width: 94%;
-
     max-width: 1150px;
-
     margin: 30px auto;
-
     padding: 28px;
 
     background:
@@ -303,58 +211,37 @@ body {
         0 10px 25px rgba(0,0,0,0.15);
 }
 
-
 .homeSection h2 {
-
     font-size: 30px;
-
-    margin-bottom: 5px;
 }
 
-
 .homeSection p {
-
     font-size: 18px;
-
     font-weight: bold;
 }
 
 
-/* ==================================================
-   ALPHABET
-================================================== */
+/* ALPHABET */
 
 #alphabetGrid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(7,1fr);
-
+    grid-template-columns: repeat(7,1fr);
     gap: 15px;
-
     margin-top: 25px;
 }
 
-
 .letterBox {
-
     height: 105px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     border-radius: 25px;
-
     border: 5px solid white;
 
     color: white;
-
     font-size: 52px;
-
     font-weight: bold;
 
     cursor: pointer;
@@ -365,93 +252,69 @@ body {
     transition: 0.2s;
 }
 
-
 .letterBox:hover {
-
     transform:
         scale(1.06)
         translateY(-5px);
 }
 
-
 .letterBox:nth-child(7n+1) {
     background: #ff1744;
 }
-
 
 .letterBox:nth-child(7n+2) {
     background: #ff9100;
 }
 
-
 .letterBox:nth-child(7n+3) {
     background: #ffd600;
 }
-
 
 .letterBox:nth-child(7n+4) {
     background: #00c853;
 }
 
-
 .letterBox:nth-child(7n+5) {
     background: #00b8d4;
 }
 
-
 .letterBox:nth-child(7n+6) {
     background: #2979ff;
 }
-
 
 .letterBox:nth-child(7n) {
     background: #7c4dff;
 }
 
 
-/* ==================================================
-   BUTTONS
-================================================== */
+/* BUTTONS */
 
 .mainButton {
-
     display: block;
-
     width: 340px;
-
     max-width: 95%;
 
     margin: 18px auto;
-
     padding: 18px;
 
     border: none;
-
     border-radius: 35px;
 
     color: white;
-
     font-size: 21px;
-
     font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
         0 7px 15px rgba(0,0,0,0.2);
-
-    transition: 0.2s;
 }
 
-
 .mainButton:hover {
-
     transform: scale(1.05);
 }
 
-
 .numberButton {
-
     background:
         linear-gradient(
             90deg,
@@ -463,9 +326,7 @@ body {
         );
 }
 
-
 .tableButton {
-
     background:
         linear-gradient(
             90deg,
@@ -477,29 +338,20 @@ body {
         );
 }
 
-
 .tableTestButton {
-
     background: #00a884;
 }
 
-
 .alphabetTestButton {
-
     background: #7c4dff;
 }
 
 
-/* ==================================================
-   HOME BUTTON
-================================================== */
+/* HOME BUTTON */
 
 .homeBtn {
-
     position: absolute;
-
     top: 20px;
-
     left: 20px;
 
     z-index: 20;
@@ -507,7 +359,6 @@ body {
     padding: 14px 22px;
 
     border: none;
-
     border-radius: 30px;
 
     background: #ff4081;
@@ -515,30 +366,21 @@ body {
     color: white;
 
     font-size: 17px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
 
-/* ==================================================
-   LESSON
-================================================== */
+/* LESSON */
 
 #lessonPage {
-
     min-height: 100vh;
-
     padding: 30px;
 }
 
-
 .lessonTitle {
-
-    margin:
-        65px auto 25px;
-
+    margin: 65px auto 25px;
     max-width: 700px;
 
     padding: 20px;
@@ -548,18 +390,11 @@ body {
     background: #ffe066;
 
     font-size: 42px;
-
     font-weight: bold;
-
-    box-shadow:
-        0 10px 20px rgba(0,0,0,0.2);
 }
 
-
 .lessonBox {
-
     max-width: 650px;
-
     margin: auto;
 
     padding: 35px;
@@ -574,57 +409,37 @@ body {
         0 12px 25px rgba(0,0,0,0.2);
 }
 
-
 .bigLetter {
-
     display: inline-block;
-
     font-size: 130px;
-
     font-weight: bold;
-
     color: #ff1744;
 }
 
-
 .smallLetter {
-
     display: inline-block;
-
     font-size: 100px;
-
     font-weight: bold;
-
     color: #2979ff;
-
     margin-left: 20px;
 }
 
-
 .picture {
-
     font-size: 140px;
-
     margin: 15px;
 }
 
-
 .lessonBox h2 {
-
     font-size: 40px;
-
     color: #ff4081;
 }
 
-
 .speakBtn {
-
     margin-top: 20px;
 
     padding: 18px 30px;
 
     border: none;
-
     border-radius: 35px;
 
     background: #ff9800;
@@ -632,33 +447,24 @@ body {
     color: white;
 
     font-size: 21px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
-
 .navigation {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     gap: 20px;
-
     margin: 30px;
 }
 
-
 .navigation button {
-
     padding: 15px 22px;
 
     border: none;
-
     border-radius: 30px;
 
     background: #2979ff;
@@ -666,57 +472,38 @@ body {
     color: white;
 
     font-size: 17px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
-
 #progress {
-
     background: white;
-
     padding: 12px 18px;
-
     border-radius: 25px;
-
     font-weight: bold;
 }
 
 
-/* ==================================================
-   NUMBERS
-================================================== */
+/* NUMBERS */
 
 #numbersPage {
-
     min-height: 100vh;
-
     padding: 35px 15px;
 }
 
-
 .topButtons {
-
     display: flex;
-
     justify-content: center;
-
     gap: 15px;
-
     flex-wrap: wrap;
-
     margin: 20px;
 }
 
-
 .topButtons button {
-
     padding: 15px 25px;
 
     border: none;
-
     border-radius: 30px;
 
     background: #673ab7;
@@ -724,31 +511,23 @@ body {
     color: white;
 
     font-size: 17px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
-
 #numberList {
-
     max-width: 800px;
-
     margin: auto;
 }
 
-
 .numberRow {
-
     display: flex;
-
     align-items: center;
 
     gap: 15px;
 
     margin: 10px 0;
-
     padding: 15px;
 
     background: white;
@@ -759,29 +538,16 @@ body {
         0 5px 12px rgba(0,0,0,0.15);
 
     cursor: pointer;
-
-    transition: 0.2s;
 }
-
-
-.numberRow:hover {
-
-    transform: scale(1.02);
-}
-
 
 .numberValue {
-
     width: 80px;
 
     font-size: 30px;
-
     font-weight: bold;
 }
 
-
 .numberObjects {
-
     flex: 1;
 
     text-align: left;
@@ -791,71 +557,47 @@ body {
     word-break: break-word;
 }
 
-
 .numberHear {
-
     font-size: 25px;
 }
 
-
-/* NUMBER RAINBOW */
-
-.numberRow:nth-child(7n+1)
-.numberValue {
+.numberRow:nth-child(7n+1) .numberValue {
     color: #ff1744;
 }
 
-
-.numberRow:nth-child(7n+2)
-.numberValue {
+.numberRow:nth-child(7n+2) .numberValue {
     color: #ff9100;
 }
 
-
-.numberRow:nth-child(7n+3)
-.numberValue {
+.numberRow:nth-child(7n+3) .numberValue {
     color: #00c853;
 }
 
-
-.numberRow:nth-child(7n+4)
-.numberValue {
+.numberRow:nth-child(7n+4) .numberValue {
     color: #00b8d4;
 }
 
-
-.numberRow:nth-child(7n+5)
-.numberValue {
+.numberRow:nth-child(7n+5) .numberValue {
     color: #2979ff;
 }
 
-
-.numberRow:nth-child(7n+6)
-.numberValue {
+.numberRow:nth-child(7n+6) .numberValue {
     color: #7c4dff;
 }
 
-
-.numberRow:nth-child(7n)
-.numberValue {
+.numberRow:nth-child(7n) .numberValue {
     color: #e91e63;
 }
 
 
-/* ==================================================
-   NUMBER DETAIL
-================================================== */
+/* NUMBER DETAIL */
 
 #numberDetailPage {
-
     min-height: 100vh;
-
     padding: 30px;
 }
 
-
 .numberDetailCard {
-
     max-width: 650px;
 
     margin: 80px auto;
@@ -870,11 +612,8 @@ body {
         0 12px 30px rgba(0,0,0,0.2);
 }
 
-
 #bigNumber {
-
     font-size: 110px;
-
     font-weight: bold;
 
     background:
@@ -892,41 +631,26 @@ body {
     color: transparent;
 }
 
-
 #numberObjects {
-
     font-size: 75px;
-
     margin: 20px;
-
-    word-break: break-word;
 }
 
-
 #numberWord {
-
     font-size: 38px;
-
     color: #ff4081;
 }
 
 
-/* ==================================================
-   TABLES
-================================================== */
+/* TABLES */
 
 #tablesPage {
-
     min-height: 100vh;
-
     padding: 35px 15px;
 }
 
-
 #tableButtons {
-
     max-width: 900px;
-
     margin: 30px auto;
 
     display: grid;
@@ -937,73 +661,56 @@ body {
     gap: 12px;
 }
 
-
 .tableNumberButton {
-
     padding: 15px 8px;
 
     border: none;
-
     border-radius: 18px;
 
     background: white;
 
     font-size: 20px;
-
     font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
         0 5px 12px rgba(0,0,0,0.15);
-
-    transition: 0.2s;
 }
-
 
 .tableNumberButton:hover {
-
     transform: scale(1.07);
 }
-
 
 .tableNumberButton:nth-child(7n+1) {
     color: #ff1744;
 }
 
-
 .tableNumberButton:nth-child(7n+2) {
     color: #ff9100;
 }
-
 
 .tableNumberButton:nth-child(7n+3) {
     color: #00a844;
 }
 
-
 .tableNumberButton:nth-child(7n+4) {
     color: #0097a7;
 }
-
 
 .tableNumberButton:nth-child(7n+5) {
     color: #2979ff;
 }
 
-
 .tableNumberButton:nth-child(7n+6) {
     color: #7c4dff;
 }
-
 
 .tableNumberButton:nth-child(7n) {
     color: #e91e63;
 }
 
-
 .tableDisplay {
-
     max-width: 600px;
 
     margin: 30px auto;
@@ -1018,13 +725,10 @@ body {
         0 12px 30px rgba(0,0,0,0.2);
 }
 
-
 .closeTableButton {
-
     padding: 10px 20px;
 
     border: none;
-
     border-radius: 25px;
 
     background: #ff4081;
@@ -1036,17 +740,12 @@ body {
     cursor: pointer;
 }
 
-
 #selectedTableTitle {
-
     font-size: 32px;
-
     color: #7c4dff;
 }
 
-
 .tableLine {
-
     margin: 10px;
 
     padding: 12px;
@@ -1056,25 +755,18 @@ body {
     background: #f1f3f5;
 
     font-size: 24px;
-
     font-weight: bold;
 }
 
 
-/* ==================================================
-   TEST MENU
-================================================== */
+/* TEST */
 
 .testPage {
-
     min-height: 100vh;
-
     padding: 40px 15px;
 }
 
-
 .menuCard {
-
     max-width: 600px;
 
     margin: 80px auto;
@@ -1089,19 +781,14 @@ body {
         0 15px 35px rgba(0,0,0,0.2);
 }
 
-
 .bigEmoji {
-
     font-size: 80px;
 }
 
-
 .choiceButton {
-
     display: block;
 
     width: 360px;
-
     max-width: 95%;
 
     margin: 20px auto;
@@ -1109,7 +796,6 @@ body {
     padding: 20px;
 
     border: none;
-
     border-radius: 30px;
 
     background: #2979ff;
@@ -1117,25 +803,12 @@ body {
     color: white;
 
     font-size: 20px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
-
-.choiceButton:hover {
-
-    transform: scale(1.04);
-}
-
-
-/* ==================================================
-   TEST CARD
-================================================== */
-
 .testCard {
-
     max-width: 650px;
 
     margin: 30px auto;
@@ -1150,23 +823,15 @@ body {
         0 12px 30px rgba(0,0,0,0.2);
 }
 
-
 #alphabetQuestion {
-
     font-size: 130px;
-
     font-weight: bold;
-
     margin: 20px;
 }
 
-
 #numberQuestion {
-
     font-size: 100px;
-
     font-weight: bold;
-
     margin: 20px;
 
     background:
@@ -1188,25 +853,18 @@ body {
 /* MULTIPLICATION QUESTION */
 
 #multiplicationQuestion {
-
     font-size: 65px;
-
     font-weight: bold;
-
     margin: 35px 10px;
 }
 
-
 #multiplicationQuestion span {
-
     display: inline-flex;
 
     width: 75px;
-
     height: 65px;
 
     align-items: center;
-
     justify-content: center;
 
     border: 4px solid #2979ff;
@@ -1218,11 +876,9 @@ body {
     background: #f8f9fa;
 }
 
-
 #alphabetAnswers,
 #numberAnswers,
 #multiplicationAnswers {
-
     display: grid;
 
     grid-template-columns:
@@ -1235,75 +891,51 @@ body {
     margin: auto;
 }
 
-
 .answerButton {
-
     padding: 18px;
 
     border: none;
-
     border-radius: 20px;
 
     background: #ffe066;
 
     font-size: 25px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
-
-.answerButton:hover {
-
-    transform: scale(1.04);
-}
-
-
 .answerButton:disabled {
-
     opacity: 0.7;
-
-    cursor: not-allowed;
 }
-
 
 #alphabetTestMessage,
 #numberTestMessage,
 #multiplicationTestMessage {
-
     min-height: 35px;
 
     margin-top: 20px;
 
     font-size: 20px;
-
     font-weight: bold;
 }
 
 
-/* ==================================================
-   RESULT
-================================================== */
+/* RESULT */
 
 .resultPage {
-
     min-height: 100vh;
 
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     padding: 30px;
 }
 
-
 .resultCard {
-
     width: 600px;
-
     max-width: 95%;
 
     padding: 35px 25px;
@@ -1318,17 +950,12 @@ body {
         0 18px 40px rgba(0,0,0,0.25);
 }
 
-
 .trophy {
-
     font-size: 85px;
 }
 
-
 .scoreCircle {
-
     width: 190px;
-
     height: 190px;
 
     margin: 25px auto;
@@ -1347,21 +974,15 @@ body {
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 }
 
-
 #finalScore {
-
     font-size: 45px;
-
     font-weight: bold;
 }
 
-
 .resultDetails {
-
     display: flex;
 
     justify-content: center;
@@ -1369,9 +990,7 @@ body {
     gap: 12px;
 }
 
-
 .detailBox {
-
     width: 145px;
 
     padding: 15px;
@@ -1387,41 +1006,18 @@ body {
     gap: 5px;
 }
 
-
 .detailBox span {
-
     font-size: 28px;
 }
 
-
 .detailBox b {
-
     font-size: 25px;
 }
 
-
-.detailBox small {
-
-    font-size: 15px;
-
-    font-weight: bold;
-}
-
-
-#resultMessage {
-
-    color: #ff6b00;
-
-    font-size: 30px;
-}
-
-
 .resultButton {
-
     display: block;
 
     width: 300px;
-
     max-width: 95%;
 
     margin: 12px auto;
@@ -1429,7 +1025,6 @@ body {
     padding: 17px;
 
     border: none;
-
     border-radius: 30px;
 
     background: #ff4081;
@@ -1437,25 +1032,16 @@ body {
     color: white;
 
     font-size: 19px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
-
 .tryButton {
-
     background: #2979ff;
 }
 
-
-/* ==================================================
-   FOOTER
-================================================== */
-
 footer {
-
     padding: 30px;
 
     font-size: 20px;
@@ -1464,9 +1050,7 @@ footer {
 }
 
 
-/* ==================================================
-   MOBILE
-================================================== */
+/* MOBILE */
 
 @media(max-width:700px) {
 
@@ -1474,131 +1058,81 @@ footer {
         font-size: 30px;
     }
 
-
     .sun {
         right: 10px;
         font-size: 55px;
     }
 
-
-    .cloud1 {
-        left: 5px;
-    }
-
-
     .cloud2 {
         right: 70px;
     }
-
 
     .kid {
         font-size: 60px;
     }
 
-
     .tree {
         font-size: 60px;
     }
 
-
     #alphabetGrid {
-
         grid-template-columns:
             repeat(4,1fr);
     }
 
-
     .letterBox {
-
         height: 75px;
-
         font-size: 35px;
     }
 
-
-    .homeSection {
-        padding: 18px;
-    }
-
-
     #tableButtons {
-
         grid-template-columns:
             repeat(4,1fr);
     }
 
-
     .tableNumberButton {
-
         font-size: 17px;
-
         padding: 12px 5px;
     }
-
 
     .lessonTitle {
         font-size: 30px;
     }
 
-
     .bigLetter {
         font-size: 90px;
     }
-
 
     .smallLetter {
         font-size: 70px;
     }
 
-
     .picture {
         font-size: 100px;
     }
 
-
     #alphabetAnswers,
     #numberAnswers,
     #multiplicationAnswers {
-
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
-
 
     #numberQuestion {
         font-size: 70px;
     }
 
-
     #multiplicationQuestion {
-
         font-size: 40px;
     }
 
-
     #multiplicationQuestion span {
-
         width: 55px;
-
         height: 50px;
     }
 
-
-    .resultDetails {
-        gap: 5px;
-    }
-
-
     .detailBox {
-
         width: 31%;
-
         padding: 10px 4px;
-    }
-
-
-    .detailBox b {
-        font-size: 20px;
     }
 
 }
