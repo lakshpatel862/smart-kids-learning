@@ -104,3 +104,111 @@ function updateProgress() {
     document.getElementById("lessons").textContent = lessons;
     document.getElementById("badges").textContent = badges;
 }
+const alphabetData = [
+    { letter: "A", word: "Apple", emoji: "🍎" },
+    { letter: "B", word: "Ball", emoji: "⚽" },
+    { letter: "C", word: "Cat", emoji: "🐱" },
+    { letter: "D", word: "Dog", emoji: "🐶" },
+    { letter: "E", word: "Elephant", emoji: "🐘" },
+    { letter: "F", word: "Fish", emoji: "🐟" },
+    { letter: "G", word: "Grapes", emoji: "🍇" },
+    { letter: "H", word: "Hat", emoji: "🎩" },
+    { letter: "I", word: "Ice Cream", emoji: "🍦" },
+    { letter: "J", word: "Juice", emoji: "🧃" },
+    { letter: "K", word: "Kite", emoji: "🪁" },
+    { letter: "L", word: "Lion", emoji: "🦁" },
+    { letter: "M", word: "Mango", emoji: "🥭" },
+    { letter: "N", word: "Nest", emoji: "🪺" },
+    { letter: "O", word: "Orange", emoji: "🍊" },
+    { letter: "P", word: "Parrot", emoji: "🦜" },
+    { letter: "Q", word: "Queen", emoji: "👑" },
+    { letter: "R", word: "Rabbit", emoji: "🐰" },
+    { letter: "S", word: "Sun", emoji: "☀️" },
+    { letter: "T", word: "Tiger", emoji: "🐯" },
+    { letter: "U", word: "Umbrella", emoji: "☂️" },
+    { letter: "V", word: "Van", emoji: "🚐" },
+    { letter: "W", word: "Watch", emoji: "⌚" },
+    { letter: "X", word: "Xylophone", emoji: "🎵" },
+    { letter: "Y", word: "Yak", emoji: "🐂" },
+    { letter: "Z", word: "Zebra", emoji: "🦓" }
+];
+
+let currentAlphabet = 0;
+
+function openAlphabet() {
+    currentAlphabet = 0;
+    showAlphabet();
+}
+
+function showAlphabet() {
+    const item = alphabetData[currentAlphabet];
+
+    const message =
+        "Letter " + item.letter + ". " +
+        item.letter + " for " + item.word;
+
+    document.body.innerHTML = `
+        <div class="alphabet-learning">
+            <button onclick="location.reload()">🏠 Home</button>
+
+            <h1>🌈 Learn Alphabet</h1>
+
+            <div class="alphabet-card" onclick="speakAlphabet()">
+                <div class="big-letter">${item.letter}</div>
+
+                <div class="big-picture">${item.emoji}</div>
+
+                <h2>${item.letter} for ${item.word}</h2>
+
+                <p>🔊 Click here to listen</p>
+            </div>
+
+            <div class="alphabet-buttons">
+                <button onclick="previousAlphabet()">⬅️ Previous</button>
+
+                <span>${currentAlphabet + 1} / 26</span>
+
+                <button onclick="nextAlphabet()">Next ➡️</button>
+            </div>
+        </div>
+    `;
+
+    speak(message);
+}
+
+function speak(text) {
+    if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+
+        const voice = new SpeechSynthesisUtterance(text);
+        voice.lang = "en-US";
+        voice.rate = 0.8;
+        voice.pitch = 1.2;
+
+        speechSynthesis.speak(voice);
+    }
+}
+
+function speakAlphabet() {
+    const item = alphabetData[currentAlphabet];
+
+    speak(
+        item.letter + " for " + item.word
+    );
+}
+
+function nextAlphabet() {
+    if (currentAlphabet < 25) {
+        currentAlphabet++;
+        showAlphabet();
+    } else {
+        speak("You completed all the alphabets. Very good!");
+    }
+}
+
+function previousAlphabet() {
+    if (currentAlphabet > 0) {
+        currentAlphabet--;
+        showAlphabet();
+    }
+}
