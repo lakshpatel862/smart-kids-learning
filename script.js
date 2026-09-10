@@ -4,32 +4,32 @@
 
 const alphabetData = [
 
-    ["A", "Apple", "🍎"],
-    ["B", "Ball", "⚽"],
-    ["C", "Cat", "🐱"],
-    ["D", "Dog", "🐶"],
-    ["E", "Elephant", "🐘"],
-    ["F", "Fish", "🐟"],
-    ["G", "Grapes", "🍇"],
-    ["H", "Horse", "🐴"],
-    ["I", "Ice Cream", "🍦"],
-    ["J", "Juice", "🧃"],
-    ["K", "Kite", "🪁"],
-    ["L", "Lion", "🦁"],
-    ["M", "Mango", "🥭"],
-    ["N", "Nest", "🪺"],
-    ["O", "Orange", "🍊"],
-    ["P", "Penguin", "🐧"],
-    ["Q", "Queen", "👑"],
-    ["R", "Rainbow", "🌈"],
-    ["S", "Sun", "☀️"],
-    ["T", "Tree", "🌳"],
-    ["U", "Umbrella", "☂️"],
-    ["V", "Van", "🚐"],
-    ["W", "Watermelon", "🍉"],
-    ["X", "Xylophone", "🎵"],
-    ["Y", "Yacht", "⛵"],
-    ["Z", "Zebra", "🦓"]
+    ["A","Apple","🍎"],
+    ["B","Ball","⚽"],
+    ["C","Cat","🐱"],
+    ["D","Dog","🐶"],
+    ["E","Elephant","🐘"],
+    ["F","Fish","🐟"],
+    ["G","Grapes","🍇"],
+    ["H","Horse","🐴"],
+    ["I","Ice Cream","🍦"],
+    ["J","Juice","🧃"],
+    ["K","Kite","🪁"],
+    ["L","Lion","🦁"],
+    ["M","Mango","🥭"],
+    ["N","Nest","🪺"],
+    ["O","Orange","🍊"],
+    ["P","Penguin","🐧"],
+    ["Q","Queen","👑"],
+    ["R","Rainbow","🌈"],
+    ["S","Sun","☀️"],
+    ["T","Tree","🌳"],
+    ["U","Umbrella","☂️"],
+    ["V","Van","🚐"],
+    ["W","Watermelon","🍉"],
+    ["X","Xylophone","🎵"],
+    ["Y","Yacht","⛵"],
+    ["Z","Zebra","🦓"]
 
 ];
 
@@ -38,7 +38,7 @@ let currentIndex = 0;
 
 
 /* =====================================================
-   ALPHABET HOME BOXES
+   ALPHABET HOME
 ===================================================== */
 
 const alphabetGrid =
@@ -46,16 +46,19 @@ const alphabetGrid =
 
 
 alphabetData.forEach(
-    function(item, index) {
+    function(item,index) {
 
         const box =
             document.createElement("div");
 
+
         box.className =
             "letterBox";
 
+
         box.innerText =
             item[0];
+
 
         box.onclick =
             function() {
@@ -64,6 +67,7 @@ alphabetData.forEach(
 
             };
 
+
         alphabetGrid.appendChild(box);
 
     }
@@ -71,7 +75,7 @@ alphabetData.forEach(
 
 
 /* =====================================================
-   LESSON
+   ALPHABET LESSON
 ===================================================== */
 
 function openLesson(index) {
@@ -95,24 +99,31 @@ function updateLesson() {
     const data =
         alphabetData[currentIndex];
 
+
     document.getElementById("letter")
         .innerText = data[0];
+
 
     document.getElementById("word")
         .innerText = data[1];
 
+
     document.getElementById("bigLetter")
         .innerText = data[0];
+
 
     document.getElementById("smallLetter")
         .innerText =
         data[0].toLowerCase();
 
+
     document.getElementById("picture")
         .innerText = data[2];
 
+
     document.getElementById("wordText")
         .innerText = data[1];
+
 
     document.getElementById("progress")
         .innerText =
@@ -125,6 +136,7 @@ function speakCurrent() {
 
     const data =
         alphabetData[currentIndex];
+
 
     speak(
         data[0] +
@@ -174,18 +186,28 @@ function previousLetter() {
 
 function speak(text) {
 
-    if ("speechSynthesis" in window) {
+    if (
+        "speechSynthesis" in window
+    ) {
 
         window.speechSynthesis.cancel();
+
 
         const speech =
             new SpeechSynthesisUtterance(text);
 
-        speech.lang = "en-US";
 
-        speech.rate = 0.8;
+        speech.lang =
+            "en-US";
 
-        window.speechSynthesis.speak(speech);
+
+        speech.rate =
+            0.8;
+
+
+        window.speechSynthesis.speak(
+            speech
+        );
 
     }
 
@@ -204,9 +226,12 @@ function hideAllPages() {
         "lessonPage",
         "numbersPage",
         "numberDetailPage",
+        "tablesPage",
         "alphabetTestMenu",
         "alphabetTestPage",
         "numberTestPage",
+        "multiplicationTestMenu",
+        "multiplicationTestPage",
         "resultPage"
 
     ];
@@ -228,10 +253,14 @@ function goHome() {
 
     hideAllPages();
 
+
     document.getElementById("homePage")
         .classList.remove("hidden");
 
-    if ("speechSynthesis" in window) {
+
+    if (
+        "speechSynthesis" in window
+    ) {
 
         window.speechSynthesis.cancel();
 
@@ -316,7 +345,8 @@ function numberToWords(num) {
             " Hundred" +
             (
                 num % 100 !== 0
-                ? " " + numberToWords(num % 100)
+                ? " " +
+                  numberToWords(num % 100)
                 : ""
             )
         );
@@ -330,7 +360,7 @@ function numberToWords(num) {
 
 
 /* =====================================================
-   NUMBERS
+   NUMBERS 1 - 1000
 ===================================================== */
 
 let selectedNumber = 1;
@@ -340,6 +370,7 @@ function createNumbers() {
 
     const list =
         document.getElementById("numberList");
+
 
     list.innerHTML = "";
 
@@ -353,6 +384,7 @@ function createNumbers() {
         const row =
             document.createElement("div");
 
+
         row.className =
             "numberRow";
 
@@ -360,8 +392,10 @@ function createNumbers() {
         const value =
             document.createElement("div");
 
+
         value.className =
             "numberValue";
+
 
         value.innerText =
             number;
@@ -369,6 +403,7 @@ function createNumbers() {
 
         const objects =
             document.createElement("div");
+
 
         objects.className =
             "numberObjects";
@@ -391,8 +426,10 @@ function createNumbers() {
         const hear =
             document.createElement("div");
 
+
         hear.className =
             "numberHear";
+
 
         hear.innerText =
             "🔊";
@@ -427,6 +464,7 @@ function openNumbers() {
 
     hideAllPages();
 
+
     document.getElementById("numbersPage")
         .classList.remove("hidden");
 
@@ -437,22 +475,27 @@ function openNumber(number) {
 
     selectedNumber = number;
 
+
     hideAllPages();
+
 
     document.getElementById(
         "numberDetailPage"
-    ).classList.remove("hidden");
+    )
+    .classList.remove("hidden");
 
 
     document.getElementById(
         "bigNumber"
-    ).innerText =
+    )
+    .innerText =
         number;
 
 
     document.getElementById(
         "numberWord"
-    ).innerText =
+    )
+    .innerText =
         numberToWords(number);
 
 
@@ -460,7 +503,8 @@ function openNumber(number) {
 
         document.getElementById(
             "numberObjects"
-        ).innerText =
+        )
+        .innerText =
             "⚽ ".repeat(number);
 
     }
@@ -468,7 +512,8 @@ function openNumber(number) {
 
         document.getElementById(
             "numberObjects"
-        ).innerText =
+        )
+        .innerText =
             "⚽ × " + number;
 
     }
@@ -498,6 +543,156 @@ function speakNumberList() {
 
 
 /* =====================================================
+   MULTIPLICATION TABLES 1 - 100
+===================================================== */
+
+function createTableButtons() {
+
+    const area =
+        document.getElementById(
+            "tableButtons"
+        );
+
+
+    area.innerHTML = "";
+
+
+    for (
+        let number = 1;
+        number <= 100;
+        number++
+    ) {
+
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "tableNumberButton";
+
+
+        button.innerText =
+            "Table " + number;
+
+
+        button.onclick =
+            function() {
+
+                showTable(number);
+
+            };
+
+
+        area.appendChild(button);
+
+    }
+
+}
+
+
+createTableButtons();
+
+
+function openTables() {
+
+    hideAllPages();
+
+
+    document.getElementById("tablesPage")
+        .classList.remove("hidden");
+
+}
+
+
+function showTable(number) {
+
+    const display =
+        document.getElementById(
+            "tableDisplay"
+        );
+
+
+    const title =
+        document.getElementById(
+            "selectedTableTitle"
+        );
+
+
+    const table =
+        document.getElementById(
+            "selectedTable"
+        );
+
+
+    title.innerText =
+        "✖️ Table of " + number;
+
+
+    table.innerHTML = "";
+
+
+    for (
+        let i = 1;
+        i <= 10;
+        i++
+    ) {
+
+        const line =
+            document.createElement("div");
+
+
+        line.className =
+            "tableLine";
+
+
+        line.innerText =
+            number +
+            " × " +
+            i +
+            " = " +
+            (number * i);
+
+
+        line.onclick =
+            function() {
+
+                speak(
+                    number +
+                    " times " +
+                    i +
+                    " equals " +
+                    (number * i)
+                );
+
+            };
+
+
+        table.appendChild(line);
+
+    }
+
+
+    display.classList.remove("hidden");
+
+
+    display.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+function closeTable() {
+
+    document.getElementById(
+        "tableDisplay"
+    )
+    .classList.add("hidden");
+
+}
+
+
+/* =====================================================
    ALPHABET TEST
 ===================================================== */
 
@@ -510,20 +705,22 @@ let alphabetPosition = 0;
 let alphabetScore = 0;
 
 
-/* Open test menu */
+/* Open menu */
 
 function openAlphabetTestMenu() {
 
     hideAllPages();
 
+
     document.getElementById(
         "alphabetTestMenu"
-    ).classList.remove("hidden");
+    )
+    .classList.remove("hidden");
 
 }
 
 
-/* Start Alphabet Test */
+/* Start */
 
 function startAlphabetTest(type) {
 
@@ -534,35 +731,30 @@ function startAlphabetTest(type) {
     alphabetScore = 0;
 
 
-    /*
-       Copy all 26 letters.
-
-       Therefore NO LETTER CAN REPEAT.
-    */
-
     alphabetQuestions =
         [...alphabetData];
 
 
-    /*
-       Random order
-    */
-
-    shuffleArray(alphabetQuestions);
+    shuffleArray(
+        alphabetQuestions
+    );
 
 
     hideAllPages();
 
+
     document.getElementById(
         "alphabetTestPage"
-    ).classList.remove("hidden");
+    )
+    .classList.remove("hidden");
 
 
     if (type === "capital") {
 
         document.getElementById(
             "alphabetTestTitle"
-        ).innerText =
+        )
+        .innerText =
             "🔠 Capital Letter Test";
 
     }
@@ -570,7 +762,8 @@ function startAlphabetTest(type) {
 
         document.getElementById(
             "alphabetTestTitle"
-        ).innerText =
+        )
+        .innerText =
             "🔡 Small Letter Test";
 
     }
@@ -584,22 +777,28 @@ function startAlphabetTest(type) {
 function showAlphabetQuestion() {
 
     const current =
-        alphabetQuestions[alphabetPosition];
+        alphabetQuestions[
+            alphabetPosition
+        ];
 
 
     document.getElementById(
         "alphabetQuestionNumber"
-    ).innerText =
+    )
+    .innerText =
         "Question " +
         (alphabetPosition + 1) +
         " / 26";
 
 
-    if (alphabetTestType === "capital") {
+    if (
+        alphabetTestType === "capital"
+    ) {
 
         document.getElementById(
             "alphabetQuestion"
-        ).innerText =
+        )
+        .innerText =
             current[0];
 
     }
@@ -607,7 +806,8 @@ function showAlphabetQuestion() {
 
         document.getElementById(
             "alphabetQuestion"
-        ).innerText =
+        )
+        .innerText =
             current[0].toLowerCase();
 
     }
@@ -615,15 +815,16 @@ function showAlphabetQuestion() {
 
     document.getElementById(
         "alphabetTestMessage"
-    ).innerText = "";
+    )
+    .innerText = "";
 
 
-    createAlphabetAnswers(current);
+    createAlphabetAnswers(
+        current
+    );
 
 }
 
-
-/* Alphabet answer buttons */
 
 function createAlphabetAnswers(correct) {
 
@@ -648,7 +849,9 @@ function createAlphabetAnswers(correct) {
     answers.push(correctAnswer);
 
 
-    while (answers.length < 4) {
+    while (
+        answers.length < 4
+    ) {
 
         const random =
             alphabetData[
@@ -665,7 +868,9 @@ function createAlphabetAnswers(correct) {
             : random[0].toLowerCase();
 
 
-        if (!answers.includes(value)) {
+        if (
+            !answers.includes(value)
+        ) {
 
             answers.push(value);
 
@@ -681,10 +886,14 @@ function createAlphabetAnswers(correct) {
         function(answer) {
 
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             button.className =
                 "answerButton";
+
 
             button.innerText =
                 answer;
@@ -729,13 +938,17 @@ function checkAlphabetAnswer(
     );
 
 
-    if (answer === correctAnswer) {
+    if (
+        answer === correctAnswer
+    ) {
 
         alphabetScore++;
 
+
         document.getElementById(
             "alphabetTestMessage"
-        ).innerText =
+        )
+        .innerText =
             "✅ Correct! 🎉";
 
     }
@@ -743,7 +956,8 @@ function checkAlphabetAnswer(
 
         document.getElementById(
             "alphabetTestMessage"
-        ).innerText =
+        )
+        .innerText =
             "❌ Wrong! Correct answer: " +
             correctAnswer;
 
@@ -791,10 +1005,9 @@ let numberPosition = 0;
 
 let numberScore = 0;
 
+
 const NUMBER_TEST_TOTAL = 20;
 
-
-/* Start Number Test */
 
 function startNumberTest() {
 
@@ -802,10 +1015,6 @@ function startNumberTest() {
 
     numberScore = 0;
 
-
-    /*
-       Create 1-1000 list.
-    */
 
     numberQuestions = [];
 
@@ -820,14 +1029,6 @@ function startNumberTest() {
 
     }
 
-
-    /*
-       Shuffle 1-1000.
-
-       First 20 are selected.
-
-       No number repeats.
-    */
 
     shuffleArray(numberQuestions);
 
@@ -844,7 +1045,8 @@ function startNumberTest() {
 
     document.getElementById(
         "numberTestPage"
-    ).classList.remove("hidden");
+    )
+    .classList.remove("hidden");
 
 
     showNumberQuestion();
@@ -860,7 +1062,8 @@ function showNumberQuestion() {
 
     document.getElementById(
         "numberQuestionNumber"
-    ).innerText =
+    )
+    .innerText =
         "Question " +
         (numberPosition + 1) +
         " / " +
@@ -869,21 +1072,23 @@ function showNumberQuestion() {
 
     document.getElementById(
         "numberQuestion"
-    ).innerText =
+    )
+    .innerText =
         current;
 
 
     document.getElementById(
         "numberTestMessage"
-    ).innerText = "";
+    )
+    .innerText = "";
 
 
-    createNumberAnswers(current);
+    createNumberAnswers(
+        current
+    );
 
 }
 
-
-/* Create number choices */
 
 function createNumberAnswers(correct) {
 
@@ -902,7 +1107,9 @@ function createNumberAnswers(correct) {
     answers.push(correct);
 
 
-    while (answers.length < 4) {
+    while (
+        answers.length < 4
+    ) {
 
         const random =
             Math.floor(
@@ -910,7 +1117,9 @@ function createNumberAnswers(correct) {
             ) + 1;
 
 
-        if (!answers.includes(random)) {
+        if (
+            !answers.includes(random)
+        ) {
 
             answers.push(random);
 
@@ -926,10 +1135,14 @@ function createNumberAnswers(correct) {
         function(answer) {
 
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             button.className =
                 "answerButton";
+
 
             button.innerText =
                 answer;
@@ -974,13 +1187,17 @@ function checkNumberAnswer(
     );
 
 
-    if (answer === correct) {
+    if (
+        answer === correct
+    ) {
 
         numberScore++;
 
+
         document.getElementById(
             "numberTestMessage"
-        ).innerText =
+        )
+        .innerText =
             "✅ Correct! 🌟";
 
     }
@@ -988,7 +1205,8 @@ function checkNumberAnswer(
 
         document.getElementById(
             "numberTestMessage"
-        ).innerText =
+        )
+        .innerText =
             "❌ Wrong! Correct answer: " +
             correct;
 
@@ -1027,196 +1245,145 @@ function checkNumberAnswer(
 
 
 /* =====================================================
-   RESULT
+   MULTIPLICATION TEST
 ===================================================== */
 
-let lastTestFunction = null;
+let multiplicationQuestions = [];
+
+let multiplicationPosition = 0;
+
+let multiplicationScore = 0;
+
+let multiplicationMin = 1;
+
+let multiplicationMax = 10;
+
+const MULTIPLICATION_TEST_TOTAL = 20;
 
 
-function showResult(
-    testName,
-    score,
-    total
+/*
+   Start multiplication test.
+
+   Example:
+   1 × 1 = □
+*/
+
+function startMultiplicationTest(
+    min,
+    max
 ) {
+
+    multiplicationMin = min;
+
+    multiplicationMax = max;
+
+    multiplicationPosition = 0;
+
+    multiplicationScore = 0;
+
+
+    multiplicationQuestions = [];
+
+
+    /*
+       Make ALL possible questions.
+
+       Example for 1-10:
+       1×1
+       1×2
+       ...
+       10×10
+
+       Every question is unique.
+    */
+
+    for (
+        let a = min;
+        a <= max;
+        a++
+    ) {
+
+        for (
+            let b = 1;
+            b <= 10;
+            b++
+        ) {
+
+            multiplicationQuestions.push(
+                {
+                    a: a,
+                    b: b,
+                    answer: a * b
+                }
+            );
+
+        }
+
+    }
+
+
+    /*
+       Randomize questions.
+    */
+
+    shuffleArray(
+        multiplicationQuestions
+    );
+
+
+    /*
+       Only first 20 questions
+       are used in one test.
+
+       Since the full question list
+       has unique combinations,
+       NO question repeats.
+    */
+
+    multiplicationQuestions =
+        multiplicationQuestions.slice(
+            0,
+            MULTIPLICATION_TEST_TOTAL
+        );
+
 
     hideAllPages();
 
 
     document.getElementById(
-        "resultPage"
-    ).classList.remove("hidden");
+        "multiplicationTestPage"
+    )
+    .classList.remove("hidden");
 
 
-    const wrong =
-        total - score;
-
-
-    const percentage =
-        Math.round(
-            (score / total) * 100
-        );
-
-
-    document.getElementById(
-        "resultTestName"
-    ).innerText =
-        "📝 " + testName;
-
-
-    document.getElementById(
-        "finalScore"
-    ).innerText =
-        score + " / " + total;
-
-
-    document.getElementById(
-        "correctCount"
-    ).innerText =
-        score;
-
-
-    document.getElementById(
-        "wrongCount"
-    ).innerText =
-        wrong;
-
-
-    document.getElementById(
-        "percentage"
-    ).innerText =
-        percentage + "%";
-
-
-    if (percentage === 100) {
-
-        document.getElementById(
-            "resultMessage"
-        ).innerText =
-            "🏆 Perfect Score!";
-
-
-        document.getElementById(
-            "resultSubMessage"
-        ).innerText =
-            "🌟 Amazing! You are a Super Kid!";
-
-    }
-
-    else if (percentage >= 80) {
-
-        document.getElementById(
-            "resultMessage"
-        ).innerText =
-            "🎉 Excellent Work!";
-
-
-        document.getElementById(
-            "resultSubMessage"
-        ).innerText =
-            "👏 Very good! Keep learning!";
-
-    }
-
-    else if (percentage >= 60) {
-
-        document.getElementById(
-            "resultMessage"
-        ).innerText =
-            "😊 Good Job!";
-
-
-        document.getElementById(
-            "resultSubMessage"
-        ).innerText =
-            "💪 Keep practicing!";
-
-    }
-
-    else {
-
-        document.getElementById(
-            "resultMessage"
-        ).innerText =
-            "🌱 Keep Practicing!";
-
-
-        document.getElementById(
-            "resultSubMessage"
-        ).innerText =
-            "❤️ Don't give up. Try again!";
-
-    }
-
-
-    if (testName === "Alphabet Test") {
-
-        lastTestFunction =
-            function() {
-
-                startAlphabetTest(
-                    alphabetTestType
-                );
-
-            };
-
-    }
-    else {
-
-        lastTestFunction =
-            startNumberTest;
-
-    }
+    showMultiplicationQuestion();
 
 }
 
 
-/* Try Again */
+/* Show multiplication question */
 
-function restartLastTest() {
+function showMultiplicationQuestion() {
 
-    if (lastTestFunction) {
-
-        lastTestFunction();
-
-    }
-
-}
-
-
-/* =====================================================
-   SHUFFLE
-===================================================== */
-
-function shuffleArray(array) {
-
-    /*
-       Fisher-Yates Shuffle
-
-       This properly randomizes the questions
-       and does NOT duplicate them.
-    */
-
-    for (
-        let i = array.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
-
-
-        [
-            array[i],
-            array[j]
-        ] =
-        [
-            array[j],
-            array[i]
+    const current =
+        multiplicationQuestions[
+            multiplicationPosition
         ];
 
-    }
 
-}
+    document.getElementById(
+        "multiplicationQuestionNumber"
+    )
+    .innerText =
+        "Question " +
+        (multiplicationPosition + 1) +
+        " / " +
+        MULTIPLICATION_TEST_TOTAL;
+
+
+    /*
+       Blank is kept ONLY in test.
+    */
+
+    document.getElementById(
+        "multiplicati
