@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Smart Kids Learning</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- HOME PAGE -->
+    <!-- ================= HOME PAGE ================= -->
+
     <div id="homePage">
 
         <h1>🌈 Smart Kids Learning</h1>
+
         <h2>📚 Learn English Alphabets</h2>
 
-        <p class="instruction">👆 Click on any alphabet to learn</p>
+        <p class="instruction">
+            👆 Click on any alphabet to learn
+        </p>
 
         <div id="alphabetGrid"></div>
 
         <button class="testMainBtn" onclick="openTestMenu()">
-            📝 Take Test
+            📝 Take Alphabet Test
         </button>
 
     </div>
 
 
-    <!-- LESSON PAGE -->
+    <!-- ================= LESSON PAGE ================= -->
+
     <div id="lessonPage" class="hidden">
 
-        <button class="homeBtn" onclick="goHome()">🏠 Home</button>
+        <button class="homeBtn" onclick="goHome()">
+            🏠 Home
+        </button>
 
         <div class="lessonTitle">
+
             <span id="letter">A</span>
+
             <span> for </span>
+
             <span id="word">Apple</span>
+
         </div>
+
 
         <div class="lessonBox">
 
-            <div class="bigLetter" id="bigLetter">A</div>
+            <div class="bigLetter" id="bigLetter">
+                A
+            </div>
 
-            <div class="smallLetter" id="smallLetter">a</div>
+            <div class="smallLetter" id="smallLetter">
+                a
+            </div>
 
-            <div class="picture" id="picture">🍎</div>
+            <div class="picture" id="picture">
+                🍎
+            </div>
 
-            <h2 id="wordText">Apple</h2>
+            <h2 id="wordText">
+                Apple
+            </h2>
 
         </div>
+
 
         <button class="speakBtn" onclick="speakCurrent()">
             🔊 Click to Hear
         </button>
+
 
         <div class="navigation">
 
@@ -59,7 +84,9 @@
                 ⬅️ Previous
             </button>
 
-            <span id="progress">1 / 26</span>
+            <span id="progress">
+                1 / 26
+            </span>
 
             <button onclick="nextLetter()">
                 Next ➡️
@@ -70,18 +97,26 @@
     </div>
 
 
-    <!-- TEST MENU -->
+    <!-- ================= TEST MENU ================= -->
+
     <div id="testMenu" class="hidden testPage">
 
-        <button class="homeBtn" onclick="goHome()">🏠 Home</button>
+        <button class="homeBtn" onclick="goHome()">
+            🏠 Home
+        </button>
+
 
         <h1>📝 Alphabet Test</h1>
 
-        <p>Select Test</p>
+        <p class="testInstruction">
+            Choose your test
+        </p>
+
 
         <button class="testChoiceBtn" onclick="startTest('capital')">
             🔠 Capital Letter Test
         </button>
+
 
         <button class="testChoiceBtn" onclick="startTest('small')">
             🔡 Small Letter Test
@@ -90,12 +125,19 @@
     </div>
 
 
-    <!-- TEST PAGE -->
+    <!-- ================= TEST PAGE ================= -->
+
     <div id="testPage" class="hidden testPage">
 
-        <button class="homeBtn" onclick="goHome()">🏠 Home</button>
+        <button class="homeBtn" onclick="goHome()">
+            🏠 Home
+        </button>
 
-        <h1 id="testTitle">📝 Test</h1>
+
+        <h1 id="testTitle">
+            🔠 Capital Letter Test
+        </h1>
+
 
         <div class="testCard">
 
@@ -103,15 +145,19 @@
                 Question 1 / 26
             </p>
 
+
             <div id="testQuestion">
                 A
             </div>
 
-            <p>
+
+            <p class="chooseText">
                 👇 Choose the correct answer
             </p>
 
+
             <div id="answerButtons"></div>
+
 
             <p id="testMessage"></p>
 
@@ -120,35 +166,131 @@
     </div>
 
 
-    <!-- RESULT PAGE -->
-    <div id="resultPage" class="hidden testPage">
+    <!-- ================= RESULT PAGE ================= -->
 
-        <h1>🎉 Test Complete!</h1>
+    <div id="resultPage" class="hidden resultPage">
 
-        <div class="resultBox">
+        <div class="resultCard">
 
-            <div id="finalScore">
-                0 / 26
+
+            <div class="trophy">
+                🏆
             </div>
 
-            <p id="resultMessage">
-                Great Job! 🌟
+
+            <h1>
+                Test Complete!
+            </h1>
+
+
+            <p id="resultTestName">
+                🔠 Capital Letter Test
             </p>
 
+
+            <!-- SCORE -->
+
+            <div class="scoreCircle">
+
+                <div id="finalScore">
+                    26 / 26
+                </div>
+
+                <small>
+                    Score
+                </small>
+
+            </div>
+
+
+            <!-- RESULT DETAILS -->
+
+            <div class="resultDetails">
+
+
+                <div class="detailBox">
+
+                    <span>✅</span>
+
+                    <b id="correctCount">
+                        26
+                    </b>
+
+                    <small>
+                        Correct
+                    </small>
+
+                </div>
+
+
+                <div class="detailBox">
+
+                    <span>❌</span>
+
+                    <b id="wrongCount">
+                        0
+                    </b>
+
+                    <small>
+                        Wrong
+                    </small>
+
+                </div>
+
+
+                <div class="detailBox">
+
+                    <span>🎯</span>
+
+                    <b id="percentage">
+                        100%
+                    </b>
+
+                    <small>
+                        Percentage
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+            <h2 id="resultMessage">
+                🌟 Perfect Score!
+            </h2>
+
+
+            <p id="resultSubMessage">
+                Amazing! You know your alphabets very well!
+            </p>
+
+
+            <button class="resultBtn tryAgainBtn"
+                    onclick="openTestMenu()">
+
+                🔄 Try Again
+
+            </button>
+
+
+            <button class="resultBtn homeResultBtn"
+                    onclick="goHome()">
+
+                🏠 Back to Home
+
+            </button>
+
+
         </div>
-
-        <button class="testChoiceBtn" onclick="openTestMenu()">
-            🔄 Take Another Test
-        </button>
-
-        <button class="testChoiceBtn" onclick="goHome()">
-            🏠 Home
-        </button>
 
     </div>
 
 
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
