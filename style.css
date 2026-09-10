@@ -1,7 +1,3 @@
-/* =========================
-   BASIC
-========================= */
-
 * {
     box-sizing: border-box;
 }
@@ -13,11 +9,12 @@ body {
 
     font-family: Arial, sans-serif;
 
-    background: linear-gradient(
-        135deg,
-        #8ee7ff,
-        #fff3a6
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #8ee7ff,
+            #fff3a6
+        );
 
     min-height: 100vh;
 
@@ -27,9 +24,7 @@ body {
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* ================= HOME ================= */
 
 #homePage {
 
@@ -53,7 +48,7 @@ h2 {
 }
 
 
-.instruction {
+.welcomeText {
 
     font-size: 20px;
 
@@ -61,15 +56,30 @@ h2 {
 }
 
 
-/* =========================
-   ALPHABET GRID
-========================= */
+.homeSection {
+
+    background: rgba(255,255,255,0.75);
+
+    max-width: 1150px;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15);
+}
+
+
+/* ================= ALPHABETS ================= */
 
 #alphabetGrid {
 
     max-width: 1100px;
 
-    margin: 30px auto;
+    margin: 25px auto;
 
     display: grid;
 
@@ -82,7 +92,7 @@ h2 {
 
 .letterBox {
 
-    height: 120px;
+    height: 110px;
 
     border-radius: 25px;
 
@@ -137,9 +147,58 @@ h2 {
 }
 
 
-/* =========================
-   HIDDEN
-========================= */
+/* ================= BUTTONS ================= */
+
+.openFeatureBtn {
+
+    padding: 18px 35px;
+
+    border: none;
+
+    border-radius: 35px;
+
+    background: #276ef1;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 15px rgba(0,0,0,0.2);
+}
+
+
+.openFeatureBtn:hover {
+
+    transform: scale(1.05);
+}
+
+
+.rainbowBtn {
+
+    background:
+        linear-gradient(
+            90deg,
+            red,
+            orange,
+            green,
+            blue,
+            purple
+        );
+}
+
+
+.testHomeBtn {
+
+    background: #ff6b35;
+}
+
+
+/* ================= HIDDEN ================= */
 
 .hidden {
 
@@ -147,9 +206,7 @@ h2 {
 }
 
 
-/* =========================
-   HOME BUTTON
-========================= */
+/* ================= HOME BUTTON ================= */
 
 .homeBtn {
 
@@ -177,9 +234,7 @@ h2 {
 }
 
 
-/* =========================
-   LESSON
-========================= */
+/* ================= LESSON ================= */
 
 #lessonPage {
 
@@ -293,12 +348,6 @@ h2 {
 }
 
 
-.speakBtn:hover {
-
-    transform: scale(1.05);
-}
-
-
 .navigation {
 
     margin: 30px auto;
@@ -347,44 +396,219 @@ h2 {
 }
 
 
-/* =========================
-   TEST BUTTON
-========================= */
+/* ================= NUMBERS ================= */
 
-.testMainBtn {
+#numbersPage {
 
-    margin: 25px;
+    min-height: 100vh;
 
-    padding: 18px 35px;
+    padding: 30px 15px;
+}
 
-    border: none;
 
-    border-radius: 35px;
+.numberInstruction {
 
-    background: #ff6b35;
+    font-size: 20px;
 
-    color: white;
+    font-weight: bold;
+}
 
-    font-size: 24px;
+
+#numberList {
+
+    max-width: 800px;
+
+    margin: 30px auto;
+}
+
+
+.numberRow {
+
+    background: white;
+
+    margin: 10px 0;
+
+    padding: 15px 20px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.15);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.numberRow:hover {
+
+    transform: scale(1.02);
+}
+
+
+.numberValue {
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    min-width: 90px;
+}
+
+
+.numberObjects {
+
+    font-size: 25px;
+
+    flex: 1;
+
+    text-align: left;
+
+    word-break: break-word;
+}
+
+
+.numberHear {
+
+    font-size: 25px;
+}
+
+
+/* ================= NUMBER DETAIL ================= */
+
+#numberDetailPage {
+
+    min-height: 100vh;
+
+    padding: 30px;
+}
+
+
+.numberDetailCard {
+
+    background: white;
+
+    max-width: 650px;
+
+    margin: 80px auto;
+
+    padding: 40px;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.2);
+}
+
+
+#bigNumber {
+
+    font-size: 110px;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            red,
+            orange,
+            green,
+            blue,
+            purple
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+
+#numberObjects {
+
+    font-size: 100px;
+
+    margin: 20px;
+
+    word-break: break-word;
+}
+
+
+#numberWord {
+
+    font-size: 40px;
+
+    color: #ff4d8d;
+}
+
+
+/* ================= RAINBOW ================= */
+
+#rainbowPage {
+
+    min-height: 100vh;
+
+    padding: 30px;
+}
+
+
+#rainbowGrid {
+
+    max-width: 1000px;
+
+    margin: 40px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 20px;
+}
+
+
+.rainbowLetter {
+
+    height: 130px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 70px;
 
     font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
-        0 7px 15px rgba(0,0,0,0.2);
+        0 8px 15px rgba(0,0,0,0.2);
+
+    transition: 0.2s;
 }
 
 
-.testMainBtn:hover {
+.rainbowLetter:hover {
 
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 
-/* =========================
-   TEST MENU
-========================= */
+/* ================= TEST ================= */
 
 .testPage {
 
@@ -429,21 +653,8 @@ h2 {
     font-weight: bold;
 
     cursor: pointer;
-
-    box-shadow:
-        0 7px 12px rgba(0,0,0,0.2);
 }
 
-
-.testChoiceBtn:hover {
-
-    transform: scale(1.05);
-}
-
-
-/* =========================
-   TEST CARD
-========================= */
 
 .testCard {
 
@@ -480,18 +691,6 @@ h2 {
 }
 
 
-.chooseText {
-
-    font-size: 18px;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   ANSWERS
-========================= */
-
 #answerButtons {
 
     display: grid;
@@ -517,27 +716,11 @@ h2 {
 
     background: #ffd95a;
 
-    color: #333;
-
     font-size: 25px;
 
     font-weight: bold;
 
     cursor: pointer;
-}
-
-
-.answerBtn:hover {
-
-    transform: scale(1.05);
-}
-
-
-.answerBtn:disabled {
-
-    opacity: 0.6;
-
-    cursor: not-allowed;
 }
 
 
@@ -551,9 +734,7 @@ h2 {
 }
 
 
-/* =========================
-   RESULT PAGE
-========================= */
+/* ================= RESULT ================= */
 
 .resultPage {
 
@@ -591,34 +772,16 @@ h2 {
 .trophy {
 
     font-size: 80px;
-
-    margin-bottom: 5px;
 }
 
 
 .resultCard h1 {
-
-    margin: 5px 0;
 
     font-size: 42px;
 
     color: #ff4d8d;
 }
 
-
-#resultTestName {
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    color: #555;
-}
-
-
-/* =========================
-   SCORE CIRCLE
-========================= */
 
 .scoreCircle {
 
@@ -631,11 +794,6 @@ h2 {
     border-radius: 50%;
 
     background: #ffd95a;
-
-    border: 10px solid white;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,0.2);
 
     display: flex;
 
@@ -652,22 +810,8 @@ h2 {
     font-size: 48px;
 
     font-weight: bold;
-
-    color: #333;
 }
 
-
-.scoreCircle small {
-
-    font-size: 18px;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   RESULT DETAILS
-========================= */
 
 .resultDetails {
 
@@ -676,8 +820,6 @@ h2 {
     justify-content: center;
 
     gap: 15px;
-
-    margin: 25px auto;
 }
 
 
@@ -685,7 +827,7 @@ h2 {
 
     width: 145px;
 
-    padding: 15px 8px;
+    padding: 15px;
 
     border-radius: 20px;
 
@@ -724,26 +866,8 @@ h2 {
     font-size: 30px;
 
     color: #ff6b35;
-
-    margin: 20px 0 5px;
 }
 
-
-#resultSubMessage {
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    color: #555;
-
-    margin-bottom: 25px;
-}
-
-
-/* =========================
-   RESULT BUTTONS
-========================= */
 
 .resultBtn {
 
@@ -768,9 +892,6 @@ h2 {
     font-weight: bold;
 
     cursor: pointer;
-
-    box-shadow:
-        0 6px 12px rgba(0,0,0,0.2);
 }
 
 
@@ -786,15 +907,7 @@ h2 {
 }
 
 
-.resultBtn:hover {
-
-    transform: scale(1.05);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
 
 @media (max-width: 700px) {
 
@@ -813,39 +926,52 @@ h2 {
     }
 
 
-    h1 {
+    #rainbowGrid {
 
-        font-size: 30px;
+        grid-template-columns:
+            repeat(4, 1fr);
     }
 
 
-    .lessonTitle {
+    .rainbowLetter {
 
-        font-size: 30px;
+        height: 85px;
+
+        font-size: 45px;
     }
 
 
-    .bigLetter {
+    .numberRow {
 
-        font-size: 90px;
+        padding: 12px;
+
+        gap: 8px;
     }
 
 
-    .smallLetter {
+    .numberValue {
 
-        font-size: 70px;
+        font-size: 24px;
+
+        min-width: 60px;
     }
 
 
-    .picture {
+    .numberObjects {
 
-        font-size: 100px;
+        font-size: 18px;
     }
 
 
-    #testQuestion {
+    #bigNumber {
 
-        font-size: 90px;
+        font-size: 80px;
+    }
+
+
+    #numberObjects {
+
+        font-size: 60px;
     }
 
 
@@ -855,47 +981,9 @@ h2 {
     }
 
 
-    .testChoiceBtn {
-
-        font-size: 18px;
-    }
-
-
-    .resultCard {
-
-        padding: 25px 15px;
-    }
-
-
-    .resultCard h1 {
-
-        font-size: 32px;
-    }
-
-
-    .trophy {
-
-        font-size: 65px;
-    }
-
-
-    .scoreCircle {
-
-        width: 160px;
-
-        height: 160px;
-    }
-
-
-    #finalScore {
-
-        font-size: 40px;
-    }
-
-
     .resultDetails {
 
-        gap: 7px;
+        gap: 6px;
     }
 
 
@@ -903,25 +991,13 @@ h2 {
 
         width: 30%;
 
-        padding: 12px 5px;
+        padding: 10px 5px;
     }
 
 
     .detailBox b {
 
-        font-size: 21px;
-    }
-
-
-    .detailBox small {
-
-        font-size: 13px;
-    }
-
-
-    #resultMessage {
-
-        font-size: 24px;
+        font-size: 20px;
     }
 
 }
