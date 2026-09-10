@@ -1,115 +1,221 @@
+/* =========================
+   BASIC
+========================= */
+
 * {
     box-sizing: border-box;
 }
 
+
 body {
+
     margin: 0;
+
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #8ee7ff, #fff3a6);
+
+    background: linear-gradient(
+        135deg,
+        #8ee7ff,
+        #fff3a6
+    );
+
     min-height: 100vh;
+
     text-align: center;
+
     color: #333;
 }
 
-/* HOME */
+
+/* =========================
+   HOME
+========================= */
 
 #homePage {
+
     padding: 25px;
 }
 
+
 h1 {
+
     font-size: 42px;
+
     color: #ff4d8d;
+
     margin-bottom: 10px;
 }
 
+
 h2 {
+
     font-size: 28px;
 }
 
+
 .instruction {
+
     font-size: 20px;
+
     font-weight: bold;
 }
 
-/* ALPHABET GRID */
+
+/* =========================
+   ALPHABET GRID
+========================= */
 
 #alphabetGrid {
+
     max-width: 1100px;
+
     margin: 30px auto;
+
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
     gap: 15px;
 }
 
+
 .letterBox {
+
     height: 120px;
+
     border-radius: 25px;
+
     border: 5px solid white;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,0.2);
+
     font-size: 55px;
+
     font-weight: bold;
+
     color: white;
+
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     transition: 0.2s;
+
+    background: #ff6b6b;
 }
 
+
+.letterBox:nth-child(2n) {
+    background: #4dabf7;
+}
+
+
+.letterBox:nth-child(3n) {
+    background: #51cf66;
+}
+
+
+.letterBox:nth-child(4n) {
+    background: #cc5de8;
+}
+
+
+.letterBox:nth-child(5n) {
+    background: #ff922b;
+}
+
+
 .letterBox:hover {
+
     transform: scale(1.08);
 }
 
-/* LESSON PAGE */
+
+/* =========================
+   HIDDEN
+========================= */
 
 .hidden {
-    display: none;
+
+    display: none !important;
 }
 
-#lessonPage {
-    min-height: 100vh;
-    padding: 25px;
-}
+
+/* =========================
+   HOME BUTTON
+========================= */
 
 .homeBtn {
+
     position: absolute;
+
     left: 25px;
+
     top: 25px;
 
     padding: 15px 25px;
+
     border: none;
+
     border-radius: 30px;
 
     background: #ff4d8d;
+
     color: white;
 
     font-size: 18px;
+
     font-weight: bold;
+
     cursor: pointer;
 }
 
+
+/* =========================
+   LESSON
+========================= */
+
+#lessonPage {
+
+    min-height: 100vh;
+
+    padding: 25px;
+}
+
+
 .lessonTitle {
+
     margin: 50px auto 25px;
+
     padding: 20px;
 
     max-width: 700px;
 
     background: #ffd95a;
+
     border-radius: 25px;
 
     font-size: 45px;
+
     font-weight: bold;
 
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow:
+        0 8px 15px rgba(0,0,0,0.2);
 }
 
+
 .lessonBox {
+
     background: white;
 
     max-width: 650px;
+
     margin: auto;
 
     padding: 30px;
@@ -118,124 +224,704 @@ h2 {
 
     border: 6px solid #ffcc4d;
 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.2);
 }
 
+
 .bigLetter {
+
     display: inline-block;
+
     font-size: 130px;
+
     font-weight: bold;
+
     color: #ff3b30;
 }
 
+
 .smallLetter {
+
     display: inline-block;
+
     font-size: 100px;
+
     font-weight: bold;
+
     color: #276ef1;
+
     margin-left: 20px;
 }
 
+
 .picture {
+
     font-size: 150px;
+
     margin: 10px;
 }
 
+
 .lessonBox h2 {
+
     color: #ff4d8d;
+
     font-size: 40px;
 }
 
-/* SPEAK BUTTON */
 
 .speakBtn {
+
     margin-top: 25px;
 
     padding: 20px 35px;
 
     border: none;
+
     border-radius: 40px;
 
     background: #ff9f1c;
+
     color: white;
 
     font-size: 24px;
+
     font-weight: bold;
 
     cursor: pointer;
-
-    box-shadow: 0 7px 12px rgba(0,0,0,0.2);
 }
 
+
 .speakBtn:hover {
+
     transform: scale(1.05);
 }
 
-/* NEXT PREVIOUS */
 
 .navigation {
+
     margin: 30px auto;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 25px;
 }
 
+
 .navigation button {
+
     padding: 15px 25px;
 
     border: none;
+
     border-radius: 30px;
 
     background: #276ef1;
+
     color: white;
 
     font-size: 18px;
+
     font-weight: bold;
 
     cursor: pointer;
 }
 
+
 #progress {
+
     font-size: 22px;
+
     font-weight: bold;
+
     background: white;
+
     padding: 12px 20px;
+
     border-radius: 25px;
 }
 
 
-/* MOBILE */
+/* =========================
+   TEST BUTTON
+========================= */
+
+.testMainBtn {
+
+    margin: 25px;
+
+    padding: 18px 35px;
+
+    border: none;
+
+    border-radius: 35px;
+
+    background: #ff6b35;
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 15px rgba(0,0,0,0.2);
+}
+
+
+.testMainBtn:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   TEST MENU
+========================= */
+
+.testPage {
+
+    min-height: 100vh;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.testInstruction {
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.testChoiceBtn {
+
+    display: block;
+
+    width: 320px;
+
+    max-width: 90%;
+
+    margin: 20px auto;
+
+    padding: 20px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #276ef1;
+
+    color: white;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 12px rgba(0,0,0,0.2);
+}
+
+
+.testChoiceBtn:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   TEST CARD
+========================= */
+
+.testCard {
+
+    background: white;
+
+    max-width: 650px;
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+#questionNumber {
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+#testQuestion {
+
+    font-size: 130px;
+
+    font-weight: bold;
+
+    margin: 25px;
+}
+
+
+.chooseText {
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   ANSWERS
+========================= */
+
+#answerButtons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+    max-width: 500px;
+
+    margin: auto;
+}
+
+
+.answerBtn {
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: #ffd95a;
+
+    color: #333;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.answerBtn:hover {
+
+    transform: scale(1.05);
+}
+
+
+.answerBtn:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+#testMessage {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    min-height: 30px;
+}
+
+
+/* =========================
+   RESULT PAGE
+========================= */
+
+.resultPage {
+
+    min-height: 100vh;
+
+    padding: 30px 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.resultCard {
+
+    width: 600px;
+
+    max-width: 95%;
+
+    background: white;
+
+    border-radius: 40px;
+
+    padding: 35px 25px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.25);
+
+    border: 6px solid #ffd95a;
+}
+
+
+.trophy {
+
+    font-size: 80px;
+
+    margin-bottom: 5px;
+}
+
+
+.resultCard h1 {
+
+    margin: 5px 0;
+
+    font-size: 42px;
+
+    color: #ff4d8d;
+}
+
+
+#resultTestName {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+
+/* =========================
+   SCORE CIRCLE
+========================= */
+
+.scoreCircle {
+
+    width: 190px;
+
+    height: 190px;
+
+    margin: 25px auto;
+
+    border-radius: 50%;
+
+    background: #ffd95a;
+
+    border: 10px solid white;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.2);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+#finalScore {
+
+    font-size: 48px;
+
+    font-weight: bold;
+
+    color: #333;
+}
+
+
+.scoreCircle small {
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   RESULT DETAILS
+========================= */
+
+.resultDetails {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 25px auto;
+}
+
+
+.detailBox {
+
+    width: 145px;
+
+    padding: 15px 8px;
+
+    border-radius: 20px;
+
+    background: #f5f5f5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.detailBox span {
+
+    font-size: 28px;
+}
+
+
+.detailBox b {
+
+    font-size: 27px;
+}
+
+
+.detailBox small {
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+#resultMessage {
+
+    font-size: 30px;
+
+    color: #ff6b35;
+
+    margin: 20px 0 5px;
+}
+
+
+#resultSubMessage {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #555;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   RESULT BUTTONS
+========================= */
+
+.resultBtn {
+
+    display: block;
+
+    width: 300px;
+
+    max-width: 90%;
+
+    margin: 12px auto;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 12px rgba(0,0,0,0.2);
+}
+
+
+.tryAgainBtn {
+
+    background: #276ef1;
+}
+
+
+.homeResultBtn {
+
+    background: #ff4d8d;
+}
+
+
+.resultBtn:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
 
     #alphabetGrid {
-        grid-template-columns: repeat(4, 1fr);
+
+        grid-template-columns:
+            repeat(4, 1fr);
     }
 
+
     .letterBox {
+
         height: 80px;
+
         font-size: 35px;
     }
 
+
     h1 {
+
         font-size: 30px;
     }
+
 
     .lessonTitle {
+
         font-size: 30px;
     }
 
+
     .bigLetter {
+
         font-size: 90px;
     }
 
+
     .smallLetter {
+
         font-size: 70px;
     }
 
+
     .picture {
+
         font-size: 100px;
     }
+
+
+    #testQuestion {
+
+        font-size: 90px;
+    }
+
+
+    #answerButtons {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .testChoiceBtn {
+
+        font-size: 18px;
+    }
+
+
+    .resultCard {
+
+        padding: 25px 15px;
+    }
+
+
+    .resultCard h1 {
+
+        font-size: 32px;
+    }
+
+
+    .trophy {
+
+        font-size: 65px;
+    }
+
+
+    .scoreCircle {
+
+        width: 160px;
+
+        height: 160px;
+    }
+
+
+    #finalScore {
+
+        font-size: 40px;
+    }
+
+
+    .resultDetails {
+
+        gap: 7px;
+    }
+
+
+    .detailBox {
+
+        width: 30%;
+
+        padding: 12px 5px;
+    }
+
+
+    .detailBox b {
+
+        font-size: 21px;
+    }
+
+
+    .detailBox small {
+
+        font-size: 13px;
+    }
+
+
+    #resultMessage {
+
+        font-size: 24px;
+    }
+
 }
