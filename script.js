@@ -1,1407 +1,793 @@
+/* =====================================================
+   SMART KIDS LEARNING
+   ===================================================== */
+
+
+/* ================= PAGE SYSTEM ================= */
+
+function showPage(pageId) {
+
+    const pages = document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+        page.classList.add("hidden");
+    });
+
+    const selectedPage = document.getElementById(pageId);
+
+    if (selectedPage) {
+        selectedPage.classList.remove("hidden");
+        window.scrollTo(0, 0);
+    }
+}
+
+
+/* ================= SPEAK ================= */
+
+function speak(text) {
+
+    if ("speechSynthesis" in window) {
+
+        window.speechSynthesis.cancel();
+
+        const voice = new SpeechSynthesisUtterance(text);
+
+        voice.lang = "en-US";
+        voice.rate = 0.8;
+        voice.pitch = 1.1;
+
+        window.speechSynthesis.speak(voice);
+    }
+}
+
+
 /* ================= ALPHABET ================= */
 
 const alphabetData = [
 
-    ["A","Apple","🍎"],
-    ["B","Ball","⚽"],
-    ["C","Cat","🐱"],
-    ["D","Dog","🐶"],
-    ["E","Elephant","🐘"],
-    ["F","Fish","🐟"],
-    ["G","Grapes","🍇"],
-    ["H","Horse","🐴"],
-    ["I","Ice Cream","🍦"],
-    ["J","Juice","🧃"],
-    ["K","Kite","🪁"],
-    ["L","Lion","🦁"],
-    ["M","Mango","🥭"],
-    ["N","Nest","🪺"],
-    ["O","Orange","🍊"],
-    ["P","Penguin","🐧"],
-    ["Q","Queen","👑"],
-    ["R","Rainbow","🌈"],
-    ["S","Sun","☀️"],
-    ["T","Tree","🌳"],
-    ["U","Umbrella","☂️"],
-    ["V","Van","🚐"],
-    ["W","Watermelon","🍉"],
-    ["X","Xylophone","🎵"],
-    ["Y","Yacht","⛵"],
-    ["Z","Zebra","🦓"]
+    ["A", "Apple", "🍎"],
+    ["B", "Ball", "⚽"],
+    ["C", "Cat", "🐱"],
+    ["D", "Dog", "🐶"],
+    ["E", "Elephant", "🐘"],
+    ["F", "Fish", "🐟"],
+    ["G", "Grapes", "🍇"],
+    ["H", "Horse", "🐴"],
+    ["I", "Ice Cream", "🍦"],
+    ["J", "Juice", "🧃"],
+    ["K", "Kite", "🪁"],
+    ["L", "Lion", "🦁"],
+    ["M", "Mango", "🥭"],
+    ["N", "Nest", "🪺"],
+    ["O", "Orange", "🍊"],
+    ["P", "Parrot", "🦜"],
+    ["Q", "Queen", "👑"],
+    ["R", "Rabbit", "🐰"],
+    ["S", "Sun", "☀️"],
+    ["T", "Tiger", "🐯"],
+    ["U", "Umbrella", "☂️"],
+    ["V", "Van", "🚐"],
+    ["W", "Watch", "⌚"],
+    ["X", "Xylophone", "🎵"],
+    ["Y", "Yak", "🐂"],
+    ["Z", "Zebra", "🦓"]
 
 ];
 
 
-let currentIndex = 0;
+function createAlphabet() {
 
+    const grid = document.getElementById("alphabetGrid");
 
-/* ================= ALPHABET GRID ================= */
+    if (!grid) return;
 
-const alphabetGrid =
-    document.getElementById("alphabetGrid");
+    grid.innerHTML = "";
 
+    alphabetData.forEach(function(item, index) {
 
-alphabetData.forEach(
-    function(item,index) {
+        const letter = item[0];
+        const word = item[1];
+        const emoji = item[2];
 
-        const box =
-            document.createElement("div");
+        const button = document.createElement("button");
 
-        box.className =
-            "letterBox";
+        button.className = "letter-card";
 
-        box.innerText =
-            item[0];
+        button.innerHTML =
+            '<span class="letter">' + letter + '</span>' +
+            '<span class="word">' + emoji + " " + word + '</span>';
 
-        box.onclick =
-            function() {
+        button.onclick = function() {
+            openAlphabetLesson(index);
+        };
 
-                openLesson(index);
+        grid.appendChild(button);
 
-            };
-
-        alphabetGrid.appendChild(box);
-
-    }
-);
-
-
-/* ================= LESSON ================= */
-
-function openLesson(index) {
-
-    currentIndex = index;
-
-    hideAllPages();
-
-    document.getElementById("lessonPage")
-        .classList.remove("hidden");
-
-    updateLesson();
-
-    speakCurrent();
-
+    });
 }
 
 
-function updateLesson() {
+function openAlphabetLesson(index) {
 
-    const data =
-        alphabetData[currentIndex];
+    const item = alphabetData[index];
 
+    const letter = item[0];
+    const word = item[1];
+    const emoji = item[2];
 
-    document.getElementById("letter")
-        .innerText = data[0];
+    const lesson = document.getElementById("alphabetLesson");
 
+    lesson.innerHTML =
+        '<div class="lesson-letter">' + letter + '</div>' +
+        '<div class="lesson-object">' + emoji + '</div>' +
+        '<div class="lesson-text">' +
+        letter + " for " + word +
+        '</div>' +
+        '<button class="speak-btn" onclick="speak(\'' +
+        letter + ' for ' + word +
+        '\')">🔊 Listen</button>';
 
-    document.getElementById("word")
-        .innerText = data[1];
+    showPage("alphabetLessonPage");
 
-
-    document.getElementById("bigLetter")
-        .innerText = data[0];
-
-
-    document.getElementById("smallLetter")
-        .innerText =
-        data[0].toLowerCase();
-
-
-    document.getElementById("picture")
-        .innerText = data[2];
-
-
-    document.getElementById("wordText")
-        .innerText = data[1];
-
-
-    document.getElementById("progress")
-        .innerText =
-        (currentIndex + 1) + " / 26";
-
-}
-
-
-function speakCurrent() {
-
-    const data =
-        alphabetData[currentIndex];
-
-    speak(
-        data[0] +
-        " for " +
-        data[1]
-    );
-
-}
-
-
-function nextLetter() {
-
-    if (
-        currentIndex <
-        alphabetData.length - 1
-    ) {
-
-        currentIndex++;
-
-        updateLesson();
-
-        speakCurrent();
-
-    }
-
-}
-
-
-function previousLetter() {
-
-    if (currentIndex > 0) {
-
-        currentIndex--;
-
-        updateLesson();
-
-        speakCurrent();
-
-    }
-
-}
-
-
-/* ================= SPEECH ================= */
-
-function speak(text) {
-
-    if (
-        "speechSynthesis" in window
-    ) {
-
-        window.speechSynthesis.cancel();
-
-        const speech =
-            new SpeechSynthesisUtterance(text);
-
-        speech.lang = "en-US";
-
-        speech.rate = 0.8;
-
-        window.speechSynthesis.speak(
-            speech
-        );
-
-    }
-
-}
-
-
-/* ================= PAGE CONTROL ================= */
-
-function hideAllPages() {
-
-    const pages = [
-
-        "homePage",
-        "lessonPage",
-        "numbersPage",
-        "numberDetailPage",
-        "tablesPage",
-        "alphabetTestMenu",
-        "alphabetTestPage",
-        "numberTestPage",
-        "multiplicationTestMenu",
-        "multiplicationTestPage",
-        "resultPage"
-
-    ];
-
-
-    pages.forEach(
-        function(id) {
-
-            document.getElementById(id)
-                .classList.add("hidden");
-
-        }
-    );
-
-}
-
-
-function goHome() {
-
-    hideAllPages();
-
-    document.getElementById("homePage")
-        .classList.remove("hidden");
-
+    speak(letter + " for " + word);
 }
 
 
 /* ================= NUMBER WORDS ================= */
 
-const ones = [
+function numberToWords(number) {
 
-    "",
-    "One",
-    "Two",
-    "Three",
-    "Four",
-    "Five",
-    "Six",
-    "Seven",
-    "Eight",
-    "Nine",
-    "Ten",
-    "Eleven",
-    "Twelve",
-    "Thirteen",
-    "Fourteen",
-    "Fifteen",
-    "Sixteen",
-    "Seventeen",
-    "Eighteen",
-    "Nineteen"
+    const ones = [
+        "",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Thirteen",
+        "Fourteen",
+        "Fifteen",
+        "Sixteen",
+        "Seventeen",
+        "Eighteen",
+        "Nineteen"
+    ];
 
-];
+    const tens = [
+        "",
+        "",
+        "Twenty",
+        "Thirty",
+        "Forty",
+        "Fifty",
+        "Sixty",
+        "Seventy",
+        "Eighty",
+        "Ninety"
+    ];
 
+    if (number < 20) {
+        return ones[number];
+    }
 
-const tens = [
+    if (number < 100) {
 
-    "",
-    "",
-    "Twenty",
-    "Thirty",
-    "Forty",
-    "Fifty",
-    "Sixty",
-    "Seventy",
-    "Eighty",
-    "Ninety"
-
-];
-
-
-function numberToWords(num) {
-
-    if (num < 20) {
-
-        return ones[num];
+        return tens[Math.floor(number / 10)] +
+            (number % 10 !== 0 ? " " + ones[number % 10] : "");
 
     }
 
+    if (number < 1000) {
 
-    if (num < 100) {
-
-        return (
-            tens[Math.floor(num / 10)] +
-            (
-                num % 10 !== 0
-                ? " " + ones[num % 10]
-                : ""
-            )
-        );
-
-    }
-
-
-    if (num < 1000) {
-
-        return (
-            ones[Math.floor(num / 100)] +
+        return ones[Math.floor(number / 100)] +
             " Hundred" +
-            (
-                num % 100 !== 0
-                ? " " +
-                  numberToWords(num % 100)
-                : ""
-            )
-        );
+            (number % 100 !== 0 ?
+                " " + numberToWords(number % 100) : "");
 
     }
 
+    if (number === 1000) {
+        return "One Thousand";
+    }
 
-    return "One Thousand";
-
+    return "";
 }
 
 
 /* ================= NUMBERS ================= */
 
-let selectedNumber = 1;
-
-
 function createNumbers() {
 
-    const list =
-        document.getElementById("numberList");
+    const grid = document.getElementById("numbersGrid");
 
-    list.innerHTML = "";
+    if (!grid) return;
 
+    grid.innerHTML = "";
 
-    for (
-        let number = 1;
-        number <= 1000;
-        number++
-    ) {
+    for (let i = 1; i <= 1000; i++) {
 
-        const row =
-            document.createElement("div");
+        const button = document.createElement("button");
 
-        row.className =
-            "numberRow";
+        button.className = "number-card-item";
 
+        const rainbowClass =
+            "rainbow" + ((i - 1) % 7 + 1);
 
-        const value =
-            document.createElement("div");
+        button.innerHTML =
+            '<span class="numberValue ' +
+            rainbowClass +
+            '">' +
+            i +
+            '</span>' +
+            '<span class="numberWord">' +
+            numberToWords(i) +
+            '</span>';
 
-        value.className =
-            "numberValue";
+        button.onclick = function() {
+            openNumber(i);
+        };
 
-        value.innerText =
-            number;
-
-
-        const objects =
-            document.createElement("div");
-
-        objects.className =
-            "numberObjects";
-
-
-        if (number <= 20) {
-
-            objects.innerText =
-                "⚽ ".repeat(number);
-
-        }
-        else {
-
-            objects.innerText =
-                "⚽ × " + number;
-
-        }
-
-
-        const hear =
-            document.createElement("div");
-
-        hear.className =
-            "numberHear";
-
-        hear.innerText =
-            "🔊";
-
-
-        row.appendChild(value);
-
-        row.appendChild(objects);
-
-        row.appendChild(hear);
-
-
-        row.onclick =
-            function() {
-
-                openNumber(number);
-
-            };
-
-
-        list.appendChild(row);
-
+        grid.appendChild(button);
     }
-
-}
-
-
-createNumbers();
-
-
-function openNumbers() {
-
-    hideAllPages();
-
-    document.getElementById("numbersPage")
-        .classList.remove("hidden");
-
 }
 
 
 function openNumber(number) {
 
-    selectedNumber = number;
+    const detail = document.getElementById("numberDetail");
 
-    hideAllPages();
-
-    document.getElementById(
-        "numberDetailPage"
-    )
-    .classList.remove("hidden");
-
-
-    document.getElementById(
-        "bigNumber"
-    )
-    .innerText =
-        number;
-
-
-    document.getElementById(
-        "numberWord"
-    )
-    .innerText =
-        numberToWords(number);
-
+    let objects = "";
 
     if (number <= 20) {
 
-        document.getElementById(
-            "numberObjects"
-        )
-        .innerText =
-            "⚽ ".repeat(number);
+        for (let i = 0; i < number; i++) {
+            objects += "⚽ ";
+        }
 
-    }
-    else {
+    } else {
 
-        document.getElementById(
-            "numberObjects"
-        )
-        .innerText =
-            "⚽ × " + number;
-
+        objects = "⚽ × " + number;
     }
 
+    detail.innerHTML =
+        '<div class="big-number rainbow' +
+        ((number - 1) % 7 + 1) +
+        '">' +
+        number +
+        '</div>' +
 
-    speakNumber();
+        '<div class="number-object">' +
+        objects +
+        '</div>' +
 
+        '<div class="number-word-big">' +
+        numberToWords(number) +
+        '</div>' +
+
+        '<button class="speak-btn" onclick="speak(\'' +
+        numberToWords(number) +
+        '\')">' +
+        '🔊 Listen' +
+        '</button>';
+
+    showPage("numberDetailPage");
+
+    speak(numberToWords(number));
 }
 
 
-function speakNumber() {
+/* ================= TABLES 1–100 ================= */
 
-    speak(
-        numberToWords(selectedNumber)
-    );
+function showTablesPage() {
 
+    showPage("tablesPage");
+
+    createTables();
 }
 
 
-function speakNumberList() {
+function createTables() {
 
-    speak(
-        "Numbers from one to one thousand"
-    );
+    const grid = document.getElementById("tablesGrid");
 
-}
+    if (!grid) return;
 
+    grid.innerHTML = "";
 
-/* =================================================
-   MULTIPLICATION TABLES 1 - 100
-================================================= */
+    for (let i = 1; i <= 100; i++) {
 
-function createTableButtons() {
+        const button = document.createElement("button");
 
-    const area =
-        document.getElementById(
-            "tableButtons"
-        );
+        button.className = "table-choice";
 
+        button.innerHTML =
+            "✖️ Table " + i;
 
-    area.innerHTML = "";
+        button.onclick = function() {
+            openTable(i);
+        };
 
-
-    for (
-        let number = 1;
-        number <= 100;
-        number++
-    ) {
-
-        const button =
-            document.createElement("button");
-
-
-        button.className =
-            "tableNumberButton";
-
-
-        button.innerText =
-            "Table " + number;
-
-
-        button.onclick =
-            function() {
-
-                showTable(number);
-
-            };
-
-
-        area.appendChild(button);
-
+        grid.appendChild(button);
     }
-
 }
 
 
-createTableButtons();
+function openTable(number) {
 
+    const box = document.getElementById("singleTable");
 
-function openTables() {
+    let html =
+        '<h1 class="table-title">✖️ Table of ' +
+        number +
+        '</h1>';
 
-    hideAllPages();
+    for (let i = 1; i <= 10; i++) {
 
-    document.getElementById("tablesPage")
-        .classList.remove("hidden");
-
-}
-
-
-function showTable(number) {
-
-    const display =
-        document.getElementById(
-            "tableDisplay"
-        );
-
-
-    const title =
-        document.getElementById(
-            "selectedTableTitle"
-        );
-
-
-    const table =
-        document.getElementById(
-            "selectedTable"
-        );
-
-
-    title.innerText =
-        "✖️ Table of " + number;
-
-
-    table.innerHTML = "";
-
-
-    for (
-        let i = 1;
-        i <= 10;
-        i++
-    ) {
-
-        const line =
-            document.createElement("div");
-
-
-        line.className =
-            "tableLine";
-
-
-        line.innerText =
+        html +=
+            '<div class="table-row">' +
             number +
             " × " +
             i +
             " = " +
-            (number * i);
-
-
-        line.onclick =
-            function() {
-
-                speak(
-                    number +
-                    " times " +
-                    i +
-                    " equals " +
-                    (number * i)
-                );
-
-            };
-
-
-        table.appendChild(line);
-
+            (number * i) +
+            '</div>';
     }
 
+    box.innerHTML = html;
 
-    display.classList.remove("hidden");
-
+    showPage("singleTablePage");
 }
 
 
-function closeTable() {
+/* ================= TEST SYSTEM ================= */
 
-    document.getElementById(
-        "tableDisplay"
-    )
-    .classList.add("hidden");
+let currentTest = "";
+let currentQuestion = 0;
+let score = 0;
+let questions = [];
 
+
+/* ================= SHUFFLE ================= */
+
+function shuffle(array) {
+
+    const newArray = [...array];
+
+    for (let i = newArray.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        const temp = newArray[i];
+
+        newArray[i] = newArray[j];
+
+        newArray[j] = temp;
+    }
+
+    return newArray;
 }
 
 
-/* =================================================
-   ALPHABET TEST
-================================================= */
+/* ================= ALPHABET TEST ================= */
 
-let alphabetTestType = "";
+function startAlphabetTest() {
 
-let alphabetQuestions = [];
+    currentTest = "alphabet";
+    currentQuestion = 0;
+    score = 0;
 
-let alphabetPosition = 0;
+    /*
+       Every letter appears only once.
+       Therefore no question repeats.
+    */
 
-let alphabetScore = 0;
+    questions = shuffle(alphabetData);
 
-
-function openAlphabetTestMenu() {
-
-    hideAllPages();
-
-    document.getElementById(
-        "alphabetTestMenu"
-    )
-    .classList.remove("hidden");
-
-}
-
-
-function startAlphabetTest(type) {
-
-    alphabetTestType = type;
-
-    alphabetPosition = 0;
-
-    alphabetScore = 0;
-
-
-    alphabetQuestions =
-        [...alphabetData];
-
-
-    shuffleArray(
-        alphabetQuestions
-    );
-
-
-    hideAllPages();
-
-
-    document.getElementById(
-        "alphabetTestPage"
-    )
-    .classList.remove("hidden");
-
-
-    if (type === "capital") {
-
-        document.getElementById(
-            "alphabetTestTitle"
-        )
-        .innerText =
-            "🔠 Capital Letter Test";
-
-    }
-    else {
-
-        document.getElementById(
-            "alphabetTestTitle"
-        )
-        .innerText =
-            "🔡 Small Letter Test";
-
-    }
-
+    showPage("alphabetTestPage");
 
     showAlphabetQuestion();
-
 }
 
 
 function showAlphabetQuestion() {
 
-    const current =
-        alphabetQuestions[
-            alphabetPosition
-        ];
+    if (currentQuestion >= questions.length) {
 
+        finishTest();
 
-    document.getElementById(
-        "alphabetQuestionNumber"
-    )
-    .innerText =
+        return;
+    }
+
+    const item = questions[currentQuestion];
+
+    const correctLetter = item[0];
+    const correctWord = item[1];
+
+    document.getElementById("alphabetQuestionNo").innerText =
         "Question " +
-        (alphabetPosition + 1) +
-        " / 26";
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
 
+    document.getElementById("alphabetQuestion").innerText =
+        correctLetter + " is for ?";
 
-    const question =
-        alphabetTestType === "capital"
-        ? current[0]
-        : current[0].toLowerCase();
+    const correctAnswer = correctWord;
 
+    const otherWords = alphabetData
+        .filter(function(x) {
+            return x[1] !== correctWord;
+        })
+        .map(function(x) {
+            return x[1];
+        });
 
-    document.getElementById(
-        "alphabetQuestion"
-    )
-    .innerText =
-        question;
+    const wrongAnswers = shuffle(otherWords).slice(0, 3);
 
-
-    document.getElementById(
-        "alphabetTestMessage"
-    )
-    .innerText = "";
-
-
-    createAlphabetAnswers(
-        current
+    const answers = shuffle(
+        [correctAnswer, ...wrongAnswers]
     );
 
+    const box = document.getElementById("alphabetAnswers");
+
+    box.innerHTML = "";
+
+    answers.forEach(function(answer) {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-btn";
+
+        button.innerText = answer;
+
+        button.onclick = function() {
+
+            checkAlphabetAnswer(
+                answer,
+                correctAnswer
+            );
+
+        };
+
+        box.appendChild(button);
+    });
 }
 
 
-function createAlphabetAnswers(correct) {
+function checkAlphabetAnswer(answer, correctAnswer) {
 
-    const area =
-        document.getElementById(
-            "alphabetAnswers"
-        );
-
-
-    area.innerHTML = "";
-
-
-    let answers = [];
-
-
-    const correctAnswer =
-        alphabetTestType === "capital"
-        ? correct[0]
-        : correct[0].toLowerCase();
-
-
-    answers.push(correctAnswer);
-
-
-    while (
-        answers.length < 4
-    ) {
-
-        const random =
-            alphabetData[
-                Math.floor(
-                    Math.random() *
-                    alphabetData.length
-                )
-            ];
-
-
-        const value =
-            alphabetTestType === "capital"
-            ? random[0]
-            : random[0].toLowerCase();
-
-
-        if (
-            !answers.includes(value)
-        ) {
-
-            answers.push(value);
-
-        }
-
+    if (answer === correctAnswer) {
+        score++;
     }
 
+    currentQuestion++;
 
-    shuffleArray(answers);
-
-
-    answers.forEach(
-        function(answer) {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "answerButton";
-
-
-            button.innerText =
-                answer;
-
-
-            button.onclick =
-                function() {
-
-                    checkAlphabetAnswer(
-                        answer,
-                        correctAnswer
-                    );
-
-                };
-
-
-            area.appendChild(button);
-
-        }
-    );
-
+    setTimeout(function() {
+        showAlphabetQuestion();
+    }, 300);
 }
 
 
-function checkAlphabetAnswer(
-    answer,
-    correctAnswer
-) {
-
-    const buttons =
-        document.querySelectorAll(
-            "#alphabetAnswers .answerButton"
-        );
-
-
-    buttons.forEach(
-        function(button) {
-
-            button.disabled = true;
-
-        }
-    );
-
-
-    if (
-        answer === correctAnswer
-    ) {
-
-        alphabetScore++;
-
-
-        document.getElementById(
-            "alphabetTestMessage"
-        )
-        .innerText =
-            "✅ Correct! 🎉";
-
-    }
-    else {
-
-        document.getElementById(
-            "alphabetTestMessage"
-        )
-        .innerText =
-            "❌ Wrong! Correct answer: " +
-            correctAnswer;
-
-    }
-
-
-    setTimeout(
-        function() {
-
-            alphabetPosition++;
-
-
-            if (
-                alphabetPosition <
-                alphabetQuestions.length
-            ) {
-
-                showAlphabetQuestion();
-
-            }
-            else {
-
-                showResult(
-                    "Alphabet Test",
-                    alphabetScore,
-                    alphabetQuestions.length
-                );
-
-            }
-
-        },
-        900
-    );
-
-}
-
-
-/* =================================================
-   NUMBER TEST
-================================================= */
-
-let numberQuestions = [];
-
-let numberPosition = 0;
-
-let numberScore = 0;
-
-const NUMBER_TEST_TOTAL = 20;
-
+/* ================= NUMBER TEST ================= */
 
 function startNumberTest() {
 
-    numberPosition = 0;
+    currentTest = "number";
+    currentQuestion = 0;
+    score = 0;
 
-    numberScore = 0;
+    const allNumbers = [];
 
-    numberQuestions = [];
-
-
-    for (
-        let i = 1;
-        i <= 1000;
-        i++
-    ) {
-
-        numberQuestions.push(i);
-
+    for (let i = 1; i <= 1000; i++) {
+        allNumbers.push(i);
     }
 
+    /*
+       20 different numbers.
+       Same number cannot repeat.
+    */
 
-    shuffleArray(numberQuestions);
+    questions = shuffle(allNumbers).slice(0, 20);
 
-
-    numberQuestions =
-        numberQuestions.slice(
-            0,
-            NUMBER_TEST_TOTAL
-        );
-
-
-    hideAllPages();
-
-
-    document.getElementById(
-        "numberTestPage"
-    )
-    .classList.remove("hidden");
-
+    showPage("numberTestPage");
 
     showNumberQuestion();
-
 }
 
 
 function showNumberQuestion() {
 
-    const current =
-        numberQuestions[numberPosition];
+    if (currentQuestion >= questions.length) {
 
+        finishTest();
 
-    document.getElementById(
-        "numberQuestionNumber"
-    )
-    .innerText =
+        return;
+    }
+
+    const correctNumber = questions[currentQuestion];
+
+    document.getElementById("numberQuestionNo").innerText =
         "Question " +
-        (numberPosition + 1) +
+        (currentQuestion + 1) +
         " / " +
-        NUMBER_TEST_TOTAL;
+        questions.length;
 
+    document.getElementById("numberQuestion").innerText =
+        "Which number is " +
+        numberToWords(correctNumber) +
+        "?";
 
-    document.getElementById(
-        "numberQuestion"
-    )
-    .innerText =
-        current;
+    const wrongNumbers = [];
 
+    while (wrongNumbers.length < 3) {
 
-    document.getElementById(
-        "numberTestMessage"
-    )
-    .innerText = "";
-
-
-    createNumberAnswers(
-        current
-    );
-
-}
-
-
-function createNumberAnswers(correct) {
-
-    const area =
-        document.getElementById(
-            "numberAnswers"
-        );
-
-
-    area.innerHTML = "";
-
-
-    let answers = [];
-
-
-    answers.push(correct);
-
-
-    while (
-        answers.length < 4
-    ) {
-
-        const random =
-            Math.floor(
-                Math.random() * 1000
-            ) + 1;
-
+        const randomNumber =
+            Math.floor(Math.random() * 1000) + 1;
 
         if (
-            !answers.includes(random)
+            randomNumber !== correctNumber &&
+            !wrongNumbers.includes(randomNumber)
         ) {
-
-            answers.push(random);
-
+            wrongNumbers.push(randomNumber);
         }
-
     }
 
+    const answers = shuffle([
+        correctNumber,
+        ...wrongNumbers
+    ]);
 
-    shuffleArray(answers);
+    const box = document.getElementById("numberAnswers");
 
+    box.innerHTML = "";
 
-    answers.forEach(
-        function(answer) {
+    answers.forEach(function(answer) {
 
-            const button =
-                document.createElement(
-                    "button"
-                );
+        const button = document.createElement("button");
 
+        button.className = "answer-btn";
 
-            button.className =
-                "answerButton";
+        button.innerText = answer;
 
+        button.onclick = function() {
 
-            button.innerText =
-                answer;
+            if (answer === correctNumber) {
+                score++;
+            }
 
+            currentQuestion++;
 
-            button.onclick =
-                function() {
-
-                    checkNumberAnswer(
-                        answer,
-                        correct
-                    );
-
-                };
-
-
-            area.appendChild(button);
-
-        }
-    );
-
-}
-
-
-function checkNumberAnswer(
-    answer,
-    correct
-) {
-
-    const buttons =
-        document.querySelectorAll(
-            "#numberAnswers .answerButton"
-        );
-
-
-    buttons.forEach(
-        function(button) {
-
-            button.disabled = true;
-
-        }
-    );
-
-
-    if (
-        answer === correct
-    ) {
-
-        numberScore++;
-
-
-        document.getElementById(
-            "numberTestMessage"
-        )
-        .innerText =
-            "✅ Correct! 🌟";
-
-    }
-    else {
-
-        document.getElementById(
-            "numberTestMessage"
-        )
-        .innerText =
-            "❌ Wrong! Correct answer: " +
-            correct;
-
-    }
-
-
-    setTimeout(
-        function() {
-
-            numberPosition++;
-
-
-            if (
-                numberPosition <
-                numberQuestions.length
-            ) {
-
+            setTimeout(function() {
                 showNumberQuestion();
+            }, 300);
 
-            }
-            else {
+        };
 
-                showResult(
-                    "Number Test",
-                    numberScore,
-                    numberQuestions.length
-                );
+        box.appendChild(button);
 
-            }
-
-        },
-        900
-    );
-
+    });
 }
 
 
-/* =================================================
-   MULTIPLICATION TEST
-================================================= */
+/* ================= MULTIPLICATION TEST ================= */
 
-let multiplicationQuestions = [];
+function startMultiplicationTest() {
 
-let multiplicationPosition = 0;
+    currentTest = "multiplication";
+    currentQuestion = 0;
+    score = 0;
 
-let multiplicationScore = 0;
-
-let multiplicationMin = 1;
-
-let multiplicationMax = 10;
-
-const MULTIPLICATION_TEST_TOTAL = 20;
-
-
-function openMultiplicationTestMenu() {
-
-    hideAllPages();
-
-    document.getElementById(
-        "multiplicationTestMenu"
-    )
-    .classList.remove("hidden");
-
-}
-
-
-function startMultiplicationTest(
-    min,
-    max
-) {
-
-    multiplicationMin = min;
-
-    multiplicationMax = max;
-
-    multiplicationPosition = 0;
-
-    multiplicationScore = 0;
-
-
-    multiplicationQuestions = [];
-
+    const allQuestions = [];
 
     /*
-       Every question is unique.
+       1–100 tables
+       × 1–10
+
+       Total = 1000 unique questions.
 
        Example:
-
        1 × 1
        1 × 2
-       1 × 3
        ...
        100 × 10
+
+       No same question repeats.
     */
 
-    for (
-        let a = min;
-        a <= max;
-        a++
-    ) {
+    for (let a = 1; a <= 100; a++) {
 
-        for (
-            let b = 1;
-            b <= 10;
-            b++
-        ) {
+        for (let b = 1; b <= 10; b++) {
 
-            multiplicationQuestions.push({
-
+            allQuestions.push({
                 a: a,
-
                 b: b,
-
                 answer: a * b
-
             });
 
         }
-
     }
 
+    questions = shuffle(allQuestions).slice(0, 20);
 
-    shuffleArray(
-        multiplicationQuestions
-    );
-
-
-    /*
-       Only 20 questions
-       in one test.
-    */
-
-    multiplicationQuestions =
-        multiplicationQuestions.slice(
-            0,
-            MULTIPLICATION_TEST_TOTAL
-        );
-
-
-    hideAllPages();
-
-
-    document.getElementById(
-        "multiplicationTestPage"
-    )
-    .classList.remove("hidden");
-
+    showPage("multiplicationTestPage");
 
     showMultiplicationQuestion();
-
 }
 
 
 function showMultiplicationQuestion() {
 
-    const current =
-        multiplicationQuestions[
-            multiplicationPosition
-        ];
+    if (currentQuestion >= questions.length) {
 
+        finishTest();
 
-    document.getElementById(
-        "multiplicationQuestionNumber"
-    )
-    .innerText =
+        return;
+    }
+
+    const question = questions[currentQuestion];
+
+    const correctAnswer = question.answer;
+
+    document.getElementById("multiplicationQuestionNo").innerText =
         "Question " +
-        (multiplicationPosition + 1) +
+        (currentQuestion + 1) +
         " / " +
-        MULTIPLICATION_TEST_TOTAL;
+        questions.length;
 
 
     /*
-       BLANK ONLY IN TEST
+       IMPORTANT:
+       Blank is shown ONLY in test.
+       Normal table has complete answer.
     */
 
-    document.getElementById(
-        "multiplicationQuestion"
-    )
-    .innerHTML =
-        current.a +
+    document.getElementById("multiplicationQuestion").innerHTML =
+        question.a +
         " × " +
-        current.b +
-        " = <span>□</span>";
+        question.b +
+        " = <span class='blank'>0</span>";
 
 
-    document.getElementById(
-        "multiplicationTestMessage"
-    )
-    .innerText = "";
+    const wrongAnswers = [];
 
+    while (wrongAnswers.length < 3) {
 
-    createMultiplicationAnswers(
-        current
-    );
+        let wrong =
+            correctAnswer +
+            Math.floor(Math.random() * 21) -
+            10;
 
+        if (wrong < 0) {
+            wrong = Math.floor(Math.random() * 1000) + 1;
+        }
+
+        if (
+            wrong !== correctAnswer &&
+            !wrongAnswers.includes(wrong)
+        ) {
+            wrongAnswers.push(wrong);
+        }
+    }
+
+    const answers = shuffle([
+        correctAnswer,
+        ...wrongAnswers
+    ]);
+
+    const box =
+        document.getElementById("multiplicationAnswers");
+
+    box.innerHTML = "";
+
+    answers.forEach(function(answer) {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-btn";
+
+        button.innerText = answer;
+
+        button.onclick = function() {
+
+            if (answer === correctAnswer) {
+                score++;
+            }
+
+            currentQuestion++;
+
+            setTimeout(function() {
+                showMultiplicationQuestion();
+            }, 300);
+
+        };
+
+        box.appendChild(button);
+
+    });
 }
 
 
-function createMultiplicationAnswers(
-    correct
-) {
+/* ================= RESULT ================= */
 
-    const area =
-        document.getElementById(
-            "multiplicationAnswers"
-        );
+function finishTest() {
 
+    const total = questions.length;
 
-    area.innerHTML = "";
+    const wrong = total - score;
 
+    const percentage =
+        Math.round((score / total) * 100);
 
-    let answers = [];
+    document.getElementById("resultScore").innerText =
+        score + " / " + total;
 
+    document.getElementById("resultCorrect").innerText =
+        score;
 
-    answers.push(
-        correct.answer
-    );
+    document.getElementById("resultWrong").innerText =
+        wrong;
 
-
-    while (
-        answers.length < 4
-    ) {
-
-        let wrong;
+    document.getElementById("resultPercentage").innerText =
+        percentage + "%";
 
 
-        const randomChange =
-            Math.floor(
-                Math.random() * 21
-            ) - 10;
+    let message = "";
 
-
-        wrong =
-            correct.answer +
-            randomChange;
-
-
-        if (
-            wrong < 1
-        ) {
-
-            wrong =
-                correct.answer + 5;
-
-        }
-
-
-        if (
-            !answers.includes(wrong)
-        ) {
-
-            answers.push(wrong);
-
-        }
-
+    if (percentage >= 90) {
+        message = "🌟 Excellent! You are a Super Star!";
+    }
+    else if (percentage >= 70) {
+        message = "👏 Very Good! Keep Learning!";
+    }
+    else if (percentage >= 50) {
+        message = "😊 Good Job! Practice More!";
+    }
+    else {
+        message = "💪 Don't Give Up! Try Again!";
     }
 
+    document.getElementById("resultMessage").innerText =
+        message;
 
-    shuffleArray(answers);
+    showPage("resultPage");
+
+    speak("Your score is " + score + " out of " + total);
+}
 
 
-    answers.forEach(
-        function(answer) {
+/* ================= RESTART ================= */
 
-            co
+function restartCurrentTest() {
+
+    if (currentTest === "alphabet") {
+        startAlphabetTest();
+    }
+
+    else if (currentTest === "number") {
+        startNumberTest();
+    }
+
+    else if (currentTest === "multiplication") {
+        startMultiplicationTest();
+    }
+}
+
+
+/* ================= START APP ================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    createAlphabet();
+
+    createNumbers();
+
+    showPage("homePage");
+
+});
