@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Smart Kids Learning</title>
 
     <link rel="stylesheet" href="style.css">
@@ -11,337 +10,78 @@
 
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">
-            🌈 Smart Kids
-        </div>
+    <!-- HOME / ALPHABET BOX SCREEN -->
+    <div id="homePage">
 
-        <button class="parent-btn" onclick="showParentMessage()">
-            👨‍👩‍👧 Parent
-        </button>
-    </header>
+        <h1>🌈 Smart Kids Learning</h1>
+        <h2>📚 Learn English Alphabets</h2>
 
-
-    <!-- Welcome Section -->
-    <section class="welcome">
-        <h1>👋 Hello Little Learner!</h1>
-
-        <p>
-            Learn, Play & Grow Every Day 🚀
+        <p class="instruction">
+            👆 Click on any alphabet to learn
         </p>
 
-        <div class="welcome-buttons">
-            <button onclick="startLearning()">
-                📚 Start Learning
-            </button>
-
-            <button onclick="startQuiz()">
-                🧠 Play Quiz
-            </button>
-        </div>
-    </section>
-
-
-    <!-- Learning Section -->
-    <main>
-
-        <h2>📚 Learn Something New</h2>
-
-        <section class="alphabet-section" id="alphabet">
-
-    <h2>🔤 Learn English Alphabets</h2>
-    <p class="subtitle">Click on any letter and listen! 🔊</p>
-
-    <div class="alphabet-grid">
-
-        <button class="letter-card" onclick="speakLetter('A', 'Apple', '🍎')">
-            <span class="letter">A a</span>
-            <span class="picture">🍎</span>
-            <span class="word">Apple</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('B', 'Ball', '⚽')">
-            <span class="letter">B b</span>
-            <span class="picture">⚽</span>
-            <span class="word">Ball</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('C', 'Cat', '🐱')">
-            <span class="letter">C c</span>
-            <span class="picture">🐱</span>
-            <span class="word">Cat</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('D', 'Dog', '🐶')">
-            <span class="letter">D d</span>
-            <span class="picture">🐶</span>
-            <span class="word">Dog</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('E', 'Elephant', '🐘')">
-            <span class="letter">E e</span>
-            <span class="picture">🐘</span>
-            <span class="word">Elephant</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('F', 'Fish', '🐟')">
-            <span class="letter">F f</span>
-            <span class="picture">🐟</span>
-            <span class="word">Fish</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('G', 'Grapes', '🍇')">
-            <span class="letter">G g</span>
-            <span class="picture">🍇</span>
-            <span class="word">Grapes</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('H', 'Horse', '🐴')">
-            <span class="letter">H h</span>
-            <span class="picture">🐴</span>
-            <span class="word">Horse</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('I', 'Ice Cream', '🍦')">
-            <span class="letter">I i</span>
-            <span class="picture">🍦</span>
-            <span class="word">Ice Cream</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('J', 'Juice', '🧃')">
-            <span class="letter">J j</span>
-            <span class="picture">🧃</span>
-            <span class="word">Juice</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('K', 'Kite', '🪁')">
-            <span class="letter">K k</span>
-            <span class="picture">🪁</span>
-            <span class="word">Kite</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('L', 'Lion', '🦁')">
-            <span class="letter">L l</span>
-            <span class="picture">🦁</span>
-            <span class="word">Lion</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('M', 'Monkey', '🐒')">
-            <span class="letter">M m</span>
-            <span class="picture">🐒</span>
-            <span class="word">Monkey</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('N', 'Nest', '🪺')">
-            <span class="letter">N n</span>
-            <span class="picture">🪺</span>
-            <span class="word">Nest</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('O', 'Orange', '🍊')">
-            <span class="letter">O o</span>
-            <span class="picture">🍊</span>
-            <span class="word">Orange</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('P', 'Penguin', '🐧')">
-            <span class="letter">P p</span>
-            <span class="picture">🐧</span>
-            <span class="word">Penguin</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('Q', 'Queen', '👑')">
-            <span class="letter">Q q</span>
-            <span class="picture">👑</span>
-            <span class="word">Queen</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('R', 'Rainbow', '🌈')">
-            <span class="letter">R r</span>
-            <span class="picture">🌈</span>
-            <span class="word">Rainbow</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('S', 'Sun', '☀️')">
-            <span class="letter">S s</span>
-            <span class="picture">☀️</span>
-            <span class="word">Sun</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('T', 'Tree', '🌳')">
-            <span class="letter">T t</span>
-            <span class="picture">🌳</span>
-            <span class="word">Tree</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('U', 'Umbrella', '☂️')">
-            <span class="letter">U u</span>
-            <span class="picture">☂️</span>
-            <span class="word">Umbrella</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('V', 'Van', '🚐')">
-            <span class="letter">V v</span>
-            <span class="picture">🚐</span>
-            <span class="word">Van</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('W', 'Watermelon', '🍉')">
-            <span class="letter">W w</span>
-            <span class="picture">🍉</span>
-            <span class="word">Watermelon</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('X', 'Xylophone', '🎵')">
-            <span class="letter">X x</span>
-            <span class="picture">🎵</span>
-            <span class="word">Xylophone</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('Y', 'Yacht', '⛵')">
-            <span class="letter">Y y</span>
-            <span class="picture">⛵</span>
-            <span class="word">Yacht</span>
-        </button>
-
-        <button class="letter-card" onclick="speakLetter('Z', 'Zebra', '🦓')">
-            <span class="letter">Z z</span>
-            <span class="picture">🦓</span>
-            <span class="word">Zebra</span>
-        </button>
+        <div id="alphabetGrid"></div>
 
     </div>
-</section>
 
 
-            <div class="card" onclick="openLesson('Numbers')">
-                <div class="icon">🔢</div>
-                <h3>Numbers</h3>
-                <p>Learn Numbers 1 to 100</p>
+    <!-- ALPHABET LESSON SCREEN -->
+    <div id="lessonPage" class="hidden">
+
+        <button class="homeBtn" onclick="goHome()">
+            🏠 Home
+        </button>
+
+        <div class="lessonTitle">
+            <span id="letter">A</span>
+            <span> for </span>
+            <span id="word">Apple</span>
+        </div>
+
+        <div class="lessonBox">
+
+            <div class="bigLetter" id="bigLetter">
+                A
             </div>
 
-
-            <div class="card" onclick="openLesson('Colors')">
-                <div class="icon">🎨</div>
-                <h3>Colors</h3>
-                <p>Learn Beautiful Colors</p>
+            <div class="smallLetter" id="smallLetter">
+                a
             </div>
 
-
-            <div class="card" onclick="openLesson('Shapes')">
-                <div class="icon">🔷</div>
-                <h3>Shapes</h3>
-                <p>Learn Different Shapes</p>
+            <div class="picture" id="picture">
+                🍎
             </div>
 
-
-            <div class="card" onclick="openLesson('Animals')">
-                <div class="icon">🐶</div>
-                <h3>Animals</h3>
-                <p>Know Amazing Animals</p>
-            </div>
-
-
-            <div class="card" onclick="openLesson('Fruits')">
-                <div class="icon">🍎</div>
-                <h3>Fruits</h3>
-                <p>Learn Fruits & Their Names</p>
-            </div>
-
-
-            <div class="card" onclick="openLesson('Vehicles')">
-                <div class="icon">🚗</div>
-                <h3>Vehicles</h3>
-                <p>Learn About Vehicles</p>
-            </div>
-
-
-            <div class="card" onclick="openLesson('Drawing')">
-                <div class="icon">🖍️</div>
-                <h3>Drawing</h3>
-                <p>Draw & Color Creatively</p>
-            </div>
+            <h2 id="wordText">
+                Apple
+            </h2>
 
         </div>
 
+        <button class="speakBtn" onclick="speakCurrent()">
+            🔊 Click to Hear
+        </button>
 
-        <!-- Games -->
-        <h2>🎮 Learn Through Games</h2>
+        <div class="navigation">
 
-        <div class="game-section">
+            <button onclick="previousLetter()">
+                ⬅️ Previous
+            </button>
 
-            <div class="game-card" onclick="startQuiz()">
-                🧠
-                <h3>Quiz</h3>
-                <p>Test Your Knowledge</p>
-            </div>
+            <span id="progress">
+                1 / 26
+            </span>
 
-            <div class="game-card" onclick="matchingGame()">
-                🧩
-                <h3>Matching</h3>
-                <p>Match The Correct Answer</p>
-            </div>
-
-            <div class="game-card" onclick="dailyChallenge()">
-                ⭐
-                <h3>Daily Challenge</h3>
-                <p>Complete Today's Challenge</p>
-            </div>
+            <button onclick="nextLetter()">
+                Next ➡️
+            </button>
 
         </div>
 
-
-        <!-- Progress -->
-        <section class="progress">
-
-            <h2>🏆 My Learning Progress</h2>
-
-            <div class="progress-box">
-
-                <div>
-                    <span>⭐</span>
-                    <strong id="stars">0</strong>
-                    <p>Stars</p>
-                </div>
-
-                <div>
-                    <span>📚</span>
-                    <strong id="lessons">0</strong>
-                    <p>Lessons</p>
-                </div>
-
-                <div>
-                    <span>🏆</span>
-                    <strong id="badges">0</strong>
-                    <p>Badges</p>
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer>
-
-        <h3>🌈 Smart Kids Learning</h3>
-
-        <p>
-            Learn • Play • Grow
-        </p>
-
-        <p>
-            Made for curious little minds ❤️
-        </p>
-
-    </footer>
+    </div>
 
 
     <script src="script.js"></script>
 
 </body>
 </html>
-
