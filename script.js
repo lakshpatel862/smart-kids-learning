@@ -1,6 +1,6 @@
-/* =========================
+/* =====================================================
    ALPHABET DATA
-========================= */
+===================================================== */
 
 const alphabetData = [
 
@@ -37,51 +37,53 @@ const alphabetData = [
 let currentIndex = 0;
 
 
-/* =========================
-   CREATE ALPHABET BOXES
-========================= */
+/* =====================================================
+   ALPHABET BOXES
+===================================================== */
 
 const grid =
     document.getElementById("alphabetGrid");
 
 
-alphabetData.forEach(function(item, index) {
+alphabetData.forEach(
+    function(item, index) {
 
-    const box =
-        document.createElement("div");
-
-
-    box.className =
-        "letterBox";
+        const box =
+            document.createElement("div");
 
 
-    box.innerText =
-        item[0];
+        box.className =
+            "letterBox";
 
 
-    box.onclick = function() {
-
-        openLesson(index);
-
-    };
+        box.innerText =
+            item[0];
 
 
-    grid.appendChild(box);
+        box.onclick =
+            function() {
 
-});
+                openLesson(index);
+
+            };
 
 
-/* =========================
-   OPEN LESSON
-========================= */
+        grid.appendChild(box);
+
+    }
+);
+
+
+/* =====================================================
+   LESSON
+===================================================== */
 
 function openLesson(index) {
 
     currentIndex = index;
 
 
-    document.getElementById("homePage")
-        .classList.add("hidden");
+    hideAllPages();
 
 
     document.getElementById("lessonPage")
@@ -96,63 +98,44 @@ function openLesson(index) {
 }
 
 
-/* =========================
-   UPDATE LESSON
-========================= */
-
 function updateLesson() {
 
     const data =
         alphabetData[currentIndex];
 
 
-    const letter =
-        data[0];
-
-
-    const word =
-        data[1];
-
-
-    const picture =
-        data[2];
-
-
     document.getElementById("letter")
-        .innerText = letter;
+        .innerText = data[0];
 
 
     document.getElementById("word")
-        .innerText = word;
+        .innerText = data[1];
 
 
     document.getElementById("bigLetter")
-        .innerText = letter;
+        .innerText = data[0];
 
 
     document.getElementById("smallLetter")
         .innerText =
-        letter.toLowerCase();
+        data[0].toLowerCase();
 
 
     document.getElementById("picture")
-        .innerText = picture;
+        .innerText = data[2];
 
 
     document.getElementById("wordText")
-        .innerText = word;
+        .innerText = data[1];
 
 
     document.getElementById("progress")
         .innerText =
-        (currentIndex + 1) + " / 26";
+        (currentIndex + 1) +
+        " / 26";
 
 }
 
-
-/* =========================
-   SPEAK
-========================= */
 
 function speakCurrent() {
 
@@ -160,37 +143,14 @@ function speakCurrent() {
         alphabetData[currentIndex];
 
 
-    const sentence =
-        data[0] + " for " + data[1];
-
-
-    const speech =
-        new SpeechSynthesisUtterance(sentence);
-
-
-    speech.lang =
-        "en-US";
-
-
-    speech.rate =
-        0.8;
-
-
-    speech.pitch =
-        1.2;
-
-
-    window.speechSynthesis.cancel();
-
-
-    window.speechSynthesis.speak(speech);
+    speak(
+        data[0] +
+        " for " +
+        data[1]
+    );
 
 }
 
-
-/* =========================
-   NEXT
-========================= */
 
 function nextLetter() {
 
@@ -210,10 +170,6 @@ function nextLetter() {
 }
 
 
-/* =========================
-   PREVIOUS
-========================= */
-
 function previousLetter() {
 
     if (currentIndex > 0) {
@@ -229,13 +185,64 @@ function previousLetter() {
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* =====================================================
+   COMMON SPEECH
+===================================================== */
 
-function goHome() {
+function speak(text) {
+
+    if (
+        "speechSynthesis"
+        in window
+    ) {
+
+        window.speechSynthesis.cancel();
+
+
+        const speech =
+            new SpeechSynthesisUtterance(text);
+
+
+        speech.lang =
+            "en-US";
+
+
+        speech.rate =
+            0.8;
+
+
+        window.speechSynthesis.speak(
+            speech
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   PAGE CONTROL
+===================================================== */
+
+function hideAllPages() {
+
+    document.getElementById("homePage")
+        .classList.add("hidden");
+
 
     document.getElementById("lessonPage")
+        .classList.add("hidden");
+
+
+    document.getElementById("numbersPage")
+        .classList.add("hidden");
+
+
+    document.getElementById("numberDetailPage")
+        .classList.add("hidden");
+
+
+    document.getElementById("rainbowPage")
         .classList.add("hidden");
 
 
@@ -250,20 +257,380 @@ function goHome() {
     document.getElementById("resultPage")
         .classList.add("hidden");
 
+}
+
+
+function goHome() {
+
+    hideAllPages();
+
 
     document.getElementById("homePage")
         .classList.remove("hidden");
 
 
-    window.speechSynthesis.cancel();
+    if (
+        "speechSynthesis"
+        in window
+    ) {
+
+        window.speechSynthesis.cancel();
+
+    }
 
 }
 
 
-/* =================================================
-   TEST SYSTEM
-================================================= */
+/* =====================================================
+   NUMBERS 1 - 1000
+===================================================== */
 
+let selectedNumber = 1;
+
+
+/* Number names */
+
+const ones = [
+
+    "",
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Eleven",
+    "Twelve",
+    "Thirteen",
+    "Fourteen",
+    "Fifteen",
+    "Sixteen",
+    "Seventeen",
+    "Eighteen",
+    "Nineteen"
+
+];
+
+
+const tens = [
+
+    "",
+    "",
+    "Twenty",
+    "Thirty",
+    "Forty",
+    "Fifty",
+    "Sixty",
+    "Seventy",
+    "Eighty",
+    "Ninety"
+
+];
+
+
+function numberToWords(num) {
+
+    if (num < 20) {
+
+        return ones[num];
+
+    }
+
+
+    if (num < 100) {
+
+        return (
+            tens[Math.floor(num / 10)] +
+            (num % 10 !== 0
+                ? " " + ones[num % 10]
+                : "")
+        );
+
+    }
+
+
+    if (num < 1000) {
+
+        return (
+            ones[Math.floor(num / 100)] +
+            " Hundred" +
+            (num % 100 !== 0
+                ? " " +
+                  numberToWords(num % 100)
+                : "")
+        );
+
+    }
+
+
+    return "One Thousand";
+
+}
+
+
+/* Create 1 - 1000 */
+
+function createNumbers() {
+
+    const list =
+        document.getElementById(
+            "numberList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    for (
+        let number = 1;
+        number <= 1000;
+        number++
+    ) {
+
+        const row =
+            document.createElement("div");
+
+
+        row.className =
+            "numberRow";
+
+
+        const value =
+            document.createElement("div");
+
+
+        value.className =
+            "numberValue";
+
+
+        value.innerText =
+            number;
+
+
+        const objects =
+            document.createElement("div");
+
+
+        objects.className =
+            "numberObjects";
+
+
+        if (number <= 20) {
+
+            objects.innerText =
+                "⚽ ".repeat(number);
+
+        }
+        else {
+
+            objects.innerText =
+                "⚽ × " + number;
+
+        }
+
+
+        const hear =
+            document.createElement("div");
+
+
+        hear.className =
+            "numberHear";
+
+
+        hear.innerText =
+            "🔊";
+
+
+        row.appendChild(value);
+
+        row.appendChild(objects);
+
+        row.appendChild(hear);
+
+
+        row.onclick =
+            function() {
+
+                openNumber(number);
+
+            };
+
+
+        list.appendChild(row);
+
+    }
+
+}
+
+
+createNumbers();
+
+
+/* Open numbers page */
+
+function openNumbers() {
+
+    hideAllPages();
+
+
+    document.getElementById("numbersPage")
+        .classList.remove("hidden");
+
+}
+
+
+/* Open one number */
+
+function openNumber(number) {
+
+    selectedNumber = number;
+
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "numberDetailPage"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "bigNumber"
+    ).innerText =
+        number;
+
+
+    document.getElementById(
+        "numberWord"
+    ).innerText =
+        numberToWords(number);
+
+
+    if (number <= 20) {
+
+        document.getElementById(
+            "numberObjects"
+        ).innerText =
+            "⚽ ".repeat(number);
+
+    }
+    else {
+
+        document.getElementById(
+            "numberObjects"
+        ).innerText =
+            "⚽ × " + number;
+
+    }
+
+
+    speakNumber();
+
+}
+
+
+/* Speak number */
+
+function speakNumber() {
+
+    speak(
+        numberToWords(selectedNumber)
+    );
+
+}
+
+
+/* =====================================================
+   RAINBOW LETTERS
+===================================================== */
+
+const rainbowColors = [
+
+    "#ff0000",
+    "#ff7f00",
+    "#ffd000",
+    "#00a000",
+    "#0088ff",
+    "#4b0082",
+    "#9400d3"
+
+];
+
+
+function createRainbowLetters() {
+
+    const rainbowGrid =
+        document.getElementById(
+            "rainbowGrid"
+        );
+
+
+    alphabetData.forEach(
+        function(item, index) {
+
+            const letter =
+                document.createElement("div");
+
+
+            letter.className =
+                "rainbowLetter";
+
+
+            letter.innerText =
+                item[0];
+
+
+            letter.style.color =
+                rainbowColors[
+                    index %
+                    rainbowColors.length
+                ];
+
+
+            letter.onclick =
+                function() {
+
+                    speak(
+                        item[0] +
+                        " for " +
+                        item[1]
+                    );
+
+                };
+
+
+            rainbowGrid.appendChild(
+                letter
+            );
+
+        }
+    );
+
+}
+
+
+createRainbowLetters();
+
+
+function openRainbow() {
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "rainbowPage"
+    ).classList.remove("hidden");
+
+}
+
+
+/* =====================================================
+   TEST SYSTEM
+===================================================== */
 
 let testType = "";
 
@@ -274,26 +641,11 @@ let testPosition = 0;
 let testScore = 0;
 
 
-/* =========================
-   OPEN TEST MENU
-========================= */
+/* Test menu */
 
 function openTestMenu() {
 
-    document.getElementById("homePage")
-        .classList.add("hidden");
-
-
-    document.getElementById("lessonPage")
-        .classList.add("hidden");
-
-
-    document.getElementById("testPage")
-        .classList.add("hidden");
-
-
-    document.getElementById("resultPage")
-        .classList.add("hidden");
+    hideAllPages();
 
 
     document.getElementById("testMenu")
@@ -302,9 +654,7 @@ function openTestMenu() {
 }
 
 
-/* =========================
-   START TEST
-========================= */
+/* Start test */
 
 function startTest(type) {
 
@@ -318,10 +668,9 @@ function startTest(type) {
 
 
     /*
-       Copy all 26 alphabets.
+       Make copy of alphabet.
 
-       Because every question is used only once,
-       there will be NO repeated question.
+       Every letter appears only once.
     */
 
     testQuestions =
@@ -329,7 +678,7 @@ function startTest(type) {
 
 
     /*
-       Randomize question order
+       Random order
     */
 
     testQuestions.sort(
@@ -341,8 +690,7 @@ function startTest(type) {
     );
 
 
-    document.getElementById("testMenu")
-        .classList.add("hidden");
+    hideAllPages();
 
 
     document.getElementById("testPage")
@@ -351,15 +699,17 @@ function startTest(type) {
 
     if (type === "capital") {
 
-        document.getElementById("testTitle")
-            .innerText =
+        document.getElementById(
+            "testTitle"
+        ).innerText =
             "🔠 Capital Letter Test";
 
     }
     else {
 
-        document.getElementById("testTitle")
-            .innerText =
+        document.getElementById(
+            "testTitle"
+        ).innerText =
             "🔡 Small Letter Test";
 
     }
@@ -370,9 +720,7 @@ function startTest(type) {
 }
 
 
-/* =========================
-   SHOW QUESTION
-========================= */
+/* Show question */
 
 function showQuestion() {
 
@@ -380,8 +728,9 @@ function showQuestion() {
         testQuestions[testPosition];
 
 
-    document.getElementById("questionNumber")
-        .innerText =
+    document.getElementById(
+        "questionNumber"
+    ).innerText =
         "Question " +
         (testPosition + 1) +
         " / " +
@@ -390,22 +739,25 @@ function showQuestion() {
 
     if (testType === "capital") {
 
-        document.getElementById("testQuestion")
-            .innerText =
+        document.getElementById(
+            "testQuestion"
+        ).innerText =
             current[0];
 
     }
     else {
 
-        document.getElementById("testQuestion")
-            .innerText =
+        document.getElementById(
+            "testQuestion"
+        ).innerText =
             current[0].toLowerCase();
 
     }
 
 
-    document.getElementById("testMessage")
-        .innerText = "";
+    document.getElementById(
+        "testMessage"
+    ).innerText = "";
 
 
     createAnswers(current);
@@ -413,41 +765,30 @@ function showQuestion() {
 }
 
 
-/* =========================
-   CREATE ANSWERS
-========================= */
+/* Create answers */
 
 function createAnswers(correct) {
 
-    const answerArea =
-        document.getElementById("answerButtons");
+    const area =
+        document.getElementById(
+            "answerButtons"
+        );
 
 
-    answerArea.innerHTML = "";
+    area.innerHTML = "";
 
 
     let answers = [];
 
 
-    /* Correct answer */
-
-    if (testType === "capital") {
-
-        answers.push(correct[0]);
-
-    }
-    else {
-
-        answers.push(
-            correct[0].toLowerCase()
-        );
-
-    }
+    const correctAnswer =
+        testType === "capital"
+            ? correct[0]
+            : correct[0].toLowerCase();
 
 
-    /*
-       Add 3 different wrong answers
-    */
+    answers.push(correctAnswer);
+
 
     while (answers.length < 4) {
 
@@ -460,20 +801,10 @@ function createAnswers(correct) {
             ];
 
 
-        let value;
-
-
-        if (testType === "capital") {
-
-            value = random[0];
-
-        }
-        else {
-
-            value =
-                random[0].toLowerCase();
-
-        }
+        const value =
+            testType === "capital"
+                ? random[0]
+                : random[0].toLowerCase();
 
 
         if (!answers.includes(value)) {
@@ -485,10 +816,6 @@ function createAnswers(correct) {
     }
 
 
-    /*
-       Randomize answer buttons
-    */
-
     answers.sort(
         function() {
 
@@ -498,41 +825,43 @@ function createAnswers(correct) {
     );
 
 
-    answers.forEach(function(answer) {
+    answers.forEach(
+        function(answer) {
 
-        const button =
-            document.createElement("button");
-
-
-        button.className =
-            "answerBtn";
-
-
-        button.innerText =
-            answer;
-
-
-        button.onclick =
-            function() {
-
-                checkAnswer(
-                    answer,
-                    correct
+            const button =
+                document.createElement(
+                    "button"
                 );
 
-            };
+
+            button.className =
+                "answerBtn";
 
 
-        answerArea.appendChild(button);
+            button.innerText =
+                answer;
 
-    });
+
+            button.onclick =
+                function() {
+
+                    checkAnswer(
+                        answer,
+                        correct
+                    );
+
+                };
+
+
+            area.appendChild(button);
+
+        }
+    );
 
 }
 
 
-/* =========================
-   CHECK ANSWER
-========================= */
+/* Check answer */
 
 function checkAnswer(
     answer,
@@ -544,11 +873,6 @@ function checkAnswer(
             ? correct[0]
             : correct[0].toLowerCase();
 
-
-    /*
-       Disable all buttons
-       so child cannot click twice.
-    */
 
     const buttons =
         document.querySelectorAll(
@@ -587,11 +911,6 @@ function checkAnswer(
     }
 
 
-    /*
-       Wait 1 second,
-       then next question.
-    */
-
     setTimeout(
         function() {
 
@@ -619,18 +938,18 @@ function checkAnswer(
 }
 
 
-/* =========================
-   SHOW RESULT
-========================= */
+/* =====================================================
+   RESULT
+===================================================== */
 
 function showResult() {
 
-    document.getElementById("testPage")
-        .classList.add("hidden");
+    hideAllPages();
 
 
-    document.getElementById("resultPage")
-        .classList.remove("hidden");
+    document.getElementById(
+        "resultPage"
+    ).classList.remove("hidden");
 
 
     const total =
@@ -647,24 +966,31 @@ function showResult() {
         );
 
 
-    document.getElementById("finalScore")
-        .innerText =
-        testScore + " / " + total;
+    document.getElementById(
+        "finalScore"
+    ).innerText =
+        testScore +
+        " / " +
+        total;
 
 
-    document.getElementById("correctCount")
-        .innerText =
+    document.getElementById(
+        "correctCount"
+    ).innerText =
         testScore;
 
 
-    document.getElementById("wrongCount")
-        .innerText =
+    document.getElementById(
+        "wrongCount"
+    ).innerText =
         wrong;
 
 
-    document.getElementById("percentage")
-        .innerText =
-        percentage + "%";
+    document.getElementById(
+        "percentage"
+    ).innerText =
+        percentage +
+        "%";
 
 
     if (testType === "capital") {
@@ -685,11 +1011,6 @@ function showResult() {
     }
 
 
-    /* =========================
-       PERFORMANCE MESSAGE
-    ========================= */
-
-
     if (percentage === 100) {
 
         document.getElementById(
@@ -705,7 +1026,6 @@ function showResult() {
 
     }
 
-
     else if (percentage >= 80) {
 
         document.getElementById(
@@ -717,10 +1037,9 @@ function showResult() {
         document.getElementById(
             "resultSubMessage"
         ).innerText =
-            "👏 Very good! Keep learning and practicing!";
+            "👏 Very good! Keep learning!";
 
     }
-
 
     else if (percentage >= 60) {
 
@@ -733,10 +1052,9 @@ function showResult() {
         document.getElementById(
             "resultSubMessage"
         ).innerText =
-            "💪 You are doing great. Practice a little more!";
+            "💪 Keep practicing!";
 
     }
-
 
     else {
 
@@ -749,7 +1067,7 @@ function showResult() {
         document.getElementById(
             "resultSubMessage"
         ).innerText =
-            "❤️ Don't worry. Try again and you will improve!";
+            "❤️ Try again. You can do it!";
 
     }
 
