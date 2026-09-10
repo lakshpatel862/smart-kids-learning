@@ -1,61 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Smart Kids Learning</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
 <body>
 
-<!-- ================= HOME PAGE ================= -->
+
+<!-- ==================================================
+     HOME PAGE
+================================================== -->
 
 <div id="homePage">
 
     <div class="hero">
 
         <div class="cloud cloud1">☁️</div>
+
         <div class="cloud cloud2">☁️</div>
 
         <div class="sun">☀️</div>
 
-        <h1>🌈 Smart Kids Learning 🎓</h1>
+
+        <h1>
+            🌈 Smart Kids Learning 🎓
+        </h1>
+
 
         <p class="tagline">
             Learn • Play • Enjoy • Test
         </p>
 
-        <!-- KIDS PLAYING -->
+
+        <!-- Kids playing scene -->
+
         <div class="kidsScene">
 
-            <div class="tree">🌳</div>
+            <div class="tree">
+                🌳
+            </div>
 
-            <div class="kid kid1">🧒</div>
+            <div class="kid kid1">
+                🧒
+            </div>
 
-            <div class="ball">⚽</div>
+            <div class="ball">
+                ⚽
+            </div>
 
-            <div class="kid kid2">👧</div>
+            <div class="kid kid2">
+                👧
+            </div>
 
-            <div class="flower flower1">🌸</div>
-            <div class="flower flower2">🌼</div>
-            <div class="flower flower3">🌺</div>
+            <div class="flower flower1">
+                🌸
+            </div>
+
+            <div class="flower flower2">
+                🌼
+            </div>
+
+            <div class="flower flower3">
+                🌺
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- ALPHABET -->
+    <!-- ==================================================
+         ALPHABET
+    ================================================== -->
 
-    <section class="homeSection alphabetSection">
+    <section class="homeSection">
 
-        <h2>🔤 Learn A - Z</h2>
+        <h2>
+            🔤 Learn A - Z
+        </h2>
 
         <p>
-            Click any letter and learn it!
+            Click any letter to learn
         </p>
 
         <div id="alphabetGrid"></div>
@@ -63,14 +99,18 @@
     </section>
 
 
-    <!-- NUMBERS -->
+    <!-- ==================================================
+         NUMBERS
+    ================================================== -->
 
-    <section class="homeSection numberSection">
+    <section class="homeSection">
 
-        <h2>🔢 Learn Numbers 1 - 1000</h2>
+        <h2>
+            🔢 Numbers 1 - 1000
+        </h2>
 
         <p>
-            🌈 Numbers are in rainbow colors
+            🌈 Learn numbers with objects
         </p>
 
         <button class="mainButton numberButton"
@@ -83,15 +123,53 @@
     </section>
 
 
-    <!-- TESTS -->
+    <!-- ==================================================
+         MULTIPLICATION
+    ================================================== -->
 
-    <section class="homeSection testSection">
+    <section class="homeSection multiplicationSection">
 
-        <h2>📝 Kids Tests</h2>
+        <h2>
+            ✖️ Multiplication Tables
+        </h2>
 
         <p>
-            🎯 Test your learning skills
+            Learn tables from 1 to 100
         </p>
+
+
+        <button class="mainButton tableButton"
+                onclick="openTables()">
+
+            ✖️ Tables 1 - 100
+
+        </button>
+
+
+        <button class="mainButton tableTestButton"
+                onclick="openMultiplicationTestMenu()">
+
+            📝 Multiplication Test
+
+        </button>
+
+    </section>
+
+
+    <!-- ==================================================
+         ALPHABET TEST
+    ================================================== -->
+
+    <section class="homeSection">
+
+        <h2>
+            📝 Alphabet Test
+        </h2>
+
+        <p>
+            Test your A-Z knowledge
+        </p>
+
 
         <button class="mainButton alphabetTestButton"
                 onclick="openAlphabetTestMenu()">
@@ -100,20 +178,12 @@
 
         </button>
 
-
-        <button class="mainButton numberTestButton"
-                onclick="startNumberTest()">
-
-            🔢 Number Test
-
-        </button>
-
     </section>
 
 
     <footer>
 
-        🌟 Keep Learning & Keep Smiling! 🌟
+        🌟 Keep Learning • Keep Smiling • Keep Growing 🌟
 
     </footer>
 
@@ -121,38 +191,63 @@
 
 
 
-<!-- ================= LESSON PAGE ================= -->
+<!-- ==================================================
+     LESSON PAGE
+================================================== -->
 
-<div id="lessonPage" class="hidden">
+<div id="lessonPage"
+     class="hidden">
 
-    <button class="homeBtn" onclick="goHome()">
+    <button class="homeBtn"
+            onclick="goHome()">
+
         🏠 Home
+
     </button>
+
 
     <div class="lessonTitle">
 
-        <span id="letter">A</span>
+        <span id="letter">
+            A
+        </span>
 
-        <span> for </span>
+        <span>
+            for
+        </span>
 
-        <span id="word">Apple</span>
+        <span id="word">
+            Apple
+        </span>
 
     </div>
 
 
     <div class="lessonBox">
 
-        <div id="bigLetter" class="bigLetter">
+        <div id="bigLetter"
+             class="bigLetter">
+
             A
+
         </div>
 
-        <div id="smallLetter" class="smallLetter">
+
+        <div id="smallLetter"
+             class="smallLetter">
+
             a
+
         </div>
 
-        <div id="picture" class="picture">
+
+        <div id="picture"
+             class="picture">
+
             🍎
+
         </div>
+
 
         <h2 id="wordText">
             Apple
@@ -164,7 +259,7 @@
     <button class="speakBtn"
             onclick="speakCurrent()">
 
-        🔊 Hear A for Apple
+        🔊 Hear
 
     </button>
 
@@ -175,9 +270,11 @@
             ⬅️ Previous
         </button>
 
+
         <span id="progress">
             1 / 26
         </span>
+
 
         <button onclick="nextLetter()">
             Next ➡️
@@ -189,303 +286,21 @@
 
 
 
-<!-- ================= NUMBERS PAGE ================= -->
+<!-- ==================================================
+     NUMBERS PAGE
+================================================== -->
 
-<div id="numbersPage" class="hidden">
+<div id="numbersPage"
+     class="hidden">
 
-    <button class="homeBtn" onclick="goHome()">
+    <button class="homeBtn"
+            onclick="goHome()">
+
         🏠 Home
-    </button>
 
-    <h1>
-        🔢 Numbers 1 - 1000
-    </h1>
-
-    <p class="numberInstruction">
-        🌈 Every number has a rainbow color
-    </p>
-
-    <div class="numberTopButtons">
-
-        <button onclick="speakNumberList()">
-            🔊 Hear Numbers
-        </button>
-
-        <button onclick="startNumberTest()">
-            📝 Number Test
-        </button>
-
-    </div>
-
-
-    <div id="numberList"></div>
-
-</div>
-
-
-
-<!-- ================= NUMBER DETAIL ================= -->
-
-<div id="numberDetailPage" class="hidden">
-
-    <button class="homeBtn" onclick="openNumbers()">
-        ⬅️ Numbers
-    </button>
-
-
-    <div class="numberDetailCard">
-
-        <div id="bigNumber">
-            1
-        </div>
-
-
-        <div id="numberObjects">
-            ⚽
-        </div>
-
-
-        <h2 id="numberWord">
-            One
-        </h2>
-
-
-        <button class="speakBtn"
-                onclick="speakNumber()">
-
-            🔊 Hear Number
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= ALPHABET TEST MENU ================= -->
-
-<div id="alphabetTestMenu"
-     class="hidden testPage">
-
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
-    </button>
-
-
-    <div class="testMenuCard">
-
-        <div class="testEmoji">
-            🧠
-        </div>
-
-        <h1>
-            🔤 Alphabet Test
-        </h1>
-
-        <p>
-            Choose your test
-        </p>
-
-
-        <button class="choiceButton"
-                onclick="startAlphabetTest('capital')">
-
-            🔠 Capital A - Z Test
-
-        </button>
-
-
-        <button class="choiceButton"
-                onclick="startAlphabetTest('small')">
-
-            🔡 Small a - z Test
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= ALPHABET TEST ================= -->
-
-<div id="alphabetTestPage"
-     class="hidden testPage">
-
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
-    </button>
-
-
-    <h1 id="alphabetTestTitle">
-        🔠 Capital Letter Test
-    </h1>
-
-
-    <div class="testCard">
-
-        <p id="alphabetQuestionNumber">
-            Question 1 / 26
-        </p>
-
-
-        <div id="alphabetQuestion">
-            A
-        </div>
-
-
-        <p>
-            👇 Choose the correct answer
-        </p>
-
-
-        <div id="alphabetAnswers"></div>
-
-
-        <div id="alphabetTestMessage"></div>
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= NUMBER TEST ================= -->
-
-<div id="numberTestPage"
-     class="hidden testPage">
-
-    <button class="homeBtn" onclick="goHome()">
-        🏠 Home
     </button>
 
 
     <h1>
-        🔢 Number Test
-    </h1>
-
-
-    <div class="testCard">
-
-        <p id="numberQuestionNumber">
-            Question 1 / 20
-        </p>
-
-
-        <div id="numberQuestion">
-            25
-        </div>
-
-
-        <p>
-            👇 Choose the correct answer
-        </p>
-
-
-        <div id="numberAnswers"></div>
-
-
-        <div id="numberTestMessage"></div>
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= RESULT PAGE ================= -->
-
-<div id="resultPage"
-     class="hidden resultPage">
-
-    <div class="resultCard">
-
-        <div class="trophy">
-            🏆
-        </div>
-
-        <h1>
-            Test Complete!
-        </h1>
-
-
-        <p id="resultTestName">
-            Alphabet Test
-        </p>
-
-
-        <div class="scoreCircle">
-
-            <div id="finalScore">
-                20 / 20
-            </div>
-
-            <small>
-                Score
-            </small>
-
-        </div>
-
-
-        <div class="resultDetails">
-
-            <div class="detailBox">
-                <span>✅</span>
-                <b id="correctCount">20</b>
-                <small>Correct</small>
-            </div>
-
-
-            <div class="detailBox">
-                <span>❌</span>
-                <b id="wrongCount">0</b>
-                <small>Wrong</small>
-            </div>
-
-
-            <div class="detailBox">
-                <span>🎯</span>
-                <b id="percentage">100%</b>
-                <small>Percentage</small>
-            </div>
-
-        </div>
-
-
-        <h2 id="resultMessage">
-            🏆 Perfect Score!
-        </h2>
-
-
-        <p id="resultSubMessage">
-            Amazing!
-        </p>
-
-
-        <button class="resultButton"
-                onclick="goHome()">
-
-            🏠 Back to Home
-
-        </button>
-
-
-        <button class="resultButton tryButton"
-                onclick="restartLastTest()">
-
-            🔄 Try Again
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+        🔢 Numbers 1 - 1000
+    </
