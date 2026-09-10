@@ -4,33 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Kids Learning</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- HOME / ALPHABET BOX SCREEN -->
+    <!-- HOME PAGE -->
     <div id="homePage">
 
         <h1>🌈 Smart Kids Learning</h1>
         <h2>📚 Learn English Alphabets</h2>
 
-        <p class="instruction">
-            👆 Click on any alphabet to learn
-        </p>
+        <p class="instruction">👆 Click on any alphabet to learn</p>
 
         <div id="alphabetGrid"></div>
+
+        <button class="testMainBtn" onclick="openTestMenu()">
+            📝 Take Test
+        </button>
 
     </div>
 
 
-    <!-- ALPHABET LESSON SCREEN -->
+    <!-- LESSON PAGE -->
     <div id="lessonPage" class="hidden">
 
-        <button class="homeBtn" onclick="goHome()">
-            🏠 Home
-        </button>
+        <button class="homeBtn" onclick="goHome()">🏠 Home</button>
 
         <div class="lessonTitle">
             <span id="letter">A</span>
@@ -40,21 +39,13 @@
 
         <div class="lessonBox">
 
-            <div class="bigLetter" id="bigLetter">
-                A
-            </div>
+            <div class="bigLetter" id="bigLetter">A</div>
 
-            <div class="smallLetter" id="smallLetter">
-                a
-            </div>
+            <div class="smallLetter" id="smallLetter">a</div>
 
-            <div class="picture" id="picture">
-                🍎
-            </div>
+            <div class="picture" id="picture">🍎</div>
 
-            <h2 id="wordText">
-                Apple
-            </h2>
+            <h2 id="wordText">Apple</h2>
 
         </div>
 
@@ -68,15 +59,91 @@
                 ⬅️ Previous
             </button>
 
-            <span id="progress">
-                1 / 26
-            </span>
+            <span id="progress">1 / 26</span>
 
             <button onclick="nextLetter()">
                 Next ➡️
             </button>
 
         </div>
+
+    </div>
+
+
+    <!-- TEST MENU -->
+    <div id="testMenu" class="hidden testPage">
+
+        <button class="homeBtn" onclick="goHome()">🏠 Home</button>
+
+        <h1>📝 Alphabet Test</h1>
+
+        <p>Select Test</p>
+
+        <button class="testChoiceBtn" onclick="startTest('capital')">
+            🔠 Capital Letter Test
+        </button>
+
+        <button class="testChoiceBtn" onclick="startTest('small')">
+            🔡 Small Letter Test
+        </button>
+
+    </div>
+
+
+    <!-- TEST PAGE -->
+    <div id="testPage" class="hidden testPage">
+
+        <button class="homeBtn" onclick="goHome()">🏠 Home</button>
+
+        <h1 id="testTitle">📝 Test</h1>
+
+        <div class="testCard">
+
+            <p id="questionNumber">
+                Question 1 / 26
+            </p>
+
+            <div id="testQuestion">
+                A
+            </div>
+
+            <p>
+                👇 Choose the correct answer
+            </p>
+
+            <div id="answerButtons"></div>
+
+            <p id="testMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULT PAGE -->
+    <div id="resultPage" class="hidden testPage">
+
+        <h1>🎉 Test Complete!</h1>
+
+        <div class="resultBox">
+
+            <div id="finalScore">
+                0 / 26
+            </div>
+
+            <p id="resultMessage">
+                Great Job! 🌟
+            </p>
+
+        </div>
+
+        <button class="testChoiceBtn" onclick="openTestMenu()">
+            🔄 Take Another Test
+        </button>
+
+        <button class="testChoiceBtn" onclick="goHome()">
+            🏠 Home
+        </button>
 
     </div>
 
