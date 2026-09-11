@@ -1,775 +1,621 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-body {
-    font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
-    overflow: hidden;
-}
+<head>
 
+    <meta charset="UTF-8">
 
-/* =========================================
-                COMMON
-========================================= */
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-.screen {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
+    <title>Kids Learning World</title>
 
-.hidden {
-    display: none !important;
-}
+    <link rel="stylesheet"
+          href="style.css">
 
+</head>
 
-/* =========================================
-                HOME
-========================================= */
 
-#homePage {
+<body>
 
-    background:
-        linear-gradient(
-            135deg,
-            #73d8ff,
-            #a88cff,
-            #ff9dca
-        );
 
-    display: flex;
+<!-- =================================================
+                    HOME PAGE
+================================================= -->
 
-    justify-content: center;
+<div id="homePage" class="screen">
 
-    align-items: center;
+    <div class="clouds">
+        ☁️ ☁️ ☁️ ☁️
+    </div>
 
-    overflow: hidden;
-}
 
+    <div class="homeContent">
 
-.clouds {
+        <div class="kids">
+            👧 🧒 👦
+        </div>
 
-    position: absolute;
 
-    top: 5%;
+        <h1>
+            🌈 Kids Learning World 🌈
+        </h1>
 
-    width: 100%;
 
-    text-align: center;
+        <p>
+            Learn • Play • Enjoy
+        </p>
 
-    font-size: 65px;
 
-    opacity: .7;
+        <!-- =========================================
+                    ALPHABET BOX
+        ========================================= -->
 
-    animation: cloudMove 7s infinite alternate;
+        <button class="homeBox alphabetBox"
+                onclick="openAlphabetPage()">
 
-}
+            <span class="homeIcon">
+                🔤
+            </span>
 
+            <span class="homeTitle">
+                Alphabet
+            </span>
 
-.homeContent {
+            <span class="homeSub">
+                A to Z
+            </span>
 
-    position: relative;
+            <span class="clickText">
+                👆 Click to Start
+            </span>
 
-    z-index: 5;
+        </button>
 
-    text-align: center;
 
-    max-height: 95vh;
+        <!-- =========================================
+                    NUMBERS BOX
+        ========================================= -->
 
-    overflow-y: auto;
+        <button class="homeBox numberBox"
+                onclick="openNumberPage()">
 
-}
+            <span class="homeIcon">
+                🔢
+            </span>
 
+            <span class="homeTitle">
+                Numbers
+            </span>
 
-.kids {
+            <span class="homeSub">
+                1 to 1000
+            </span>
 
-    font-size: 65px;
+            <span class="clickText">
+                👆 Click to Start
+            </span>
 
-    animation: kidsBounce 2s infinite;
+        </button>
 
-}
 
+        <!-- =========================================
+                    TEST BOX
+        ========================================= -->
 
-.homeContent h1 {
+        <button class="homeBox testBox"
+                onclick="openTestPage()">
 
-    font-size: clamp(30px, 5vw, 60px);
+            <span class="homeIcon">
+                📝
+            </span>
 
-    color: white;
+            <span class="homeTitle">
+                Alphabet Test
+            </span>
 
-    text-shadow:
-        3px 3px #7048a8;
+            <span class="homeSub">
+                Capital A - Z
+            </span>
 
-}
+            <span class="clickText">
+                👆 Start Test
+            </span>
 
+        </button>
 
-.homeContent p {
 
-    color: white;
+    </div>
 
-    font-size: 23px;
+</div>
 
-    margin: 8px;
 
-}
 
+<!-- =================================================
+                 ALPHABET PAGE
+================================================= -->
 
-/* =========================================
-              HOME BOX
-========================================= */
+<div id="alphabetPage"
+     class="screen hidden">
 
-.homeBox {
 
-    width: min(330px, 80vw);
+    <button class="homeButton"
+            onclick="goHome()">
 
-    height: 230px;
+        🏠 Home
 
-    margin: 12px;
+    </button>
 
-    border: 6px solid white;
 
-    border-radius: 35px;
+    <div class="pageHeading">
 
-    display: inline-flex;
+        <h1>
+            🔤 Learn Alphabet
+        </h1>
 
-    vertical-align: top;
+        <p>
+            A to Z
+        </p>
 
-    flex-direction: column;
+    </div>
 
-    justify-content: center;
 
-    align-items: center;
+    <div class="learningArea">
 
-    color: white;
 
-    font-family: inherit;
+        <!-- LETTER -->
 
-    cursor: pointer;
+        <div id="letter"
+             class="letter">
 
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.25);
+            A
 
-    transition: .3s;
+        </div>
 
-}
 
+        <!-- WORD -->
 
-.homeBox:hover {
+        <div class="wordArea">
 
-    transform:
-        translateY(-10px)
-        scale(1.04);
 
-}
+            <div id="picture"
+                 class="picture">
 
+                🍎
 
-.alphabetBox {
+            </div>
 
-    background:
-        linear-gradient(
-            145deg,
-            #ff5798,
-            #ff9966
-        );
 
-}
+            <div id="word"
+                 class="word">
 
+                Apple
 
-.numberBox {
+            </div>
 
-    background:
-        linear-gradient(
-            145deg,
-            #4776ff,
-            #8e54e9
-        );
 
-}
+        </div>
 
+    </div>
 
-.homeIcon {
 
-    font-size: 60px;
+    <div id="sentence"
+         class="sentence">
 
-}
+        A for Apple
 
+    </div>
 
-.homeTitle {
 
-    font-size: 34px;
+    <button class="speakButton"
+            onclick="speakAlphabet()">
 
-    font-weight: bold;
+        🔊 Hear Again
 
-}
+    </button>
 
 
-.homeSub {
+    <div class="navigation">
 
-    font-size: 22px;
 
-}
+        <button onclick="previousAlphabet()">
 
+            ◀ Previous
 
-.clickText {
+        </button>
 
-    margin-top: 8px;
 
-    background: white;
+        <span id="alphabetProgress">
 
-    color: #7347ad;
+            A / Z
 
-    padding: 7px 17px;
+        </span>
 
-    border-radius: 18px;
 
-    font-size: 15px;
+        <button onclick="nextAlphabet()">
 
-}
+            Next ▶
 
+        </button>
 
-/* =========================================
-              PAGE BACKGROUND
-========================================= */
 
-#alphabetPage,
-#numberPage {
+    </div>
 
-    display: flex;
 
-    flex-direction: column;
+</div>
 
-    align-items: center;
 
-    justify-content: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #70dcff,
-            #9988ff,
-            #ff9bca
-        );
+<!-- =================================================
+                   NUMBER PAGE
+================================================= -->
 
-}
+<div id="numberPage"
+     class="screen hidden">
 
 
-/* =========================================
-              HOME BUTTON
-========================================= */
+    <button class="homeButton"
+            onclick="goHome()">
 
-.homeButton {
+        🏠 Home
 
-    position: absolute;
+    </button>
 
-    top: 18px;
 
-    left: 18px;
+    <div class="pageHeading numberHeading">
 
-    z-index: 20;
+        <h1>
+            🔢 Learn Numbers
+        </h1>
 
-    border: none;
+        <p>
+            1 to 1000 • Let's Count!
+        </p>
 
-    background: white;
+    </div>
 
-    color: #7048a8;
 
-    padding: 11px 20px;
+    <div class="numberLearningArea">
 
-    border-radius: 22px;
 
-    font-size: 17px;
+        <!-- BIG NUMBER -->
 
-    font-family: inherit;
+        <div id="bigNumber"
+             class="bigNumber">
 
-    font-weight: bold;
+            1
 
-    cursor: pointer;
+        </div>
 
-    box-shadow:
-        0 7px 15px rgba(0,0,0,.2);
 
-}
+        <!-- BALLS -->
 
+        <div id="balls"
+             class="balls">
 
-.homeButton:hover {
+            ⚽
 
-    transform: scale(1.08);
+        </div>
 
-}
 
+        <!-- NUMBER NAME -->
 
-/* =========================================
-                HEADING
-========================================= */
+        <div id="numberName"
+             class="numberName">
 
-.pageHeading {
+            One
 
-    position: absolute;
+        </div>
 
-    top: 5%;
 
-    text-align: center;
+    </div>
 
-    color: white;
 
-}
+    <button class="speakButton"
+            onclick="speakNumber()">
 
+        🔊 Hear Again
 
-.pageHeading h1 {
+    </button>
 
-    font-size: clamp(30px, 4vw, 50px);
 
-    text-shadow:
-        3px 3px #6945a5;
+    <div class="navigation">
 
-}
 
+        <button id="previousNumberButton"
+                onclick="previousNumber()">
 
-.pageHeading p {
+            ◀ Previous
 
-    font-size: 20px;
+        </button>
 
-}
 
+        <span id="numberProgress">
 
-/* =========================================
-             ALPHABET
-========================================= */
+            1 / 1000
 
-.learningArea {
+        </span>
 
-    display: flex;
 
-    align-items: center;
+        <button onclick="nextNumber()">
 
-    justify-content: center;
+            Next ▶
 
-    gap: clamp(20px, 6vw, 80px);
+        </button>
 
-    width: 90vw;
 
-}
+    </div>
 
 
-.letter {
+</div>
 
-    font-size: clamp(130px, 20vw, 230px);
 
-    font-weight: bold;
 
-    background:
-        linear-gradient(
-            45deg,
-            red,
-            orange,
-            green,
-            blue,
-            purple
-        );
+<!-- =================================================
+              ALPHABET TEST PAGE
+================================================= -->
 
-    -webkit-background-clip: text;
+<div id="testPage"
+     class="screen hidden">
 
-    color: transparent;
 
-    filter:
-        drop-shadow(
-            5px 8px 3px
-            rgba(0,0,0,.2)
-        );
+    <button class="homeButton"
+            onclick="goHome()">
 
-    animation:
-        drop .8s ease-out;
+        🏠 Home
 
-}
+    </button>
 
 
-.wordArea {
+    <div class="pageHeading">
 
-    background: rgba(255,255,255,.94);
+        <h1>
+            📝 Alphabet Matching Test
+        </h1>
 
-    padding: 20px 40px;
+        <p>
+            Match Capital Letter with Small Letter
+        </p>
 
-    border-radius: 35px;
+    </div>
 
-    text-align: center;
 
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.2);
+    <!-- TEST INFORMATION -->
 
-}
+    <div class="testInfo">
 
+        Question
 
-.picture {
+        <span id="testQuestionNumber">
+            1
+        </span>
 
-    font-size: clamp(75px, 10vw, 130px);
+        /
 
-    animation: bounce 1.5s infinite;
+        <span id="testTotalQuestions">
+            26
+        </span>
 
-}
+        &nbsp; | &nbsp;
 
+        Score:
 
-.word {
+        <span id="testScore">
+            0
+        </span>
 
-    color: #ff4f91;
+    </div>
 
-    font-size: clamp(32px, 5vw, 55px);
 
-    font-weight: bold;
 
-}
+    <!-- MATCHING AREA -->
 
+    <div class="matchingArea">
 
-.sentence {
 
-    color: white;
+        <!-- CAPITAL LETTER -->
 
-    font-size: clamp(30px, 5vw, 55px);
+        <div class="capitalSide">
 
-    font-weight: bold;
 
-    margin: 15px;
+            <div class="testLabel">
+                CAPITAL
+            </div>
 
-    text-shadow:
-        3px 3px #6945a5;
 
-}
+            <div id="capitalLetter"
+                 class="matchLetter capitalLetter">
 
+                A
 
-/* =========================================
-                NUMBER
-========================================= */
+            </div>
 
-.numberLearningArea {
 
-    text-align: center;
+        </div>
 
-    width: 90vw;
 
-}
 
+        <!-- LINE AREA -->
 
-.bigNumber {
+        <div class="lineArea">
 
-    font-size: clamp(130px, 23vw, 250px);
+            <canvas id="matchCanvas"></canvas>
 
-    font-weight: bold;
 
-    background:
-        linear-gradient(
-            45deg,
-            red,
-            orange,
-            yellow,
-            green,
-            blue,
-            purple
-        );
+            <div id="testMessage"
+                 class="testMessage">
 
-    -webkit-background-clip: text;
+            </div>
 
-    color: transparent;
+        </div>
 
-    filter:
-        drop-shadow(
-            5px 8px 3px
-            rgba(0,0,0,.2)
-        );
 
-    animation:
-        drop .8s ease-out;
 
-}
+        <!-- SMALL LETTERS -->
 
+        <div class="smallSide">
 
-.balls {
 
-    font-size: clamp(35px, 5vw, 60px);
+            <div class="testLabel">
+                SMALL
+            </div>
 
-    min-height: 65px;
 
-    max-width: 800px;
+            <div id="smallLetters"
+                 class="smallLetters">
 
-    margin: auto;
+            </div>
 
-    line-height: 1.4;
 
-    animation:
-        bounce 1.5s infinite;
+        </div>
 
-}
 
+    </div>
 
-.numberName {
 
-    display: inline-block;
 
-    background: white;
+    <!-- TRY AGAIN -->
 
-    color: #7048a8;
+    <button class="clearButton"
+            onclick="clearMatch()">
 
-    padding: 10px 35px;
+        🔄 Try Again
 
-    border-radius: 25px;
+    </button>
 
-    font-size: clamp(28px, 4vw, 45px);
 
-    font-weight: bold;
 
-    box-shadow:
-        0 10px 20px rgba(0,0,0,.18);
+    <!-- NEXT -->
 
-}
+    <button id="nextTestButton"
+            class="nextTestButton hidden"
+            onclick="nextTestQuestion()">
 
+        Next Question ▶
 
-/* =========================================
-              SPEAK BUTTON
-========================================= */
+    </button>
 
-.speakButton {
 
-    border: none;
+</div>
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff4f91,
-            #ff8b42
-        );
 
-    color: white;
 
-    padding: 12px 25px;
+<!-- =================================================
+                    RESULT PAGE
+================================================= -->
 
-    border-radius: 23px;
+<div id="resultPage"
+     class="screen hidden">
 
-    font-family: inherit;
 
-    font-size: 18px;
+    <div class="resultBox">
 
-    font-weight: bold;
 
-    cursor: pointer;
+        <div id="resultEmoji"
+             class="resultEmoji">
 
-    box-shadow:
-        0 8px 15px rgba(0,0,0,.2);
+            🏆
 
-}
+        </div>
 
 
-.speakButton:hover {
+        <h1>
 
-    transform: scale(1.08);
+            🎉 Test Completed! 🎉
 
-}
+        </h1>
 
 
-/* =========================================
-              NAVIGATION
-========================================= */
+        <div class="resultTitle">
 
-.navigation {
+            Your Result
 
-    display: flex;
+        </div>
 
-    align-items: center;
 
-    justify-content: center;
+        <div id="finalPercentage"
+             class="finalPercentage">
 
-    gap: 25px;
+            0%
 
-    margin-top: 18px;
+        </div>
 
-}
 
+        <div id="finalMessage"
+             class="finalMessage">
 
-.navigation button {
+            Great Job!
 
-    border: none;
+        </div>
 
-    background: white;
 
-    color: #6845a3;
 
-    padding: 11px 20px;
+        <!-- CELEBRATION -->
 
-    border-radius: 22px;
+        <div id="celebration"
+             class="celebration">
 
-    font-family: inherit;
 
-    font-size: 16px;
+            <div class="dancer dancer1">
 
-    font-weight: bold;
+                🧒💃
 
-    cursor: pointer;
+            </div>
 
-    box-shadow:
-        0 7px 15px rgba(0,0,0,.18);
 
-}
+            <div class="dancer dancer2">
 
+                👦🕺
 
-.navigation button:hover {
+            </div>
 
-    transform: scale(1.08);
 
-}
+            <div class="dancer dancer3">
 
+                🤖💃
 
-#alphabetProgress,
-#numberProgress {
+            </div>
 
-    color: white;
 
-    font-size: 19px;
+        </div>
 
-    font-weight: bold;
 
-}
 
+        <!-- RESULT BUTTONS -->
 
-/* =========================================
-              ANIMATIONS
-========================================= */
+        <div class="resultButtons">
 
-@keyframes drop {
 
-    from {
+            <button onclick="restartTest()">
 
-        transform:
-            translateY(-180px);
+                🔄 Try Again
 
-        opacity: 0;
+            </button>
 
-    }
 
-    to {
+            <button onclick="goHome()">
 
-        transform:
-            translateY(0);
+                🏠 Home
 
-        opacity: 1;
+            </button>
 
-    }
 
-}
+        </div>
 
 
-@keyframes bounce {
+    </div>
 
-    0%,100% {
+</div>
 
-        transform:
-            translateY(0);
 
-    }
 
-    50% {
+<!-- =================================================
+                  JAVASCRIPT
+================================================= -->
 
-        transform:
-            translateY(-12px);
+<script src="script.js"></script>
 
-    }
 
-}
+</body>
 
-
-@keyframes kidsBounce {
-
-    0%,100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-10px);
-
-    }
-
-}
-
-
-@keyframes cloudMove {
-
-    from {
-
-        transform:
-            translateX(-25px);
-
-    }
-
-    to {
-
-        transform:
-            translateX(25px);
-
-    }
-
-}
-
-
-/* =========================================
-                 MOBILE
-========================================= */
-
-@media(max-width:700px) {
-
-    .homeBox {
-
-        display: flex;
-
-        margin: 8px auto;
-
-        height: 190px;
-
-    }
-
-
-    .kids {
-
-        font-size: 45px;
-
-    }
-
-
-    .learningArea {
-
-        gap: 12px;
-
-    }
-
-
-    .wordArea {
-
-        padding: 15px;
-
-    }
-
-
-    .navigation {
-
-        gap: 7px;
-
-    }
-
-
-    .navigation button {
-
-        padding: 9px 12px;
-
-        font-size: 14px;
-
-    }
-
-
-    .balls {
-
-        font-size: 28px;
-
-    }
-
-}
+</html>
