@@ -3,373 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Smart Kids Learning</title>
-
+    <title>Kids Alphabet World</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= HOME PAGE ================= -->
+    <!-- HOME -->
+    <div id="homePage" class="screen">
 
-<div id="homePage">
+        <div class="stars">✨ ⭐ ✨ ⭐ ✨</div>
 
-    <div class="sky">
-        <div class="cloud cloud1">☁️</div>
-        <div class="cloud cloud2">☁️</div>
-        <div class="sun">☀️</div>
+        <div class="homeContent">
+
+            <div class="kids">👧 🧒 👦</div>
+
+            <h1>🌈 Kids Learning World 🌈</h1>
+
+            <p>Learn • Play • Enjoy</p>
+
+            <!-- ALPHABET BOX -->
+            <button class="alphabetHomeBox" onclick="openAlphabetPage()">
+                <span class="bigABC">🔤</span>
+                <span class="boxTitle">Alphabet</span>
+                <span class="boxSub">A to Z</span>
+                <span class="clickText">👆 Click to Start</span>
+            </button>
+
+        </div>
     </div>
 
-    <!-- Moving Cartoon Characters -->
-    <div class="cartoon cartoon1">🤖</div>
-    <div class="cartoon cartoon2">🐼</div>
-    <div class="cartoon cartoon3">🐰</div>
 
-    <header class="mainHeader">
-        <div class="rainbow">🌈</div>
+    <!-- ALPHABET PAGE -->
+    <div id="alphabetPage" class="screen hidden">
 
-        <h1>Smart Kids Learning</h1>
-
-        <p>🎓 Learn • Play • Practice • Enjoy 🎮</p>
-    </header>
-
-
-    <!-- MAIN OPTIONS -->
-
-    <section class="menuSection">
-
-        <!-- ALPHABET -->
-
-        <div class="featureCard alphabetCard">
-
-            <div class="cardIcon">🔤</div>
-
-            <h2>Learn Alphabets</h2>
-
-            <p>Learn A to Z with pictures & voice</p>
-
-            <button class="bigButton alphabetButton"
-                    onclick="showPage('alphabetPage')">
-
-                🔤 Start Alphabet
-
-            </button>
-
-            <button class="testButton"
-                    onclick="startAlphabetTest()">
-
-                📝 Alphabet Test
-
-            </button>
-
-        </div>
-
-
-        <!-- NUMBERS -->
-
-        <div class="featureCard numberCard">
-
-            <div class="cardIcon">🔢</div>
-
-            <h2>Learn Numbers</h2>
-
-            <p>Learn numbers from 1 to 1000</p>
-
-            <button class="bigButton numberButton"
-                    onclick="showPage('numbersPage')">
-
-                🔢 Start Numbers
-
-            </button>
-
-            <button class="testButton"
-                    onclick="startNumberTest()">
-
-                📝 Number Test
-
-            </button>
-
-        </div>
-
-
-        <!-- TABLE -->
-
-        <div class="featureCard tableCard">
-
-            <div class="cardIcon">✖️</div>
-
-            <h2>Multiplication Tables</h2>
-
-            <p>Learn tables from 1 to 100</p>
-
-            <button class="bigButton tableButton"
-                    onclick="showPage('tablesPage')">
-
-                ✖️ Start Tables
-
-            </button>
-
-            <button class="testButton"
-                    onclick="startMultiplicationTest()">
-
-                📝 Table Test
-
-            </button>
-
-        </div>
-
-    </section>
-
-</div>
-
-
-<!-- ================= ALPHABET PAGE ================= -->
-
-<div id="alphabetPage" class="page hidden">
-
-    <button class="homeBtn" onclick="showPage('homePage')">
-        🏠 Home
-    </button>
-
-    <h1>🔤 Alphabet A to Z</h1>
-
-    <p class="pageSubtitle">
-        Click any letter to learn
-    </p>
-
-    <div id="alphabetGrid" class="alphabetGrid"></div>
-
-</div>
-
-
-<!-- ================= ALPHABET LESSON ================= -->
-
-<div id="lessonPage" class="page hidden">
-
-    <button class="homeBtn" onclick="showPage('homePage')">
-        🏠 Home
-    </button>
-
-    <div class="lessonBox">
-
-        <div id="lessonLetter" class="lessonLetter"></div>
-
-        <div id="lessonEmoji" class="lessonEmoji"></div>
-
-        <h2 id="lessonText"></h2>
-
-        <button class="speakButton" onclick="speakCurrent()">
-            🔊 Speak
-        </button>
-
-        <div class="navigationButtons">
-
-            <button onclick="previousLetter()">
-                ◀️ Previous
-            </button>
-
-            <button onclick="nextLetter()">
-                Next ▶️
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= NUMBERS PAGE ================= -->
-
-<div id="numbersPage" class="page hidden">
-
-    <button class="homeBtn" onclick="showPage('homePage')">
-        🏠 Home
-    </button>
-
-    <h1>🔢 Numbers 1 - 1000</h1>
-
-    <p class="pageSubtitle">
-        Click a number to learn
-    </p>
-
-    <div id="numbersGrid" class="numbersGrid"></div>
-
-</div>
-
-
-<!-- ================= NUMBER LESSON ================= -->
-
-<div id="numberLessonPage" class="page hidden">
-
-    <button class="homeBtn" onclick="showPage('homePage')">
-        🏠 Home
-    </button>
-
-    <div class="numberLessonBox">
-
-        <div id="bigNumber"></div>
-
-        <div id="ballDisplay"></div>
-
-        <h2 id="numberWords"></h2>
-
-        <button class="speakButton" onclick="speakNumber()">
-            🔊 Speak Number
-        </button>
-
-        <div class="navigationButtons">
-
-            <button onclick="previousNumber()">
-                ◀️ Previous
-            </button>
-
-            <button onclick="nextNumber()">
-                Next ▶️
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= TABLE PAGE ================= -->
-
-<div id="tablesPage" class="page hidden">
-
-    <button class="homeBtn" onclick="showPage('homePage')">
-        🏠 Home
-    </button>
-
-    <h1>✖️ Multiplication Tables 1 - 100</h1>
-
-    <p class="pageSubtitle">
-        Select a table
-    </p>
-
-    <div id="tablesGrid" class="tablesGrid"></div>
-
-</div>
-
-
-<!-- ================= TABLE LESSON ================= -->
-
-<div id="tableLessonPage" class="page hidden">
-
-    <button class="homeBtn" onclick="showPage('homePage')">
-        🏠 Home
-    </button>
-
-    <div class="tableLessonBox">
-
-        <h1 id="tableTitle"></h1>
-
-        <div id="tableContent"></div>
-
-        <button class="speakButton" onclick="speakTable()">
-            🔊 Speak Table
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- ================= TEST PAGE ================= -->
-
-<div id="testPage" class="page hidden">
-
-    <button class="homeBtn" onclick="showPage('homePage')">
-        🏠 Home
-    </button>
-
-    <div class="testBox">
-
-        <div class="testTop">
-
-            <span id="testTitle"></span>
-
-            <span id="questionNumber"></span>
-
-        </div>
-
-        <div id="testQuestion" class="testQuestion"></div>
-
-        <input
-            id="testAnswer"
-            type="text"
-            placeholder="✏️ Write your answer here"
-            autocomplete="off"
-        >
-
-        <button class="submitButton" onclick="submitAnswer()">
-            ✅ Submit Answer
-        </button>
-
-        <p id="answerMessage"></p>
-
-    </div>
-
-</div>
-
-
-<!-- ================= RESULT PAGE ================= -->
-
-<div id="resultPage" class="page hidden">
-
-    <div class="resultBox">
-
-        <div class="trophy">🏆</div>
-
-        <h1>Test Complete!</h1>
-
-        <p class="resultMessage" id="resultMessage"></p>
-
-        <div class="resultCards">
-
-            <div>
-                <span>📚</span>
-                <strong id="resultScore">0 / 0</strong>
-                <small>Score</small>
-            </div>
-
-            <div>
-                <span>✅</span>
-                <strong id="resultCorrect">0</strong>
-                <small>Correct</small>
-            </div>
-
-            <div>
-                <span>❌</span>
-                <strong id="resultWrong">0</strong>
-                <small>Wrong</small>
-            </div>
-
-            <div>
-                <span>💯</span>
-                <strong id="resultPercentage">0%</strong>
-                <small>Percentage</small>
-            </div>
-
-        </div>
-
-        <button class="restartButton" onclick="restartCurrentTest()">
-            🔄 Try Again
-        </button>
-
-        <button class="homeResultButton" onclick="showPage('homePage')">
+        <button class="homeButton" onclick="goHome()">
             🏠 Home
         </button>
 
+        <div class="alphabetHeader">
+            <h1>🔤 Learn Alphabet</h1>
+            <p>A to Z • Let's Learn!</p>
+        </div>
+
+        <div class="learningArea">
+
+            <!-- LETTER -->
+            <div id="letter" class="letter">A</div>
+
+            <!-- WORD + PICTURE -->
+            <div class="wordArea">
+
+                <div id="picture" class="picture">🍎</div>
+
+                <div id="word" class="word">
+                    Apple
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="sentence" class="sentence">
+            A for Apple
+        </div>
+
+        <!-- SPEAK -->
+        <button class="speakButton" onclick="speakCurrent()">
+            🔊 Hear Again
+        </button>
+
+        <!-- NEXT / PREVIOUS -->
+        <div class="navigation">
+
+            <button id="previousButton" onclick="previousLetter()">
+                ◀ Previous
+            </button>
+
+            <div id="progress">
+                A / Z
+            </div>
+
+            <button id="nextButton" onclick="nextLetter()">
+                Next ▶
+            </button>
+
+        </div>
+
     </div>
 
-</div>
 
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
