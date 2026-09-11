@@ -1,711 +1,460 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =========================================
+             ALPHABET DATA
+========================================= */
 
-body {
-    font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
-    overflow: hidden;
+const alphabetData = [
+
+    ["A", "Apple", "🍎"],
+    ["B", "Ball", "⚽"],
+    ["C", "Cat", "🐱"],
+    ["D", "Dog", "🐶"],
+    ["E", "Elephant", "🐘"],
+    ["F", "Fish", "🐟"],
+    ["G", "Grapes", "🍇"],
+    ["H", "Horse", "🐴"],
+    ["I", "Ice Cream", "🍦"],
+    ["J", "Juice", "🧃"],
+    ["K", "Kite", "🪁"],
+    ["L", "Lion", "🦁"],
+    ["M", "Mango", "🥭"],
+    ["N", "Nest", "🪺"],
+    ["O", "Orange", "🍊"],
+    ["P", "Parrot", "🦜"],
+    ["Q", "Queen", "👑"],
+    ["R", "Rabbit", "🐰"],
+    ["S", "Sun", "☀️"],
+    ["T", "Tree", "🌳"],
+    ["U", "Umbrella", "☂️"],
+    ["V", "Van", "🚐"],
+    ["W", "Watermelon", "🍉"],
+    ["X", "Xylophone", "🎵"],
+    ["Y", "Yo-Yo", "🪀"],
+    ["Z", "Zebra", "🦓"]
+
+];
+
+
+let alphabetIndex = 0;
+
+
+/* =========================================
+                 NUMBERS
+========================================= */
+
+let currentNumber = 1;
+
+
+/* =========================================
+               HOME
+========================================= */
+
+function goHome() {
+
+    window.speechSynthesis.cancel();
+
+    document.getElementById("alphabetPage")
+        .classList.add("hidden");
+
+    document.getElementById("numberPage")
+        .classList.add("hidden");
+
+    document.getElementById("homePage")
+        .classList.remove("hidden");
+
 }
 
 
 /* =========================================
-                COMMON
+            OPEN ALPHABET
 ========================================= */
 
-.screen {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
+function openAlphabetPage() {
 
-.hidden {
-    display: none !important;
+    window.speechSynthesis.cancel();
+
+    document.getElementById("homePage")
+        .classList.add("hidden");
+
+    document.getElementById("numberPage")
+        .classList.add("hidden");
+
+    document.getElementById("alphabetPage")
+        .classList.remove("hidden");
+
+    alphabetIndex = 0;
+
+    showAlphabet();
+
 }
 
 
 /* =========================================
-                HOME
+            SHOW ALPHABET
 ========================================= */
 
-#homePage {
+function showAlphabet() {
 
-    background:
-        linear-gradient(
-            135deg,
-            #73d8ff,
-            #a88cff,
-            #ff9dca
+    const item =
+        alphabetData[alphabetIndex];
+
+
+    document.getElementById("letter")
+        .innerText = item[0];
+
+
+    document.getElementById("picture")
+        .innerText = item[2];
+
+
+    document.getElementById("word")
+        .innerText = item[1];
+
+
+    document.getElementById("sentence")
+        .innerText =
+            item[0] +
+            " for " +
+            item[1];
+
+
+    document.getElementById("alphabetProgress")
+        .innerText =
+            item[0] +
+            " / Z";
+
+
+    restartAnimation(
+        document.getElementById("letter"),
+        "drop .8s ease-out"
+    );
+
+
+    setTimeout(function() {
+
+        speakAlphabet();
+
+    }, 700);
+
+}
+
+
+/* =========================================
+             SPEAK ALPHABET
+========================================= */
+
+function speakAlphabet() {
+
+    window.speechSynthesis.cancel();
+
+    const item =
+        alphabetData[alphabetIndex];
+
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            item[0] +
+            " for " +
+            item[1]
         );
 
-    display: flex;
 
-    justify-content: center;
+    speech.rate = .75;
 
-    align-items: center;
+    speech.pitch = 1.1;
 
-    overflow: hidden;
-}
-
-
-.clouds {
-
-    position: absolute;
-
-    top: 5%;
-
-    width: 100%;
-
-    text-align: center;
-
-    font-size: 65px;
-
-    opacity: .7;
-
-    animation: cloudMove 7s infinite alternate;
-
-}
-
-
-.homeContent {
-
-    position: relative;
-
-    z-index: 5;
-
-    text-align: center;
-
-    max-height: 95vh;
-
-    overflow-y: auto;
-
-}
-
-
-.kids {
-
-    font-size: 65px;
-
-    animation: kidsBounce 2s infinite;
-
-}
-
-
-.homeContent h1 {
-
-    font-size: clamp(30px, 5vw, 60px);
-
-    color: white;
-
-    text-shadow:
-        3px 3px #7048a8;
-
-}
-
-
-.homeContent p {
-
-    color: white;
-
-    font-size: 23px;
-
-    margin: 8px;
+    window.speechSynthesis.speak(speech);
 
 }
 
 
 /* =========================================
-              HOME BOX
+             NEXT ALPHABET
 ========================================= */
 
-.homeBox {
+function nextAlphabet() {
 
-    width: min(330px, 80vw);
+    if (
+        alphabetIndex <
+        alphabetData.length - 1
+    ) {
 
-    height: 230px;
+        alphabetIndex++;
 
-    margin: 12px;
+        showAlphabet();
 
-    border: 6px solid white;
-
-    border-radius: 35px;
-
-    display: inline-flex;
-
-    vertical-align: top;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    color: white;
-
-    font-family: inherit;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.25);
-
-    transition: .3s;
+    }
 
 }
 
 
-.homeBox:hover {
+/* =========================================
+           PREVIOUS ALPHABET
+========================================= */
 
-    transform:
-        translateY(-10px)
-        scale(1.04);
+function previousAlphabet() {
+
+    if (alphabetIndex > 0) {
+
+        alphabetIndex--;
+
+        showAlphabet();
+
+    }
 
 }
 
 
-.alphabetBox {
+/* =========================================
+             OPEN NUMBERS
+========================================= */
 
-    background:
-        linear-gradient(
-            145deg,
-            #ff5798,
-            #ff9966
+function openNumberPage() {
+
+    window.speechSynthesis.cancel();
+
+    document.getElementById("homePage")
+        .classList.add("hidden");
+
+    document.getElementById("alphabetPage")
+        .classList.add("hidden");
+
+    document.getElementById("numberPage")
+        .classList.remove("hidden");
+
+
+    currentNumber = 1;
+
+    showNumber();
+
+}
+
+
+/* =========================================
+          NUMBER TO WORDS
+========================================= */
+
+function numberToWords(number) {
+
+    const ones = [
+
+        "",
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine"
+
+    ];
+
+
+    const teens = [
+
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Thirteen",
+        "Fourteen",
+        "Fifteen",
+        "Sixteen",
+        "Seventeen",
+        "Eighteen",
+        "Nineteen"
+
+    ];
+
+
+    const tens = [
+
+        "",
+        "",
+        "Twenty",
+        "Thirty",
+        "Forty",
+        "Fifty",
+        "Sixty",
+        "Seventy",
+        "Eighty",
+        "Ninety"
+
+    ];
+
+
+    if (number < 10) {
+
+        return ones[number];
+
+    }
+
+
+    if (number < 20) {
+
+        return teens[number - 10];
+
+    }
+
+
+    if (number < 100) {
+
+        return (
+            tens[Math.floor(number / 10)] +
+            (
+                number % 10 !== 0
+                ? " " + ones[number % 10]
+                : ""
+            )
         );
 
-}
+    }
 
 
-.numberBox {
+    if (number < 1000) {
 
-    background:
-        linear-gradient(
-            145deg,
-            #4776ff,
-            #8e54e9
+        return (
+            ones[Math.floor(number / 100)] +
+            " Hundred" +
+            (
+                number % 100 !== 0
+                ? " " +
+                  numberToWords(number % 100)
+                : ""
+            )
         );
 
-}
+    }
 
 
-.homeIcon {
+    if (number === 1000) {
 
-    font-size: 60px;
+        return "One Thousand";
 
-}
-
-
-.homeTitle {
-
-    font-size: 34px;
-
-    font-weight: bold;
-
-}
-
-
-.homeSub {
-
-    font-size: 22px;
-
-}
-
-
-.clickText {
-
-    margin-top: 8px;
-
-    background: white;
-
-    color: #7347ad;
-
-    padding: 7px 17px;
-
-    border-radius: 18px;
-
-    font-size: 15px;
+    }
 
 }
 
 
 /* =========================================
-              PAGE BACKGROUND
+             SHOW NUMBER
 ========================================= */
 
-#alphabetPage,
-#numberPage {
+function showNumber() {
 
-    display: flex;
+    document.getElementById("bigNumber")
+        .innerText =
+            currentNumber;
 
-    flex-direction: column;
 
-    align-items: center;
+    document.getElementById("numberName")
+        .innerText =
+            numberToWords(currentNumber);
 
-    justify-content: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #70dcff,
-            #9988ff,
-            #ff9bca
+    document.getElementById("numberProgress")
+        .innerText =
+            currentNumber +
+            " / 1000";
+
+
+    /* =====================================
+              CREATE BALLS
+    ===================================== */
+
+    const ballBox =
+        document.getElementById("balls");
+
+
+    ballBox.innerHTML = "";
+
+
+    /*
+       For very large numbers we don't
+       show 1000 balls because screen
+       would become too crowded.
+
+       We show up to 20 balls.
+    */
+
+    const ballCount =
+        Math.min(currentNumber, 20);
+
+
+    for (
+        let i = 0;
+        i < ballCount;
+        i++
+    ) {
+
+        const ball =
+            document.createElement("span");
+
+        ball.innerText = "⚽";
+
+        ballBox.appendChild(ball);
+
+    }
+
+
+    restartAnimation(
+        document.getElementById("bigNumber"),
+        "drop .8s ease-out"
+    );
+
+
+    /*
+       Automatically speak only once
+       when number changes.
+    */
+
+    setTimeout(function() {
+
+        speakNumber();
+
+    }, 700);
+
+}
+
+
+/* =========================================
+               SPEAK NUMBER
+========================================= */
+
+function speakNumber() {
+
+    window.speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            numberToWords(currentNumber)
         );
 
-}
+
+    speech.rate = .75;
+
+    speech.pitch = 1.1;
+
+    speech.volume = 1;
 
 
-/* =========================================
-              HOME BUTTON
-========================================= */
-
-.homeButton {
-
-    position: absolute;
-
-    top: 18px;
-
-    left: 18px;
-
-    z-index: 20;
-
-    border: none;
-
-    background: white;
-
-    color: #7048a8;
-
-    padding: 11px 20px;
-
-    border-radius: 22px;
-
-    font-size: 17px;
-
-    font-family: inherit;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 7px 15px rgba(0,0,0,.2);
-
-}
-
-
-.homeButton:hover {
-
-    transform: scale(1.08);
+    window.speechSynthesis.speak(speech);
 
 }
 
 
 /* =========================================
-                HEADING
+              NEXT NUMBER
 ========================================= */
 
-.pageHeading {
+function nextNumber() {
 
-    position: absolute;
+    if (currentNumber < 1000) {
 
-    top: 5%;
+        currentNumber++;
 
-    text-align: center;
-
-    color: white;
-
-}
-
-
-.pageHeading h1 {
-
-    font-size: clamp(30px, 4vw, 50px);
-
-    text-shadow:
-        3px 3px #6945a5;
-
-}
-
-
-.pageHeading p {
-
-    font-size: 20px;
-
-}
-
-
-/* =========================================
-             ALPHABET
-========================================= */
-
-.learningArea {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: clamp(20px, 6vw, 80px);
-
-    width: 90vw;
-
-}
-
-
-.letter {
-
-    font-size: clamp(130px, 20vw, 230px);
-
-    font-weight: bold;
-
-    background:
-        linear-gradient(
-            45deg,
-            red,
-            orange,
-            green,
-            blue,
-            purple
-        );
-
-    -webkit-background-clip: text;
-
-    color: transparent;
-
-    filter:
-        drop-shadow(
-            5px 8px 3px
-            rgba(0,0,0,.2)
-        );
-
-    animation:
-        drop .8s ease-out;
-
-}
-
-
-.wordArea {
-
-    background: rgba(255,255,255,.94);
-
-    padding: 20px 40px;
-
-    border-radius: 35px;
-
-    text-align: center;
-
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.2);
-
-}
-
-
-.picture {
-
-    font-size: clamp(75px, 10vw, 130px);
-
-    animation: bounce 1.5s infinite;
-
-}
-
-
-.word {
-
-    color: #ff4f91;
-
-    font-size: clamp(32px, 5vw, 55px);
-
-    font-weight: bold;
-
-}
-
-
-.sentence {
-
-    color: white;
-
-    font-size: clamp(30px, 5vw, 55px);
-
-    font-weight: bold;
-
-    margin: 15px;
-
-    text-shadow:
-        3px 3px #6945a5;
-
-}
-
-
-/* =========================================
-                NUMBER
-========================================= */
-
-.numberLearningArea {
-
-    text-align: center;
-
-    width: 90vw;
-
-}
-
-
-.bigNumber {
-
-    font-size: clamp(130px, 23vw, 250px);
-
-    font-weight: bold;
-
-    background:
-        linear-gradient(
-            45deg,
-            red,
-            orange,
-            yellow,
-            green,
-            blue,
-            purple
-        );
-
-    -webkit-background-clip: text;
-
-    color: transparent;
-
-    filter:
-        drop-shadow(
-            5px 8px 3px
-            rgba(0,0,0,.2)
-        );
-
-    animation:
-        drop .8s ease-out;
-
-}
-
-
-.balls {
-
-    font-size: clamp(35px, 5vw, 60px);
-
-    min-height: 65px;
-
-    max-width: 800px;
-
-    margin: auto;
-
-    line-height: 1.4;
-
-    animation:
-        bounce 1.5s infinite;
-
-}
-
-
-.numberName {
-
-    display: inline-block;
-
-    background: white;
-
-    color: #7048a8;
-
-    padding: 10px 35px;
-
-    border-radius: 25px;
-
-    font-size: clamp(28px, 4vw, 45px);
-
-    font-weight: bold;
-
-    box-shadow:
-        0 10px 20px rgba(0,0,0,.18);
-
-}
-
-
-/* =========================================
-              SPEAK BUTTON
-========================================= */
-
-.speakButton {
-
-    border: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4f91,
-            #ff8b42
-        );
-
-    color: white;
-
-    padding: 12px 25px;
-
-    border-radius: 23px;
-
-    font-family: inherit;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 15px rgba(0,0,0,.2);
-
-}
-
-
-.speakButton:hover {
-
-    transform: scale(1.08);
-
-}
-
-
-/* =========================================
-              NAVIGATION
-========================================= */
-
-.navigation {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 25px;
-
-    margin-top: 18px;
-
-}
-
-
-.navigation button {
-
-    border: none;
-
-    background: white;
-
-    color: #6845a3;
-
-    padding: 11px 20px;
-
-    border-radius: 22px;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 7px 15px rgba(0,0,0,.18);
-
-}
-
-
-.navigation button:hover {
-
-    transform: scale(1.08);
-
-}
-
-
-#alphabetProgress,
-#numberProgress {
-
-    color: white;
-
-    font-size: 19px;
-
-    font-weight: bold;
-
-}
-
-
-/* =========================================
-              ANIMATIONS
-========================================= */
-
-@keyframes drop {
-
-    from {
-
-        transform:
-            translateY(-180px);
-
-        opacity: 0;
-
-    }
-
-    to {
-
-        transform:
-            translateY(0);
-
-        opacity: 1;
-
-    }
-
-}
-
-
-@keyframes bounce {
-
-    0%,100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-12px);
-
-    }
-
-}
-
-
-@keyframes kidsBounce {
-
-    0%,100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-10px);
-
-    }
-
-}
-
-
-@keyframes cloudMove {
-
-    from {
-
-        transform:
-            translateX(-25px);
-
-    }
-
-    to {
-
-        transform:
-            translateX(25px);
+        showNumber();
 
     }
 
@@ -713,63 +462,35 @@ body {
 
 
 /* =========================================
-                 MOBILE
+            PREVIOUS NUMBER
 ========================================= */
 
-@media(max-width:700px) {
+function previousNumber() {
 
-    .homeBox {
+    if (currentNumber > 1) {
 
-        display: flex;
+        currentNumber--;
 
-        margin: 8px auto;
-
-        height: 190px;
+        showNumber();
 
     }
 
-
-    .kids {
-
-        font-size: 45px;
-
-    }
+}
 
 
-    .learningArea {
+/* =========================================
+             ANIMATION RESET
+========================================= */
 
-        gap: 12px;
+function restartAnimation(
+    element,
+    animation
+) {
 
-    }
+    element.style.animation = "none";
 
+    void element.offsetWidth;
 
-    .wordArea {
-
-        padding: 15px;
-
-    }
-
-
-    .navigation {
-
-        gap: 7px;
-
-    }
-
-
-    .navigation button {
-
-        padding: 9px 12px;
-
-        font-size: 14px;
-
-    }
-
-
-    .balls {
-
-        font-size: 28px;
-
-    }
+    element.style.animation = animation;
 
 }
