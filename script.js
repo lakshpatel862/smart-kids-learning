@@ -1,6 +1,12 @@
-/* =================================================
-                 ALPHABET DATA
-================================================= */
+/* =====================================================
+                  KIDS LEARNING WORLD
+                     SCRIPT.JS
+===================================================== */
+
+
+/* =====================================================
+                    ALPHABET DATA
+===================================================== */
 
 const alphabetData = [
 
@@ -37,16 +43,16 @@ const alphabetData = [
 let alphabetIndex = 0;
 
 
-/* =================================================
-                    NUMBERS
-================================================= */
+/* =====================================================
+                       NUMBERS
+===================================================== */
 
 let currentNumber = 1;
 
 
-/* =================================================
-                     TEST
-================================================= */
+/* =====================================================
+                        TEST
+===================================================== */
 
 let testQuestions = [];
 
@@ -54,14 +60,41 @@ let testIndex = 0;
 
 let testScore = 0;
 
-let selectedSmallLetter = null;
-
 let testAnswered = false;
 
 
-/* =================================================
-                    HOME
-================================================= */
+/* =====================================================
+                  HIDE ALL PAGES
+===================================================== */
+
+function hideAllPages() {
+
+    document
+        .getElementById("homePage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("alphabetPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("numberPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("testPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("resultPage")
+        .classList.add("hidden");
+
+}
+
+
+/* =====================================================
+                         HOME
+===================================================== */
 
 function goHome() {
 
@@ -69,56 +102,15 @@ function goHome() {
 
     hideAllPages();
 
-    document.getElementById("homePage")
+    document
+        .getElementById("homePage")
         .classList.remove("hidden");
 
 }
 
 
-/* =================================================
-                HIDE ALL PAGES
-================================================= */
+/* =====================================================
+                    OPEN ALPHABET
+===================================================== */
 
-function hideAllPages() {
-
-    document.getElementById("homePage")
-        .classList.add("hidden");
-
-    document.getElementById("alphabetPage")
-        .classList.add("hidden");
-
-    document.getElementById("numberPage")
-        .classList.add("hidden");
-
-    document.getElementById("testPage")
-        .classList.add("hidden");
-
-    document.getElementById("resultPage")
-        .classList.add("hidden");
-
-}
-
-
-/* =================================================
-                OPEN ALPHABET
-================================================= */
-
-function openAlphabetPage() {
-
-    window.speechSynthesis.cancel();
-
-    hideAllPages();
-
-    document.getElementById("alphabetPage")
-        .classList.remove("hidden");
-
-    alphabetIndex = 0;
-
-    showAlphabet();
-
-}
-
-
-/* =================================================
-                 SHOW ALPHABET
-================================================= */
+function
