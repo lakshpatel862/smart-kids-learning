@@ -3,97 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Alphabet World</title>
+
+    <title>Kids Learning World</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- HOME -->
-    <div id="homePage" class="screen">
+<!-- =================================================
+                    HOME PAGE
+================================================= -->
 
-        <div class="stars">✨ ⭐ ✨ ⭐ ✨</div>
+<div id="homePage" class="screen">
 
-        <div class="homeContent">
+    <div class="clouds">☁️ ☁️ ☁️</div>
 
-            <div class="kids">👧 🧒 👦</div>
+    <div class="homeContent">
 
-            <h1>🌈 Kids Learning World 🌈</h1>
+        <div class="kids">👧 🧒 👦</div>
 
-            <p>Learn • Play • Enjoy</p>
+        <h1>🌈 Kids Learning World 🌈</h1>
 
-            <!-- ALPHABET BOX -->
-            <button class="alphabetHomeBox" onclick="openAlphabetPage()">
-                <span class="bigABC">🔤</span>
-                <span class="boxTitle">Alphabet</span>
-                <span class="boxSub">A to Z</span>
-                <span class="clickText">👆 Click to Start</span>
-            </button>
-
-        </div>
-    </div>
+        <p>Learn • Play • Enjoy</p>
 
 
-    <!-- ALPHABET PAGE -->
-    <div id="alphabetPage" class="screen hidden">
+        <!-- ALPHABET -->
 
-        <button class="homeButton" onclick="goHome()">
-            🏠 Home
+        <button class="homeBox alphabetBox"
+                onclick="openAlphabetPage()">
+
+            <span class="homeIcon">🔤</span>
+
+            <span class="homeTitle">
+                Alphabet
+            </span>
+
+            <span class="homeSub">
+                A to Z
+            </span>
+
+            <span class="clickText">
+                👆 Click to Start
+            </span>
+
         </button>
 
-        <div class="alphabetHeader">
-            <h1>🔤 Learn Alphabet</h1>
-            <p>A to Z • Let's Learn!</p>
+
+        <!-- NUMBERS -->
+
+        <button class="homeBox numberBox"
+                onclick="openNumberPage()">
+
+            <span class="homeIcon">🔢</span>
+
+            <span class="homeTitle">
+                Numbers
+            </span>
+
+            <span class="homeSub">
+                1 to 1000
+            </span>
+
+            <span class="clickText">
+                👆 Click to Start
+            </span>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+                 ALPHABET PAGE
+================================================= -->
+
+<div id="alphabetPage" class="screen hidden">
+
+    <button class="homeButton" onclick="goHome()">
+        🏠 Home
+    </button>
+
+    <div class="pageHeading">
+        <h1>🔤 Learn Alphabet</h1>
+        <p>A to Z</p>
+    </div>
+
+    <div class="learningArea">
+
+        <div id="letter" class="letter">
+            A
         </div>
 
-        <div class="learningArea">
+        <div class="wordArea">
 
-            <!-- LETTER -->
-            <div id="letter" class="letter">A</div>
+            <div id="picture" class="picture">
+                🍎
+            </div>
 
-            <!-- WORD + PICTURE -->
-            <div class="wordArea">
-
-                <div id="picture" class="picture">🍎</div>
-
-                <div id="word" class="word">
-                    Apple
-                </div>
-
+            <div id="word" class="word">
+                Apple
             </div>
 
         </div>
 
-        <div id="sentence" class="sentence">
-            A for Apple
-        </div>
+    </div>
 
-        <!-- SPEAK -->
-        <button class="speakButton" onclick="speakCurrent()">
-            🔊 Hear Again
+    <div id="sentence" class="sentence">
+        A for Apple
+    </div>
+
+    <button class="speakButton"
+            onclick="speakAlphabet()">
+        🔊 Hear Again
+    </button>
+
+    <div class="navigation">
+
+        <button onclick="previousAlphabet()">
+            ◀ Previous
         </button>
 
-        <!-- NEXT / PREVIOUS -->
-        <div class="navigation">
+        <span id="alphabetProgress">
+            A / Z
+        </span>
 
-            <button id="previousButton" onclick="previousLetter()">
-                ◀ Previous
-            </button>
+        <button onclick="nextAlphabet()">
+            Next ▶
+        </button>
 
-            <div id="progress">
-                A / Z
-            </div>
+    </div>
 
-            <button id="nextButton" onclick="nextLetter()">
-                Next ▶
-            </button>
+</div>
 
+
+<!-- =================================================
+                   NUMBER PAGE
+================================================= -->
+
+<div id="numberPage" class="screen hidden">
+
+    <button class="homeButton" onclick="goHome()">
+        🏠 Home
+    </button>
+
+
+    <div class="pageHeading numberHeading">
+
+        <h1>🔢 Learn Numbers</h1>
+
+        <p>1 to 1000 • Let's Count!</p>
+
+    </div>
+
+
+    <!-- BIG NUMBER -->
+
+    <div class="numberLearningArea">
+
+        <div id="bigNumber" class="bigNumber">
+            1
+        </div>
+
+
+        <!-- BALLS -->
+
+        <div id="balls" class="balls">
+            ⚽
+        </div>
+
+
+        <!-- NUMBER NAME -->
+
+        <div id="numberName" class="numberName">
+            One
         </div>
 
     </div>
 
 
-    <script src="script.js"></script>
+    <!-- SPEAK BUTTON -->
+
+    <button class="speakButton"
+            onclick="speakNumber()">
+
+        🔊 Hear Again
+
+    </button>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        <button id="previousNumberButton"
+                onclick="previousNumber()">
+
+            ◀ Previous
+
+        </button>
+
+
+        <span id="numberProgress">
+            1 / 1000
+        </span>
+
+
+        <button onclick="nextNumber()">
+
+            Next ▶
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
