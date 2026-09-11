@@ -1,706 +1,496 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #74ebd5, #acb6e5);
-    color: #222;
+    font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+    overflow: hidden;
+}
+
+/* ================= SCREEN ================= */
+
+.screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
 }
 
 .hidden {
     display: none !important;
 }
 
-.page {
-    min-height: 100vh;
-    padding-bottom: 50px;
-}
 
+/* ================= HOME BACKGROUND ================= */
 
-/* ================= HERO ================= */
+#homePage {
+    background:
+        radial-gradient(circle at 20% 20%, #fff 0 2%, transparent 3%),
+        linear-gradient(135deg, #8ee3ff, #c9a7ff, #ffb6d9);
 
-.hero {
-    position: relative;
-    overflow: hidden;
-    min-height: 430px;
-    text-align: center;
-    padding-top: 55px;
-    background: linear-gradient(
-        #62c8ff,
-        #b8ecff 65%,
-        #79d46b 66%,
-        #4caf50
-    );
-}
-
-.hero h1 {
-    position: relative;
-    z-index: 5;
-    font-size: 45px;
-    color: white;
-    text-shadow: 3px 4px 4px #555;
-}
-
-.welcome {
-    position: relative;
-    z-index: 5;
-    margin-top: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-}
-
-.sun {
-    position: absolute;
-    top: 25px;
-    right: 70px;
-    font-size: 75px;
-}
-
-.cloud {
-    position: absolute;
-    font-size: 65px;
-}
-
-.cloud1 {
-    left: 50px;
-    top: 70px;
-}
-
-.cloud2 {
-    right: 280px;
-    top: 130px;
-}
-
-.kids {
-    position: relative;
-    z-index: 5;
-    margin-top: 55px;
-    font-size: 85px;
-}
-
-.grass {
-    position: absolute;
-    bottom: 15px;
-    width: 100%;
-    font-size: 40px;
-}
-
-
-/* ================= HOME MENU ================= */
-
-.menu-section {
-    padding: 35px 20px;
-    text-align: center;
-    background: linear-gradient(#4caf50, #8de28b);
-}
-
-.menu-section h2 {
-    font-size: 30px;
-    color: white;
-    margin-bottom: 25px;
-    text-shadow: 2px 2px 3px #555;
-}
-
-.menu-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.menu-card {
-    border: none;
-    border-radius: 25px;
-    min-height: 190px;
-    padding: 20px;
-    cursor: pointer;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
-    transition: 0.25s;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.menu-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 14px 25px rgba(0,0,0,0.3);
+#homePage::before {
+    content: "☁️        ☁️             ☁️";
+    position: absolute;
+    top: 8%;
+    left: 0;
+    width: 100%;
+    font-size: 70px;
+    opacity: 0.8;
+    animation: clouds 12s linear infinite;
 }
 
-.menu-card:active {
-    transform: scale(0.96);
-}
-
-.alphabet-card {
-    background: #ffcf33;
-}
-
-.number-card {
-    background: #62d5ff;
-}
-
-.table-card {
-    background: #ff8ab5;
-}
-
-.test-card {
-    background: #b58cff;
-}
-
-.big-icon {
+#homePage::after {
+    content: "🌳    🌸    🌳    🌼    🌳";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
     font-size: 55px;
 }
 
-.menu-title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 8px;
-}
 
-.menu-sub {
-    font-size: 17px;
-    margin-top: 5px;
-}
+/* ================= HOME ================= */
 
-
-/* ================= COMMON ================= */
-
-.page > h1 {
+.homeContent {
+    position: relative;
+    z-index: 5;
     text-align: center;
-    font-size: 38px;
-    padding-top: 25px;
-    color: #333;
 }
 
-.instruction {
+.stars {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
     text-align: center;
-    font-size: 19px;
-    margin: 10px 0 25px;
-    color: #444;
+    font-size: 35px;
+    animation: sparkle 2s infinite alternate;
 }
 
-.home-btn,
-.back-btn {
-    margin: 20px;
-    padding: 13px 25px;
-    border: none;
-    border-radius: 30px;
-    background: white;
-    color: #333;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+.kids {
+    font-size: 70px;
+    margin-bottom: 5px;
+    animation: kidsBounce 2s infinite;
 }
 
-.home-btn:hover,
-.back-btn:hover {
-    transform: scale(1.05);
+.homeContent h1 {
+    color: #ff3f81;
+    font-size: clamp(32px, 5vw, 65px);
+    text-shadow: 3px 3px white;
 }
 
-
-/* ================= ALPHABET ================= */
-
-.alphabet-grid {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 15px;
-}
-
-.letter-card {
-    border: none;
-    border-radius: 20px;
-    min-height: 130px;
-    background: white;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.18);
-    transition: 0.2s;
-}
-
-.letter-card:hover {
-    transform: translateY(-6px);
-}
-
-.letter {
-    display: block;
-    font-size: 50px;
-    font-weight: bold;
-}
-
-.word {
-    display: block;
-    font-size: 18px;
-    margin-top: 8px;
-}
-
-
-/* ================= LESSON ================= */
-
-.lesson-box {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 45px 25px;
-    text-align: center;
-    background: white;
-    border-radius: 30px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.lesson-letter {
-    font-size: 100px;
-    font-weight: bold;
-}
-
-.lesson-object {
-    font-size: 100px;
-    margin: 20px;
-}
-
-.lesson-text {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.speak-btn {
-    margin-top: 25px;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    background: #ffca28;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-/* ================= NUMBERS ================= */
-
-.numbers-grid {
-    max-width: 1000px;
-    margin: auto;
-    padding: 15px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-}
-
-.number-card-item {
-    border: none;
-    border-radius: 15px;
-    background: white;
-    padding: 17px 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 9px rgba(0,0,0,0.16);
-    font-size: 24px;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.number-card-item:hover {
-    transform: scale(1.06);
-}
-
-.numberValue {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.numberWord {
-    display: block;
-    font-size: 14px;
-    margin-top: 5px;
-    color: #555;
-}
-
-
-/* RAINBOW NUMBERS */
-
-.rainbow1 { color: red; }
-.rainbow2 { color: orange; }
-.rainbow3 { color: #d5b600; }
-.rainbow4 { color: green; }
-.rainbow5 { color: blue; }
-.rainbow6 { color: indigo; }
-.rainbow7 { color: violet; }
-
-
-/* ================= NUMBER DETAIL ================= */
-
-.number-detail {
-    max-width: 650px;
-    margin: 40px auto;
-    padding: 45px;
-    background: white;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.big-number {
-    font-size: 100px;
-    font-weight: bold;
-}
-
-.number-object {
-    font-size: 60px;
-    margin: 20px;
-}
-
-.number-word-big {
-    font-size: 32px;
-    font-weight: bold;
-}
-
-.speak-btn {
-    margin-top: 25px;
-}
-
-
-/* ================= TABLES ================= */
-
-.tables-grid {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-}
-
-.table-choice {
-    border: none;
-    border-radius: 20px;
-    padding: 25px 10px;
-    background: white;
-    cursor: pointer;
-    font-size: 25px;
-    font-weight: bold;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.18);
-    transition: 0.2s;
-}
-
-.table-choice:hover {
-    transform: translateY(-5px) scale(1.03);
-    background: #fff1a8;
-}
-
-#singleTable {
-    max-width: 650px;
-    margin: 20px auto;
-}
-
-.table-title {
-    text-align: center;
-    font-size: 38px;
-    margin-bottom: 20px;
-}
-
-.table-row {
-    background: white;
+.homeContent p {
+    color: #49366b;
+    font-size: clamp(20px, 3vw, 30px);
     margin: 10px;
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    box-shadow: 0 4px 9px rgba(0,0,0,0.15);
 }
 
-.test-big-btn {
-    display: block;
-    margin: 25px auto;
-    padding: 16px 30px;
-    border: none;
-    border-radius: 30px;
-    background: #ff7b54;
+
+/* ================= ALPHABET HOME BOX ================= */
+
+.alphabetHomeBox {
+    width: min(360px, 80vw);
+    height: 300px;
+
+    margin-top: 25px;
+
+    border: 7px solid white;
+    border-radius: 40px;
+
+    background: linear-gradient(
+        145deg,
+        #ff6fae,
+        #ff9a76,
+        #ffc95e
+    );
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.25),
+        inset 0 0 25px rgba(255,255,255,0.4);
+
     color: white;
-    font-size: 19px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
 
-
-/* ================= TEST MENU ================= */
-
-.test-menu-grid {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.test-option {
-    min-height: 220px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    transition: 0.2s;
-}
 
-.test-option:hover {
-    transform: translateY(-8px);
-}
-
-.test-option strong {
-    font-size: 23px;
-}
-
-.test-option small {
-    font-size: 15px;
-}
-
-.alphabet-test-option {
-    background: #ffd85c;
-}
-
-.number-test-option {
-    background: #72d8ff;
-}
-
-.multiplication-test-option {
-    background: #ff91bb;
-}
-
-
-/* ================= TEST ================= */
-
-.test-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.test-top span {
-    margin-right: 25px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.test-card-box {
-    max-width: 650px;
-    margin: 20px auto;
-    padding: 40px 25px;
-    background: white;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.question-text {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 30px;
-}
-
-.question-label {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.answer-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.answer-btn {
-    border: none;
-    border-radius: 18px;
-    padding: 18px;
-    background: #e8f4ff;
-    font-size: 25px;
-    font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
+
+    animation: boxFloat 2s infinite alternate;
 }
 
-.answer-btn:hover {
-    background: #bce4ff;
-    transform: scale(1.03);
+.alphabetHomeBox:hover {
+    transform: scale(1.07);
 }
 
+.bigABC {
+    font-size: 75px;
+}
 
-/* MULTIPLICATION QUESTION */
-
-.multiplication-question {
-    font-size: 48px;
+.boxTitle {
+    font-size: 38px;
     font-weight: bold;
-    background: #fff4b8;
-    padding: 25px;
+}
+
+.boxSub {
+    font-size: 25px;
+}
+
+.clickText {
+    margin-top: 12px;
+    background: white;
+    color: #ff4f91;
+    padding: 9px 20px;
     border-radius: 20px;
-    margin-bottom: 30px;
-}
-
-.blank {
-    display: inline-block;
-    min-width: 75px;
-    border-bottom: 5px solid #333;
-    color: transparent;
+    font-size: 17px;
 }
 
 
-/* ================= RESULT ================= */
+/* ================= ALPHABET PAGE ================= */
 
-.result-box {
-    max-width: 650px;
-    margin: 60px auto;
-    padding: 45px 25px;
+#alphabetPage {
+    background:
+        radial-gradient(circle at 10% 15%, #fff 0 1%, transparent 2%),
+        radial-gradient(circle at 90% 25%, #fff 0 1%, transparent 2%),
+        linear-gradient(135deg, #72d8ff, #9e8cff, #ff91c8);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Decorative background */
+
+#alphabetPage::before {
+    content: "🦋        ⭐        🦋        ⭐";
+    position: absolute;
+    top: 8%;
+    width: 100%;
     text-align: center;
-    background: white;
-    border-radius: 30px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    font-size: 35px;
+    animation: sparkle 2s infinite alternate;
 }
 
-.result-emoji {
-    font-size: 80px;
-}
-
-.result-box h1 {
+#alphabetPage::after {
+    content: "🌈  🌸  🌼  🌸  🌈";
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
     font-size: 40px;
-    margin: 10px;
 }
 
-#resultMessage {
+
+/* ================= HEADER ================= */
+
+.alphabetHeader {
+    text-align: center;
+    position: absolute;
+    top: 5%;
+}
+
+.alphabetHeader h1 {
+    color: white;
+    font-size: clamp(30px, 4vw, 50px);
+    text-shadow: 3px 3px #7d4ac7;
+}
+
+.alphabetHeader p {
+    color: white;
     font-size: 20px;
-    margin: 15px;
 }
 
-.result-details {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 25px 0;
-}
 
-.result-details div {
-    background: #f1f7ff;
-    padding: 18px;
-    border-radius: 18px;
-}
+/* ================= HOME BUTTON ================= */
 
-.result-details span {
-    display: block;
-    font-size: 30px;
-}
+.homeButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 
-.result-details strong {
-    display: block;
-    margin: 5px;
-}
+    border: 0;
+    border-radius: 25px;
 
-.result-details b {
-    font-size: 25px;
-}
+    padding: 12px 22px;
 
-.restart-btn,
-.home-big-btn {
-    border: none;
-    border-radius: 30px;
-    padding: 15px 25px;
-    margin: 8px;
+    background: white;
+    color: #7546bd;
+
     font-size: 18px;
+    font-family: inherit;
     font-weight: bold;
+
     cursor: pointer;
+
+    z-index: 20;
+
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
 }
 
-.restart-btn {
-    background: #ffca28;
-}
-
-.home-big-btn {
-    background: #65c8ff;
-}
-
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 800px) {
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    .kids {
-        font-size: 60px;
-    }
-
-    .menu-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .alphabet-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .numbers-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .tables-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .test-menu-grid {
-        grid-template-columns: 1fr;
-    }
+.homeButton:hover {
+    transform: scale(1.08);
 }
 
 
-@media (max-width: 500px) {
+/* ================= LEARNING AREA ================= */
 
-    .menu-grid {
-        grid-template-columns: 1fr 1fr;
+.learningArea {
+    position: relative;
+    z-index: 5;
+
+    width: min(850px, 90vw);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(25px, 6vw, 80px);
+
+    margin-top: 30px;
+}
+
+
+/* ================= LETTER ================= */
+
+.letter {
+    font-size: clamp(130px, 20vw, 230px);
+    font-weight: bold;
+
+    background: linear-gradient(
+        45deg,
+        #ff1744,
+        #ff9100,
+        #00b83c,
+        #008cff,
+        #8e44ad
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(5px 8px 3px rgba(0,0,0,.2));
+
+    animation: letterDrop 0.9s ease-out;
+}
+
+
+/* ================= WORD AREA ================= */
+
+.wordArea {
+    text-align: center;
+
+    background: rgba(255,255,255,.9);
+
+    padding: 25px 45px;
+
+    border-radius: 35px;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.2);
+
+    min-width: 250px;
+
+    animation: wordPop 0.7s ease-out;
+}
+
+.picture {
+    font-size: clamp(80px, 10vw, 130px);
+
+    animation: pictureBounce 1.5s infinite;
+}
+
+.word {
+    color: #ff4f91;
+
+    font-size: clamp(35px, 5vw, 55px);
+
+    font-weight: bold;
+}
+
+
+/* ================= SENTENCE ================= */
+
+.sentence {
+    position: relative;
+    z-index: 5;
+
+    margin-top: 25px;
+
+    color: white;
+
+    font-size: clamp(30px, 5vw, 55px);
+
+    font-weight: bold;
+
+    text-shadow: 3px 3px #6b3fa0;
+
+    animation: sentencePop .7s ease-out;
+}
+
+
+/* ================= SPEAK BUTTON ================= */
+
+.speakButton {
+    position: relative;
+    z-index: 10;
+
+    margin-top: 18px;
+
+    padding: 13px 28px;
+
+    border: 0;
+    border-radius: 25px;
+
+    background: linear-gradient(135deg, #ff4f91, #ff8c42);
+
+    color: white;
+
+    font-size: 19px;
+    font-family: inherit;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+}
+
+.speakButton:hover {
+    transform: scale(1.08);
+}
+
+
+/* ================= NAVIGATION ================= */
+
+.navigation {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 18px;
+}
+
+.navigation button {
+    padding: 12px 22px;
+
+    border: 0;
+    border-radius: 22px;
+
+    background: white;
+
+    color: #6543a5;
+
+    font-family: inherit;
+    font-weight: bold;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 15px rgba(0,0,0,.18);
+}
+
+.navigation button:hover {
+    transform: scale(1.08);
+}
+
+#progress {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes letterDrop {
+
+    from {
+        transform: translateY(-180px);
+        opacity: 0;
     }
 
-    .menu-card {
-        min-height: 150px;
-    }
-
-    .big-icon {
-        font-size: 40px;
-    }
-
-    .menu-title {
-        font-size: 20px;
-    }
-
-    .alphabet-grid {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 10px;
-    }
-
-    .numbers-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tables-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .page > h1 {
-        font-size: 29px;
-    }
-
-    .multiplication-question {
-        font-size: 36px;
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
+
+@keyframes wordPop {
+
+    from {
+        transform: scale(.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes sentencePop {
+
+    from {
+        transform: scale(.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pictureBounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes kidsBounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes boxFloat {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes sparkle {
+
+    from {
+        transform: scale(.9);
+        opacity: .
