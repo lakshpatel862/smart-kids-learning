@@ -1,793 +1,861 @@
-/* =====================================================
-   SMART KIDS LEARNING
-   ===================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-
-/* ================= PAGE SYSTEM ================= */
-
-function showPage(pageId) {
-
-    const pages = document.querySelectorAll(".page");
-
-    pages.forEach(function(page) {
-        page.classList.add("hidden");
-    });
-
-    const selectedPage = document.getElementById(pageId);
-
-    if (selectedPage) {
-        selectedPage.classList.remove("hidden");
-        window.scrollTo(0, 0);
-    }
+body {
+    font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #dff9ff, #fff3c7, #fce1ff);
+    overflow-x: hidden;
 }
 
 
-/* ================= SPEAK ================= */
+/* ================= GENERAL ================= */
 
-function speak(text) {
+.hidden {
+    display: none !important;
+}
 
-    if ("speechSynthesis" in window) {
+.page {
+    min-height: 100vh;
+    padding: 25px;
+    text-align: center;
+}
 
-        window.speechSynthesis.cancel();
+h1 {
+    color: #ff4f91;
+    margin: 20px 0 8px;
+    font-size: 38px;
+}
 
-        const voice = new SpeechSynthesisUtterance(text);
+.pageSubtitle {
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
 
-        voice.lang = "en-US";
-        voice.rate = 0.8;
-        voice.pitch = 1.1;
 
-        window.speechSynthesis.speak(voice);
-    }
+/* ================= HOME ================= */
+
+#homePage {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: 30px 20px 60px;
+}
+
+.mainHeader {
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.rainbow {
+    font-size: 55px;
+    animation: rainbowMove 2s infinite alternate;
+}
+
+.mainHeader h1 {
+    font-size: 48px;
+    margin: 5px;
+}
+
+.mainHeader p {
+    font-size: 22px;
+    color: #444;
+}
+
+
+/* ================= SKY ================= */
+
+.sky {
+    position: absolute;
+    width: 100%;
+    height: 180px;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+    font-size: 70px;
+    opacity: .7;
+}
+
+.cloud1 {
+    left: 5%;
+    animation: cloudMove 12s linear infinite;
+}
+
+.cloud2 {
+    right: 8%;
+    animation: cloudMove 15s linear infinite reverse;
+}
+
+.sun {
+    position: absolute;
+    right: 45%;
+    top: 10px;
+    font-size: 60px;
+    animation: sunRotate 5s linear infinite;
+}
+
+
+/* ================= CARTOONS ================= */
+
+.cartoon {
+    position: fixed;
+    font-size: 55px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.cartoon1 {
+    left: 2%;
+    bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.cartoon2 {
+    right: 3%;
+    bottom: 30px;
+    animation: bounce 2.5s infinite;
+}
+
+.cartoon3 {
+    left: 45%;
+    bottom: 5px;
+    animation: jump 1.8s infinite;
+}
+
+
+/* ================= MENU ================= */
+
+.menuSection {
+    max-width: 1200px;
+    margin: 50px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    position: relative;
+    z-index: 5;
+}
+
+.featureCard {
+    padding: 30px 20px;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.9);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.15);
+
+    transition: .3s;
+}
+
+.featureCard:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.cardIcon {
+    font-size: 65px;
+    animation: bounce 2s infinite;
+}
+
+.featureCard h2 {
+    color: #333;
+    margin: 12px 0;
+    font-size: 26px;
+}
+
+.featureCard p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+/* ================= BUTTONS ================= */
+
+button {
+    border: none;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-weight: bold;
+
+    transition: .25s;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+.bigButton {
+    width: 100%;
+    padding: 16px;
+    border-radius: 20px;
+
+    color: white;
+    font-size: 19px;
+
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+}
+
+.alphabetButton {
+    background: linear-gradient(135deg, #ff4f91, #ff8a65);
+}
+
+.numberButton {
+    background: linear-gradient(135deg, #00a8ff, #7c4dff);
+}
+
+.tableButton {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+}
+
+.testButton {
+    margin-top: 12px;
+    width: 100%;
+    padding: 13px;
+
+    border-radius: 18px;
+
+    background: #ffe066;
+    color: #333;
+
+    font-size: 17px;
+}
+
+
+/* ================= HOME BUTTON ================= */
+
+.homeBtn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+
+    background: linear-gradient(135deg, #ff7675, #fd79a8);
+    color: white;
+
+    padding: 12px 20px;
+    border-radius: 20px;
+
+    font-size: 17px;
+
+    z-index: 100;
 }
 
 
 /* ================= ALPHABET ================= */
 
-const alphabetData = [
+.alphabetGrid {
+    max-width: 1100px;
+    margin: 30px auto;
 
-    ["A", "Apple", "🍎"],
-    ["B", "Ball", "⚽"],
-    ["C", "Cat", "🐱"],
-    ["D", "Dog", "🐶"],
-    ["E", "Elephant", "🐘"],
-    ["F", "Fish", "🐟"],
-    ["G", "Grapes", "🍇"],
-    ["H", "Horse", "🐴"],
-    ["I", "Ice Cream", "🍦"],
-    ["J", "Juice", "🧃"],
-    ["K", "Kite", "🪁"],
-    ["L", "Lion", "🦁"],
-    ["M", "Mango", "🥭"],
-    ["N", "Nest", "🪺"],
-    ["O", "Orange", "🍊"],
-    ["P", "Parrot", "🦜"],
-    ["Q", "Queen", "👑"],
-    ["R", "Rabbit", "🐰"],
-    ["S", "Sun", "☀️"],
-    ["T", "Tiger", "🐯"],
-    ["U", "Umbrella", "☂️"],
-    ["V", "Van", "🚐"],
-    ["W", "Watch", "⌚"],
-    ["X", "Xylophone", "🎵"],
-    ["Y", "Yak", "🐂"],
-    ["Z", "Zebra", "🦓"]
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+}
 
-];
+.letterBox {
+    height: 120px;
 
+    border-radius: 25px;
 
-function createAlphabet() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    const grid = document.getElementById("alphabetGrid");
+    font-size: 55px;
+    font-weight: bold;
 
-    if (!grid) return;
+    color: white;
 
-    grid.innerHTML = "";
+    background: linear-gradient(
+        135deg,
+        #ff7675,
+        #fd79a8,
+        #6c5ce7,
+        #00cec9
+    );
 
-    alphabetData.forEach(function(item, index) {
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
 
-        const letter = item[0];
-        const word = item[1];
-        const emoji = item[2];
+    cursor: pointer;
 
-        const button = document.createElement("button");
+    animation: boxFloat 2s infinite alternate;
+}
 
-        button.className = "letter-card";
-
-        button.innerHTML =
-            '<span class="letter">' + letter + '</span>' +
-            '<span class="word">' + emoji + " " + word + '</span>';
-
-        button.onclick = function() {
-            openAlphabetLesson(index);
-        };
-
-        grid.appendChild(button);
-
-    });
+.letterBox:hover {
+    transform: rotate(-4deg) scale(1.08);
 }
 
 
-function openAlphabetLesson(index) {
+/* ================= LESSON ================= */
 
-    const item = alphabetData[index];
+.lessonBox,
+.numberLessonBox,
+.tableLessonBox {
+    max-width: 750px;
 
-    const letter = item[0];
-    const word = item[1];
-    const emoji = item[2];
+    margin: 80px auto 20px;
 
-    const lesson = document.getElementById("alphabetLesson");
+    background: rgba(255,255,255,.95);
 
-    lesson.innerHTML =
-        '<div class="lesson-letter">' + letter + '</div>' +
-        '<div class="lesson-object">' + emoji + '</div>' +
-        '<div class="lesson-text">' +
-        letter + " for " + word +
-        '</div>' +
-        '<button class="speak-btn" onclick="speak(\'' +
-        letter + ' for ' + word +
-        '\')">🔊 Listen</button>';
+    padding: 40px;
 
-    showPage("alphabetLessonPage");
+    border-radius: 35px;
 
-    speak(letter + " for " + word);
+    box-shadow: 0 20px 45px rgba(0,0,0,.2);
+}
+
+.lessonLetter {
+    font-size: 130px;
+    font-weight: bold;
+
+    background: linear-gradient(
+        90deg,
+        #ff0000,
+        #ff9900,
+        #00aa00,
+        #008cff,
+        #8e44ad
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: letterDrop 1s ease-out;
+}
+
+.lessonEmoji {
+    font-size: 120px;
+
+    animation: bounce 1.5s infinite;
+}
+
+.lessonBox h2 {
+    font-size: 38px;
+    color: #444;
+    margin: 15px;
 }
 
 
-/* ================= NUMBER WORDS ================= */
+/* ================= SPEAK ================= */
 
-function numberToWords(number) {
+.speakButton {
+    background: linear-gradient(135deg, #6c5ce7, #0984e3);
+    color: white;
 
-    const ones = [
-        "",
-        "One",
-        "Two",
-        "Three",
-        "Four",
-        "Five",
-        "Six",
-        "Seven",
-        "Eight",
-        "Nine",
-        "Ten",
-        "Eleven",
-        "Twelve",
-        "Thirteen",
-        "Fourteen",
-        "Fifteen",
-        "Sixteen",
-        "Seventeen",
-        "Eighteen",
-        "Nineteen"
-    ];
+    padding: 14px 25px;
 
-    const tens = [
-        "",
-        "",
-        "Twenty",
-        "Thirty",
-        "Forty",
-        "Fifty",
-        "Sixty",
-        "Seventy",
-        "Eighty",
-        "Ninety"
-    ];
+    border-radius: 20px;
 
-    if (number < 20) {
-        return ones[number];
-    }
+    font-size: 18px;
+}
 
-    if (number < 100) {
 
-        return tens[Math.floor(number / 10)] +
-            (number % 10 !== 0 ? " " + ones[number % 10] : "");
+/* ================= NAVIGATION ================= */
 
-    }
+.navigationButtons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 
-    if (number < 1000) {
+    margin-top: 25px;
+}
 
-        return ones[Math.floor(number / 100)] +
-            " Hundred" +
-            (number % 100 !== 0 ?
-                " " + numberToWords(number % 100) : "");
+.navigationButtons button {
+    padding: 13px 22px;
 
-    }
+    border-radius: 18px;
 
-    if (number === 1000) {
-        return "One Thousand";
-    }
+    background: #ffeaa7;
 
-    return "";
+    color: #333;
+
+    font-size: 16px;
 }
 
 
 /* ================= NUMBERS ================= */
 
-function createNumbers() {
+.numbersGrid {
+    max-width: 1200px;
 
-    const grid = document.getElementById("numbersGrid");
+    margin: 30px auto;
 
-    if (!grid) return;
+    display: grid;
 
-    grid.innerHTML = "";
+    grid-template-columns: repeat(8, 1fr);
 
-    for (let i = 1; i <= 1000; i++) {
+    gap: 12px;
+}
 
-        const button = document.createElement("button");
+.numberBox {
+    min-height: 80px;
 
-        button.className = "number-card-item";
+    border-radius: 18px;
 
-        const rainbowClass =
-            "rainbow" + ((i - 1) % 7 + 1);
+    background: white;
 
-        button.innerHTML =
-            '<span class="numberValue ' +
-            rainbowClass +
-            '">' +
-            i +
-            '</span>' +
-            '<span class="numberWord">' +
-            numberToWords(i) +
-            '</span>';
+    border: 4px solid #74b9ff;
 
-        button.onclick = function() {
-            openNumber(i);
-        };
+    cursor: pointer;
 
-        grid.appendChild(button);
-    }
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 27px;
+    font-weight: bold;
+
+    box-shadow: 0 7px 12px rgba(0,0,0,.12);
+
+    transition: .2s;
+}
+
+.numberBox:hover {
+    transform: scale(1.1) rotate(2deg);
 }
 
 
-function openNumber(number) {
-
-    const detail = document.getElementById("numberDetail");
-
-    let objects = "";
-
-    if (number <= 20) {
-
-        for (let i = 0; i < number; i++) {
-            objects += "⚽ ";
-        }
-
-    } else {
-
-        objects = "⚽ × " + number;
-    }
-
-    detail.innerHTML =
-        '<div class="big-number rainbow' +
-        ((number - 1) % 7 + 1) +
-        '">' +
-        number +
-        '</div>' +
-
-        '<div class="number-object">' +
-        objects +
-        '</div>' +
-
-        '<div class="number-word-big">' +
-        numberToWords(number) +
-        '</div>' +
-
-        '<button class="speak-btn" onclick="speak(\'' +
-        numberToWords(number) +
-        '\')">' +
-        '🔊 Listen' +
-        '</button>';
-
-    showPage("numberDetailPage");
-
-    speak(numberToWords(number));
-}
-
-
-/* ================= TABLES 1–100 ================= */
-
-function showTablesPage() {
-
-    showPage("tablesPage");
-
-    createTables();
-}
-
-
-function createTables() {
-
-    const grid = document.getElementById("tablesGrid");
-
-    if (!grid) return;
-
-    grid.innerHTML = "";
-
-    for (let i = 1; i <= 100; i++) {
-
-        const button = document.createElement("button");
-
-        button.className = "table-choice";
-
-        button.innerHTML =
-            "✖️ Table " + i;
-
-        button.onclick = function() {
-            openTable(i);
-        };
-
-        grid.appendChild(button);
-    }
-}
-
-
-function openTable(number) {
-
-    const box = document.getElementById("singleTable");
-
-    let html =
-        '<h1 class="table-title">✖️ Table of ' +
-        number +
-        '</h1>';
-
-    for (let i = 1; i <= 10; i++) {
-
-        html +=
-            '<div class="table-row">' +
-            number +
-            " × " +
-            i +
-            " = " +
-            (number * i) +
-            '</div>';
-    }
-
-    box.innerHTML = html;
-
-    showPage("singleTablePage");
-}
-
-
-/* ================= TEST SYSTEM ================= */
-
-let currentTest = "";
-let currentQuestion = 0;
-let score = 0;
-let questions = [];
-
-
-/* ================= SHUFFLE ================= */
-
-function shuffle(array) {
-
-    const newArray = [...array];
-
-    for (let i = newArray.length - 1; i > 0; i--) {
-
-        const j = Math.floor(Math.random() * (i + 1));
-
-        const temp = newArray[i];
-
-        newArray[i] = newArray[j];
-
-        newArray[j] = temp;
-    }
-
-    return newArray;
-}
-
-
-/* ================= ALPHABET TEST ================= */
-
-function startAlphabetTest() {
-
-    currentTest = "alphabet";
-    currentQuestion = 0;
-    score = 0;
-
-    /*
-       Every letter appears only once.
-       Therefore no question repeats.
-    */
-
-    questions = shuffle(alphabetData);
-
-    showPage("alphabetTestPage");
-
-    showAlphabetQuestion();
-}
-
-
-function showAlphabetQuestion() {
-
-    if (currentQuestion >= questions.length) {
-
-        finishTest();
-
-        return;
-    }
-
-    const item = questions[currentQuestion];
-
-    const correctLetter = item[0];
-    const correctWord = item[1];
-
-    document.getElementById("alphabetQuestionNo").innerText =
-        "Question " +
-        (currentQuestion + 1) +
-        " / " +
-        questions.length;
-
-    document.getElementById("alphabetQuestion").innerText =
-        correctLetter + " is for ?";
-
-    const correctAnswer = correctWord;
-
-    const otherWords = alphabetData
-        .filter(function(x) {
-            return x[1] !== correctWord;
-        })
-        .map(function(x) {
-            return x[1];
-        });
-
-    const wrongAnswers = shuffle(otherWords).slice(0, 3);
-
-    const answers = shuffle(
-        [correctAnswer, ...wrongAnswers]
+/* Rainbow number */
+
+.rainbowNumber {
+    background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        green,
+        blue,
+        purple
     );
 
-    const box = document.getElementById("alphabetAnswers");
-
-    box.innerHTML = "";
-
-    answers.forEach(function(answer) {
-
-        const button = document.createElement("button");
-
-        button.className = "answer-btn";
-
-        button.innerText = answer;
-
-        button.onclick = function() {
-
-            checkAlphabetAnswer(
-                answer,
-                correctAnswer
-            );
-
-        };
-
-        box.appendChild(button);
-    });
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 
-function checkAlphabetAnswer(answer, correctAnswer) {
+/* ================= NUMBER LESSON ================= */
 
-    if (answer === correctAnswer) {
-        score++;
-    }
+#bigNumber {
+    font-size: 120px;
+    font-weight: bold;
 
-    currentQuestion++;
+    background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        purple
+    );
 
-    setTimeout(function() {
-        showAlphabetQuestion();
-    }, 300);
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: letterDrop 1s ease-out;
+}
+
+#ballDisplay {
+    font-size: 35px;
+
+    max-width: 500px;
+
+    margin: 20px auto;
+
+    line-height: 1.6;
+}
+
+#numberWords {
+    color: #555;
+    font-size: 30px;
 }
 
 
-/* ================= NUMBER TEST ================= */
+/* ================= TABLES ================= */
 
-function startNumberTest() {
+.tablesGrid {
+    max-width: 1100px;
 
-    currentTest = "number";
-    currentQuestion = 0;
-    score = 0;
+    margin: 30px auto;
 
-    const allNumbers = [];
+    display: grid;
 
-    for (let i = 1; i <= 1000; i++) {
-        allNumbers.push(i);
-    }
+    grid-template-columns: repeat(8, 1fr);
 
-    /*
-       20 different numbers.
-       Same number cannot repeat.
-    */
+    gap: 12px;
+}
 
-    questions = shuffle(allNumbers).slice(0, 20);
+.tableBox {
+    padding: 18px 5px;
 
-    showPage("numberTestPage");
+    background: white;
 
-    showNumberQuestion();
+    border-radius: 18px;
+
+    border: 3px solid #55efc4;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 12px rgba(0,0,0,.1);
+}
+
+.tableBox:hover {
+    transform: scale(1.08);
+    background: #e8fff8;
+}
+
+.tableLessonBox h1 {
+    color: #00a884;
+}
+
+.tableLine {
+    font-size: 25px;
+
+    margin: 10px;
+
+    padding: 10px;
+
+    border-radius: 15px;
+
+    background: #f1f2f6;
 }
 
 
-function showNumberQuestion() {
+/* ================= TEST ================= */
 
-    if (currentQuestion >= questions.length) {
+.testBox {
+    max-width: 700px;
 
-        finishTest();
+    margin: 100px auto 30px;
 
-        return;
-    }
+    padding: 35px;
 
-    const correctNumber = questions[currentQuestion];
+    background: white;
 
-    document.getElementById("numberQuestionNo").innerText =
-        "Question " +
-        (currentQuestion + 1) +
-        " / " +
-        questions.length;
+    border-radius: 35px;
 
-    document.getElementById("numberQuestion").innerText =
-        "Which number is " +
-        numberToWords(correctNumber) +
-        "?";
-
-    const wrongNumbers = [];
-
-    while (wrongNumbers.length < 3) {
-
-        const randomNumber =
-            Math.floor(Math.random() * 1000) + 1;
-
-        if (
-            randomNumber !== correctNumber &&
-            !wrongNumbers.includes(randomNumber)
-        ) {
-            wrongNumbers.push(randomNumber);
-        }
-    }
-
-    const answers = shuffle([
-        correctNumber,
-        ...wrongNumbers
-    ]);
-
-    const box = document.getElementById("numberAnswers");
-
-    box.innerHTML = "";
-
-    answers.forEach(function(answer) {
-
-        const button = document.createElement("button");
-
-        button.className = "answer-btn";
-
-        button.innerText = answer;
-
-        button.onclick = function() {
-
-            if (answer === correctNumber) {
-                score++;
-            }
-
-            currentQuestion++;
-
-            setTimeout(function() {
-                showNumberQuestion();
-            }, 300);
-
-        };
-
-        box.appendChild(button);
-
-    });
+    box-shadow: 0 20px 45px rgba(0,0,0,.2);
 }
 
+.testTop {
+    display: flex;
+    justify-content: space-between;
 
-/* ================= MULTIPLICATION TEST ================= */
+    font-size: 20px;
+    font-weight: bold;
 
-function startMultiplicationTest() {
+    color: #6c5ce7;
 
-    currentTest = "multiplication";
-    currentQuestion = 0;
-    score = 0;
-
-    const allQuestions = [];
-
-    /*
-       1–100 tables
-       × 1–10
-
-       Total = 1000 unique questions.
-
-       Example:
-       1 × 1
-       1 × 2
-       ...
-       100 × 10
-
-       No same question repeats.
-    */
-
-    for (let a = 1; a <= 100; a++) {
-
-        for (let b = 1; b <= 10; b++) {
-
-            allQuestions.push({
-                a: a,
-                b: b,
-                answer: a * b
-            });
-
-        }
-    }
-
-    questions = shuffle(allQuestions).slice(0, 20);
-
-    showPage("multiplicationTestPage");
-
-    showMultiplicationQuestion();
+    margin-bottom: 30px;
 }
 
+.testQuestion {
+    min-height: 130px;
 
-function showMultiplicationQuestion() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    if (currentQuestion >= questions.length) {
+    font-size: 65px;
+    font-weight: bold;
 
-        finishTest();
+    color: #333;
 
-        return;
-    }
+    margin-bottom: 25px;
+}
 
-    const question = questions[currentQuestion];
+#testAnswer {
+    width: 100%;
 
-    const correctAnswer = question.answer;
+    padding: 17px;
 
-    document.getElementById("multiplicationQuestionNo").innerText =
-        "Question " +
-        (currentQuestion + 1) +
-        " / " +
-        questions.length;
+    border: 3px solid #74b9ff;
 
+    border-radius: 18px;
 
-    /*
-       IMPORTANT:
-       Blank is shown ONLY in test.
-       Normal table has complete answer.
-    */
+    font-size: 20px;
 
-    document.getElementById("multiplicationQuestion").innerHTML =
-        question.a +
-        " × " +
-        question.b +
-        " = <span class='blank'>0</span>";
+    outline: none;
 
+    text-align: center;
+}
 
-    const wrongAnswers = [];
+.submitButton {
+    width: 100%;
 
-    while (wrongAnswers.length < 3) {
+    margin-top: 15px;
 
-        let wrong =
-            correctAnswer +
-            Math.floor(Math.random() * 21) -
-            10;
+    padding: 15px;
 
-        if (wrong < 0) {
-            wrong = Math.floor(Math.random() * 1000) + 1;
-        }
+    border-radius: 18px;
 
-        if (
-            wrong !== correctAnswer &&
-            !wrongAnswers.includes(wrong)
-        ) {
-            wrongAnswers.push(wrong);
-        }
-    }
+    background: linear-gradient(135deg, #00b894, #00cec9);
 
-    const answers = shuffle([
-        correctAnswer,
-        ...wrongAnswers
-    ]);
+    color: white;
 
-    const box =
-        document.getElementById("multiplicationAnswers");
+    font-size: 19px;
+}
 
-    box.innerHTML = "";
+#answerMessage {
+    margin-top: 15px;
 
-    answers.forEach(function(answer) {
+    font-size: 20px;
 
-        const button = document.createElement("button");
+    font-weight: bold;
 
-        button.className = "answer-btn";
-
-        button.innerText = answer;
-
-        button.onclick = function() {
-
-            if (answer === correctAnswer) {
-                score++;
-            }
-
-            currentQuestion++;
-
-            setTimeout(function() {
-                showMultiplicationQuestion();
-            }, 300);
-
-        };
-
-        box.appendChild(button);
-
-    });
+    min-height: 25px;
 }
 
 
 /* ================= RESULT ================= */
 
-function finishTest() {
+.resultBox {
+    max-width: 800px;
 
-    const total = questions.length;
+    margin: 70px auto;
 
-    const wrong = total - score;
+    padding: 40px;
 
-    const percentage =
-        Math.round((score / total) * 100);
+    background: white;
 
-    document.getElementById("resultScore").innerText =
-        score + " / " + total;
+    border-radius: 40px;
 
-    document.getElementById("resultCorrect").innerText =
-        score;
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
 
-    document.getElementById("resultWrong").innerText =
-        wrong;
+    text-align: center;
+}
 
-    document.getElementById("resultPercentage").innerText =
-        percentage + "%";
+.trophy {
+    font-size: 100px;
 
+    animation: trophy 1s infinite alternate;
+}
 
-    let message = "";
+.resultBox h1 {
+    font-size: 45px;
+}
 
-    if (percentage >= 90) {
-        message = "🌟 Excellent! You are a Super Star!";
-    }
-    else if (percentage >= 70) {
-        message = "👏 Very Good! Keep Learning!";
-    }
-    else if (percentage >= 50) {
-        message = "😊 Good Job! Practice More!";
-    }
-    else {
-        message = "💪 Don't Give Up! Try Again!";
-    }
+.resultMessage {
+    font-size: 23px;
 
-    document.getElementById("resultMessage").innerText =
-        message;
+    color: #555;
 
-    showPage("resultPage");
+    margin: 15px;
+}
 
-    speak("Your score is " + score + " out of " + total);
+.resultCards {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin: 30px 0;
+}
+
+.resultCards div {
+    padding: 20px 10px;
+
+    border-radius: 20px;
+
+    background: #f1f2f6;
+}
+
+.resultCards span {
+    display: block;
+    font-size: 35px;
+}
+
+.resultCards strong {
+    display: block;
+    font-size: 25px;
+
+    margin: 7px;
+}
+
+.resultCards small {
+    color: #777;
+}
+
+.restartButton,
+.homeResultButton {
+    padding: 15px 25px;
+
+    border-radius: 20px;
+
+    font-size: 18px;
+
+    margin: 7px;
+}
+
+.restartButton {
+    background: #ffe066;
+}
+
+.homeResultButton {
+    background: #74b9ff;
+    color: white;
 }
 
 
-/* ================= RESTART ================= */
+/* ================= ANIMATIONS ================= */
 
-function restartCurrentTest() {
+@keyframes bounce {
 
-    if (currentTest === "alphabet") {
-        startAlphabetTest();
+    0%,100% {
+        transform: translateY(0);
     }
 
-    else if (currentTest === "number") {
-        startNumberTest();
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes jump {
+
+    0%,100% {
+        transform: translateY(0);
     }
 
-    else if (currentTest === "multiplication") {
-        startMultiplicationTest();
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes letterDrop {
+
+    from {
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes boxFloat {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes rainbowMove {
+
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes cloudMove {
+
+    from {
+        transform: translateX(-30px);
+    }
+
+    to {
+        transform: translateX(30px);
+    }
+}
+
+@keyframes sunRotate {
+
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes trophy {
+
+    from {
+        transform: rotate(-8deg) scale(1);
+    }
+
+    to {
+        transform: rotate(8deg) scale(1.1);
     }
 }
 
 
-/* ================= START APP ================= */
+/* ================= MOBILE ================= */
 
-document.addEventListener("DOMContentLoaded", function() {
+@media(max-width: 900px) {
 
-    createAlphabet();
+    .menuSection {
+        grid-template-columns: 1fr;
+    }
 
-    createNumbers();
+    .alphabetGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 
-    showPage("homePage");
+    .numbersGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
 
-});
+    .tablesGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .resultCards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .alphabetGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .numbersGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tablesGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .lessonLetter {
+        font-size: 90px;
+    }
+
+    #bigNumber {
+        font-size: 85px;
+    }
+
+    .resultCards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
