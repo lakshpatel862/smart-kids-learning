@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,16 +15,21 @@
 
 <div id="homePage" class="screen">
 
-    <div class="clouds">☁️ ☁️ ☁️ ☁️</div>
+    <div class="skyDecor">☁️ ☁️ ☁️ ☁️</div>
+
+    <div class="flyingBirds">🐦 🐦 🐦</div>
+
+    <div class="homeCharacters">
+        👧 🧒 👦
+    </div>
 
     <div class="homeContent">
 
-        <div class="kids">👧 🧒 👦</div>
-
         <h1>🌈 Kids Learning World 🌈</h1>
 
-        <p>Learn • Play • Enjoy</p>
-
+        <p class="tagline">
+            Learn • Play • Enjoy
+        </p>
 
         <!-- ALPHABET -->
 
@@ -34,11 +38,17 @@
 
             <span class="homeIcon">🔤</span>
 
-            <span class="homeTitle">Alphabet</span>
+            <span class="homeTitle">
+                Alphabet
+            </span>
 
-            <span class="homeSub">A to Z</span>
+            <span class="homeSub">
+                A to Z
+            </span>
 
-            <span class="clickText">👆 Click to Start</span>
+            <span class="clickText">
+                👆 Click to Start
+            </span>
 
         </button>
 
@@ -50,27 +60,105 @@
 
             <span class="homeIcon">🔢</span>
 
-            <span class="homeTitle">Numbers</span>
+            <span class="homeTitle">
+                Numbers
+            </span>
 
-            <span class="homeSub">1 to 1000</span>
+            <span class="homeSub">
+                1 to 1000
+            </span>
 
-            <span class="clickText">👆 Click to Start</span>
+            <span class="clickText">
+                👆 Click to Start
+            </span>
 
         </button>
 
 
-        <!-- TEST -->
+        <!-- ALPHABET TEST -->
 
         <button class="homeBox testBox"
-                onclick="openTestPage()">
+                onclick="openAlphabetTest()">
+
+            <span class="homeIcon">🧩</span>
+
+            <span class="homeTitle">
+                Alphabet Test
+            </span>
+
+            <span class="homeSub">
+                Capital ↔ Small
+            </span>
+
+            <span class="clickText">
+                🧠 Start Test
+            </span>
+
+        </button>
+
+
+        <!-- NUMBER TEST -->
+
+        <button class="homeBox numberTestBox"
+                onclick="openNumberTest()">
+
+            <span class="homeIcon">🎯</span>
+
+            <span class="homeTitle">
+                Number Test
+            </span>
+
+            <span class="homeSub">
+                Learn Numbers
+            </span>
+
+            <span class="clickText">
+                🧠 Start Test
+            </span>
+
+        </button>
+
+
+        <!-- TABLE -->
+
+        <button class="homeBox tableBox"
+                onclick="openTablePage()">
+
+            <span class="homeIcon">✖️</span>
+
+            <span class="homeTitle">
+                Tables
+            </span>
+
+            <span class="homeSub">
+                1 to 100
+            </span>
+
+            <span class="clickText">
+                📚 Learn Tables
+            </span>
+
+        </button>
+
+
+        <!-- TABLE TEST -->
+
+        <button class="homeBox tableTestBox"
+                onclick="openTableTest()">
 
             <span class="homeIcon">📝</span>
 
-            <span class="homeTitle">Alphabet Test</span>
+            <span class="homeTitle">
+                Table Test
+            </span>
 
-            <span class="homeSub">Capital A - Z</span>
+            <span class="homeSub">
+                Practice
+            </span>
 
-            <span class="clickText">👆 Start Test</span>
+            <span class="clickText">
+                🎯 Start Test
+            </span>
 
         </button>
 
@@ -102,6 +190,7 @@
             A
         </div>
 
+
         <div class="wordArea">
 
             <div id="picture" class="picture">
@@ -124,9 +213,7 @@
 
     <button class="speakButton"
             onclick="speakAlphabet()">
-
         🔊 Hear Again
-
     </button>
 
 
@@ -161,7 +248,7 @@
 
         <h1>🔢 Learn Numbers</h1>
 
-        <p>1 to 1000 • Let's Count!</p>
+        <p>1 to 1000</p>
 
     </div>
 
@@ -185,9 +272,7 @@
 
     <button class="speakButton"
             onclick="speakNumber()">
-
         🔊 Hear Again
-
     </button>
 
 
@@ -210,20 +295,19 @@
 </div>
 
 
-<!-- ================= TEST PAGE ================= -->
+<!-- ================= ALPHABET TEST ================= -->
 
-<div id="testPage" class="screen hidden">
+<div id="alphabetTestPage" class="screen hidden">
 
     <button class="homeButton" onclick="goHome()">
         🏠 Home
     </button>
 
+    <div class="testHeader">
 
-    <div class="pageHeading">
+        <h1>🧩 Alphabet Matching Test</h1>
 
-        <h1>📝 Alphabet Test</h1>
-
-        <p>Match CAPITAL letter with small letter</p>
+        <p>Match Capital Letters with Small Letters</p>
 
     </div>
 
@@ -231,30 +315,315 @@
     <div class="testInfo">
 
         Question
-        <span id="testQuestionNumber">1</span>
-
-        /
-
-        <span id="testTotalQuestions">26</span>
-
-        &nbsp; | &nbsp;
-
-        Score:
-        <span id="testScore">0</span>
+        <span id="alphabetQuestionNumber">1</span>
+        / 10
 
     </div>
 
 
     <div class="matchingArea">
 
-
-        <!-- CAPITAL -->
-
         <div class="capitalSide">
 
-            <div class="testLabel">
-                CAPITAL
-            </div>
+            <h2>🔠 Capital</h2>
 
             <div id="capitalLetter"
-                 class="match
+                 class="testBigLetter">
+                A
+            </div>
+
+        </div>
+
+
+        <div class="lineArea">
+
+            <div class="matchLine">
+                ➜
+            </div>
+
+        </div>
+
+
+        <div class="smallSide">
+
+            <h2>🔡 Small</h2>
+
+            <div id="smallOptions"
+                 class="optionsGrid">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="alphabetTestMessage"
+         class="testMessage">
+        Choose the correct small letter.
+    </div>
+
+
+    <div class="testBottom">
+
+        <span>
+            Score:
+            <b id="alphabetTestScore">0</b>
+        </span>
+
+        <button onclick="finishAlphabetTest()">
+            🏁 Finish Test
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= NUMBER TEST ================= -->
+
+<div id="numberTestPage" class="screen hidden">
+
+    <button class="homeButton" onclick="goHome()">
+        🏠 Home
+    </button>
+
+    <div class="testHeader">
+
+        <h1>🔢 Number Test</h1>
+
+        <p>Choose the correct number</p>
+
+    </div>
+
+
+    <div class="testInfo">
+
+        Question
+        <span id="numberQuestionNumber">1</span>
+        / 10
+
+    </div>
+
+
+    <div class="numberQuestion">
+
+        <div id="numberQuestionText"
+             class="questionNumber">
+            One
+        </div>
+
+        <div id="numberOptions"
+             class="numberOptions">
+        </div>
+
+    </div>
+
+
+    <div id="numberTestMessage"
+         class="testMessage">
+        Choose the correct answer.
+    </div>
+
+
+    <div class="testBottom">
+
+        <span>
+            Score:
+            <b id="numberTestScore">0</b>
+        </span>
+
+        <button onclick="finishNumberTest()">
+            🏁 Finish Test
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TABLE PAGE ================= -->
+
+<div id="tablePage" class="screen hidden">
+
+    <button class="homeButton" onclick="goHome()">
+        🏠 Home
+    </button>
+
+    <div class="tableHeader">
+
+        <h1>✖️ Multiplication Tables</h1>
+
+        <p>Tables 1 to 100</p>
+
+    </div>
+
+
+    <div class="tableSelector">
+
+        <button onclick="previousTable()">
+            ◀
+        </button>
+
+        <div id="tableNumber">
+            Table 1
+        </div>
+
+        <button onclick="nextTable()">
+            ▶
+        </button>
+
+    </div>
+
+
+    <div id="tableContent"
+         class="tableContent">
+    </div>
+
+</div>
+
+
+<!-- ================= TABLE TEST ================= -->
+
+<div id="tableTestPage" class="screen hidden">
+
+    <button class="homeButton" onclick="goHome()">
+        🏠 Home
+    </button>
+
+    <div class="testHeader">
+
+        <h1>✖️ Multiplication Test</h1>
+
+        <p>Fill the blank answer</p>
+
+    </div>
+
+
+    <div class="testInfo">
+
+        Question
+        <span id="tableQuestionNumber">1</span>
+        / 10
+
+    </div>
+
+
+    <div id="tableQuestion"
+         class="tableQuestion">
+    </div>
+
+
+    <div id="tableOptions"
+         class="tableOptions">
+    </div>
+
+
+    <div id="tableTestMessage"
+         class="testMessage">
+        Choose the correct answer.
+    </div>
+
+
+    <div class="testBottom">
+
+        <span>
+            Score:
+            <b id="tableTestScore">0</b>
+        </span>
+
+        <button onclick="finishTableTest()">
+            🏁 Finish Test
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= RESULT PAGE ================= -->
+
+<div id="resultPage" class="screen hidden">
+
+    <div class="resultCharacters">
+
+        <div id="bheemDance">🧒</div>
+        <div id="motuDance">👦</div>
+        <div id="doraDance">🤖</div>
+
+    </div>
+
+
+    <div id="birds" class="resultBirds">
+        🐦 🐦 🐦 🐦 🐦
+    </div>
+
+
+    <div class="resultBox">
+
+        <div class="resultTrophy">
+            🏆
+        </div>
+
+        <h1>🎉 Test Complete! 🎉</h1>
+
+        <div class="resultScore">
+
+            <span id="resultScore">
+                8 / 10
+            </span>
+
+        </div>
+
+
+        <div class="resultDetails">
+
+            <div>
+                ✅ Correct:
+                <b id="resultCorrect">8</b>
+            </div>
+
+            <div>
+                ❌ Wrong:
+                <b id="resultWrong">2</b>
+            </div>
+
+            <div>
+                📊 Percentage:
+                <b id="resultPercentage">80%</b>
+            </div>
+
+        </div>
+
+
+        <div id="resultMessage"
+             class="resultMessage">
+            🌟 Very Good!
+        </div>
+
+
+        <div id="rewardMessage"
+             class="rewardMessage">
+        </div>
+
+
+        <button class="resultHomeButton"
+                onclick="goHome()">
+            🏠 Back to Home
+        </button>
+
+        <button class="restartButton"
+                onclick="restartCurrentTest()">
+            🔄 Try Again
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- IMPORTANT: SCRIPT MUST BE LAST -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
