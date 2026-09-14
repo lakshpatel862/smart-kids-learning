@@ -1,84 +1,65 @@
 /* =====================================================
-              KIDS LEARNING WORLD
-                 SCRIPT.JS
-===================================================== */
-
-
-/* =====================================================
-                    ALPHABET DATA
+              ALPHABET DATA
 ===================================================== */
 
 const alphabetData = [
-
-    ["A", "Apple", "🍎"],
-    ["B", "Ball", "⚽"],
-    ["C", "Cat", "🐱"],
-    ["D", "Dog", "🐶"],
-    ["E", "Elephant", "🐘"],
-    ["F", "Fish", "🐟"],
-    ["G", "Grapes", "🍇"],
-    ["H", "Horse", "🐴"],
-    ["I", "Ice Cream", "🍦"],
-    ["J", "Juice", "🧃"],
-    ["K", "Kite", "🪁"],
-    ["L", "Lion", "🦁"],
-    ["M", "Mango", "🥭"],
-    ["N", "Nest", "🪺"],
-    ["O", "Orange", "🍊"],
-    ["P", "Parrot", "🦜"],
-    ["Q", "Queen", "👑"],
-    ["R", "Rabbit", "🐰"],
-    ["S", "Sun", "☀️"],
-    ["T", "Tree", "🌳"],
-    ["U", "Umbrella", "☂️"],
-    ["V", "Van", "🚐"],
-    ["W", "Watermelon", "🍉"],
-    ["X", "Xylophone", "🎵"],
-    ["Y", "Yo-Yo", "🪀"],
-    ["Z", "Zebra", "🦓"]
-
+    ["A","Apple","🍎"],
+    ["B","Ball","⚽"],
+    ["C","Cat","🐱"],
+    ["D","Dog","🐶"],
+    ["E","Elephant","🐘"],
+    ["F","Fish","🐟"],
+    ["G","Grapes","🍇"],
+    ["H","Horse","🐴"],
+    ["I","Ice Cream","🍦"],
+    ["J","Juice","🧃"],
+    ["K","Kite","🪁"],
+    ["L","Lion","🦁"],
+    ["M","Mango","🥭"],
+    ["N","Nest","🪺"],
+    ["O","Orange","🍊"],
+    ["P","Parrot","🦜"],
+    ["Q","Queen","👑"],
+    ["R","Rabbit","🐰"],
+    ["S","Sun","☀️"],
+    ["T","Tree","🌳"],
+    ["U","Umbrella","☂️"],
+    ["V","Van","🚐"],
+    ["W","Watermelon","🍉"],
+    ["X","Xylophone","🎵"],
+    ["Y","Yo-Yo","🪀"],
+    ["Z","Zebra","🦓"]
 ];
-
 
 let alphabetIndex = 0;
 let currentNumber = 1;
-let currentTable = 1;
 
 
 /* =====================================================
-                    TEST VARIABLES
+                    TEST
 ===================================================== */
 
-let currentTest = "";
-
-let testQuestions = [];
-let testQuestionIndex = 0;
+let testLetters = [];
+let testIndex = 0;
 let testScore = 0;
-
-const TOTAL_TEST_QUESTIONS = 10;
+let questionAnswered = false;
 
 
 /* =====================================================
-                    PAGE CONTROL
+                 SHOW PAGE
 ===================================================== */
 
-const allPages = [
+function showOnly(pageId) {
 
-    "homePage",
-    "alphabetPage",
-    "numberPage",
-    "alphabetTestPage",
-    "numberTestPage",
-    "tablePage",
-    "tableTestPage",
-    "resultPage"
+    const pages = [
+        "homePage",
+        "alphabetPage",
+        "numberPage",
+        "alphabetTestPage",
+        "resultPage"
+    ];
 
-];
-
-
-function showPage(pageId) {
-
-    allPages.forEach(function(id) {
+    pages.forEach(function(id) {
 
         const page = document.getElementById(id);
 
@@ -88,122 +69,125 @@ function showPage(pageId) {
 
     });
 
-
-    const selectedPage =
-        document.getElementById(pageId);
+    const selectedPage = document.getElementById(pageId);
 
     if (selectedPage) {
         selectedPage.classList.remove("hidden");
     }
-
-}
-
-
-function goHome() {
-
-    speechSynthesis.cancel();
-
-    showPage("homePage");
-
 }
 
 
 /* =====================================================
-                 ALPHABET LEARNING
+                    HOME
+===================================================== */
+
+function goHome() {
+
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
+
+    showOnly("homePage");
+}
+
+
+/* =====================================================
+              OPEN ALPHABET
 ===================================================== */
 
 function openAlphabetPage() {
 
-    speechSynthesis.cancel();
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
 
     alphabetIndex = 0;
 
-    showPage("alphabetPage");
+    showOnly("alphabetPage");
 
     showAlphabet();
-
 }
 
+
+/* =====================================================
+                SHOW ALPHABET
+===================================================== */
 
 function showAlphabet() {
 
-    const item =
-        alphabetData[alphabetIndex];
+    const item = alphabetData[alphabetIndex];
 
+    document.getElementById("letter").innerText = item[0];
 
-    document.getElementById("letter")
-        .innerText = item[0];
+    document.getElementById("picture").innerText = item[2];
 
+    document.getElementById("word").innerText = item[1];
 
-    document.getElementById("picture")
-        .innerText = item[2];
-
-
-    document.getElementById("word")
-        .innerText = item[1];
-
-
-    document.getElementById("sentence")
-        .innerText =
+    document.getElementById("sentence").innerText =
         item[0] + " for " + item[1];
 
-
-    document.getElementById("alphabetProgress")
-        .innerText =
+    document.getElementById("alphabetProgress").innerText =
         item[0] + " / Z";
 
 
-    /*
-       Automatically speak ONCE
-       after opening/changing letter.
-    */
+    restartAnimation(
+        document.getElementById("letter")
+    );
+
+
+    /* Automatically speak ONE time */
 
     setTimeout(function() {
-
         speakAlphabet();
-
-    }, 600);
-
+    }, 500);
 }
 
 
+/* =====================================================
+               SPEAK ALPHABET
+===================================================== */
+
 function speakAlphabet() {
 
-    speechSynthesis.cancel();
+    if (!("speechSynthesis" in window)) {
+        return;
+    }
 
-    const item =
-        alphabetData[alphabetIndex];
+    window.speechSynthesis.cancel();
 
+    const item = alphabetData[alphabetIndex];
 
     const speech =
         new SpeechSynthesisUtterance(
             item[0] + " for " + item[1]
         );
 
-
     speech.rate = 0.75;
     speech.pitch = 1.1;
+    speech.volume = 1;
 
-    speechSynthesis.speak(speech);
-
+    window.speechSynthesis.speak(speech);
 }
 
 
+/* =====================================================
+                  NEXT ALPHABET
+===================================================== */
+
 function nextAlphabet() {
 
-    if (
-        alphabetIndex <
-        alphabetData.length - 1
-    ) {
+    if (alphabetIndex < alphabetData.length - 1) {
 
         alphabetIndex++;
 
         showAlphabet();
-
     }
-
 }
 
+
+/* =====================================================
+                PREVIOUS ALPHABET
+===================================================== */
 
 function previousAlphabet() {
 
@@ -212,33 +196,35 @@ function previousAlphabet() {
         alphabetIndex--;
 
         showAlphabet();
-
     }
-
 }
 
 
 /* =====================================================
-                    NUMBERS
+                 OPEN NUMBERS
 ===================================================== */
 
 function openNumberPage() {
 
-    speechSynthesis.cancel();
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
 
     currentNumber = 1;
 
-    showPage("numberPage");
+    showOnly("numberPage");
 
     showNumber();
-
 }
 
+
+/* =====================================================
+              NUMBER TO WORD
+===================================================== */
 
 function numberToWords(number) {
 
     const ones = [
-
         "",
         "One",
         "Two",
@@ -249,12 +235,9 @@ function numberToWords(number) {
         "Seven",
         "Eight",
         "Nine"
-
     ];
 
-
     const teens = [
-
         "Ten",
         "Eleven",
         "Twelve",
@@ -265,12 +248,9 @@ function numberToWords(number) {
         "Seventeen",
         "Eighteen",
         "Nineteen"
-
     ];
 
-
     const tens = [
-
         "",
         "",
         "Twenty",
@@ -281,7 +261,6 @@ function numberToWords(number) {
         "Seventy",
         "Eighty",
         "Ninety"
-
     ];
 
 
@@ -300,12 +279,11 @@ function numberToWords(number) {
         return (
             tens[Math.floor(number / 10)] +
             (
-                number % 10
-                ? " " + ones[number % 10]
-                : ""
+                number % 10 !== 0
+                    ? " " + ones[number % 10]
+                    : ""
             )
         );
-
     }
 
 
@@ -315,103 +293,98 @@ function numberToWords(number) {
             ones[Math.floor(number / 100)] +
             " Hundred" +
             (
-                number % 100
-                ? " " + numberToWords(number % 100)
-                : ""
+                number % 100 !== 0
+                    ? " " + numberToWords(number % 100)
+                    : ""
             )
         );
-
     }
 
 
     return "One Thousand";
-
 }
 
 
+/* =====================================================
+                   SHOW NUMBER
+===================================================== */
+
 function showNumber() {
 
-    document.getElementById("bigNumber")
-        .innerText =
+    document.getElementById("bigNumber").innerText =
         currentNumber;
 
-
-    document.getElementById("numberName")
-        .innerText =
+    document.getElementById("numberName").innerText =
         numberToWords(currentNumber);
 
-
-    document.getElementById("numberProgress")
-        .innerText =
+    document.getElementById("numberProgress").innerText =
         currentNumber + " / 1000";
 
 
     const ballBox =
         document.getElementById("balls");
 
-
     ballBox.innerHTML = "";
 
 
     /*
-       Up to 20 individual balls.
-       After 20, show multiplication style.
+       Maximum 20 balls screen par.
+       Number 1 se 1000 tak chalega.
     */
 
-    if (currentNumber <= 20) {
+    const ballCount =
+        Math.min(currentNumber, 20);
 
-        for (
-            let i = 0;
-            i < currentNumber;
-            i++
-        ) {
 
-            const ball =
-                document.createElement("span");
+    for (let i = 0; i < ballCount; i++) {
 
-            ball.innerText = "⚽ ";
+        const ball =
+            document.createElement("span");
 
-            ballBox.appendChild(ball);
+        ball.innerText = "⚽ ";
 
-        }
-
-    } else {
-
-        ballBox.innerText =
-            "⚽ × " + currentNumber;
-
+        ballBox.appendChild(ball);
     }
 
 
+    restartAnimation(
+        document.getElementById("bigNumber")
+    );
+
+
     setTimeout(function() {
-
         speakNumber();
-
-    }, 600);
-
+    }, 500);
 }
 
 
+/* =====================================================
+                  SPEAK NUMBER
+===================================================== */
+
 function speakNumber() {
 
-    speechSynthesis.cancel();
+    if (!("speechSynthesis" in window)) {
+        return;
+    }
 
+    window.speechSynthesis.cancel();
 
     const speech =
         new SpeechSynthesisUtterance(
             numberToWords(currentNumber)
         );
 
-
     speech.rate = 0.75;
     speech.pitch = 1.1;
-    speech.volume = 1;
 
-
-    speechSynthesis.speak(speech);
-
+    window.speechSynthesis.speak(speech);
 }
 
+
+/* =====================================================
+                  NEXT NUMBER
+===================================================== */
 
 function nextNumber() {
 
@@ -420,11 +393,13 @@ function nextNumber() {
         currentNumber++;
 
         showNumber();
-
     }
-
 }
 
+
+/* =====================================================
+                PREVIOUS NUMBER
+===================================================== */
 
 function previousNumber() {
 
@@ -433,146 +408,87 @@ function previousNumber() {
         currentNumber--;
 
         showNumber();
-
     }
-
 }
 
 
 /* =====================================================
-                RANDOM QUESTION HELPER
-===================================================== */
-
-function shuffle(array) {
-
-    const copy =
-        [...array];
-
-
-    for (
-        let i = copy.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
-
-
-        [
-            copy[i],
-            copy[j]
-        ] =
-        [
-            copy[j],
-            copy[i]
-        ];
-
-    }
-
-
-    return copy;
-
-}
-
-
-/* =====================================================
-                 ALPHABET TEST
+              OPEN ALPHABET TEST
 ===================================================== */
 
 function openAlphabetTest() {
 
-    speechSynthesis.cancel();
-
-    currentTest = "alphabet";
-
-    testScore = 0;
-    testQuestionIndex = 0;
-
-
-    /*
-       Shuffle A-Z.
-       Each letter is used only once
-       in this test.
-    */
-
-    testQuestions =
-        shuffle(alphabetData)
-        .slice(0, TOTAL_TEST_QUESTIONS);
-
-
-    showPage("alphabetTestPage");
-
-    document.getElementById("alphabetTestScore")
-        .innerText = "0";
-
-
-    loadAlphabetQuestion();
-
-}
-
-
-function loadAlphabetQuestion() {
-
-    if (
-        testQuestionIndex >=
-        testQuestions.length
-    ) {
-
-        finishAlphabetTest();
-
-        return;
-
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
     }
 
 
-    const correct =
-        testQuestions[testQuestionIndex];
-
-
-    document.getElementById(
-        "capitalLetter"
-    ).innerText =
-        correct[0];
-
-
-    document.getElementById(
-        "alphabetQuestionNumber"
-    ).innerText =
-        testQuestionIndex + 1;
-
-
     /*
-       Create 3 choices.
-       Correct answer + 2 different letters.
+       A-Z ko ek baar shuffle karenge.
+       Is test ke andar same question repeat nahi hoga.
     */
 
-    const otherLetters =
-        shuffle(
-            alphabetData.filter(
-                item =>
-                    item[0] !== correct[0]
-            )
-        ).slice(0, 2);
+    testLetters =
+        alphabetData
+            .map(function(item) {
+                return item[0];
+            })
+            .sort(function() {
+                return Math.random() - 0.5;
+            });
+
+
+    testIndex = 0;
+
+    testScore = 0;
+
+    questionAnswered = false;
+
+
+    showOnly("alphabetTestPage");
+
+    showTestQuestion();
+}
+
+
+/* =====================================================
+               SHOW TEST QUESTION
+===================================================== */
+
+function showTestQuestion() {
+
+    questionAnswered = false;
+
+    document.getElementById("nextTestButton").disabled = true;
+
+
+    const currentLetter =
+        testLetters[testIndex];
+
+
+    document.getElementById("capitalLetter").innerText =
+        currentLetter;
+
+
+    document.getElementById("testQuestionNumber").innerText =
+        testIndex + 1;
+
+
+    document.getElementById("testScore").innerText =
+        testScore;
+
+
+    document.getElementById("testMessage").innerText =
+        "👆 Connect " + currentLetter +
+        " with the correct small letter";
 
 
     const options =
-        shuffle(
-            [
-                correct[0].toLowerCase(),
-                otherLetters[0][0].toLowerCase(),
-                otherLetters[1][0].toLowerCase()
-            ]
-        );
+        createOptions(currentLetter);
 
 
     const box =
-        document.getElementById(
-            "smallOptions"
-        );
-
+        document.getElementById("smallOptions");
 
     box.innerHTML = "";
 
@@ -582,714 +498,217 @@ function loadAlphabetQuestion() {
         const button =
             document.createElement("button");
 
+        button.className = "smallOption";
 
-        button.className =
-            "optionButton";
+        button.innerText = letter.toLowerCase();
 
+        button.onclick = function() {
 
-        button.innerText =
-            letter;
+            checkTestAnswer(
+                letter,
+                button
+            );
 
-
-        button.onclick =
-            function() {
-
-                checkAlphabetAnswer(
-                    letter,
-                    correct[0].toLowerCase()
-                );
-
-            };
-
+        };
 
         box.appendChild(button);
+    });
+}
+
+
+/* =====================================================
+                CREATE OPTIONS
+===================================================== */
+
+function createOptions(correctLetter) {
+
+    let letters = [];
+
+    letters.push(correctLetter);
+
+
+    /*
+       Wrong letters add karenge.
+    */
+
+    while (letters.length < 6) {
+
+        const randomIndex =
+            Math.floor(
+                Math.random() *
+                alphabetData.length
+            );
+
+        const randomLetter =
+            alphabetData[randomIndex][0];
+
+
+        if (!letters.includes(randomLetter)) {
+
+            letters.push(randomLetter);
+        }
+    }
+
+
+    /*
+       Options ko shuffle.
+    */
+
+    return letters.sort(function() {
+        return Math.random() - 0.5;
+    });
+}
+
+
+/* =====================================================
+                CHECK ANSWER
+===================================================== */
+
+function checkTestAnswer(
+    selectedLetter,
+    clickedButton
+) {
+
+    if (questionAnswered) {
+        return;
+    }
+
+
+    questionAnswered = true;
+
+
+    const correctLetter =
+        testLetters[testIndex];
+
+
+    const buttons =
+        document.querySelectorAll(".smallOption");
+
+
+    buttons.forEach(function(button) {
+
+        button.disabled = true;
 
     });
 
 
-    document.getElementById(
-        "alphabetTestMessage"
-    ).innerText =
-        "Choose the correct small letter.";
-
-}
-
-
-function checkAlphabetAnswer(
-    selected,
-    correct
-) {
-
-    const buttons =
-        document.querySelectorAll(
-            "#smallOptions .optionButton"
-        );
-
-
-    buttons.forEach(
-        button =>
-            button.disabled = true
-    );
-
-
-    if (selected === correct) {
+    if (selectedLetter === correctLetter) {
 
         testScore++;
 
+        clickedButton.classList.add("correct");
 
-        document.getElementById(
-            "alphabetTestMessage"
-        ).innerText =
-            "🎉 Correct! Great job!";
-
-
-        showCorrectAnimation();
+        document.getElementById("testMessage").innerText =
+            "🎉 Correct! Great Job! 🤖";
 
     } else {
 
-        document.getElementById(
-            "alphabetTestMessage"
-        ).innerText =
-            "😊 Try next one!";
+        clickedButton.classList.add("wrong");
 
+
+        buttons.forEach(function(button) {
+
+            if (
+                button.innerText ===
+                correctLetter.toLowerCase()
+            ) {
+
+                button.classList.add("correct");
+            }
+
+        });
+
+
+        document.getElementById("testMessage").innerText =
+            "😊 Good Try! Correct answer is " +
+            correctLetter.toLowerCase();
     }
 
 
-    document.getElementById(
-        "alphabetTestScore"
-    ).innerText =
+    document.getElementById("testScore").innerText =
         testScore;
 
 
-    testQuestionIndex++;
-
-
-    setTimeout(
-        loadAlphabetQuestion,
-        900
-    );
-
+    document.getElementById("nextTestButton").disabled =
+        false;
 }
 
+
+/* =====================================================
+               NEXT TEST QUESTION
+===================================================== */
+
+function nextTestQuestion() {
+
+    if (!questionAnswered) {
+        return;
+    }
+
+
+    testIndex++;
+
+
+    /*
+       26 questions complete.
+    */
+
+    if (testIndex >= testLetters.length) {
+
+        finishAlphabetTest();
+
+        return;
+    }
+
+
+    showTestQuestion();
+}
+
+
+/* =====================================================
+                FINISH TEST
+===================================================== */
 
 function finishAlphabetTest() {
 
-    showResult();
-
-}
-
-
-/* =====================================================
-                   NUMBER TEST
-===================================================== */
-
-function openNumberTest() {
-
-    speechSynthesis.cancel();
-
-    currentTest = "number";
-
-    testScore = 0;
-    testQuestionIndex = 0;
-
-
-    /*
-       Generate 10 unique numbers.
-    */
-
-    const numbers = [];
-
-    while (
-        numbers.length <
-        TOTAL_TEST_QUESTIONS
-    ) {
-
-        const n =
-            Math.floor(
-                Math.random() * 100
-            ) + 1;
-
-
-        if (!numbers.includes(n)) {
-
-            numbers.push(n);
-
-        }
-
-    }
-
-
-    testQuestions =
-        numbers;
-
-
-    showPage("numberTestPage");
-
-
-    document.getElementById(
-        "numberTestScore"
-    ).innerText = "0";
-
-
-    loadNumberQuestion();
-
-}
-
-
-function loadNumberQuestion() {
-
-    if (
-        testQuestionIndex >=
-        testQuestions.length
-    ) {
-
-        finishNumberTest();
-
-        return;
-
-    }
-
-
-    const number =
-        testQuestions[testQuestionIndex];
-
-
-    document.getElementById(
-        "numberQuestionNumber"
-    ).innerText =
-        testQuestionIndex + 1;
-
-
-    document.getElementById(
-        "numberQuestionText"
-    ).innerText =
-        numberToWords(number);
-
-
-    const options =
-        new Set([number]);
-
-
-    while (options.size < 4) {
-
-        options.add(
-            Math.floor(
-                Math.random() * 100
-            ) + 1
-        );
-
-    }
-
-
-    const box =
-        document.getElementById(
-            "numberOptions"
-        );
-
-
-    box.innerHTML = "";
-
-
-    shuffle(
-        Array.from(options)
-    ).forEach(function(option) {
-
-        const button =
-            document.createElement("button");
-
-
-        button.className =
-            "numberOption";
-
-
-        button.innerText =
-            option;
-
-
-        button.onclick =
-            function() {
-
-                checkNumberAnswer(
-                    option,
-                    number
-                );
-
-            };
-
-
-        box.appendChild(button);
-
-    });
-
-
-    document.getElementById(
-        "numberTestMessage"
-    ).innerText =
-        "Choose the correct answer.";
-
-}
-
-
-function checkNumberAnswer(
-    selected,
-    correct
-) {
-
-    const buttons =
-        document.querySelectorAll(
-            "#numberOptions .numberOption"
-        );
-
-
-    buttons.forEach(
-        button =>
-            button.disabled = true
-    );
-
-
-    if (selected === correct) {
-
-        testScore++;
-
-
-        document.getElementById(
-            "numberTestMessage"
-        ).innerText =
-            "🎉 Correct!";
-
-
-        showCorrectAnimation();
-
-    } else {
-
-        document.getElementById(
-            "numberTestMessage"
-        ).innerText =
-            "😊 Keep trying!";
-
-    }
-
-
-    document.getElementById(
-        "numberTestScore"
-    ).innerText =
-        testScore;
-
-
-    testQuestionIndex++;
-
-
-    setTimeout(
-        loadNumberQuestion,
-        900
-    );
-
-}
-
-
-function finishNumberTest() {
-
-    showResult();
-
-}
-
-
-/* =====================================================
-              MULTIPLICATION TABLES
-===================================================== */
-
-function openTablePage() {
-
-    currentTable = 1;
-
-    showPage("tablePage");
-
-    showTable();
-
-}
-
-
-function showTable() {
-
-    document.getElementById(
-        "tableNumber"
-    ).innerText =
-        "Table " + currentTable;
-
-
-    const box =
-        document.getElementById(
-            "tableContent"
-        );
-
-
-    box.innerHTML = "";
-
-
-    for (
-        let i = 1;
-        i <= 10;
-        i++
-    ) {
-
-        const row =
-            document.createElement("div");
-
-
-        row.className =
-            "tableRow";
-
-
-        row.innerText =
-            currentTable +
-            " × " +
-            i +
-            " = " +
-            (currentTable * i);
-
-
-        box.appendChild(row);
-
-    }
-
-}
-
-
-function nextTable() {
-
-    if (currentTable < 100) {
-
-        currentTable++;
-
-        showTable();
-
-    }
-
-}
-
-
-function previousTable() {
-
-    if (currentTable > 1) {
-
-        currentTable--;
-
-        showTable();
-
-    }
-
-}
-
-
-/* =====================================================
-              MULTIPLICATION TEST
-===================================================== */
-
-function openTableTest() {
-
-    speechSynthesis.cancel();
-
-    currentTest = "multiplication";
-
-    testScore = 0;
-    testQuestionIndex = 0;
-
-
-    /*
-       Create 10 unique multiplication questions.
-    */
-
-    const questions = [];
-
-
-    while (
-        questions.length <
-        TOTAL_TEST_QUESTIONS
-    ) {
-
-        const a =
-            Math.floor(
-                Math.random() * 100
-            ) + 1;
-
-
-        const b =
-            Math.floor(
-                Math.random() * 10
-            ) + 1;
-
-
-        const key =
-            a + "x" + b;
-
-
-        if (
-            !questions.some(
-                q => q.key === key
-            )
-        ) {
-
-            questions.push({
-
-                a: a,
-                b: b,
-                answer: a * b,
-                key: key
-
-            });
-
-        }
-
-    }
-
-
-    testQuestions =
-        questions;
-
-
-    showPage("tableTestPage");
-
-
-    document.getElementById(
-        "tableTestScore"
-    ).innerText = "0";
-
-
-    loadTableQuestion();
-
-}
-
-
-function loadTableQuestion() {
-
-    if (
-        testQuestionIndex >=
-        testQuestions.length
-    ) {
-
-        finishTableTest();
-
-        return;
-
-    }
-
-
-    const question =
-        testQuestions[testQuestionIndex];
-
-
-    document.getElementById(
-        "tableQuestionNumber"
-    ).innerText =
-        testQuestionIndex + 1;
-
-
-    document.getElementById(
-        "tableQuestion"
-    ).innerText =
-        question.a +
-        " × " +
-        question.b +
-        " =  ?";
-
-
-    const answers =
-        new Set([
-            question.answer
-        ]);
-
-
-    while (answers.size < 4) {
-
-        const randomAnswer =
-            Math.max(
-                1,
-                question.answer +
-                Math.floor(
-                    Math.random() * 30
-                ) - 15
-            );
-
-
-        answers.add(randomAnswer);
-
-    }
-
-
-    const box =
-        document.getElementById(
-            "tableOptions"
-        );
-
-
-    box.innerHTML = "";
-
-
-    shuffle(
-        Array.from(answers)
-    ).forEach(function(answer) {
-
-        const button =
-            document.createElement("button");
-
-
-        button.className =
-            "tableOption";
-
-
-        button.innerText =
-            answer;
-
-
-        button.onclick =
-            function() {
-
-                checkTableAnswer(
-                    answer,
-                    question.answer
-                );
-
-            };
-
-
-        box.appendChild(button);
-
-    });
-
-
-    document.getElementById(
-        "tableTestMessage"
-    ).innerText =
-        "Choose the correct answer.";
-
-}
-
-
-function checkTableAnswer(
-    selected,
-    correct
-) {
-
-    const buttons =
-        document.querySelectorAll(
-            "#tableOptions .tableOption"
-        );
-
-
-    buttons.forEach(
-        button =>
-            button.disabled = true
-    );
-
-
-    if (selected === correct) {
-
-        testScore++;
-
-
-        document.getElementById(
-            "tableTestMessage"
-        ).innerText =
-            "🎉 Correct!";
-
-
-        showCorrectAnimation();
-
-    } else {
-
-        document.getElementById(
-            "tableTestMessage"
-        ).innerText =
-            "😊 Try the next one!";
-
-    }
-
-
-    document.getElementById(
-        "tableTestScore"
-    ).innerText =
-        testScore;
-
-
-    testQuestionIndex++;
-
-
-    setTimeout(
-        loadTableQuestion,
-        900
-    );
-
-}
-
-
-function finishTableTest() {
-
-    showResult();
-
-}
-
-
-/* =====================================================
-                    RESULT
-===================================================== */
-
-function showResult() {
-
     const total =
-        testQuestions.length;
+        testLetters.length;
 
+    const correct =
+        testScore;
 
     const wrong =
-        total - testScore;
-
+        total - correct;
 
     const percentage =
         Math.round(
-            (testScore / total) * 100
+            (correct / total) * 100
         );
 
 
-    document.getElementById(
-        "resultScore"
-    ).innerText =
-        testScore +
-        " / " +
+    document.getElementById("resultTotal").innerText =
         total;
 
+    document.getElementById("resultCorrect").innerText =
+        correct;
 
-    document.getElementById(
-        "resultCorrect"
-    ).innerText =
-        testScore;
-
-
-    document.getElementById(
-        "resultWrong"
-    ).innerText =
+    document.getElementById("resultWrong").innerText =
         wrong;
 
-
-    document.getElementById(
-        "resultPercentage"
-    ).innerText =
+    document.getElementById("resultPercentage").innerText =
         percentage + "%";
 
 
     let message = "";
-    let reward = "";
+    let dance = "";
 
 
     if (percentage === 100) {
 
         message =
-            "🏆 AMAZING! PERFECT SCORE!";
+            "🏆 PERFECT! All Questions Correct!";
 
-
-        reward =
-            "🤖 Doraemon + 🧒 Chhota Bheem + 👦 Motu Patlu — EVERYONE IS DANCING! 🎉";
-
-
-        startAllDance();
+        dance =
+            "🤖 🐰 🐼 🐥 🎉 💃 🕺 🎉";
 
     }
 
@@ -1298,69 +717,81 @@ function showResult() {
         message =
             "🌟 Excellent! Super Star!";
 
-
-        reward =
-            "🤖 Doraemon is dancing! 🎉";
-
-
-        startDoraDance();
+        dance =
+            "🤖 🤖 🤖 💃 🕺 🎉";
 
     }
 
     else if (percentage >= 80) {
 
         message =
-            "🥳 Very Good!";
+            "🥳 Very Good! Keep Learning!";
 
-
-        reward =
-            "👦 Motu Patlu are dancing! 🎉";
-
-
-        startMotuDance();
+        dance =
+            "🐰 🐰 💃 🕺 🎉";
 
     }
 
     else if (percentage >= 70) {
 
         message =
-            "👏 Good Job!";
+            "👏 Great Job! Keep Practicing!";
 
-
-        reward =
-            "🧒 Chhota Bheem is dancing! 🎉";
-
-
-        startBheemDance();
+        dance =
+            "🐼 🐼 💃 🕺 🎉";
 
     }
 
     else {
 
         message =
-            "💪 Keep Practicing!";
+            "😊 Good Try! Practice Again!";
 
-
-        reward =
-            "🌈 Try again and become a Super Star!";
-
+        dance =
+            "🐥 📚 💪";
     }
 
 
-    document.getElementById(
-        "resultMessage"
-    ).innerText =
+    document.getElementById("resultMessage").innerText =
         message;
 
 
-    document.getElementById(
-        "rewardMessage"
-    ).innerText =
-        reward;
+    document.getElementById("danceArea").innerText =
+        dance;
 
 
-    showPage("resultPage");
+    showOnly("resultPage");
+}
 
 
-    /*
-       Birds appe
+/* =====================================================
+                 ANIMATION
+===================================================== */
+
+function restartAnimation(element) {
+
+    if (!element) {
+        return;
+    }
+
+    element.style.animation = "none";
+
+    void element.offsetWidth;
+
+    element.style.animation =
+        "cartoonDance .8s ease-out";
+}
+
+
+/* =====================================================
+               START APP
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        showOnly("homePage");
+
+    }
+);
