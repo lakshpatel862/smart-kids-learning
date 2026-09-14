@@ -1,320 +1,856 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+    overflow: hidden;
+}
+
+.screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ================= HOME ================= */
+
+#homePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #73d8ff,
+            #a88cff,
+            #ff9dca
+        );
+
+    overflow-y: auto;
+}
+
+.clouds {
+    position: absolute;
+    top: 3%;
+    width: 100%;
+    text-align: center;
+    font-size: 55px;
+    opacity: .7;
+    animation: cloudMove 6s infinite alternate;
+}
+
+.homeContent {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 20px;
+}
 
-    <title>Kids Learning World</title>
+.kids {
+    font-size: 60px;
+    animation: kidsBounce 2s infinite;
+}
+
+.homeContent h1 {
+    color: white;
+    font-size: clamp(30px, 5vw, 58px);
+    text-shadow: 3px 3px #7048a8;
+}
+
+.homeContent p {
+    color: white;
+    font-size: 22px;
+    margin: 5px;
+}
+
+.cartoonRow {
+    font-size: 38px;
+    margin: 8px;
+    animation: cartoonDance 1.5s infinite;
+}
+
+
+/* ================= HOME BUTTONS ================= */
+
+.homeBox {
+    width: min(300px, 80vw);
+    height: 205px;
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    margin: 10px;
 
-<body>
+    border: 5px solid white;
+    border-radius: 35px;
 
-<!-- ================= HOME ================= -->
+    display: inline-flex;
+    vertical-align: top;
 
-<div id="homePage" class="screen">
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    <div class="clouds">☁️ ☁️ ☁️ ☁️</div>
+    color: white;
+    font-family: inherit;
 
-    <div class="homeContent">
+    cursor: pointer;
 
-        <div class="kids">👧 🧒 👦</div>
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.25);
 
-        <h1>🌈 Kids Learning World 🌈</h1>
+    transition: .3s;
+}
 
-        <p>Learn • Play • Enjoy</p>
+.homeBox:hover {
+    transform: translateY(-10px) scale(1.04);
+}
 
-        <div class="cartoonRow">
-            🤖 🐥 🐰 🐼 🦊
-        </div>
+.alphabetBox {
+    background: linear-gradient(145deg,#ff5798,#ff9966);
+}
 
-        <!-- Alphabet -->
+.numberBox {
+    background: linear-gradient(145deg,#4776ff,#8e54e9);
+}
 
-        <button class="homeBox alphabetBox" onclick="openAlphabetPage()">
-            <span class="homeIcon">🔤</span>
-            <span class="homeTitle">Alphabet</span>
-            <span class="homeSub">A to Z</span>
-            <span class="clickText">👆 Click to Start</span>
-        </button>
+.testBox {
+    background: linear-gradient(145deg,#00b894,#00cec9);
+}
 
+.homeIcon {
+    font-size: 55px;
+}
 
-        <!-- Numbers -->
+.homeTitle {
+    font-size: 30px;
+    font-weight: bold;
+}
 
-        <button class="homeBox numberBox" onclick="openNumberPage()">
-            <span class="homeIcon">🔢</span>
-            <span class="homeTitle">Numbers</span>
-            <span class="homeSub">1 to 1000</span>
-            <span class="clickText">👆 Click to Start</span>
-        </button>
+.homeSub {
+    font-size: 19px;
+}
 
+.clickText {
+    margin-top: 8px;
 
-        <!-- Alphabet Test -->
+    background: white;
+    color: #7347ad;
 
-        <button class="homeBox testBox" onclick="openAlphabetTest()">
-            <span class="homeIcon">🧠</span>
-            <span class="homeTitle">Alphabet Test</span>
-            <span class="homeSub">Capital & Small</span>
-            <span class="clickText">🎯 Start Test</span>
-        </button>
+    padding: 7px 17px;
+    border-radius: 18px;
 
-    </div>
-</div>
+    font-size: 14px;
+}
 
 
-<!-- ================= ALPHABET PAGE ================= -->
+/* ================= LEARNING PAGES ================= */
 
-<div id="alphabetPage" class="screen hidden">
+#alphabetPage,
+#numberPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    <button class="homeButton" onclick="goHome()">🏠 Home</button>
+    background:
+        linear-gradient(
+            135deg,
+            #70dcff,
+            #9988ff,
+            #ff9bca
+        );
+}
 
-    <div class="floatingCartoons">
-        🤖 🐰 🐼
-    </div>
+.homeButton {
+    position: absolute;
 
-    <div class="pageHeading">
-        <h1>🔤 Learn Alphabet</h1>
-        <p>A to Z</p>
-    </div>
+    top: 18px;
+    left: 18px;
 
-    <div class="learningArea">
+    z-index: 20;
 
-        <div id="letter" class="letter">A</div>
+    border: none;
+    background: white;
+    color: #7048a8;
 
-        <div class="wordArea">
+    padding: 11px 20px;
 
-            <div id="picture" class="picture">🍎</div>
+    border-radius: 22px;
 
-            <div id="word" class="word">Apple</div>
+    font-size: 17px;
+    font-family: inherit;
+    font-weight: bold;
 
-        </div>
+    cursor: pointer;
 
-    </div>
+    box-shadow: 0 7px 15px rgba(0,0,0,.2);
+}
 
-    <div id="sentence" class="sentence">
-        A for Apple
-    </div>
+.floatingCartoons {
+    position: absolute;
+    right: 25px;
+    top: 20px;
 
-    <button class="speakButton" onclick="speakAlphabet()">
-        🔊 Hear Again
-    </button>
+    font-size: 35px;
 
-    <div class="navigation">
+    animation: cartoonDance 1.5s infinite;
+}
 
-        <button onclick="previousAlphabet()">
-            ◀ Previous
-        </button>
+.pageHeading {
+    position: absolute;
+    top: 5%;
 
-        <span id="alphabetProgress">A / Z</span>
+    text-align: center;
+    color: white;
+}
 
-        <button onclick="nextAlphabet()">
-            Next ▶
-        </button>
+.pageHeading h1 {
+    font-size: clamp(30px,4vw,50px);
+    text-shadow: 3px 3px #6945a5;
+}
 
-    </div>
+.pageHeading p {
+    font-size: 20px;
+}
 
-</div>
 
+/* ================= ALPHABET ================= */
 
-<!-- ================= NUMBER PAGE ================= -->
+.learningArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-<div id="numberPage" class="screen hidden">
+    gap: clamp(20px,6vw,80px);
 
-    <button class="homeButton" onclick="goHome()">🏠 Home</button>
+    width: 90vw;
+}
 
-    <div class="floatingCartoons">
-        🐼 🐰 🤖
-    </div>
+.letter {
+    font-size: clamp(130px,20vw,230px);
+    font-weight: bold;
 
-    <div class="pageHeading">
+    background:
+        linear-gradient(
+            45deg,
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            purple
+        );
 
-        <h1>🔢 Learn Numbers</h1>
+    -webkit-background-clip: text;
+    color: transparent;
 
-        <p>1 to 1000 • Let's Count!</p>
+    filter:
+        drop-shadow(
+            5px 8px 3px
+            rgba(0,0,0,.2)
+        );
+}
 
-    </div>
+.wordArea {
+    background: rgba(255,255,255,.95);
 
-    <div class="numberLearningArea">
+    padding: 20px 40px;
 
-        <div id="bigNumber" class="bigNumber">
-            1
-        </div>
+    border-radius: 35px;
 
-        <div id="balls" class="balls">
-            ⚽
-        </div>
+    text-align: center;
 
-        <div id="numberName" class="numberName">
-            One
-        </div>
+    box-shadow: 0 15px 30px rgba(0,0,0,.2);
+}
 
-    </div>
+.picture {
+    font-size: clamp(75px,10vw,130px);
+    animation: bounce 1.5s infinite;
+}
 
-    <button class="speakButton" onclick="speakNumber()">
-        🔊 Hear Again
-    </button>
+.word {
+    color: #ff4f91;
+    font-size: clamp(32px,5vw,55px);
+    font-weight: bold;
+}
 
-    <div class="navigation">
+.sentence {
+    color: white;
 
-        <button onclick="previousNumber()">
-            ◀ Previous
-        </button>
+    font-size: clamp(30px,5vw,55px);
+    font-weight: bold;
 
-        <span id="numberProgress">1 / 1000</span>
+    margin: 15px;
 
-        <button onclick="nextNumber()">
-            Next ▶
-        </button>
+    text-shadow: 3px 3px #6945a5;
+}
 
-    </div>
 
-</div>
+/* ================= NUMBERS ================= */
 
+.numberLearningArea {
+    text-align: center;
+    width: 90vw;
+}
 
-<!-- ================= ALPHABET TEST ================= -->
+.bigNumber {
+    font-size: clamp(130px,23vw,250px);
+    font-weight: bold;
 
-<div id="alphabetTestPage" class="screen hidden">
+    background:
+        linear-gradient(
+            45deg,
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            purple
+        );
 
-    <button class="homeButton" onclick="goHome()">🏠 Home</button>
+    -webkit-background-clip: text;
+    color: transparent;
 
-    <div class="testCartoons">
-        🤖 🐰 🐼 🐥
-    </div>
+    filter:
+        drop-shadow(
+            5px 8px 3px
+            rgba(0,0,0,.2)
+        );
+}
 
-    <div class="testHeading">
+.balls {
+    font-size: clamp(30px,5vw,55px);
 
-        <h1>🧠 Alphabet Matching Test</h1>
+    min-height: 60px;
 
-        <p>Connect Capital Letter with Small Letter</p>
+    max-width: 800px;
 
-    </div>
+    margin: auto;
 
+    line-height: 1.3;
+}
 
-    <div class="testInfo">
+.numberName {
+    display: inline-block;
 
-        <span>
-            Question:
-            <b id="testQuestionNumber">1</b>
-        </span>
+    background: white;
+    color: #7048a8;
 
-        <span>
-            Score:
-            <b id="testScore">0</b>
-        </span>
+    padding: 10px 35px;
 
-    </div>
+    border-radius: 25px;
 
+    font-size: clamp(28px,4vw,45px);
+    font-weight: bold;
 
-    <div class="matchingArea">
+    box-shadow: 0 10px 20px rgba(0,0,0,.18);
+}
 
-        <div class="capitalBox">
 
-            <h2>CAPITAL</h2>
+/* ================= BUTTONS ================= */
 
-            <div id="capitalLetter" class="testLetter">
-                A
-            </div>
+.speakButton,
+.nextTestButton {
+    border: none;
 
-        </div>
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f91,
+            #ff8b42
+        );
 
+    color: white;
 
-        <div class="lineArea">
-            <div class="matchingLine">➜</div>
-        </div>
+    padding: 12px 25px;
 
+    border-radius: 23px;
 
-        <div class="smallBox">
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: bold;
 
-            <h2>SMALL</h2>
+    cursor: pointer;
 
-            <div id="smallOptions" class="smallOptions">
-            </div>
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+}
 
-        </div>
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    </div>
+    gap: 25px;
 
+    margin-top: 18px;
+}
 
-    <div id="testMessage" class="testMessage">
-        👆 Choose the correct small letter
-    </div>
+.navigation button {
+    border: none;
+    background: white;
+    color: #6845a3;
 
+    padding: 11px 20px;
 
-    <button class="nextTestButton"
-            id="nextTestButton"
-            onclick="nextTestQuestion()"
-            disabled>
+    border-radius: 22px;
 
-        Next Question ▶
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
 
-    </button>
+    cursor: pointer;
 
-</div>
+    box-shadow: 0 7px 15px rgba(0,0,0,.18);
+}
 
+#alphabetProgress,
+#numberProgress {
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+}
 
-<!-- ================= RESULT PAGE ================= -->
 
-<div id="resultPage" class="screen hidden">
+/* ================= TEST ================= */
 
-    <div class="resultCartoons">
-        🤖 🐰 🐼 🐥
-    </div>
+#alphabetTestPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    <div class="resultBox">
+    background:
+        linear-gradient(
+            135deg,
+            #7ee8fa,
+            #a78bfa,
+            #f9a8d4
+        );
+}
 
-        <h1>🎉 Test Complete! 🎉</h1>
+.testCartoons {
+    position: absolute;
+    top: 18px;
+    right: 25px;
 
-        <div class="resultEmoji">
-            🏆
-        </div>
+    font-size: 35px;
 
-        <h2 id="resultMessage">
-            Great Job!
-        </h2>
+    animation: cartoonDance 1s infinite;
+}
 
-        <div class="resultDetails">
+.testHeading {
+    text-align: center;
+    color: white;
 
-            <div>
-                📚 Total Questions
-                <strong id="resultTotal">0</strong>
-            </div>
+    margin-top: 45px;
+}
 
-            <div>
-                ✅ Correct
-                <strong id="resultCorrect">0</strong>
-            </div>
+.testHeading h1 {
+    font-size: clamp(28px,4vw,48px);
+    text-shadow: 3px 3px #7048a8;
+}
 
-            <div>
-                ❌ Wrong
-                <strong id="resultWrong">0</strong>
-            </div>
+.testHeading p {
+    font-size: 18px;
+}
 
-            <div>
-                ⭐ Percentage
-                <strong id="resultPercentage">0%</strong>
-            </div>
+.testInfo {
+    display: flex;
+    gap: 50px;
 
-        </div>
+    margin: 18px;
 
-        <div id="danceArea" class="danceArea">
-        </div>
+    color: white;
+    font-size: 20px;
+}
 
-        <button class="resultHomeButton" onclick="goHome()">
-            🏠 Back to Home
-        </button>
+.matchingArea {
+    display: flex;
 
-        <button class="resultRetryButton" onclick="openAlphabetTest()">
-            🔄 Try Again
-        </button>
+    align-items: center;
+    justify-content: center;
 
-    </div>
+    gap: 25px;
 
-</div>
+    width: 90%;
+}
 
+.capitalBox,
+.smallBox {
+    background: white;
 
-<!-- VERY IMPORTANT -->
+    width: 280px;
+    min-height: 280px;
 
-<script src="script.js"></script>
+    border-radius: 30px;
 
-</body>
-</html>
+    text-align: center;
+
+    padding: 20px;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.2);
+}
+
+.capitalBox h2,
+.smallBox h2 {
+    color: #7048a8;
+}
+
+.testLetter {
+    font-size: 150px;
+    font-weight: bold;
+
+    margin-top: 15px;
+
+    color: #ff5798;
+}
+
+.lineArea {
+    width: 100px;
+    text-align: center;
+}
+
+.matchingLine {
+    font-size: 55px;
+    color: white;
+
+    animation: arrowMove 1s infinite;
+}
+
+.smallOptions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.smallOption {
+    width: 65px;
+    height: 65px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: #a78bfa;
+
+    color: white;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+.smallOption:hover {
+    transform: scale(1.1);
+}
+
+.smallOption.correct {
+    background: #00b894;
+    animation: correct .5s infinite alternate;
+}
+
+.smallOption.wrong {
+    background: #ff7675;
+    animation: shake .3s;
+}
+
+.testMessage {
+    color: white;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    margin: 15px;
+}
+
+.nextTestButton:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+
+/* ================= RESULT ================= */
+
+#resultPage {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #74ebd5,
+            #9face6,
+            #fbc2eb
+        );
+
+    overflow-y: auto;
+}
+
+.resultCartoons {
+    position: absolute;
+    top: 20px;
+
+    font-size: 45px;
+
+    animation: cartoonDance .8s infinite;
+}
+
+.resultBox {
+    width: min(650px,90vw);
+
+    background: rgba(255,255,255,.96);
+
+    border-radius: 40px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.3);
+}
+
+.resultBox h1 {
+    color: #7048a8;
+    font-size: 38px;
+}
+
+.resultEmoji {
+    font-size: 70px;
+    margin: 10px;
+}
+
+#resultMessage {
+    color: #ff5798;
+    font-size: 30px;
+}
+
+.resultDetails {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin: 20px;
+}
+
+.resultDetails div {
+    background: #f1f0ff;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    color: #7048a8;
+
+    font-size: 17px;
+}
+
+.resultDetails strong {
+    display: block;
+
+    font-size: 25px;
+
+    margin-top: 5px;
+}
+
+.danceArea {
+    font-size: 55px;
+
+    min-height: 75px;
+
+    animation: cartoonDance .7s infinite;
+}
+
+.resultHomeButton,
+.resultRetryButton {
+    border: none;
+
+    padding: 12px 20px;
+
+    margin: 6px;
+
+    border-radius: 22px;
+
+    font-family: inherit;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: #7048a8;
+}
+
+.resultRetryButton {
+    background: #00b894;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes bounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes kidsBounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes cloudMove {
+    from {
+        transform: translateX(-30px);
+    }
+
+    to {
+        transform: translateX(30px);
+    }
+}
+
+@keyframes cartoonDance {
+    0% {
+        transform: rotate(-8deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(8deg) translateY(-10px);
+    }
+
+    100% {
+        transform: rotate(-8deg) translateY(0);
+    }
+}
+
+@keyframes arrowMove {
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes correct {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes shake {
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px) {
+
+    .homeBox {
+        display: flex;
+        margin: 7px auto;
+        height: 165px;
+    }
+
+    .kids {
+        font-size: 42px;
+    }
+
+    .cartoonRow {
+        font-size: 28px;
+    }
+
+    .learningArea {
+        gap: 10px;
+    }
+
+    .wordArea {
+        padding: 12px;
+    }
+
+    .navigation {
+        gap: 7px;
+    }
+
+    .navigation button {
+        padding: 9px 12px;
+        font-size: 14px;
+    }
+
+    .matchingArea {
+        gap: 5px;
+    }
+
+    .capitalBox,
+    .smallBox {
+        width: 44vw;
+        min-height: 220px;
+        padding: 10px;
+    }
+
+    .testLetter {
+        font-size: 100px;
+    }
+
+    .lineArea {
+        width: 35px;
+    }
+
+    .matchingLine {
+        font-size: 30px;
+    }
+
+    .smallOption {
+        width: 48px;
+        height: 48px;
+        font-size: 27px;
+    }
+
+    .resultDetails {
+        grid-template-columns: 1fr;
+    }
+}
