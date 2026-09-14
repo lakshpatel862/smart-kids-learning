@@ -20,21 +20,14 @@ body {
 }
 
 
-/* ================= HOME ================= */
+/* HOME */
 
 #homePage {
+    background:
+        linear-gradient(135deg,#72dcff,#9b8cff,#ff9dca);
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #73d8ff,
-            #a88cff,
-            #ff9dca
-        );
-
     overflow-y: auto;
 }
 
@@ -43,77 +36,61 @@ body {
     top: 3%;
     width: 100%;
     text-align: center;
-    font-size: 55px;
-    opacity: .7;
-    animation: cloudMove 6s infinite alternate;
+    font-size: 60px;
+    animation: clouds 5s infinite alternate;
 }
 
 .homeContent {
+    text-align: center;
     position: relative;
     z-index: 5;
-    text-align: center;
-    padding: 20px;
+    padding: 30px 10px;
 }
 
 .kids {
-    font-size: 60px;
-    animation: kidsBounce 2s infinite;
+    font-size: 65px;
+    animation: bounce 2s infinite;
 }
 
 .homeContent h1 {
     color: white;
-    font-size: clamp(30px, 5vw, 58px);
-    text-shadow: 3px 3px #7048a8;
+    font-size: clamp(30px,5vw,60px);
+    text-shadow: 4px 4px #7048a8;
 }
 
 .homeContent p {
     color: white;
     font-size: 22px;
-    margin: 5px;
-}
-
-.cartoonRow {
-    font-size: 38px;
     margin: 8px;
-    animation: cartoonDance 1.5s infinite;
 }
 
 
-/* ================= HOME BUTTONS ================= */
+/* HOME BOX */
 
 .homeBox {
-    width: min(300px, 80vw);
-    height: 205px;
-
+    width: min(300px,85vw);
+    height: 190px;
     margin: 10px;
-
     border: 5px solid white;
     border-radius: 35px;
-
     display: inline-flex;
     vertical-align: top;
-
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     color: white;
     font-family: inherit;
-
     cursor: pointer;
-
-    box-shadow:
-        0 12px 25px rgba(0,0,0,.25);
-
+    box-shadow: 0 12px 25px rgba(0,0,0,.25);
     transition: .3s;
 }
 
 .homeBox:hover {
-    transform: translateY(-10px) scale(1.04);
+    transform: translateY(-8px) scale(1.04);
 }
 
 .alphabetBox {
-    background: linear-gradient(145deg,#ff5798,#ff9966);
+    background: linear-gradient(145deg,#ff4f91,#ff9966);
 }
 
 .numberBox {
@@ -125,7 +102,7 @@ body {
 }
 
 .homeIcon {
-    font-size: 55px;
+    font-size: 50px;
 }
 
 .homeTitle {
@@ -134,166 +111,115 @@ body {
 }
 
 .homeSub {
-    font-size: 19px;
+    font-size: 20px;
 }
 
 .clickText {
-    margin-top: 8px;
-
+    margin-top: 7px;
     background: white;
-    color: #7347ad;
-
-    padding: 7px 17px;
+    color: #7048a8;
+    padding: 6px 15px;
     border-radius: 18px;
-
-    font-size: 14px;
 }
 
 
-/* ================= LEARNING PAGES ================= */
+/* LEARNING PAGES */
 
 #alphabetPage,
-#numberPage {
+#numberPage,
+#testMenu,
+#testPage,
+#resultPage {
+    background:
+        linear-gradient(135deg,#70dcff,#9d8cff,#ff9dca);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #70dcff,
-            #9988ff,
-            #ff9bca
-        );
 }
+
+
+/* HOME BUTTON */
 
 .homeButton {
     position: absolute;
-
     top: 18px;
     left: 18px;
-
     z-index: 20;
-
     border: none;
     background: white;
     color: #7048a8;
-
     padding: 11px 20px;
-
     border-radius: 22px;
-
     font-size: 17px;
     font-family: inherit;
     font-weight: bold;
-
     cursor: pointer;
-
     box-shadow: 0 7px 15px rgba(0,0,0,.2);
 }
 
-.floatingCartoons {
-    position: absolute;
-    right: 25px;
-    top: 20px;
 
-    font-size: 35px;
+/* TITLE */
 
-    animation: cartoonDance 1.5s infinite;
-}
-
-.pageHeading {
+.pageTitle {
     position: absolute;
     top: 5%;
-
-    text-align: center;
     color: white;
-}
-
-.pageHeading h1 {
-    font-size: clamp(30px,4vw,50px);
+    font-size: clamp(30px,5vw,50px);
     text-shadow: 3px 3px #6945a5;
 }
 
-.pageHeading p {
-    font-size: 20px;
-}
 
-
-/* ================= ALPHABET ================= */
+/* ALPHABET */
 
 .learningArea {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    gap: clamp(20px,6vw,80px);
-
+    gap: 60px;
     width: 90vw;
 }
 
 .letter {
     font-size: clamp(130px,20vw,230px);
     font-weight: bold;
-
-    background:
-        linear-gradient(
-            45deg,
-            red,
-            orange,
-            yellow,
-            green,
-            blue,
-            purple
-        );
-
+    background: linear-gradient(
+        45deg,
+        red,orange,yellow,green,blue,purple
+    );
     -webkit-background-clip: text;
     color: transparent;
-
-    filter:
-        drop-shadow(
-            5px 8px 3px
-            rgba(0,0,0,.2)
-        );
+    animation: drop .8s;
 }
 
 .wordArea {
-    background: rgba(255,255,255,.95);
-
+    background: white;
     padding: 20px 40px;
-
     border-radius: 35px;
-
     text-align: center;
-
     box-shadow: 0 15px 30px rgba(0,0,0,.2);
 }
 
 .picture {
-    font-size: clamp(75px,10vw,130px);
+    font-size: clamp(70px,10vw,130px);
     animation: bounce 1.5s infinite;
 }
 
 .word {
     color: #ff4f91;
-    font-size: clamp(32px,5vw,55px);
+    font-size: clamp(30px,5vw,55px);
     font-weight: bold;
 }
 
 .sentence {
     color: white;
-
     font-size: clamp(30px,5vw,55px);
     font-weight: bold;
-
     margin: 15px;
-
-    text-shadow: 3px 3px #6945a5;
 }
 
 
-/* ================= NUMBERS ================= */
+/* NUMBER */
 
 .numberLearningArea {
     text-align: center;
@@ -303,111 +229,61 @@ body {
 .bigNumber {
     font-size: clamp(130px,23vw,250px);
     font-weight: bold;
-
-    background:
-        linear-gradient(
-            45deg,
-            red,
-            orange,
-            yellow,
-            green,
-            blue,
-            purple
-        );
-
+    background: linear-gradient(
+        45deg,
+        red,orange,yellow,green,blue,purple
+    );
     -webkit-background-clip: text;
     color: transparent;
-
-    filter:
-        drop-shadow(
-            5px 8px 3px
-            rgba(0,0,0,.2)
-        );
+    animation: drop .8s;
 }
 
 .balls {
-    font-size: clamp(30px,5vw,55px);
-
-    min-height: 60px;
-
+    font-size: 45px;
+    min-height: 65px;
     max-width: 800px;
-
-    margin: auto;
-
     line-height: 1.3;
 }
 
 .numberName {
     display: inline-block;
-
     background: white;
     color: #7048a8;
-
     padding: 10px 35px;
-
     border-radius: 25px;
-
-    font-size: clamp(28px,4vw,45px);
+    font-size: 35px;
     font-weight: bold;
-
-    box-shadow: 0 10px 20px rgba(0,0,0,.18);
 }
 
 
-/* ================= BUTTONS ================= */
+/* BUTTONS */
 
 .speakButton,
-.nextTestButton {
+.navigation button,
+.nextQuestionButton,
+.resultButton {
     border: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4f91,
-            #ff8b42
-        );
-
-    color: white;
-
-    padding: 12px 25px;
-
+    background: white;
+    color: #6845a3;
+    padding: 11px 20px;
     border-radius: 23px;
-
     font-family: inherit;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
-
     cursor: pointer;
+    box-shadow: 0 7px 15px rgba(0,0,0,.18);
+}
 
-    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+.speakButton {
+    background: linear-gradient(135deg,#ff4f91,#ff8b42);
+    color: white;
 }
 
 .navigation {
     display: flex;
     align-items: center;
-    justify-content: center;
-
     gap: 25px;
-
     margin-top: 18px;
-}
-
-.navigation button {
-    border: none;
-    background: white;
-    color: #6845a3;
-
-    padding: 11px 20px;
-
-    border-radius: 22px;
-
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow: 0 7px 15px rgba(0,0,0,.18);
 }
 
 #alphabetProgress,
@@ -418,394 +294,224 @@ body {
 }
 
 
-/* ================= TEST ================= */
+/* TEST MENU */
 
-#alphabetTestPage {
+.testChoices {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7ee8fa,
-            #a78bfa,
-            #f9a8d4
-        );
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.testCartoons {
-    position: absolute;
-    top: 18px;
-    right: 25px;
-
-    font-size: 35px;
-
-    animation: cartoonDance 1s infinite;
-}
-
-.testHeading {
-    text-align: center;
+.testChoice {
+    width: 270px;
+    height: 230px;
+    border: 5px solid white;
+    border-radius: 35px;
     color: white;
-
-    margin-top: 45px;
+    font-family: inherit;
+    font-size: 55px;
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(0,0,0,.25);
 }
 
-.testHeading h1 {
-    font-size: clamp(28px,4vw,48px);
-    text-shadow: 3px 3px #7048a8;
+.testChoice strong,
+.testChoice small {
+    display: block;
 }
 
-.testHeading p {
+.testChoice strong {
+    font-size: 27px;
+}
+
+.testChoice small {
     font-size: 18px;
 }
 
+.alphabetTestButton {
+    background: linear-gradient(145deg,#ff5798,#ff9966);
+}
+
+.numberTestButton {
+    background: linear-gradient(145deg,#4776ff,#8e54e9);
+}
+
+
+/* TEST */
+
+.testCard {
+    width: min(650px,90vw);
+    background: rgba(255,255,255,.96);
+    border-radius: 35px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
 .testInfo {
-    display: flex;
-    gap: 50px;
-
-    margin: 18px;
-
-    color: white;
-    font-size: 20px;
-}
-
-.matchingArea {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 25px;
-
-    width: 90%;
-}
-
-.capitalBox,
-.smallBox {
-    background: white;
-
-    width: 280px;
-    min-height: 280px;
-
-    border-radius: 30px;
-
-    text-align: center;
-
-    padding: 20px;
-
-    box-shadow: 0 15px 30px rgba(0,0,0,.2);
-}
-
-.capitalBox h2,
-.smallBox h2 {
     color: #7048a8;
-}
-
-.testLetter {
-    font-size: 150px;
+    font-size: 20px;
     font-weight: bold;
-
-    margin-top: 15px;
-
-    color: #ff5798;
 }
 
-.lineArea {
-    width: 100px;
-    text-align: center;
+.testQuestion {
+    margin: 20px;
+    font-size: 75px;
+    font-weight: bold;
+    color: #ff4f91;
 }
 
-.matchingLine {
-    font-size: 55px;
-    color: white;
-
-    animation: arrowMove 1s infinite;
-}
-
-.smallOptions {
+.answerArea {
     display: flex;
-
+    justify-content: center;
     flex-wrap: wrap;
-
-    justify-content: center;
-
     gap: 12px;
-
-    margin-top: 20px;
 }
 
-.smallOption {
-    width: 65px;
-    height: 65px;
-
-    border: none;
-
+.answerButton {
+    min-width: 70px;
+    min-height: 60px;
+    padding: 10px;
+    border: 3px solid #7048a8;
     border-radius: 18px;
-
-    background: #a78bfa;
-
-    color: white;
-
-    font-size: 35px;
-
+    background: white;
+    color: #7048a8;
+    font-family: inherit;
+    font-size: 25px;
     font-weight: bold;
-
     cursor: pointer;
-
-    box-shadow: 0 6px 12px rgba(0,0,0,.2);
 }
 
-.smallOption:hover {
-    transform: scale(1.1);
-}
-
-.smallOption.correct {
-    background: #00b894;
-    animation: correct .5s infinite alternate;
-}
-
-.smallOption.wrong {
-    background: #ff7675;
-    animation: shake .3s;
-}
-
-.testMessage {
+.answerButton.selected {
+    background: #7048a8;
     color: white;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    margin: 15px;
 }
 
-.nextTestButton:disabled {
-    opacity: .5;
-    cursor: not-allowed;
+.nextQuestionButton {
+    margin-top: 25px;
+    background: linear-gradient(135deg,#00b894,#00cec9);
+    color: white;
 }
 
 
-/* ================= RESULT ================= */
-
-#resultPage {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #74ebd5,
-            #9face6,
-            #fbc2eb
-        );
-
-    overflow-y: auto;
-}
-
-.resultCartoons {
-    position: absolute;
-    top: 20px;
-
-    font-size: 45px;
-
-    animation: cartoonDance .8s infinite;
-}
+/* RESULT */
 
 .resultBox {
-    width: min(650px,90vw);
-
-    background: rgba(255,255,255,.96);
-
+    width: min(600px,92vw);
+    max-height: 92vh;
+    overflow-y: auto;
+    background: rgba(255,255,255,.97);
     border-radius: 40px;
-
-    padding: 30px;
-
+    padding: 25px;
     text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,.3);
+}
 
-    box-shadow: 0 20px 50px rgba(0,0,0,.3);
+.resultEmoji {
+    font-size: 65px;
 }
 
 .resultBox h1 {
     color: #7048a8;
-    font-size: 38px;
 }
 
-.resultEmoji {
-    font-size: 70px;
-    margin: 10px;
+.scoreCircle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#ff5798,#8e54e9);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    font-size: 35px;
+    font-weight: bold;
 }
 
-#resultMessage {
+.resultBox h2 {
     color: #ff5798;
-    font-size: 30px;
 }
 
-.resultDetails {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-
-    margin: 20px;
-}
-
-.resultDetails div {
-    background: #f1f0ff;
-
-    padding: 15px;
-
-    border-radius: 18px;
-
-    color: #7048a8;
-
-    font-size: 17px;
-}
-
-.resultDetails strong {
-    display: block;
-
-    font-size: 25px;
-
-    margin-top: 5px;
+.resultBox p {
+    font-size: 20px;
 }
 
 .danceArea {
-    font-size: 55px;
-
-    min-height: 75px;
-
-    animation: cartoonDance .7s infinite;
+    font-size: 65px;
+    min-height: 85px;
+    margin: 15px;
 }
 
-.resultHomeButton,
-.resultRetryButton {
-    border: none;
+.robotDance {
+    display: inline-block;
+    animation: robotDance .35s infinite alternate;
+}
 
-    padding: 12px 20px;
-
-    margin: 6px;
-
-    border-radius: 22px;
-
-    font-family: inherit;
-    font-weight: bold;
-
-    cursor: pointer;
-
+.resultButton {
+    margin: 7px;
+    background: linear-gradient(135deg,#ff5798,#8e54e9);
     color: white;
-
-    background: #7048a8;
-}
-
-.resultRetryButton {
-    background: #00b894;
 }
 
 
-/* ================= ANIMATIONS ================= */
+/* ANIMATION */
+
+@keyframes drop {
+    from {
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 @keyframes bounce {
     0%,100% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-12px);
     }
 }
 
-@keyframes kidsBounce {
-    0%,100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes cloudMove {
+@keyframes clouds {
     from {
-        transform: translateX(-30px);
+        transform: translateX(-25px);
     }
-
     to {
-        transform: translateX(30px);
+        transform: translateX(25px);
     }
 }
 
-@keyframes cartoonDance {
-    0% {
-        transform: rotate(-8deg) translateY(0);
-    }
-
-    50% {
-        transform: rotate(8deg) translateY(-10px);
-    }
-
-    100% {
-        transform: rotate(-8deg) translateY(0);
-    }
-}
-
-@keyframes arrowMove {
-    0%,100% {
-        transform: translateX(0);
-    }
-
-    50% {
-        transform: translateX(10px);
-    }
-}
-
-@keyframes correct {
+@keyframes robotDance {
     from {
-        transform: scale(1);
+        transform: rotate(-18deg) translateY(0);
     }
-
     to {
-        transform: scale(1.12);
-    }
-}
-
-@keyframes shake {
-    0%,100% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-8px);
-    }
-
-    75% {
-        transform: translateX(8px);
+        transform: rotate(18deg) translateY(-15px);
     }
 }
 
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:700px) {
 
     .homeBox {
         display: flex;
         margin: 7px auto;
-        height: 165px;
+        height: 160px;
     }
 
     .kids {
-        font-size: 42px;
-    }
-
-    .cartoonRow {
-        font-size: 28px;
+        font-size: 45px;
     }
 
     .learningArea {
-        gap: 10px;
+        gap: 15px;
     }
 
     .wordArea {
@@ -821,36 +527,12 @@ body {
         font-size: 14px;
     }
 
-    .matchingArea {
-        gap: 5px;
+    .testChoices {
+        gap: 10px;
     }
 
-    .capitalBox,
-    .smallBox {
-        width: 44vw;
-        min-height: 220px;
-        padding: 10px;
-    }
-
-    .testLetter {
-        font-size: 100px;
-    }
-
-    .lineArea {
-        width: 35px;
-    }
-
-    .matchingLine {
-        font-size: 30px;
-    }
-
-    .smallOption {
-        width: 48px;
-        height: 48px;
-        font-size: 27px;
-    }
-
-    .resultDetails {
-        grid-template-columns: 1fr;
+    .testChoice {
+        width: 220px;
+        height: 180px;
     }
 }
