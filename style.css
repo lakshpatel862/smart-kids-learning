@@ -9,6 +9,9 @@ body {
     overflow: hidden;
 }
 
+
+/* ================= COMMON ================= */
+
 .screen {
     width: 100vw;
     height: 100vh;
@@ -20,11 +23,17 @@ body {
 }
 
 
-/* HOME */
+/* ================= HOME ================= */
 
 #homePage {
     background:
-        linear-gradient(135deg,#72dcff,#9b8cff,#ff9dca);
+        linear-gradient(
+            135deg,
+            #70dcff,
+            #9b8cff,
+            #ff9bca
+        );
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,55 +42,77 @@ body {
 
 .clouds {
     position: absolute;
-    top: 3%;
+    top: 4%;
     width: 100%;
     text-align: center;
-    font-size: 60px;
-    animation: clouds 5s infinite alternate;
+    font-size: 55px;
+    opacity: .65;
+    animation: cloudMove 6s infinite alternate;
+}
+
+.homeRobot {
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+    font-size: 110px;
+    animation: robotFloat 2s infinite;
+    z-index: 1;
 }
 
 .homeContent {
-    text-align: center;
     position: relative;
     z-index: 5;
+    text-align: center;
     padding: 30px 10px;
 }
 
 .kids {
-    font-size: 65px;
-    animation: bounce 2s infinite;
+    font-size: 60px;
+    animation: kidsBounce 2s infinite;
 }
 
 .homeContent h1 {
+    font-size: clamp(30px, 5vw, 60px);
     color: white;
-    font-size: clamp(30px,5vw,60px);
-    text-shadow: 4px 4px #7048a8;
+    text-shadow: 3px 3px #7048a8;
 }
 
 .homeContent p {
     color: white;
-    font-size: 22px;
+    font-size: 23px;
     margin: 8px;
 }
 
+.homeButtons {
+    max-width: 900px;
+    margin: auto;
+}
 
-/* HOME BOX */
+
+/* ================= HOME BOX ================= */
 
 .homeBox {
-    width: min(300px,85vw);
-    height: 190px;
+    width: min(300px, 85vw);
+    height: 210px;
     margin: 10px;
-    border: 5px solid white;
+
+    border: 6px solid white;
     border-radius: 35px;
+
     display: inline-flex;
     vertical-align: top;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     color: white;
     font-family: inherit;
+
     cursor: pointer;
-    box-shadow: 0 12px 25px rgba(0,0,0,.25);
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.25);
+
     transition: .3s;
 }
 
@@ -90,7 +121,7 @@ body {
 }
 
 .alphabetBox {
-    background: linear-gradient(145deg,#ff4f91,#ff9966);
+    background: linear-gradient(145deg,#ff5798,#ff9966);
 }
 
 .numberBox {
@@ -101,127 +132,196 @@ body {
     background: linear-gradient(145deg,#00b894,#00cec9);
 }
 
+.testNumberBox {
+    background: linear-gradient(145deg,#ff9f43,#ee5253);
+}
+
 .homeIcon {
     font-size: 50px;
 }
 
 .homeTitle {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
 }
 
 .homeSub {
-    font-size: 20px;
+    font-size: 19px;
 }
 
 .clickText {
     margin-top: 7px;
     background: white;
     color: #7048a8;
-    padding: 6px 15px;
+    padding: 7px 15px;
     border-radius: 18px;
+    font-size: 14px;
 }
 
 
-/* LEARNING PAGES */
+/* ================= LEARNING PAGE ================= */
 
-#alphabetPage,
-#numberPage,
-#testMenu,
-#testPage,
-#resultPage {
-    background:
-        linear-gradient(135deg,#70dcff,#9d8cff,#ff9dca);
+.learningScreen {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #70dcff,
+            #9988ff,
+            #ff9bca
+        );
+
+    overflow: hidden;
+}
+
+.backgroundRobot {
+    position: absolute;
+    width: 260px;
+    right: 20px;
+    bottom: -20px;
+
+    opacity: .22;
+
+    z-index: 0;
+
+    animation: robotFloat 3s infinite;
 }
 
 
-/* HOME BUTTON */
+/* ================= HOME BUTTON ================= */
 
 .homeButton {
     position: absolute;
     top: 18px;
     left: 18px;
-    z-index: 20;
+
+    z-index: 50;
+
     border: none;
+
     background: white;
     color: #7048a8;
+
     padding: 11px 20px;
     border-radius: 22px;
+
     font-size: 17px;
     font-family: inherit;
     font-weight: bold;
+
     cursor: pointer;
+
     box-shadow: 0 7px 15px rgba(0,0,0,.2);
 }
 
-
-/* TITLE */
-
-.pageTitle {
-    position: absolute;
-    top: 5%;
-    color: white;
-    font-size: clamp(30px,5vw,50px);
-    text-shadow: 3px 3px #6945a5;
+.homeButton:hover {
+    transform: scale(1.08);
 }
 
 
-/* ALPHABET */
+/* ================= HEADING ================= */
+
+.pageHeading {
+    position: absolute;
+    top: 5%;
+    text-align: center;
+    color: white;
+    z-index: 5;
+}
+
+.pageHeading h1 {
+    font-size: clamp(30px,4vw,50px);
+    text-shadow: 3px 3px #6945a5;
+}
+
+.pageHeading p {
+    font-size: 20px;
+}
+
+
+/* ================= ALPHABET ================= */
 
 .learningArea {
+    position: relative;
+    z-index: 5;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+
+    gap: clamp(20px,6vw,80px);
+
     width: 90vw;
 }
 
 .letter {
     font-size: clamp(130px,20vw,230px);
     font-weight: bold;
-    background: linear-gradient(
-        45deg,
-        red,orange,yellow,green,blue,purple
-    );
+
+    background:
+        linear-gradient(
+            45deg,
+            red,
+            orange,
+            green,
+            blue,
+            purple
+        );
+
     -webkit-background-clip: text;
     color: transparent;
-    animation: drop .8s;
+
+    filter: drop-shadow(
+        5px 8px 3px rgba(0,0,0,.2)
+    );
 }
 
 .wordArea {
-    background: white;
+    background: rgba(255,255,255,.94);
+
     padding: 20px 40px;
     border-radius: 35px;
+
     text-align: center;
+
     box-shadow: 0 15px 30px rgba(0,0,0,.2);
 }
 
 .picture {
-    font-size: clamp(70px,10vw,130px);
+    font-size: clamp(75px,10vw,130px);
     animation: bounce 1.5s infinite;
 }
 
 .word {
     color: #ff4f91;
-    font-size: clamp(30px,5vw,55px);
+    font-size: clamp(32px,5vw,55px);
     font-weight: bold;
 }
 
 .sentence {
+    position: relative;
+    z-index: 5;
+
     color: white;
+
     font-size: clamp(30px,5vw,55px);
     font-weight: bold;
+
     margin: 15px;
+
+    text-shadow: 3px 3px #6945a5;
 }
 
 
-/* NUMBER */
+/* ================= NUMBERS ================= */
 
 .numberLearningArea {
+    position: relative;
+    z-index: 5;
     text-align: center;
     width: 90vw;
 }
@@ -229,61 +329,118 @@ body {
 .bigNumber {
     font-size: clamp(130px,23vw,250px);
     font-weight: bold;
-    background: linear-gradient(
-        45deg,
-        red,orange,yellow,green,blue,purple
-    );
+
+    background:
+        linear-gradient(
+            45deg,
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            purple
+        );
+
     -webkit-background-clip: text;
     color: transparent;
-    animation: drop .8s;
+
+    filter: drop-shadow(
+        5px 8px 3px rgba(0,0,0,.2)
+    );
 }
 
 .balls {
-    font-size: 45px;
+    font-size: clamp(30px,5vw,55px);
+
     min-height: 65px;
+
     max-width: 800px;
-    line-height: 1.3;
+
+    margin: auto;
+
+    line-height: 1.4;
 }
 
 .numberName {
     display: inline-block;
+
     background: white;
     color: #7048a8;
+
     padding: 10px 35px;
+
     border-radius: 25px;
-    font-size: 35px;
+
+    font-size: clamp(28px,4vw,45px);
     font-weight: bold;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,.18);
 }
 
 
-/* BUTTONS */
-
-.speakButton,
-.navigation button,
-.nextQuestionButton,
-.resultButton {
-    border: none;
-    background: white;
-    color: #6845a3;
-    padding: 11px 20px;
-    border-radius: 23px;
-    font-family: inherit;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 7px 15px rgba(0,0,0,.18);
-}
+/* ================= SPEAK ================= */
 
 .speakButton {
-    background: linear-gradient(135deg,#ff4f91,#ff8b42);
+    position: relative;
+    z-index: 10;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f91,
+            #ff8b42
+        );
+
     color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 23px;
+
+    font-family: inherit;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
 }
 
+
+/* ================= NAVIGATION ================= */
+
 .navigation {
+    position: relative;
+    z-index: 10;
+
     display: flex;
     align-items: center;
+    justify-content: center;
+
     gap: 25px;
     margin-top: 18px;
+}
+
+.navigation button {
+    border: none;
+
+    background: white;
+    color: #6845a3;
+
+    padding: 11px 20px;
+
+    border-radius: 22px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 15px rgba(0,0,0,.18);
 }
 
 #alphabetProgress,
@@ -294,228 +451,327 @@ body {
 }
 
 
-/* TEST MENU */
+/* ================= TEST ================= */
 
-.testChoices {
+.testScreen {
+    background:
+        linear-gradient(
+            135deg,
+            #72d9ff,
+            #9b8cff,
+            #ff9acb
+        );
+
     display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-}
 
-.testChoice {
-    width: 270px;
-    height: 230px;
-    border: 5px solid white;
-    border-radius: 35px;
-    color: white;
-    font-family: inherit;
-    font-size: 55px;
-    cursor: pointer;
-    box-shadow: 0 15px 30px rgba(0,0,0,.25);
-}
-
-.testChoice strong,
-.testChoice small {
-    display: block;
-}
-
-.testChoice strong {
-    font-size: 27px;
-}
-
-.testChoice small {
-    font-size: 18px;
-}
-
-.alphabetTestButton {
-    background: linear-gradient(145deg,#ff5798,#ff9966);
-}
-
-.numberTestButton {
-    background: linear-gradient(145deg,#4776ff,#8e54e9);
-}
-
-
-/* TEST */
-
-.testCard {
-    width: min(650px,90vw);
-    background: rgba(255,255,255,.96);
-    border-radius: 35px;
-    padding: 30px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+.testScreen h1 {
+    color: white;
+    font-size: clamp(30px,5vw,50px);
+    text-shadow: 3px 3px #6845a3;
 }
 
 .testInfo {
-    color: #7048a8;
+    color: white;
     font-size: 20px;
-    font-weight: bold;
+    margin: 5px;
 }
 
-.testQuestion {
-    margin: 20px;
-    font-size: 75px;
-    font-weight: bold;
-    color: #ff4f91;
+.testRobot {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    font-size: 70px;
+    animation: robotDance 1s infinite;
 }
 
-.answerArea {
+.testCard {
+    position: relative;
+    z-index: 5;
+
+    width: min(700px,90vw);
+
+    background: rgba(255,255,255,.95);
+
+    border-radius: 35px;
+
+    padding: 30px;
+
+    margin: 15px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+#alphabetQuestion,
+#numberQuestion {
+    font-size: 45px;
+    font-weight: bold;
+    color: #7048a8;
+    margin-bottom: 20px;
+}
+
+.options {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
 }
 
-.answerButton {
-    min-width: 70px;
-    min-height: 60px;
-    padding: 10px;
-    border: 3px solid #7048a8;
-    border-radius: 18px;
+.optionButton {
+    border: 4px solid #7048a8;
+
     background: white;
     color: #7048a8;
-    font-family: inherit;
+
+    border-radius: 20px;
+
+    padding: 14px 25px;
+
     font-size: 25px;
+    font-family: inherit;
     font-weight: bold;
+
     cursor: pointer;
 }
 
-.answerButton.selected {
+.optionButton:hover {
+    transform: scale(1.08);
+}
+
+.optionButton.selected {
     background: #7048a8;
     color: white;
 }
 
-.nextQuestionButton {
-    margin-top: 25px;
-    background: linear-gradient(135deg,#00b894,#00cec9);
+.questionNumber {
+    margin-top: 20px;
+    color: #777;
+    font-size: 18px;
+}
+
+.nextTestButton {
+    position: relative;
+    z-index: 5;
+
+    border: none;
+
+    background: linear-gradient(
+        135deg,
+        #ff4f91,
+        #ff8b42
+    );
+
     color: white;
+
+    padding: 14px 35px;
+
+    border-radius: 25px;
+
+    font-size: 20px;
+    font-family: inherit;
+    font-weight: bold;
+
+    cursor: pointer;
 }
 
 
-/* RESULT */
+/* ================= RESULT ================= */
 
-.resultBox {
-    width: min(600px,92vw);
-    max-height: 92vh;
-    overflow-y: auto;
-    background: rgba(255,255,255,.97);
-    border-radius: 40px;
-    padding: 25px;
+.resultScreen {
+    background:
+        linear-gradient(
+            135deg,
+            #70dcff,
+            #9c8aff,
+            #ff9aca
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,.3);
+
+    overflow-y: auto;
 }
 
-.resultEmoji {
-    font-size: 65px;
+.resultCard {
+    width: min(750px,92vw);
+
+    background: rgba(255,255,255,.96);
+
+    border-radius: 40px;
+
+    padding: 30px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
 }
 
-.resultBox h1 {
+.resultCard h1 {
     color: #7048a8;
+    font-size: clamp(30px,5vw,50px);
 }
 
-.scoreCircle {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: linear-gradient(135deg,#ff5798,#8e54e9);
-    color: white;
+.resultScore {
+    font-size: 45px;
+    color: #ff4f91;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#resultCorrect,
+#resultWrong,
+#resultPercentage {
+    font-size: 22px;
+    margin: 5px;
+}
+
+.resultMessage {
+    font-size: 24px;
+    font-weight: bold;
+    color: #7048a8;
+    margin: 12px;
+}
+
+.resultRobots {
+    min-height: 180px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto;
-    font-size: 35px;
-    font-weight: bold;
+
+    gap: 15px;
+
+    overflow: hidden;
 }
 
-.resultBox h2 {
-    color: #ff5798;
+.resultRobot {
+    width: 150px;
+    max-height: 220px;
+    object-fit: contain;
+
+    animation: robotDance .55s infinite alternate;
 }
 
-.resultBox p {
-    font-size: 20px;
-}
+.restartButton,
+.homeResultButton {
+    border: none;
 
-.danceArea {
-    font-size: 65px;
-    min-height: 85px;
-    margin: 15px;
-}
+    padding: 13px 22px;
 
-.robotDance {
-    display: inline-block;
-    animation: robotDance .35s infinite alternate;
-}
-
-.resultButton {
     margin: 7px;
-    background: linear-gradient(135deg,#ff5798,#8e54e9);
+
+    border-radius: 22px;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
     color: white;
 }
 
-
-/* ANIMATION */
-
-@keyframes drop {
-    from {
-        transform: translateY(-150px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.restartButton {
+    background: #00a884;
 }
 
+.homeResultButton {
+    background: #7048a8;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
 @keyframes bounce {
+
     0%,100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-12px);
     }
 }
 
-@keyframes clouds {
+@keyframes kidsBounce {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes cloudMove {
+
     from {
         transform: translateX(-25px);
     }
+
     to {
         transform: translateX(25px);
     }
 }
 
-@keyframes robotDance {
-    from {
-        transform: rotate(-18deg) translateY(0);
+@keyframes robotFloat {
+
+    0%,100% {
+        transform: translateY(0);
     }
-    to {
-        transform: rotate(18deg) translateY(-15px);
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes robotDance {
+
+    0% {
+        transform: rotate(-12deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(12deg) translateY(-12px);
+    }
+
+    100% {
+        transform: rotate(-12deg) translateY(0);
     }
 }
 
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:700px) {
 
     .homeBox {
         display: flex;
         margin: 7px auto;
-        height: 160px;
+        height: 170px;
     }
 
     .kids {
-        font-size: 45px;
+        font-size: 42px;
+    }
+
+    .homeRobot {
+        font-size: 60px;
     }
 
     .learningArea {
-        gap: 15px;
+        gap: 12px;
     }
 
     .wordArea {
-        padding: 12px;
+        padding: 15px;
     }
 
     .navigation {
@@ -527,12 +783,15 @@ body {
         font-size: 14px;
     }
 
-    .testChoices {
-        gap: 10px;
+    .testRobot {
+        font-size: 45px;
     }
 
-    .testChoice {
-        width: 220px;
-        height: 180px;
+    .resultRobot {
+        width: 95px;
+    }
+
+    .resultCard {
+        padding: 20px;
     }
 }
