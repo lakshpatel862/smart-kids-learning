@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kids Learning World</title>
+    <title>Kids Learning World</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -15,9 +16,9 @@
 
 <div id="homePage" class="screen">
 
-    <div class="homeRobot">🤖</div>
+    <div class="floating">☁️ ⭐ ☁️ 🌈 ☁️ ⭐</div>
 
-    <div class="clouds">☁️ ☁️ ☁️ ☁️</div>
+    <div class="homeRobot">🤖</div>
 
     <div class="homeContent">
 
@@ -27,11 +28,9 @@
 
         <p>Learn • Play • Enjoy</p>
 
-
         <div class="homeButtons">
 
-            <!-- ALPHABET -->
-
+            <!-- Alphabet -->
             <button class="homeBox alphabetBox"
                     onclick="openAlphabetPage()">
 
@@ -43,8 +42,7 @@
             </button>
 
 
-            <!-- NUMBERS -->
-
+            <!-- Numbers -->
             <button class="homeBox numberBox"
                     onclick="openNumberPage()">
 
@@ -56,52 +54,36 @@
             </button>
 
 
-            <!-- ALPHABET TEST -->
-
+            <!-- Test -->
             <button class="homeBox testBox"
-                    onclick="openAlphabetTest()">
+                    onclick="openTestMenu()">
 
                 <span class="homeIcon">📝</span>
-                <span class="homeTitle">Alphabet Test</span>
+                <span class="homeTitle">Test</span>
                 <span class="homeSub">20 Marks</span>
-                <span class="clickText">🎯 Start Test</span>
-
-            </button>
-
-
-            <!-- NUMBER TEST -->
-
-            <button class="homeBox testNumberBox"
-                    onclick="openNumberTest()">
-
-                <span class="homeIcon">🏆</span>
-                <span class="homeTitle">Number Test</span>
-                <span class="homeSub">1 to 1000 • 20 Marks</span>
-                <span class="clickText">🎯 Start Test</span>
+                <span class="clickText">👆 Start Test</span>
 
             </button>
 
         </div>
 
     </div>
+
 </div>
 
 
-<!-- ================= ALPHABET PAGE ================= -->
+<!-- ================= ALPHABET ================= -->
 
-<div id="alphabetPage" class="screen hidden learningScreen">
-
-    <img class="backgroundRobot" src="robot-bg.jpg" alt="Robot">
+<div id="alphabetPage" class="screen hidden">
 
     <button class="homeButton" onclick="goHome()">🏠 Home</button>
 
     <div class="pageHeading">
-
         <h1>🔤 Learn Alphabet</h1>
         <p>A to Z</p>
-
     </div>
 
+    <div class="smallRobot">🤖</div>
 
     <div class="learningArea">
 
@@ -117,11 +99,9 @@
 
     </div>
 
-
     <div id="sentence" class="sentence">
         A for Apple
     </div>
-
 
     <button class="speakButton"
             onclick="speakAlphabet()">
@@ -130,14 +110,15 @@
 
     </button>
 
-
     <div class="navigation">
 
         <button onclick="previousAlphabet()">
             ◀ Previous
         </button>
 
-        <span id="alphabetProgress">A / Z</span>
+        <span id="alphabetProgress">
+            A / Z
+        </span>
 
         <button onclick="nextAlphabet()">
             Next ▶
@@ -148,34 +129,37 @@
 </div>
 
 
-<!-- ================= NUMBER PAGE ================= -->
+<!-- ================= NUMBERS ================= -->
 
-<div id="numberPage" class="screen hidden learningScreen">
-
-    <img class="backgroundRobot" src="robot-bg.jpg" alt="Robot">
+<div id="numberPage" class="screen hidden">
 
     <button class="homeButton" onclick="goHome()">🏠 Home</button>
 
     <div class="pageHeading">
 
         <h1>🔢 Learn Numbers</h1>
+
         <p>1 to 1000 • Let's Count!</p>
 
     </div>
 
+    <div class="smallRobot">🤖</div>
 
     <div class="numberLearningArea">
 
-        <div id="bigNumber" class="bigNumber">1</div>
+        <div id="bigNumber" class="bigNumber">
+            1
+        </div>
 
-        <div id="balls" class="balls">⚽</div>
+        <div id="balls" class="balls">
+            ⚽
+        </div>
 
         <div id="numberName" class="numberName">
             One
         </div>
 
     </div>
-
 
     <button class="speakButton"
             onclick="speakNumber()">
@@ -184,14 +168,15 @@
 
     </button>
 
-
     <div class="navigation">
 
         <button onclick="previousNumber()">
             ◀ Previous
         </button>
 
-        <span id="numberProgress">1 / 1000</span>
+        <span id="numberProgress">
+            1 / 1000
+        </span>
 
         <button onclick="nextNumber()">
             Next ▶
@@ -202,80 +187,104 @@
 </div>
 
 
-<!-- ================= ALPHABET TEST ================= -->
+<!-- ================= TEST MENU ================= -->
 
-<div id="alphabetTestPage"
-     class="screen hidden testScreen">
-
-    <div class="testRobot">🤖</div>
+<div id="testMenuPage" class="screen hidden">
 
     <button class="homeButton" onclick="goHome()">🏠 Home</button>
 
-    <h1>🔤 Alphabet Matching Test</h1>
+    <div class="pageHeading testHeading">
 
-    <p class="testInfo">
-        20 Questions • 20 Marks
-    </p>
+        <h1>📝 Kids Test</h1>
 
-    <div class="testCard">
-
-        <div id="alphabetQuestion"></div>
-
-        <div id="alphabetOptions"
-             class="options">
-        </div>
-
-        <div id="alphabetQuestionNumber"
-             class="questionNumber">
-        </div>
+        <p>Choose your test</p>
 
     </div>
 
-    <button id="alphabetNextButton"
-            class="nextTestButton"
-            onclick="nextAlphabetQuestion()">
+    <div class="testMenu">
 
-        Next ➜
+        <button class="testChoice alphabetTestChoice"
+                onclick="startAlphabetTest()">
 
-    </button>
+            🔤
+            <strong>Alphabet Test</strong>
+            <small>10 Marks</small>
+
+        </button>
+
+
+        <button class="testChoice numberTestChoice"
+                onclick="startNumberTest()">
+
+            🔢
+            <strong>Number Test</strong>
+            <small>10 Marks</small>
+
+        </button>
+
+
+        <button class="testChoice mixedTestChoice"
+                onclick="startMixedTest()">
+
+            🌟
+            <strong>Full Test</strong>
+            <small>20 Marks</small>
+
+        </button>
+
+    </div>
 
 </div>
 
 
-<!-- ================= NUMBER TEST ================= -->
+<!-- ================= TEST PAGE ================= -->
 
-<div id="numberTestPage"
-     class="screen hidden testScreen">
+<div id="testPage" class="screen hidden">
 
-    <div class="testRobot">🤖</div>
+    <button class="homeButton" onclick="openTestMenu()">
+        ⬅ Test Menu
+    </button>
 
-    <button class="homeButton" onclick="goHome()">🏠 Home</button>
+    <div class="testTop">
 
-    <h1>🔢 Number Test</h1>
+        <h1>📝 Kids Learning Test</h1>
 
-    <p class="testInfo">
-        20 Questions • 20 Marks • Numbers 1–1000
-    </p>
-
-    <div class="testCard">
-
-        <div id="numberQuestion"></div>
-
-        <div id="numberOptions"
-             class="options">
+        <div id="testProgress">
+            Question 1 / 20
         </div>
 
-        <div id="numberQuestionNumber"
-             class="questionNumber">
+        <div id="testScore">
+            Score: 0
         </div>
 
     </div>
 
-    <button id="numberNextButton"
-            class="nextTestButton"
-            onclick="nextNumberQuestion()">
 
-        Next ➜
+    <div class="testRobot">
+        🤖
+    </div>
+
+
+    <div class="questionCard">
+
+        <div id="questionEmoji" class="questionEmoji">
+            🔤
+        </div>
+
+        <h2 id="questionText">
+            Match the capital letter with small letter
+        </h2>
+
+        <div id="questionArea"></div>
+
+    </div>
+
+
+    <button id="nextQuestionButton"
+            class="nextQuestionButton hidden"
+            onclick="nextTestQuestion()">
+
+        Next Question ▶
 
     </button>
 
@@ -284,24 +293,30 @@
 
 <!-- ================= RESULT ================= -->
 
-<div id="resultPage"
-     class="screen hidden resultScreen">
-
-    <button class="homeButton" onclick="goHome()">🏠 Home</button>
+<div id="resultPage" class="screen hidden">
 
     <div class="resultCard">
 
-        <h1>🎉 Test Complete! 🎉</h1>
+        <div class="resultStars">
+            🎉 ⭐ 🎉
+        </div>
+
+        <h1>🎊 Test Complete! 🎊</h1>
 
         <div id="resultScore"
              class="resultScore">
+            20 / 20 Marks
         </div>
 
-        <div id="resultCorrect"></div>
+        <div class="resultDetails">
 
-        <div id="resultWrong"></div>
+            <p>✅ Correct: <span id="resultCorrect">20</span></p>
 
-        <div id="resultPercentage"></div>
+            <p>❌ Wrong: <span id="resultWrong">0</span></p>
+
+            <p>📊 Percentage: <span id="resultPercentage">100%</span></p>
+
+        </div>
 
         <div id="resultMessage"
              class="resultMessage">
@@ -310,24 +325,27 @@
 
         <!-- ROBOTS -->
 
-        <div id="resultRobots"
-             class="resultRobots">
+        <div id="dancingRobots"
+             class="dancingRobots">
+
+            <div class="danceRobot">🤖</div>
+            <div class="danceRobot">🤖</div>
+            <div class="danceRobot">🤖</div>
+
         </div>
 
 
-        <button class="restartButton"
-                onclick="restartCurrentTest()">
+        <div class="resultButtons">
 
-            🔄 Try Again
+            <button onclick="restartTest()">
+                🔄 Try Again
+            </button>
 
-        </button>
+            <button onclick="goHome()">
+                🏠 Go Home
+            </button>
 
-        <button class="homeResultButton"
-                onclick="goHome()">
-
-            🏠 Go Home
-
-        </button>
+        </div>
 
     </div>
 
