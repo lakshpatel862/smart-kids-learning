@@ -9,333 +9,284 @@ body {
     overflow: hidden;
 }
 
-.screen {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-
 .hidden {
     display: none !important;
 }
 
+.page {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    text-align: center;
+    padding: 30px 15px;
+    background:
+        radial-gradient(circle at 20% 20%, #ffffff55 0 5%, transparent 6%),
+        linear-gradient(135deg, #64d8ff, #8d7cff, #ff91c8);
+}
 
-/* HOME */
-
-#homePage {
-    background: linear-gradient(135deg,#70dfff,#9d8cff,#ff9dcc);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.backgroundRobot {
+    position: fixed;
+    right: 15px;
+    bottom: 10px;
+    font-size: 80px;
+    z-index: 100;
+    pointer-events: none;
+    opacity: .25;
+    animation: robotFloat 2s infinite alternate;
 }
 
 .clouds {
     position: absolute;
-    top: 20px;
+    top: 10px;
     width: 100%;
-    text-align: center;
-    font-size: 55px;
+    left: 0;
+    font-size: 50px;
     animation: cloudMove 5s infinite alternate;
 }
 
-.homeContent {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    max-height: 96vh;
-    overflow-y: auto;
-}
-
-.kids {
-    font-size: 55px;
-    animation: bounce 1.5s infinite;
-}
-
-.homeContent h1 {
-    color: white;
-    font-size: clamp(28px,5vw,55px);
-    text-shadow: 3px 3px #6945a5;
-}
-
-.homeContent p {
-    color: white;
-    font-size: 22px;
-    margin: 5px;
-}
-
-.robotHome {
-    position: absolute;
-    right: 5%;
-    bottom: 5%;
-    font-size: 90px;
-    animation: robotFloat 2s infinite;
-}
-
-.homeButtons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.homeBox {
-    width: 250px;
-    height: 190px;
-    margin: 10px;
-    border: 5px solid white;
-    border-radius: 30px;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-family: inherit;
-    cursor: pointer;
-    box-shadow: 0 12px 25px rgba(0,0,0,.25);
-    transition: .3s;
-}
-
-.homeBox:hover {
-    transform: translateY(-8px) scale(1.04);
-}
-
-.alphabetBox {
-    background: linear-gradient(145deg,#ff5798,#ff9966);
-}
-
-.numberBox {
-    background: linear-gradient(145deg,#4776ff,#8e54e9);
-}
-
-.animalBox {
-    background: linear-gradient(145deg,#00b894,#00cec9);
-}
-
-.testBox {
-    background: linear-gradient(145deg,#ffb300,#ff7043);
-}
-
-.homeIcon {
-    font-size: 50px;
-}
-
-.homeTitle {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.homeSub {
-    font-size: 18px;
-}
-
-.clickText {
-    background: white;
-    color: #7048a8;
-    padding: 5px 13px;
-    border-radius: 15px;
-    margin-top: 5px;
-}
-
-
-/* LEARNING PAGES */
-
-#alphabetPage,
-#numberPage,
-#animalPage,
-#testPage {
-    background:
-        radial-gradient(circle at 20% 20%,#ffffff55 0 5%,transparent 6%),
-        linear-gradient(135deg,#66ddff,#918cff,#ff9bc8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.homeButton {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 20;
-    border: none;
-    background: white;
-    color: #6845a3;
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-family: inherit;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 7px 15px #0003;
-}
-
-.pageHeading {
-    position: absolute;
-    top: 5%;
-    text-align: center;
-    color: white;
-}
-
-.pageHeading h1 {
-    font-size: clamp(28px,4vw,48px);
-    text-shadow: 3px 3px #6945a5;
-}
-
-.pageHeading p {
-    font-size: 18px;
-}
-
-.miniRobot {
-    position: absolute;
-    right: 25px;
-    top: 20px;
-    font-size: 55px;
+.homeTopRobot {
+    font-size: 65px;
     animation: robotDance .8s infinite alternate;
 }
 
-
-/* ALPHABET */
-
-.learningArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 70px;
+h1 {
+    color: white;
+    font-size: clamp(30px, 6vw, 60px);
+    text-shadow: 3px 4px #6845a3;
+    margin: 8px;
 }
 
-.letter {
-    font-size: clamp(120px,18vw,220px);
+.subtitle,
+.pageSub {
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.menuBox {
+    width: 280px;
+    height: 205px;
+    border: 5px solid white;
+    border-radius: 35px;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 15px 30px #0004;
+    transition: .25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuBox:hover {
+    transform: translateY(-8px) scale(1.04);
+}
+
+.menuBox:active {
+    transform: scale(.96);
+}
+
+.menuBox span {
+    font-size: 55px;
+}
+
+.menuBox b {
+    font-size: 28px;
+}
+
+.menuBox small {
+    font-size: 17px;
+    margin-top: 4px;
+}
+
+.menuBox em {
+    margin-top: 9px;
+    background: white;
+    color: #6643a0;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.alphabet {
+    background: linear-gradient(145deg, #ff4f91, #ff9966);
+}
+
+.numbers {
+    background: linear-gradient(145deg, #397cff, #864de8);
+}
+
+.animals {
+    background: linear-gradient(145deg, #20b878, #11a8d8);
+}
+
+.test {
+    background: linear-gradient(145deg, #ff8a00, #ed3b87);
+}
+
+.homeBtn {
+    position: fixed;
+    left: 18px;
+    top: 15px;
+    z-index: 50;
+    border: 0;
+    background: white;
+    color: #65439c;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 8px 18px #0003;
+}
+
+h2 {
+    color: white;
+    font-size: clamp(30px, 5vw, 50px);
+    text-shadow: 3px 3px #62439b;
+    margin: 30px 0 5px;
+}
+
+.alphabetLearning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    margin-top: 50px;
+}
+
+.bigLetter {
+    font-size: clamp(130px, 20vw, 240px);
     font-weight: bold;
     color: white;
-    text-shadow: 8px 8px #6945a555;
+    text-shadow: 7px 9px #65439b;
     animation: drop .7s;
 }
 
-.wordArea {
-    background: white;
-    padding: 20px 45px;
+.wordCard {
+    background: #fffffff0;
     border-radius: 35px;
-    text-align: center;
+    padding: 25px 45px;
     box-shadow: 0 15px 30px #0003;
 }
 
-.picture {
-    border: none;
-    background: transparent;
-    font-size: clamp(75px,10vw,130px);
-    cursor: pointer;
-    animation: bounce 1.5s infinite;
+.bigEmoji {
+    font-size: clamp(80px, 10vw, 130px);
+    animation: bounce 1s infinite;
 }
 
-.word {
-    color: #ff4f91;
-    font-size: clamp(30px,5vw,55px);
+.bigWord {
+    color: #f04d91;
+    font-size: 45px;
     font-weight: bold;
 }
 
 .sentence {
-    color: white;
-    font-size: clamp(28px,5vw,50px);
+    color: #65439c;
+    font-size: 25px;
     font-weight: bold;
-    margin: 12px;
-    text-shadow: 3px 3px #6945a5;
+    margin-top: 8px;
 }
 
-.speakButton {
-    border: none;
-    background: linear-gradient(135deg,#ff4f91,#ff8b42);
-    color: white;
-    padding: 11px 23px;
-    border-radius: 22px;
+.actionBtn,
+.navigation button,
+.nav button,
+.testChoiceBox,
+.resultButtons button,
+.nextQuestion {
+    border: 0;
+    background: white;
+    color: #62439b;
+    padding: 12px 22px;
+    border-radius: 25px;
     font-family: inherit;
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 8px 17px #0003;
+    margin: 10px;
 }
 
-.navigation {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.actionBtn {
+    background: linear-gradient(135deg, #ff4d91, #ff8a3d);
+    color: white;
+}
+
+.nav {
     margin-top: 15px;
 }
 
-.navigation button {
-    border: none;
-    background: white;
-    color: #6845a3;
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-family: inherit;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#alphabetProgress,
-#numberProgress {
+.nav span {
     color: white;
+    font-size: 20px;
     font-weight: bold;
-}
-
-
-/* NUMBERS */
-
-.numberLearningArea {
-    text-align: center;
 }
 
 .bigNumber {
-    font-size: clamp(120px,20vw,230px);
-    font-weight: bold;
     color: white;
-    text-shadow: 8px 8px #6945a555;
+    font-size: clamp(130px, 23vw, 250px);
+    font-weight: bold;
+    text-shadow: 7px 9px #62439b;
     animation: drop .7s;
 }
 
+.numberCard {
+    margin-top: 25px;
+}
+
 .balls {
-    min-height: 55px;
+    min-height: 60px;
     max-width: 850px;
+    margin: auto;
     font-size: 45px;
-    line-height: 1.3;
-    word-break: break-all;
+    line-height: 1.4;
 }
 
 .numberName {
     display: inline-block;
     background: white;
-    color: #7048a8;
-    padding: 8px 30px;
+    color: #62439b;
+    padding: 10px 35px;
     border-radius: 25px;
     font-size: 35px;
     font-weight: bold;
 }
 
-
-/* ANIMALS */
-
 .animalGrid {
-    width: 90%;
-    height: 70%;
-    margin-top: 90px;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    max-width: 1000px;
+    margin: 25px auto;
     gap: 15px;
-    overflow-y: auto;
 }
 
 .animalCard {
-    background: white;
-    border: 4px solid #ffffffaa;
+    border: 4px solid white;
     border-radius: 25px;
-    min-height: 130px;
+    background: #ffffffdd;
+    padding: 15px;
     cursor: pointer;
     font-family: inherit;
     box-shadow: 0 8px 15px #0003;
-    transition: .25s;
+    transition: .2s;
 }
 
 .animalCard:hover {
-    transform: scale(1.08) rotate(2deg);
+    transform: scale(1.08);
 }
 
 .animalEmoji {
@@ -343,239 +294,179 @@ body {
 }
 
 .animalName {
-    color: #6845a3;
+    color: #61409b;
+    font-size: 20px;
     font-weight: bold;
-    font-size: 17px;
-}
-
-
-/* TEST MENU */
-
-.testMenu {
-    width: min(500px,90vw);
-    text-align: center;
-    background: white;
-    padding: 30px;
-    border-radius: 35px;
-    box-shadow: 0 20px 40px #0004;
-}
-
-.testRobot {
-    font-size: 70px;
-    animation: robotDance .6s infinite alternate;
-}
-
-.testMenu h1 {
-    color: #6845a3;
-}
-
-.testMenu p {
-    color: #777;
-    margin: 10px;
 }
 
 .testChoice {
-    width: 90%;
-    margin: 10px;
-    padding: 18px;
-    border: none;
-    border-radius: 25px;
-    color: white;
-    font-family: inherit;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.testChoice small {
-    display: block;
-    font-size: 14px;
-}
-
-.alphabetTest {
-    background: #ff5798;
-}
-
-.numberTest {
-    background: #4776ff;
-}
-
-.fullTest {
-    background: #ff9800;
-}
-
-
-/* TEST */
-
-.testTop {
-    text-align: center;
-    color: white;
-    margin-top: 30px;
-}
-
-.testTop h1 {
-    font-size: 35px;
-    text-shadow: 3px 3px #6945a5;
-}
-
-.scoreBox {
-    background: white;
-    color: #6845a3;
-    display: inline-block;
-    padding: 7px 18px;
-    border-radius: 20px;
-    margin: 5px;
-    font-weight: bold;
-}
-
-.questionCard {
-    width: min(700px,92vw);
-    background: white;
-    margin-top: 15px;
-    padding: 25px;
-    border-radius: 35px;
-    text-align: center;
-    box-shadow: 0 15px 30px #0004;
-}
-
-.questionEmoji {
-    font-size: 65px;
-}
-
-.questionCard h2 {
-    color: #6845a3;
-    margin: 10px;
-}
-
-.answerButtons {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 12px;
-}
-
-.answerButton {
-    border: none;
-    background: #eee;
-    padding: 15px;
-    border-radius: 20px;
-    font-size: 22px;
-    font-family: inherit;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.answerButton:hover {
-    transform: scale(1.03);
-}
-
-.answerButton.correct {
-    background: #55d98b;
-    color: white;
-}
-
-.answerButton.wrong {
-    background: #ff6b6b;
-    color: white;
-}
-
-.attemptText {
-    margin-top: 12px;
-    color: #777;
-}
-
-.answerMessage {
-    min-height: 35px;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 8px;
-}
-
-.nextQuestionButton {
-    border: none;
-    background: #6845a3;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 22px;
-    font-family: inherit;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.nextQuestionButton.hidden {
-    display: none;
-}
-
-
-/* RESULT */
-
-#resultPage {
-    background: linear-gradient(135deg,#66ddff,#9988ff,#ff9dcc);
     display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+
+.testChoiceBox {
+    width: 280px;
+    height: 220px;
+    font-size: 60px;
+    background: white;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.resultCard {
-    width: min(650px,92vw);
-    max-height: 95vh;
-    overflow-y: auto;
+.testChoiceBox b {
+    font-size: 27px;
+}
+
+.testChoiceBox small {
+    font-size: 18px;
+}
+
+.testInfo {
     background: white;
-    text-align: center;
+    display: inline-block;
+    color: #61409b;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.questionCard {
+    max-width: 700px;
+    margin: 15px auto;
+    background: #ffffffed;
+    border-radius: 35px;
     padding: 25px;
-    border-radius: 40px;
-    box-shadow: 0 20px 45px #0004;
+    box-shadow: 0 15px 30px #0003;
 }
 
-.resultCard h1 {
-    color: #6845a3;
-    font-size: 38px;
-}
-
-.finalMarks {
-    color: #ff3f70;
-    font-size: 42px;
+.questionText {
+    color: #61409b;
+    font-size: 27px;
     font-weight: bold;
 }
 
-.resultCard > div:not(.dancingRobot):not(.resultButtons):not(.resultParty) {
-    margin: 5px;
-    font-size: 20px;
-}
-
-.resultMessage {
-    color: #6845a3;
+.questionVisual {
+    color: #ff4c91;
+    font-size: 70px;
     font-weight: bold;
-}
-
-.dancingRobot {
-    font-size: 120px;
-    display: none;
     margin: 10px;
 }
 
-.dancingRobot.dance {
-    display: inline-block;
-    animation: bigDance .35s infinite alternate;
+.answerArea {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.resultButtons button {
-    border: none;
-    padding: 12px 22px;
-    margin: 5px;
-    border-radius: 23px;
+.answerBtn {
+    min-width: 90px;
+    padding: 15px 20px;
+    border: 4px solid #fff;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #70dcff, #a678ff);
     color: white;
-    background: #6845a3;
     font-family: inherit;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
 }
 
+.answerBtn:hover {
+    transform: scale(1.06);
+}
 
-/* ANIMATIONS */
+.answerBtn.selected {
+    outline: 5px solid #ffd43b;
+}
 
-@keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+.feedback {
+    min-height: 45px;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.correct {
+    color: #10a95b;
+}
+
+.wrong {
+    color: #e93636;
+}
+
+.nextQuestion {
+    background: linear-gradient(135deg, #6544a5, #f04d91);
+    color: white;
+}
+
+.attemptInfo {
+    color: white;
+    font-weight: bold;
+}
+
+.resultCard {
+    background: #ffffffef;
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 40px;
+    box-shadow: 0 20px 40px #0004;
+}
+
+.party {
+    font-size: 40px;
+}
+
+.resultCard h2 {
+    color: #61409b;
+    text-shadow: none;
+    margin: 0;
+}
+
+.resultScore {
+    color: #ed3e83;
+    font-size: 45px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.resultCard p {
+    font-size: 20px;
+    color: #333;
+    margin: 5px;
+}
+
+.resultMessage {
+    color: #61409b;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.dancingRobots {
+    font-size: 75px;
+    animation: robotDance .45s infinite alternate;
+}
+
+.resultButtons {
+    margin-top: 15px;
+}
+
+.resultButtons button:first-child {
+    background: #20bfae;
+    color: white;
+}
+
+.resultButtons button:last-child {
+    background: #7153d5;
+    color: white;
 }
 
 @keyframes drop {
@@ -589,83 +480,68 @@ body {
     }
 }
 
-@keyframes cloudMove {
-    from { transform: translateX(-30px); }
-    to { transform: translateX(30px); }
-}
-
-@keyframes robotFloat {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+@keyframes bounce {
+    50% {
+        transform: translateY(-12px);
+    }
 }
 
 @keyframes robotDance {
-    from { transform: rotate(-10deg) translateY(0); }
-    to { transform: rotate(10deg) translateY(-10px); }
+    0% {
+        transform: rotate(-8deg) translateY(0);
+    }
+    100% {
+        transform: rotate(8deg) translateY(-15px);
+    }
 }
 
-@keyframes bigDance {
+@keyframes robotFloat {
     from {
-        transform: rotate(-20deg) translateX(-15px);
+        transform: translateY(0);
     }
     to {
-        transform: rotate(20deg) translateX(15px) scale(1.15);
+        transform: translateY(-15px);
     }
 }
 
-
-/* MOBILE */
-
-@media(max-width:800px) {
-
-    .homeBox {
-        width: 190px;
-        height: 165px;
+@keyframes cloudMove {
+    from {
+        transform: translateX(-20px);
     }
-
-    .homeIcon {
-        font-size: 40px;
-    }
-
-    .homeTitle {
-        font-size: 23px;
-    }
-
-    .animalGrid {
-        grid-template-columns: repeat(3,1fr);
-    }
-
-    .learningArea {
-        gap: 20px;
-    }
-
-    .wordArea {
-        padding: 12px 20px;
-    }
-
-    .answerButtons {
-        grid-template-columns: 1fr 1fr;
+    to {
+        transform: translateX(20px);
     }
 }
 
-@media(max-width:500px) {
+@media(max-width:700px) {
 
-    .homeBox {
-        width: 155px;
-        height: 145px;
-        margin: 5px;
+    .menuBox {
+        width: 90vw;
+        height: 160px;
     }
 
-    .animalGrid {
-        grid-template-columns: repeat(2,1fr);
+    .alphabetLearning {
+        gap: 10px;
+        margin-top: 35px;
     }
 
-    .learningArea {
-        flex-direction: column;
-        gap: 5px;
+    .wordCard {
+        padding: 15px;
     }
 
-    .miniRobot {
-        font-size: 40px;
+    .bigWord {
+        font-size: 30px;
+    }
+
+    .sentence {
+        font-size: 20px;
+    }
+
+    .questionCard {
+        padding: 15px;
+    }
+
+    .backgroundRobot {
+        font-size: 45px;
     }
 }
