@@ -14,92 +14,107 @@ button {
     cursor: pointer;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .screen {
     width: 100vw;
     height: 100vh;
     position: relative;
 }
 
-.hidden {
-    display: none !important;
-}
 
-
-/* ================= HOME ================= */
+/* =====================================================
+                    HOME
+===================================================== */
 
 #homePage {
-    background:
-        linear-gradient(
-            135deg,
-            #65d8ff,
-            #9b8cff,
-            #ff9bc8
-        );
-
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #69d9ff,
+            #8f8cff,
+            #ff9acb
+        );
 }
 
-.floating {
+.cloud {
     position: absolute;
-    top: 20px;
-    width: 100%;
-    text-align: center;
-    font-size: 45px;
-    animation: cloudMove 5s infinite alternate;
+    font-size: 70px;
+    opacity: .6;
+    animation: cloudMove 6s infinite alternate;
+}
+
+.cloud1 {
+    top: 5%;
+    left: 8%;
+}
+
+.cloud2 {
+    top: 12%;
+    right: 10%;
+}
+
+.cloud3 {
+    bottom: 8%;
+    left: 15%;
+}
+
+.floatingRobot {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    font-size: 90px;
+    animation: robotFloat 2s infinite alternate;
+    z-index: 2;
 }
 
 .homeContent {
-    text-align: center;
+    position: relative;
     z-index: 5;
-    max-height: 95vh;
-    overflow-y: auto;
+    text-align: center;
+    width: 95%;
+    padding: 20px;
 }
 
 .kids {
     font-size: 60px;
-    animation: kidsBounce 1.8s infinite;
+    animation: kidsBounce 2s infinite;
 }
 
 .homeContent h1 {
     color: white;
-    font-size: clamp(30px, 5vw, 58px);
-    text-shadow: 4px 4px #67459c;
+    font-size: clamp(30px, 5vw, 60px);
+    text-shadow: 4px 4px #6946a7;
 }
 
-.homeContent p {
+.homeSubtitle {
     color: white;
-    font-size: 22px;
-    margin: 8px;
+    font-size: 23px;
+    margin: 10px;
 }
-
-
-/* HOME ROBOT */
-
-.homeRobot {
-    position: absolute;
-    right: 4%;
-    bottom: 5%;
-    font-size: 100px;
-    z-index: 2;
-    animation: robotFloat 2s infinite alternate;
-}
-
-
-/* HOME BUTTONS */
 
 .homeButtons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
+
+/* =====================================================
+                    HOME BOX
+===================================================== */
+
 .homeBox {
-    width: 280px;
-    height: 215px;
-    margin: 12px;
+    width: 270px;
+    min-height: 220px;
 
     border: 6px solid white;
     border-radius: 35px;
@@ -118,26 +133,51 @@ button {
 }
 
 .homeBox:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-10px) scale(1.04);
+}
+
+.homeBox:active {
+    transform: scale(.96);
 }
 
 .alphabetBox {
     background:
-        linear-gradient(145deg,#ff4f91,#ff9966);
+        linear-gradient(
+            145deg,
+            #ff4d91,
+            #ff9966
+        );
 }
 
 .numberBox {
     background:
-        linear-gradient(145deg,#4776ff,#8e54e9);
+        linear-gradient(
+            145deg,
+            #4776ff,
+            #8e54e9
+        );
 }
 
 .testBox {
     background:
-        linear-gradient(145deg,#00b894,#00cec9);
+        linear-gradient(
+            145deg,
+            #00b894,
+            #00cec9
+        );
+}
+
+.animalBox {
+    background:
+        linear-gradient(
+            145deg,
+            #ff9f43,
+            #ee5253
+        );
 }
 
 .homeIcon {
-    font-size: 52px;
+    font-size: 55px;
 }
 
 .homeTitle {
@@ -146,23 +186,30 @@ button {
 }
 
 .homeSub {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .clickText {
-    margin-top: 7px;
+    margin-top: 8px;
+
     background: white;
     color: #7048a8;
-    padding: 7px 16px;
-    border-radius: 18px;
+
+    padding: 7px 14px;
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: bold;
 }
 
 
-/* ================= LEARNING PAGES ================= */
+/* =====================================================
+                LEARNING PAGES
+===================================================== */
 
 #alphabetPage,
 #numberPage,
-#testMenuPage {
+#animalPage {
 
     display: flex;
     flex-direction: column;
@@ -176,30 +223,35 @@ button {
             #9988ff,
             #ff9bca
         );
-
-    overflow: hidden;
 }
 
 
-/* HOME BUTTON */
+/* =====================================================
+                    HOME BUTTON
+===================================================== */
 
 .homeButton {
     position: absolute;
+
     top: 18px;
     left: 18px;
-    z-index: 20;
+
+    z-index: 100;
 
     border: none;
+
     background: white;
     color: #7048a8;
 
     padding: 11px 20px;
-    border-radius: 22px;
+
+    border-radius: 25px;
 
     font-size: 17px;
     font-weight: bold;
 
-    box-shadow: 0 7px 15px rgba(0,0,0,.2);
+    box-shadow:
+        0 7px 15px rgba(0,0,0,.2);
 }
 
 .homeButton:hover {
@@ -207,7 +259,9 @@ button {
 }
 
 
-/* HEADING */
+/* =====================================================
+                    HEADING
+===================================================== */
 
 .pageHeading {
     position: absolute;
@@ -217,7 +271,7 @@ button {
 }
 
 .pageHeading h1 {
-    font-size: clamp(30px,4vw,50px);
+    font-size: clamp(30px, 4vw, 50px);
     text-shadow: 3px 3px #6945a5;
 }
 
@@ -226,29 +280,22 @@ button {
 }
 
 
-/* SMALL ROBOT */
-
-.smallRobot {
-    position: absolute;
-    right: 4%;
-    top: 15%;
-    font-size: 65px;
-    animation: robotFloat 1.5s infinite alternate;
-}
-
-
-/* ================= ALPHABET ================= */
+/* =====================================================
+                    ALPHABET
+===================================================== */
 
 .learningArea {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+
+    gap: clamp(20px, 6vw, 80px);
+
     width: 90vw;
 }
 
 .letter {
-    font-size: clamp(130px,20vw,230px);
+    font-size: clamp(130px, 20vw, 230px);
     font-weight: bold;
 
     background:
@@ -266,16 +313,18 @@ button {
 
     filter:
         drop-shadow(
-            5px 8px 3px rgba(0,0,0,.2)
+            5px 8px 3px
+            rgba(0,0,0,.2)
         );
-
-    animation: drop .8s ease-out;
 }
 
 .wordArea {
     background: rgba(255,255,255,.95);
+
     padding: 20px 40px;
+
     border-radius: 35px;
+
     text-align: center;
 
     box-shadow:
@@ -283,26 +332,35 @@ button {
 }
 
 .picture {
-    font-size: 110px;
+    font-size: clamp(75px, 10vw, 130px);
     animation: bounce 1.5s infinite;
 }
 
 .word {
     color: #ff4f91;
-    font-size: 50px;
+
+    font-size: clamp(32px, 5vw, 55px);
+
     font-weight: bold;
 }
 
 .sentence {
     color: white;
-    font-size: 45px;
+
+    font-size: clamp(30px, 5vw, 55px);
+
     font-weight: bold;
+
     margin: 15px;
-    text-shadow: 3px 3px #6945a5;
+
+    text-shadow:
+        3px 3px #6945a5;
 }
 
 
-/* ================= NUMBERS ================= */
+/* =====================================================
+                    NUMBER
+===================================================== */
 
 .numberLearningArea {
     text-align: center;
@@ -310,7 +368,8 @@ button {
 }
 
 .bigNumber {
-    font-size: clamp(130px,23vw,250px);
+    font-size: clamp(130px, 23vw, 250px);
+
     font-weight: bold;
 
     background:
@@ -327,14 +386,21 @@ button {
     -webkit-background-clip: text;
     color: transparent;
 
-    animation: drop .8s ease-out;
+    filter:
+        drop-shadow(
+            5px 8px 3px
+            rgba(0,0,0,.2)
+        );
 }
 
 .balls {
     font-size: 45px;
     min-height: 60px;
+
     max-width: 800px;
+
     margin: auto;
+
     line-height: 1.4;
 }
 
@@ -345,6 +411,7 @@ button {
     color: #7048a8;
 
     padding: 10px 35px;
+
     border-radius: 25px;
 
     font-size: 40px;
@@ -355,7 +422,9 @@ button {
 }
 
 
-/* ================= SPEAK ================= */
+/* =====================================================
+                    SPEAK
+===================================================== */
 
 .speakButton {
     border: none;
@@ -370,7 +439,8 @@ button {
     color: white;
 
     padding: 12px 25px;
-    border-radius: 23px;
+
+    border-radius: 25px;
 
     font-size: 18px;
     font-weight: bold;
@@ -384,22 +454,29 @@ button {
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =====================================================
+                    NAVIGATION
+===================================================== */
 
 .navigation {
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     gap: 25px;
+
     margin-top: 18px;
 }
 
 .navigation button {
     border: none;
+
     background: white;
     color: #6845a3;
 
     padding: 11px 20px;
+
     border-radius: 22px;
 
     font-size: 16px;
@@ -409,120 +486,69 @@ button {
         0 7px 15px rgba(0,0,0,.18);
 }
 
+.navigation button:hover {
+    transform: scale(1.08);
+}
+
 #alphabetProgress,
 #numberProgress {
     color: white;
+
     font-size: 19px;
     font-weight: bold;
 }
 
 
-/* ================= TEST MENU ================= */
-
-.testMenu {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.testChoice {
-    width: 250px;
-    height: 190px;
-
-    border: 5px solid white;
-    border-radius: 30px;
-
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 55px;
-
-    box-shadow:
-        0 12px 25px rgba(0,0,0,.25);
-
-    transition: .3s;
-}
-
-.testChoice:hover {
-    transform: scale(1.07);
-}
-
-.testChoice strong {
-    font-size: 25px;
-}
-
-.testChoice small {
-    font-size: 17px;
-}
-
-.alphabetTestChoice {
-    background: linear-gradient(135deg,#ff5798,#ff9966);
-}
-
-.numberTestChoice {
-    background: linear-gradient(135deg,#4776ff,#8e54e9);
-}
-
-.mixedTestChoice {
-    background: linear-gradient(135deg,#00b894,#00cec9);
-}
-
-
-/* ================= TEST ================= */
+/* =====================================================
+                    TEST
+===================================================== */
 
 #testPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background:
         linear-gradient(
             135deg,
-            #72dcff,
-            #a48cff,
-            #ff9ac9
+            #74ebd5,
+            #9face6
         );
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
     overflow-y: auto;
 }
 
 .testTop {
+    position: absolute;
+    top: 25px;
+
     text-align: center;
     color: white;
-    margin-bottom: 10px;
+
+    z-index: 10;
 }
 
 .testTop h1 {
-    font-size: 38px;
-    text-shadow: 3px 3px #6045a0;
+    font-size: clamp(28px, 4vw, 48px);
+    text-shadow: 3px 3px #60439c;
 }
 
-#testProgress,
-#testScore {
+#testProgress {
     font-size: 20px;
     font-weight: bold;
-    margin: 5px;
 }
 
-.testRobot {
-    position: absolute;
-    right: 5%;
-    top: 25%;
-    font-size: 80px;
-    animation: robotFloat 1.5s infinite alternate;
+#changeInfo {
+    font-size: 16px;
+    margin-top: 5px;
 }
 
-.questionCard {
-    background: white;
+.testCard {
+    width: min(700px, 92vw);
 
-    width: min(650px,90vw);
-    min-height: 330px;
+    margin-top: 100px;
+
+    background: rgba(255,255,255,.96);
 
     border-radius: 35px;
 
@@ -531,250 +557,436 @@ button {
     text-align: center;
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.25);
+        0 20px 40px rgba(0,0,0,.25);
 }
 
-.questionEmoji {
-    font-size: 50px;
+.testTopic {
+    color: #7048a8;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
 }
 
-.questionCard h2 {
-    color: #6845a3;
-    margin: 10px;
+.testQuestion {
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #333;
+
+    margin: 15px;
 }
 
+.testPicture {
+    font-size: 70px;
 
-/* TEST OPTIONS */
-
-.options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    min-height: 80px;
 }
 
-.optionButton {
-    min-width: 100px;
+.testOptions {
+    display: grid;
 
-    border: 4px solid #eee;
-    background: #f8f8ff;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    color: #6045a0;
+    gap: 12px;
 
-    padding: 15px 25px;
+    margin-top: 15px;
+}
+
+.testOption {
+    border: 4px solid #ddd;
+
+    background: white;
+
+    color: #5d4695;
+
+    padding: 15px;
 
     border-radius: 20px;
 
     font-size: 25px;
+
     font-weight: bold;
 
     transition: .2s;
 }
 
-.optionButton:hover {
-    transform: scale(1.08);
+.testOption:hover {
+    transform: scale(1.04);
+    border-color: #8d6bd1;
 }
 
-.optionButton.correct {
-    background: #b8f7c5;
-    border-color: #18a558;
+.testOption.selected {
+    border-color: #00a8ff;
+    background: #e9f8ff;
 }
 
-.optionButton.wrong {
-    background: #ffc4c4;
-    border-color: #e53935;
+.testOption.correct {
+    border-color: #00b894;
+    background: #d8fff1;
+    color: #00875f;
 }
 
-
-/* MATCHING */
-
-.matchArea {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 15px;
+.testOption.wrong {
+    border-color: #ff4757;
+    background: #ffe2e5;
+    color: #d63031;
 }
 
-.matchColumn {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+.answerMessage {
+    min-height: 45px;
 
-.matchButton {
-    width: 100px;
-    padding: 12px;
+    margin: 15px;
 
-    border: 3px solid #ddd;
-    border-radius: 15px;
+    font-size: 22px;
 
-    background: #fff;
-
-    font-size: 28px;
     font-weight: bold;
 }
 
-.matchButton.selected {
-    background: #ffe082;
+.answerCorrect {
+    color: #00a878;
 }
 
-.matchButton.matched {
-    background: #b8f7c5;
-    pointer-events: none;
+.answerWrong {
+    color: #e53935;
 }
 
 .nextQuestionButton {
-    margin-top: 15px;
-
     border: none;
-
-    background: white;
-    color: #6845a3;
-
-    padding: 12px 25px;
-
-    border-radius: 22px;
-
-    font-size: 18px;
-    font-weight: bold;
-
-    box-shadow: 0 8px 15px rgba(0,0,0,.2);
-}
-
-
-/* ================= RESULT ================= */
-
-#resultPage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     background:
         linear-gradient(
             135deg,
-            #75dcff,
-            #a68cff,
-            #ff9bc9
+            #6c5ce7,
+            #a855f7
+        );
+
+    color: white;
+
+    padding: 13px 28px;
+
+    border-radius: 25px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.nextQuestionButton:hover {
+    transform: scale(1.06);
+}
+
+
+/* =====================================================
+                    RESULT
+===================================================== */
+
+#resultPage {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe259,
+            #ffa751,
+            #ff6f91
         );
 }
 
 .resultCard {
-    width: min(850px,94vw);
-    max-height: 94vh;
+    width: min(800px, 94vw);
+
+    max-height: 95vh;
+
     overflow-y: auto;
 
-    background: rgba(255,255,255,.96);
+    text-align: center;
+
+    background: white;
 
     border-radius: 40px;
 
     padding: 30px;
 
-    text-align: center;
-
     box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
-}
-
-.resultStars {
-    font-size: 45px;
+        0 20px 50px rgba(0,0,0,.3);
 }
 
 .resultCard h1 {
-    color: #38488f;
-    font-size: 45px;
+    color: #49358d;
+
+    font-size: clamp(30px, 5vw, 55px);
 }
 
 .resultScore {
-    color: #e63845;
-    font-size: 42px;
-    font-weight: bold;
-}
+    color: #e63946;
 
-.resultDetails {
-    font-size: 22px;
+    font-size: 55px;
+
+    font-weight: bold;
+
     margin: 10px;
 }
 
+.resultLine {
+    font-size: 22px;
+
+    margin: 7px;
+
+    color: #333;
+}
+
 .resultMessage {
-    color: #38488f;
-    font-size: 25px;
+    color: #49358d;
+
+    font-size: 24px;
+
     font-weight: bold;
+
     margin: 15px;
 }
 
 
-/* DANCING ROBOTS */
+/* =====================================================
+                    ROBOT
+===================================================== */
 
-.dancingRobots {
+.robotParty {
     display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.dancingRobot {
+    position: relative;
+
+    width: 180px;
+    height: 230px;
+
+    animation: robotDance .55s infinite alternate;
+}
+
+.robotHead {
+    width: 125px;
+    height: 90px;
+
+    margin: auto;
+
+    background: #f1f2f6;
+
+    border: 6px solid #535c68;
+
+    border-radius: 30px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: space-evenly;
+
+    align-items: center;
+}
+
+.robotEye {
+    width: 20px;
+    height: 20px;
+
+    background: #00a8ff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px #00a8ff;
+}
+
+.robotSmile {
+    position: absolute;
+
+    bottom: 5px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 25px;
+}
+
+.robotBody {
+    width: 110px;
+    height: 100px;
+
+    margin: 8px auto;
+
+    background: #dfe4ea;
+
+    border: 6px solid #535c68;
+
+    border-radius: 25px;
+
+    display: flex;
+
     justify-content: center;
-    gap: 35px;
 
-    min-height: 130px;
+    align-items: center;
+
+    font-size: 50px;
 }
 
-.danceRobot {
-    font-size: 85px;
+.robotLeg {
+    position: absolute;
 
-    display: inline-block;
+    width: 25px;
+    height: 60px;
 
-    animation:
-        robotDance .55s infinite alternate;
+    background: #a4b0be;
+
+    border-radius: 15px;
+
+    bottom: 0;
 }
 
-.danceRobot:nth-child(2) {
-    animation-delay: .18s;
+.leftLeg {
+    left: 48px;
 }
 
-.danceRobot:nth-child(3) {
-    animation-delay: .35s;
+.rightLeg {
+    right: 48px;
+}
+
+.danceText {
+    color: #e84393;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    animation: textBounce 1s infinite alternate;
 }
 
 .resultButtons {
     display: flex;
+
     justify-content: center;
-    gap: 20px;
+
+    gap: 15px;
+
+    margin-top: 20px;
 }
 
 .resultButtons button {
     border: none;
 
-    padding: 14px 25px;
+    padding: 13px 22px;
 
     border-radius: 25px;
-
-    color: white;
-
-    font-size: 18px;
-    font-weight: bold;
 
     background:
         linear-gradient(
             135deg,
-            #00b894,
+            #00cec9,
             #6c5ce7
         );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
 }
 
 
-/* ================= ANIMATIONS ================= */
+/* =====================================================
+                    ANIMALS
+===================================================== */
 
-@keyframes drop {
+.animalGrid {
+    width: 90vw;
+    height: 70vh;
 
-    from {
-        transform: translateY(-180px);
-        opacity: 0;
-    }
+    margin-top: 100px;
 
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 18px;
+
+    overflow-y: auto;
+
+    padding: 15px;
 }
+
+.animalCard {
+    min-height: 150px;
+
+    border: 5px solid white;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #ffeaa7
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.2);
+
+    transition: .25s;
+}
+
+.animalCard:hover {
+    transform:
+        translateY(-8px)
+        scale(1.04);
+}
+
+.animalEmoji {
+    font-size: 65px;
+}
+
+.animalName {
+    color: #5f3ca4;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+.animalSound {
+    color: #e84393;
+
+    font-size: 14px;
+
+    margin-top: 4px;
+}
+
+
+/* =====================================================
+                    ANIMATIONS
+===================================================== */
 
 @keyframes bounce {
-
     0%,100% {
         transform: translateY(0);
     }
@@ -785,7 +997,6 @@ button {
 }
 
 @keyframes kidsBounce {
-
     0%,100% {
         transform: translateY(0);
     }
@@ -796,128 +1007,115 @@ button {
 }
 
 @keyframes cloudMove {
-
     from {
-        transform: translateX(-25px);
+        transform: translateX(-30px);
     }
 
     to {
-        transform: translateX(25px);
+        transform: translateX(30px);
     }
 }
 
 @keyframes robotFloat {
-
     from {
-        transform: translateY(0) rotate(-3deg);
+        transform: translateY(0) rotate(-5deg);
     }
 
     to {
-        transform: translateY(-18px) rotate(3deg);
+        transform: translateY(-20px) rotate(5deg);
     }
 }
 
 @keyframes robotDance {
-
     0% {
         transform:
-            rotate(-15deg)
-            translateY(0)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            rotate(15deg)
-            translateY(-20px)
-            scale(1.12);
+            rotate(-10deg)
+            translateY(0);
     }
 
     100% {
         transform:
-            rotate(-15deg)
-            translateY(0)
-            scale(1);
+            rotate(10deg)
+            translateY(-15px);
+    }
+}
+
+@keyframes textBounce {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
     }
 }
 
 
-/* ================= MOBILE ================= */
+/* =====================================================
+                    MOBILE
+===================================================== */
 
 @media(max-width:700px) {
 
-    .homeRobot {
-        font-size: 55px;
-        right: 5px;
-        bottom: 5px;
+    .homeBox {
+        width: 85vw;
+        min-height: 170px;
+    }
+
+    .floatingRobot {
+        display: none;
     }
 
     .kids {
-        font-size: 40px;
+        font-size: 42px;
     }
 
-    .homeBox {
-        width: 250px;
-        height: 175px;
-        margin: 7px;
+    .homeContent h1 {
+        font-size: 32px;
     }
 
     .learningArea {
-        gap: 15px;
+        gap: 10px;
     }
 
     .wordArea {
         padding: 15px;
     }
 
-    .picture {
-        font-size: 70px;
+    .navigation {
+        gap: 7px;
     }
 
-    .word {
-        font-size: 30px;
+    .navigation button {
+        padding: 9px 12px;
+        font-size: 14px;
     }
 
-    .sentence {
-        font-size: 28px;
+    .testOptions {
+        grid-template-columns: 1fr;
     }
 
-    .smallRobot,
-    .testRobot {
-        font-size: 45px;
-    }
-
-    .testChoice {
-        width: 210px;
-        height: 150px;
-    }
-
-    .questionCard {
+    .testCard {
         padding: 20px;
     }
 
-    .testTop h1 {
-        font-size: 27px;
-    }
-
-    .matchArea {
-        gap: 20px;
-    }
-
-    .matchButton {
-        width: 75px;
+    .testQuestion {
         font-size: 22px;
     }
 
-    .danceRobot {
-        font-size: 55px;
+    .animalGrid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        width: 95vw;
     }
 
-    .resultCard h1 {
-        font-size: 30px;
+    .animalCard {
+        min-height: 130px;
     }
 
-    .resultScore {
-        font-size: 32px;
+    .animalEmoji {
+        font-size: 50px;
     }
+
 }
