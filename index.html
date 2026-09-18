@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Kids Learning World</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- BACKGROUND ROBOT -->
+<!-- Animated background -->
 <div class="backgroundRobot">🤖</div>
 
+<div class="ganpatiPlay">
+    <div class="ganpati">🙏🐘</div>
+    <div class="ganpatiText">Ganpati Bappa 🌺</div>
+</div>
 
-<!-- =====================================================
-                         HOME
-===================================================== -->
-
+<!-- ================= HOME ================= -->
 <section id="homePage" class="page">
 
     <div class="clouds">☁️ ☁️ ☁️ ☁️</div>
@@ -27,142 +25,140 @@
     <div class="homeTopRobot">🤖</div>
 
     <h1>🌈 Kids Learning World 🌈</h1>
-
-    <p class="subtitle">
-        Learn • Play • Enjoy
-    </p>
-
+    <p class="subtitle">Learn • Play • Enjoy</p>
 
     <div class="menu">
 
-
-        <!-- ALPHABET -->
-
-        <button id="alphabetBtn"
-                class="menuBox alphabet">
-
+        <button id="alphabetBtn" class="menuBox alphabet">
             <span>🔤</span>
-
             <b>Alphabet</b>
-
             <small>A to Z</small>
-
             <em>👆 Click to Start</em>
-
         </button>
 
-
-        <!-- NUMBERS -->
-
-        <button id="numberBtn"
-                class="menuBox numbers">
-
+        <button id="numberBtn" class="menuBox numbers">
             <span>🔢</span>
-
             <b>Numbers</b>
-
             <small>1 to 1000</small>
-
             <em>👆 Click to Start</em>
-
         </button>
 
-
-        <!-- ANIMALS -->
-
-        <button id="animalBtn"
-                class="menuBox animals">
-
+        <button id="animalBtn" class="menuBox animals">
             <span>🐯</span>
-
             <b>Animals</b>
-
-            <small>Animals & Sounds</small>
-
+            <small>Learn Animals & Sounds</small>
             <em>👆 Click to Start</em>
-
         </button>
 
-
-        <!-- TEST -->
-
-        <button id="testBtn"
-                class="menuBox test">
-
+        <button id="testBtn" class="menuBox test">
             <span>📝</span>
-
             <b>Kids Test</b>
-
             <small>20 Marks</small>
-
             <em>👆 Start Test</em>
-
         </button>
 
     </div>
-
 </section>
 
 
-
-<!-- =====================================================
-                       ALPHABET
-===================================================== -->
-
+<!-- ================= ALPHABET ================= -->
 <section id="alphabetPage" class="page hidden">
 
-    <button class="homeBtn">
-        🏠 Home
-    </button>
+    <button class="homeBtn">🏠 Home</button>
 
     <h2>🔤 Learn Alphabet</h2>
 
     <div class="alphabetLearning">
 
-        <div id="letter" class="bigLetter">
-            A
-        </div>
-
+        <div id="letter" class="bigLetter">A</div>
 
         <div class="wordCard">
-
-            <div id="picture" class="bigEmoji">
-                🍎
-            </div>
-
-            <div id="word" class="bigWord">
-                Apple
-            </div>
-
-            <div id="sentence" class="sentence">
-                A for Apple
-            </div>
-
+            <div id="picture" class="bigEmoji">🍎</div>
+            <div id="word" class="bigWord">Apple</div>
+            <div id="sentence" class="sentence">A for Apple</div>
         </div>
 
     </div>
 
-
-    <button id="speakAlphabetBtn"
-            class="actionBtn">
-
+    <button id="speakAlphabetBtn" class="actionBtn">
         🔊 Hear Again
-
     </button>
 
+    <div class="nav">
+        <button id="prevAlphabet">◀ Previous</button>
+        <span id="alphabetProgress">A / Z</span>
+        <button id="nextAlphabet">Next ▶</button>
+    </div>
+
+</section>
+
+
+<!-- ================= NUMBERS ================= -->
+<section id="numberPage" class="page hidden">
+
+    <button class="homeBtn">🏠 Home</button>
+
+    <h2>🔢 Learn Numbers</h2>
+    <p class="pageSub">1 to 1000 • Let's Count!</p>
+
+    <div class="numberCard">
+
+        <div id="bigNumber" class="bigNumber">1</div>
+
+        <div id="balls" class="balls">⚽</div>
+
+        <div id="numberName" class="numberName">One</div>
+
+    </div>
+
+    <button id="speakNumberBtn" class="actionBtn">
+        🔊 Hear Again
+    </button>
 
     <div class="nav">
+        <button id="prevNumber">◀ Previous</button>
+        <span id="numberProgress">1 / 1000</span>
+        <button id="nextNumber">Next ▶</button>
+    </div>
 
-        <button id="prevAlphabet">
-            ◀ Previous
+</section>
+
+
+<!-- ================= ANIMALS ================= -->
+<section id="animalPage" class="page hidden">
+
+    <button class="homeBtn">🏠 Home</button>
+
+    <h2>🐾 Animal World 🐾</h2>
+
+    <p class="pageSub">
+        👆 Click an animal to hear its sound!
+    </p>
+
+    <div id="animalGrid" class="animalGrid"></div>
+
+</section>
+
+
+<!-- ================= TEST MENU ================= -->
+<section id="testMenuPage" class="page hidden">
+
+    <button class="homeBtn">🏠 Home</button>
+
+    <h2>📝 Kids Test Zone</h2>
+
+    <div class="testChoice">
+
+        <button id="alphabetTestBtn" class="testChoiceBox">
+            🔤
+            <b>Alphabet Test</b>
+            <small>20 Marks</small>
         </button>
 
-        <span id="alphabetProgress">
-            A / Z
-        </span>
-
-        <button id="nextAlphabet">
-            Next ▶
+        <button id="numberTestBtn" class="testChoiceBox">
+            🔢
+            <b>Number Test</b>
+            <small>20 Marks</small>
         </button>
 
     </div>
@@ -170,58 +166,89 @@
 </section>
 
 
+<!-- ================= TEST ================= -->
+<section id="testPage" class="page hidden">
 
-<!-- =====================================================
-                        NUMBERS
-===================================================== -->
+    <button class="homeBtn">🏠 Home</button>
 
-<section id="numberPage" class="page hidden">
+    <h2 id="testTitle">📝 Alphabet Test</h2>
 
-    <button class="homeBtn">
-        🏠 Home
-    </button>
+    <div class="testInfo">
+        Question <span id="questionNumber">1</span> / 20
+        &nbsp; | &nbsp;
+        Marks: <span id="liveMarks">0</span>
+    </div>
 
-    <h2>🔢 Learn Numbers</h2>
+    <div class="questionCard">
 
-    <p class="pageSub">
-        1 to 1000 • Let's Count!
+        <div id="questionText" class="questionText">
+            Which small letter matches A?
+        </div>
+
+        <div id="questionVisual" class="questionVisual">
+            A
+        </div>
+
+        <div id="answerArea" class="answerArea"></div>
+
+        <div id="feedback" class="feedback"></div>
+
+        <button id="nextQuestion" class="nextQuestion">
+            Next Question ▶
+        </button>
+
+    </div>
+
+    <p class="attemptInfo">
+        💡 You can change your answer up to 3 times.
     </p>
 
+</section>
 
-    <div class="numberCard">
 
-        <div id="bigNumber"
-             class="bigNumber">
+<!-- ================= RESULT ================= -->
+<section id="resultPage" class="page hidden">
 
-            1
+    <div class="resultCard">
 
+        <div class="party">🎉 🎊 🎉</div>
+
+        <h2>Test Complete!</h2>
+
+        <div id="resultScore" class="resultScore">
+            0 / 20 Marks
         </div>
 
+        <p>✅ Correct: <b id="resultCorrect">0</b></p>
+        <p>❌ Wrong: <b id="resultWrong">0</b></p>
+        <p>📊 Percentage: <b id="resultPercentage">0%</b></p>
 
-        <div id="balls"
-             class="balls">
-
-            ⚽
-
+        <div id="resultMessage" class="resultMessage">
+            Keep Learning! 🌟
         </div>
 
+        <div id="dancingRobots" class="dancingRobots">
+            🤖 🤖 🤖
+        </div>
 
-        <div id="numberName"
-             class="numberName">
+        <div class="resultButtons">
 
-            One
+            <button id="tryAgainBtn">
+                🔄 Try Again
+            </button>
+
+            <button id="resultHomeBtn">
+                🏠 Go Home
+            </button>
 
         </div>
 
     </div>
 
-
-    <button id="speakNumberBtn"
-            class="actionBtn">
-
-        🔊 Hear Again
-
-    </button>
+</section>
 
 
-    <div class="nav">
+<script src="script.js"></script>
+
+</body>
+</html>
