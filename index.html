@@ -1,66 +1,312 @@
-<section class="godPhotos">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <img src="1000017017.jpg" alt="Ganesh Ji">
+    <title>Kids Learning World</title>
 
-    <img src="1000016155.jpg" alt="Ganesh Ji">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-</section>
+<body>
+
+<!-- BACKGROUND -->
+<div class="background">
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+
+    <div class="floatingStar s1">⭐</div>
+    <div class="floatingStar s2">✨</div>
+    <div class="floatingStar s3">🌟</div>
+    <div class="floatingStar s4">⭐</div>
+
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+</div>
 
 
-<section class="learningFeatures">
+<!-- TOP -->
+<header class="topArea">
 
-    <div class="featureCard" onclick="openAlphabet()">
-        🔤
-        <h3>Alphabet</h3>
-        <p>Learn A to Z</p>
+    <!-- YOUR GANESH PHOTO -->
+    <div class="topPhoto">
+        <img src="1000017017.jpg" alt="Ganesh Ji">
     </div>
 
-    <div class="featureCard">
-        🔢
-        <h3>Numbers</h3>
-        <p>Learn 1 to 100</p>
+    <div class="topWelcome">
+
+        <div class="welcomeText">
+            <span>👋</span>
+
+            <div>
+                <h1>Hello Little Explorer!</h1>
+                <p>Learn • Play • Discover • Smile 🌈</p>
+            </div>
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span>⭐</span>
+                <div>
+                    <small>Stars</small>
+                    <strong id="starCount">0</strong>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span>🏆</span>
+                <div>
+                    <small>Learned</small>
+                    <strong id="progressCount">0</strong>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="featureCard">
-        🐶
-        <h3>Animals</h3>
-        <p>Learn animals</p>
+</header>
+
+
+<!-- HOME -->
+<main id="homePage">
+
+    <div class="sectionHeading">
+        <span>🚀</span>
+        <div>
+            <h2>Let's Learn & Play!</h2>
+            <p>Choose your magical learning world</p>
+        </div>
+        <span>✨</span>
     </div>
 
-    <div class="featureCard">
-        🎨
-        <h3>Colors & Shapes</h3>
-        <p>Learn colors</p>
-    </div>
 
-    <div class="featureCard">
-        🍎
-        <h3>Fruits</h3>
-        <p>Learn fruits</p>
-    </div>
+    <!-- FEATURE AREA -->
+    <section class="featureGrid">
 
-    <div class="featureCard">
-        🧠
-        <h3>Quiz</h3>
-        <p>Play & learn</p>
-    </div>
 
-    <div class="featureCard">
-        🧩
-        <h3>Puzzle</h3>
-        <p>Think & play</p>
-    </div>
+        <!-- ALPHABET BIG CARD -->
+        <div class="featureCard alphabetCard"
+             onclick="openAlphabet()">
 
-    <div class="featureCard">
-        ✏️
-        <h3>Drawing</h3>
-        <p>Draw & color</p>
-    </div>
+            <div class="shine"></div>
 
-    <div class="featureCard">
-        ⭐
-        <h3>Daily Challenge</h3>
-        <p>Earn stars</p>
-    </div>
+            <div class="cardTop">
+                <span class="newBadge">START HERE ⭐</span>
+                <span class="heart">💖</span>
+            </div>
 
-</section>
+            <div class="bigIcon alphabetIcon">
+                🔤
+            </div>
+
+            <h3>Alphabet Adventure</h3>
+
+            <p>
+                Learn A to Z with fun pictures & sounds!
+            </p>
+
+            <div class="miniLetters">
+                <span>A</span>
+                <span>B</span>
+                <span>C</span>
+                <span>D</span>
+                <span>...</span>
+                <span>Z</span>
+            </div>
+
+            <button>
+                Start Learning →
+            </button>
+
+        </div>
+
+
+        <!-- NUMBERS -->
+        <div class="featureCard numbersCard"
+             onclick="openNumbers()">
+
+            <div class="cardTop">
+                <span class="smallBadge">1 → 100</span>
+                <span>🔢</span>
+            </div>
+
+            <div class="bigIcon">🔢</div>
+
+            <h3>Number World</h3>
+
+            <p>
+                Count, play and discover numbers!
+            </p>
+
+            <div class="numberPreview">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+
+        </div>
+
+
+        <!-- ANIMALS -->
+        <div class="featureCard animalsCard"
+             onclick="openAnimals()">
+
+            <div class="cardTop">
+                <span class="smallBadge">FUN SOUNDS</span>
+                <span>🐾</span>
+            </div>
+
+            <div class="bigIcon">🐶</div>
+
+            <h3>Animal Kingdom</h3>
+
+            <p>
+                Meet cute animals and hear their sounds!
+            </p>
+
+            <div class="animalPreview">
+                🐶 🐱 🦁 🐘 🐼
+            </div>
+
+        </div>
+
+
+        <!-- COLORS -->
+        <div class="featureCard colorsCard"
+             onclick="openColors()">
+
+            <div class="cardTop">
+                <span class="smallBadge">CREATE</span>
+                <span>🌈</span>
+            </div>
+
+            <div class="bigIcon">🎨</div>
+
+            <h3>Colors & Shapes</h3>
+
+            <p>
+                Explore beautiful colors and shapes!
+            </p>
+
+            <div class="shapePreview">
+                <i class="circle"></i>
+                <i class="square"></i>
+                <i class="triangle"></i>
+            </div>
+
+        </div>
+
+
+        <!-- FRUITS -->
+        <div class="featureCard fruitsCard"
+             onclick="openFruits()">
+
+            <div class="cardTop">
+                <span class="smallBadge">YUMMY</span>
+                <span>🍎</span>
+            </div>
+
+            <div class="bigIcon">🍎</div>
+
+            <h3>Fruit Garden</h3>
+
+            <p>
+                Discover healthy and tasty fruits!
+            </p>
+
+            <div class="fruitPreview">
+                🍎 🍌 🍇 🍉 🥭
+            </div>
+
+        </div>
+
+
+        <!-- QUIZ -->
+        <div class="featureCard quizCard"
+             onclick="openQuiz()">
+
+            <div class="cardTop">
+                <span class="smallBadge">CHALLENGE</span>
+                <span>🧠</span>
+            </div>
+
+            <div class="bigIcon">🧠</div>
+
+            <h3>Smart Quiz</h3>
+
+            <p>
+                Answer fun questions and earn stars!
+            </p>
+
+            <div class="quizStars">
+                ⭐ ⭐ ⭐
+            </div>
+
+        </div>
+
+
+        <!-- PUZZLE -->
+        <div class="featureCard puzzleCard"
+             onclick="openPuzzle()">
+
+            <div class="cardTop">
+                <span class="smallBadge">THINK</span>
+                <span>🧩</span>
+            </div>
+
+            <div class="bigIcon">🧩</div>
+
+            <h3>Puzzle Planet</h3>
+
+            <p>
+                Solve exciting puzzles and have fun!
+            </p>
+
+            <div class="puzzlePreview">
+                🧩 🧩 🧩
+            </div>
+
+        </div>
+
+
+        <!-- DRAWING -->
+        <div class="featureCard drawingCard"
+             onclick="openDrawing()">
+
+            <div class="cardTop">
+                <span class="smallBadge">BE CREATIVE</span>
+                <span>🎨</span>
+            </div>
+
+            <div class="bigIcon">✏️</div>
+
+            <h3>Draw & Color</h3>
+
+            <p>
+                Create your own beautiful drawings!
+            </p>
+
+            <div class="drawingPreview">
+                🖍️ 🖌️ ✏️ 🖍️
+            </div>
+
+        </div>
+
+
+        <!-- DAILY CHALLENGE -->
+        <div class="featureCard challengeCard"
+             onclick="openChallenge()">
+
+            <div class="cardTop">
+                <span class="smallBadge">EVERY DAY</span>
+                <span>🏆</span>
+            </div>
+
+            <div class="
