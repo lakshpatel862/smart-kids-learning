@@ -1,681 +1,363 @@
-let stars = 0;
-let learnedLetters = [];
-let currentLetter = null;
-let currentLanguage = "en";
+/* =====================================================
+   KIDS LEARNING WORLD
+   MAIN JAVASCRIPT
+===================================================== */
 
 
-const alphabetData = [
+/* ================= PAGE ELEMENTS ================= */
 
-    {
-        letter:"A",
-        word:"Apple",
-        emoji:"🍎",
-        hindi:"सेब",
-        gujarati:"સફરજન",
-        sentence:"A is for Apple"
-    },
+const homePage = document.getElementById("homePage");
+const alphabetPage = document.getElementById("alphabetPage");
+const otherPage = document.getElementById("otherPage");
 
-    {
-        letter:"B",
-        word:"Ball",
-        emoji:"⚽",
-        hindi:"गेंद",
-        gujarati:"દડો",
-        sentence:"B is for Ball"
-    },
+const alphabetBtn = document.getElementById("alphabetBtn");
+const numbersBtn = document.getElementById("numbersBtn");
+const animalsBtn = document.getElementById("animalsBtn");
+const testBtn = document.getElementById("testBtn");
 
-    {
-        letter:"C",
-        word:"Cat",
-        emoji:"🐱",
-        hindi:"बिल्ली",
-        gujarati:"બિલાડી",
-        sentence:"C is for Cat"
-    },
+const homeFromAlphabet =
+    document.getElementById("homeFromAlphabet");
 
-    {
-        letter:"D",
-        word:"Dog",
-        emoji:"🐶",
-        hindi:"कुत्ता",
-        gujarati:"કૂતરો",
-        sentence:"D is for Dog"
-    },
-
-    {
-        letter:"E",
-        word:"Elephant",
-        emoji:"🐘",
-        hindi:"हाथी",
-        gujarati:"હાથી",
-        sentence:"E is for Elephant"
-    },
-
-    {
-        letter:"F",
-        word:"Fish",
-        emoji:"🐟",
-        hindi:"मछली",
-        gujarati:"માછલી",
-        sentence:"F is for Fish"
-    },
-
-    {
-        letter:"G",
-        word:"Grapes",
-        emoji:"🍇",
-        hindi:"अंगूर",
-        gujarati:"દ્રાક્ષ",
-        sentence:"G is for Grapes"
-    },
-
-    {
-        letter:"H",
-        word:"Horse",
-        emoji:"🐴",
-        hindi:"घोड़ा",
-        gujarati:"ઘોડો",
-        sentence:"H is for Horse"
-    },
-
-    {
-        letter:"I",
-        word:"Ice Cream",
-        emoji:"🍦",
-        hindi:"आइसक्रीम",
-        gujarati:"આઈસ્ક્રીમ",
-        sentence:"I is for Ice Cream"
-    },
-
-    {
-        letter:"J",
-        word:"Jelly",
-        emoji:"🍮",
-        hindi:"जेली",
-        gujarati:"જેલી",
-        sentence:"J is for Jelly"
-    },
-
-    {
-        letter:"K",
-        word:"Kite",
-        emoji:"🪁",
-        hindi:"पतंग",
-        gujarati:"પતંગ",
-        sentence:"K is for Kite"
-    },
-
-    {
-        letter:"L",
-        word:"Lion",
-        emoji:"🦁",
-        hindi:"शेर",
-        gujarati:"સિંહ",
-        sentence:"L is for Lion"
-    },
-
-    {
-        letter:"M",
-        word:"Mango",
-        emoji:"🥭",
-        hindi:"आम",
-        gujarati:"કેરી",
-        sentence:"M is for Mango"
-    },
-
-    {
-        letter:"N",
-        word:"Nest",
-        emoji:"🪺",
-        hindi:"घोंसला",
-        gujarati:"માળો",
-        sentence:"N is for Nest"
-    },
-
-    {
-        letter:"O",
-        word:"Orange",
-        emoji:"🍊",
-        hindi:"संतरा",
-        gujarati:"નારંગી",
-        sentence:"O is for Orange"
-    },
-
-    {
-        letter:"P",
-        word:"Parrot",
-        emoji:"🦜",
-        hindi:"तोता",
-        gujarati:"પોપટ",
-        sentence:"P is for Parrot"
-    },
-
-    {
-        letter:"Q",
-        word:"Queen",
-        emoji:"👑",
-        hindi:"रानी",
-        gujarati:"રાણી",
-        sentence:"Q is for Queen"
-    },
-
-    {
-        letter:"R",
-        word:"Rabbit",
-        emoji:"🐰",
-        hindi:"खरगोश",
-        gujarati:"સસલું",
-        sentence:"R is for Rabbit"
-    },
-
-    {
-        letter:"S",
-        word:"Sun",
-        emoji:"☀️",
-        hindi:"सूरज",
-        gujarati:"સૂર્ય",
-        sentence:"S is for Sun"
-    },
-
-    {
-        letter:"T",
-        word:"Tiger",
-        emoji:"🐯",
-        hindi:"बाघ",
-        gujarati:"વાઘ",
-        sentence:"T is for Tiger"
-    },
-
-    {
-        letter:"U",
-        word:"Umbrella",
-        emoji:"☂️",
-        hindi:"छाता",
-        gujarati:"છત્રી",
-        sentence:"U is for Umbrella"
-    },
-
-    {
-        letter:"V",
-        word:"Van",
-        emoji:"🚐",
-        hindi:"वैन",
-        gujarati:"વેન",
-        sentence:"V is for Van"
-    },
-
-    {
-        letter:"W",
-        word:"Whale",
-        emoji:"🐋",
-        hindi:"व्हेल",
-        gujarati:"વ્હેલ",
-        sentence:"W is for Whale"
-    },
-
-    {
-        letter:"X",
-        word:"Xylophone",
-        emoji:"🎵",
-        hindi:"ज़ाइलोफोन",
-        gujarati:"ઝાયલોફોન",
-        sentence:"X is for Xylophone"
-    },
-
-    {
-        letter:"Y",
-        word:"Yo-Yo",
-        emoji:"🪀",
-        hindi:"यो-यो",
-        gujarati:"યો-યો",
-        sentence:"Y is for Yo-Yo"
-    },
-
-    {
-        letter:"Z",
-        word:"Zebra",
-        emoji:"🦓",
-        hindi:"ज़ेब्रा",
-        gujarati:"ઝેબ્રા",
-        sentence:"Z is for Zebra"
-    }
-
-];
+const homeFromOther =
+    document.getElementById("homeFromOther");
 
 
-/* HOME */
+/* ================= ALPHABET BUTTON ================= */
 
-function goHome() {
+alphabetBtn.addEventListener("click", function () {
 
-    document.getElementById("homePage").style.display = "block";
-
-    document.getElementById("alphabetPage").style.display = "none";
+    homePage.style.display = "none";
+    otherPage.style.display = "none";
+    alphabetPage.style.display = "block";
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
-}
+
+});
 
 
-/* ALPHABET */
+/* ================= HOME BUTTON ================= */
 
-function openAlphabet() {
+homeFromAlphabet.addEventListener("click", function () {
 
-    document.getElementById("homePage").style.display = "none";
-
-    document.getElementById("alphabetPage").style.display = "block";
-
-    createAlphabet();
+    alphabetPage.style.display = "none";
+    otherPage.style.display = "none";
+    homePage.style.display = "block";
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
-}
+
+});
 
 
-/* CREATE ALPHABET */
+/* ================= OTHER FEATURES ================= */
 
-function createAlphabet() {
+numbersBtn.addEventListener("click", function () {
 
-    const grid = document.getElementById("alphabetGrid");
+    showOtherPage(
+        "🔢 Numbers",
+        "Numbers 1 to 1000 section is coming soon! 🚀"
+    );
 
-    grid.innerHTML = "";
+});
 
-    alphabetData.forEach(item => {
 
-        const card = document.createElement("div");
+animalsBtn.addEventListener("click", function () {
 
-        card.className = "letterCard";
+    showOtherPage(
+        "🐯 Animals",
+        "Animals learning section is coming soon! 🐶🐱🦁"
+    );
 
-        if(learnedLetters.includes(item.letter)) {
-            card.classList.add("learned");
-        }
+});
 
-        let word = item.word;
 
-        if(currentLanguage === "hi") {
-            word = item.hindi;
-        }
+testBtn.addEventListener("click", function () {
 
-        if(currentLanguage === "gu") {
-            word = item.gujarati;
-        }
+    showOtherPage(
+        "📝 Test",
+        "Fun test section is coming soon! 🎯"
+    );
 
-        card.innerHTML = `
+});
 
-            <div class="letter">
-                ${item.letter}
-            </div>
 
-            <div class="cardEmoji">
-                ${item.emoji}
-            </div>
+/* ================= OTHER PAGE FUNCTION ================= */
 
-            <div class="word">
-                ${word}
-            </div>
+function showOtherPage(title, text) {
 
-            <div class="meaning">
-                🔊 Tap to learn
-            </div>
+    homePage.style.display = "none";
+    alphabetPage.style.display = "none";
+    otherPage.style.display = "block";
 
-        `;
+    document.getElementById("otherTitle").textContent = title;
+    document.getElementById("otherText").textContent = text;
 
-        card.onclick = () => learnLetter(item);
-
-        grid.appendChild(card);
-
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
+
 }
 
 
-/* LEARN */
+/* ================= HOME FROM OTHER ================= */
 
-function learnLetter(item) {
+homeFromOther.addEventListener("click", function () {
 
-    currentLetter = item;
+    otherPage.style.display = "none";
+    alphabetPage.style.display = "none";
+    homePage.style.display = "block";
 
-    if(!learnedLetters.includes(item.letter)) {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
-        learnedLetters.push(item.letter);
+});
 
-        addStars(5);
 
-    } else {
+/* =====================================================
+   ALPHABET SYSTEM
+===================================================== */
 
-        addStars(1);
+const letterCards =
+    document.querySelectorAll(".letterCard");
 
-    }
+const popup =
+    document.getElementById("letterPopup");
 
-    updateProgress();
+const popupLetter =
+    document.getElementById("popupLetter");
 
-    showPopup(item);
+const popupEmoji =
+    document.getElementById("popupEmoji");
 
-    speakLetter(item);
-}
+const popupWord =
+    document.getElementById("popupWord");
 
+const popupSentence =
+    document.getElementById("popupSentence");
 
-/* PROGRESS */
+const closePopup =
+    document.getElementById("closePopup");
 
-function updateProgress() {
+const speakButton =
+    document.getElementById("speakButton");
 
-    document.getElementById("starCount").innerText = stars;
+const learnedCount =
+    document.getElementById("learnedCount");
 
-    document.getElementById("progressCount").innerText =
-        learnedLetters.length;
-}
+const progressFill =
+    document.getElementById("progressFill");
 
 
-/* POPUP */
+/* ================= LEARNED LETTERS ================= */
 
-function showPopup(item) {
+let learnedLetters =
+    JSON.parse(localStorage.getItem("learnedLetters")) || [];
 
-    let word = item.word;
 
-    let sentence = item.sentence;
+/* ================= CARD CLICK ================= */
 
-    if(currentLanguage === "hi") {
+letterCards.forEach(function(card) {
 
-        word = item.hindi;
+    card.addEventListener("click", function() {
 
-        sentence =
-            item.letter + " से " + item.hindi;
-    }
+        const letter =
+            card.dataset.letter;
 
-    if(currentLanguage === "gu") {
+        const word =
+            card.dataset.word;
 
-        word = item.gujarati;
+        const emoji =
+            card.dataset.emoji;
 
-        sentence =
-            item.letter + " એટલે " + item.gujarati;
-    }
 
-    document.getElementById("popupLetter").innerText =
-        item.letter;
+        popupLetter.textContent = letter;
+        popupWord.textContent = word;
+        popupEmoji.textContent = emoji;
 
-    document.getElementById("popupEmoji").innerText =
-        item.emoji;
+        popupSentence.textContent =
+            letter + " for " + word;
 
-    document.getElementById("popupWord").innerText =
-        word;
 
-    document.getElementById("popupSentence").innerText =
-        sentence;
+        popup.classList.add("show");
 
-    document.getElementById("letterPopup").style.display =
-        "flex";
-}
 
+        /* Mark as learned */
 
-/* CLOSE */
+        if (!learnedLetters.includes(letter)) {
 
-function closePopup() {
+            learnedLetters.push(letter);
 
-    document.getElementById("letterPopup").style.display =
-        "none";
-}
+            localStorage.setItem(
+                "learnedLetters",
+                JSON.stringify(learnedLetters)
+            );
 
+        }
 
-/* VOICE */
-
-function speakLetter(item) {
-
-    let text = item.sentence;
-
-    let language = "en-US";
-
-    if(currentLanguage === "hi") {
-
-        text =
-            item.letter + " से " + item.hindi;
-
-        language = "hi-IN";
-    }
-
-    if(currentLanguage === "gu") {
-
-        text =
-            item.letter + " એટલે " + item.gujarati;
-
-        language = "gu-IN";
-    }
-
-    speak(text, language);
-}
-
-
-function speak(text, language) {
-
-    if(!("speechSynthesis" in window)) {
-        return;
-    }
-
-    speechSynthesis.cancel();
-
-    const voice =
-        new SpeechSynthesisUtterance(text);
-
-    voice.lang = language;
-
-    voice.rate = .75;
-
-    voice.pitch = 1.1;
-
-    speechSynthesis.speak(voice);
-}
-
-
-function repeatWord() {
-
-    if(currentLetter) {
-        speakLetter(currentLetter);
-    }
-}
-
-
-/* STARS */
-
-function addStars(amount) {
-
-    stars += amount;
-
-    updateProgress();
-}
-
-
-/* LANGUAGE */
-
-function setLanguage(language) {
-
-    currentLanguage = language;
-
-    createAlphabet();
-
-    const message =
-        document.getElementById("magicMessage");
-
-    if(language === "en") {
-
-        message.innerText =
-            "🇬🇧 English mode activated! Let's learn! ✨";
-    }
-
-    if(language === "hi") {
-
-        message.innerText =
-            "🇮🇳 हिंदी मोड शुरू! चलो सीखते हैं! ✨";
-    }
-
-    if(language === "gu") {
-
-        message.innerText =
-            "🪔 ગુજરાતી મોડ શરૂ! ચાલો શીખીએ! ✨";
-    }
-}
-
-
-/* SURPRISE */
-
-function surpriseLetter() {
-
-    const random =
-        Math.floor(
-            Math.random() * alphabetData.length
-        );
-
-    learnLetter(
-        alphabetData[random]
-    );
-}
-
-
-/* FINISH */
-
-function finishAlphabet() {
-
-    if(learnedLetters.length === 26) {
-
-        addStars(20);
-
-        document.getElementById("celebration").style.display =
-            "flex";
-
-        speak(
-            "Amazing! You learned the whole alphabet!",
-            "en-US"
-        );
-
-    } else {
-
-        const remaining =
-            26 - learnedLetters.length;
-
-        document.getElementById("magicMessage").innerText =
-            "🌟 Great job! " +
-            remaining +
-            " letters are still waiting for you!";
-    }
-}
-
-
-/* CELEBRATION */
-
-function closeCelebration() {
-
-    document.getElementById("celebration").style.display =
-        "none";
-}
-
-
-/* FEATURE POPUP */
-
-function showFeature(emoji,title,text) {
-
-    document.getElementById("featurePopupEmoji").innerText =
-        emoji;
-
-    document.getElementById("featurePopupTitle").innerText =
-        title;
-
-    document.getElementById("featurePopupText").innerText =
-        text;
-
-    document.getElementById("featurePopup").style.display =
-        "flex";
-}
-
-
-function closeFeaturePopup() {
-
-    document.getElementById("featurePopup").style.display =
-        "none";
-}
-
-
-/* FEATURES */
-
-function openNumbers() {
-
-    showFeature(
-        "🔢",
-        "Number World",
-        "Numbers 1 to 100 learning adventure is coming next! 🚀"
-    );
-}
-
-function openAnimals() {
-
-    showFeature(
-        "🐶",
-        "Animal Kingdom",
-        "Cute animals and real sounds are coming next! 🐾"
-    );
-}
-
-function openColors() {
-
-    showFeature(
-        "🎨",
-        "Colors & Shapes",
-        "A colorful creative world is coming next! 🌈"
-    );
-}
-
-function openFruits() {
-
-    showFeature(
-        "🍎",
-        "Fruit Garden",
-        "A yummy fruit learning world is coming next! 🍓"
-    );
-}
-
-function openQuiz() {
-
-    showFeature(
-        "🧠",
-        "Smart Quiz",
-        "Fun educational quizzes are coming next! 🏆"
-    );
-}
-
-function openPuzzle() {
-
-    showFeature(
-        "🧩",
-        "Puzzle Planet",
-        "Fun brain puzzles are coming next! 🚀"
-    );
-}
-
-function openDrawing() {
-
-    showFeature(
-        "✏️",
-        "Draw & Color",
-        "A creative drawing world is coming next! 🎨"
-    );
-}
-
-function openChallenge() {
-
-    showFeature(
-        "⭐",
-        "Daily Challenge",
-        "A new challenge every day is coming next! 🏆"
-    );
-}
-
-
-/* START */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
 
         updateProgress();
 
+
+        /* Automatically speak */
+
+        speakLetter(letter, word);
+
+    });
+
+});
+
+
+/* ================= CLOSE POPUP ================= */
+
+closePopup.addEventListener("click", function() {
+
+    popup.classList.remove("show");
+
+});
+
+
+/* ================= CLICK OUTSIDE ================= */
+
+popup.addEventListener("click", function(event) {
+
+    if (event.target === popup) {
+
+        popup.classList.remove("show");
+
     }
-);
+
+});
+
+
+/* ================= SPEAK BUTTON ================= */
+
+speakButton.addEventListener("click", function() {
+
+    const letter =
+        popupLetter.textContent;
+
+    const word =
+        popupWord.textContent;
+
+    speakLetter(letter, word);
+
+});
+
+
+/* =====================================================
+   VOICE
+===================================================== */
+
+function speakLetter(letter, word) {
+
+    if (!("speechSynthesis" in window)) {
+
+        alert("Your browser does not support voice.");
+
+        return;
+
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            letter + " for " + word
+        );
+
+
+    speech.lang = "en-IN";
+    speech.rate = 0.75;
+    speech.pitch = 1.15;
+    speech.volume = 1;
+
+
+    window.speechSynthesis.speak(speech);
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress() {
+
+    const count =
+        learnedLetters.length;
+
+    learnedCount.textContent =
+        count;
+
+
+    const percentage =
+        (count / 26) * 100;
+
+    progressFill.style.width =
+        percentage + "%";
+
+
+    letterCards.forEach(function(card) {
+
+        const letter =
+            card.dataset.letter;
+
+        if (learnedLetters.includes(letter)) {
+
+            card.classList.add("learned");
+
+        } else {
+
+            card.classList.remove("learned");
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   LANGUAGE BUTTONS
+===================================================== */
+
+document
+    .getElementById("englishBtn")
+    .addEventListener("click", function() {
+
+        alert("English Learning Mode 🇬🇧");
+
+    });
+
+
+document
+    .getElementById("hindiBtn")
+    .addEventListener("click", function() {
+
+        alert("Hindi Learning Mode 🇮🇳");
+
+    });
+
+
+document
+    .getElementById("gujaratiBtn")
+    .addEventListener("click", function() {
+
+        alert("Gujarati Learning Mode 🪔");
+
+    });
+
+
+/* ================= START ================= */
+
+updateProgress();
