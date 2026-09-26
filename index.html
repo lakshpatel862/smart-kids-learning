@@ -3,200 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Kids Learning</title>
+
+    <title>Magic Alphabet World</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>🌈 SMART KIDS 🌈</h1>
-        <p>👋 Hello! Let's Learn & Play!</p>
-        <div class="stars">⭐ Stars: <span id="stars">0</span></div>
-    </header>
+    <!-- ================= BACKGROUND ================= -->
 
-    <main>
+    <div class="sky">
 
-        <div class="menu">
+        <div class="sun">☀️</div>
 
-            <button onclick="openPage('abc')">
-                🔤
-                <span>ABC Learning</span>
-            </button>
+        <div class="cloud cloud1">☁️</div>
+        <div class="cloud cloud2">☁️</div>
+        <div class="cloud cloud3">☁️</div>
 
-            <button onclick="openPage('numbers')">
-                🔢
-                <span>Numbers</span>
-            </button>
-
-            <button onclick="openPage('colors')">
-                🎨
-                <span>Colors & Shapes</span>
-            </button>
-
-            <button onclick="openPage('animals')">
-                🐶
-                <span>Animals</span>
-            </button>
-
-            <button onclick="openPage('quiz')">
-                🧠
-                <span>Quiz Game</span>
-            </button>
-
+        <div class="rainbow">
+            🌈
         </div>
 
+        <div class="star star1">⭐</div>
+        <div class="star star2">✨</div>
+        <div class="star star3">⭐</div>
+        <div class="star star4">✨</div>
 
-        <!-- ABC PAGE -->
-        <section id="abc" class="page">
+        <div class="balloon balloon1">🎈</div>
+        <div class="balloon balloon2">🎈</div>
+        <div class="balloon balloon3">🎈</div>
 
-            <h2>🔤 ABC Learning</h2>
+        <div class="tree tree1">🌳</div>
+        <div class="tree tree2">🌳</div>
 
-            <div id="alphabetBox" class="cards"></div>
-
-            <button class="back" onclick="goHome()">🏠 Home</button>
-
-        </section>
-
-
-        <!-- NUMBERS PAGE -->
-        <section id="numbers" class="page">
-
-            <h2>🔢 Numbers 1 - 100</h2>
-
-            <div id="numberBox" class="numberCards"></div>
-
-            <button class="back" onclick="goHome()">🏠 Home</button>
-
-        </section>
+    </div>
 
 
-        <!-- COLORS PAGE -->
-        <section id="colors" class="page">
+    <!-- ================= HEADER ================= -->
 
-            <h2>🎨 Colors & Shapes</h2>
+    <header>
 
-            <div class="colorCards">
+        <div class="logoTitle">
+            🌈 MAGIC ALPHABET WORLD 🌈
+        </div>
 
-                <div class="color red" onclick="speak('Red')">
-                    🔴<br>Red
-                </div>
+        <div class="subtitle">
+            🚀 Learn • Play • Discover • Smile 😊
+        </div>
 
-                <div class="color blue" onclick="speak('Blue')">
-                    🔵<br>Blue
-                </div>
+        <div class="topInfo">
 
-                <div class="color green" onclick="speak('Green')">
-                    🟢<br>Green
-                </div>
-
-                <div class="color yellow" onclick="speak('Yellow')">
-                    🟡<br>Yellow
-                </div>
-
-                <div class="shape" onclick="speak('Circle')">
-                    ⚪<br>Circle
-                </div>
-
-                <div class="shape" onclick="speak('Square')">
-                    🟦<br>Square
-                </div>
-
-                <div class="shape" onclick="speak('Triangle')">
-                    🔺<br>Triangle
-                </div>
-
+            <div class="starCounter">
+                ⭐ Stars:
+                <span id="starCount">0</span>
             </div>
 
-            <button class="back" onclick="goHome()">🏠 Home</button>
-
-        </section>
-
-
-        <!-- ANIMALS PAGE -->
-        <section id="animals" class="page">
-
-            <h2>🐶 Animals</h2>
-
-            <div class="animalCards">
-
-                <div onclick="speak('Dog')">
-                    🐶
-                    <b>Dog</b>
-                </div>
-
-                <div onclick="speak('Cat')">
-                    🐱
-                    <b>Cat</b>
-                </div>
-
-                <div onclick="speak('Lion')">
-                    🦁
-                    <b>Lion</b>
-                </div>
-
-                <div onclick="speak('Elephant')">
-                    🐘
-                    <b>Elephant</b>
-                </div>
-
-                <div onclick="speak('Monkey')">
-                    🐒
-                    <b>Monkey</b>
-                </div>
-
-                <div onclick="speak('Tiger')">
-                    🐯
-                    <b>Tiger</b>
-                </div>
-
-                <div onclick="speak('Rabbit')">
-                    🐰
-                    <b>Rabbit</b>
-                </div>
-
-                <div onclick="speak('Cow')">
-                    🐮
-                    <b>Cow</b>
-                </div>
-
+            <div class="progressBox">
+                🔤 Learned:
+                <span id="learnedCount">0</span>/26
             </div>
-
-            <button class="back" onclick="goHome()">🏠 Home</button>
-
-        </section>
-
-
-        <!-- QUIZ PAGE -->
-        <section id="quiz" class="page">
-
-            <h2>🧠 Quiz Game</h2>
-
-            <div class="quizBox">
-
-                <h3 id="question">Question</h3>
-
-                <div id="answers"></div>
-
-                <p id="quizResult"></p>
-
-                <button onclick="nextQuestion()">
-                    ➡️ Next Question
-                </button>
-
-            </div>
-
-            <button class="back" onclick="goHome()">🏠 Home</button>
-
-        </section>
-
-    </main>
-
-    <footer>
-        🌟 Learn • Play • Enjoy 🌟
-    </footer>
-
-    <script src="script.js"></script>
-
-</body>
-</html>
