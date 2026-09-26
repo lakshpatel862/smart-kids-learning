@@ -1,353 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Learning World</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids Learning World</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= HOME PAGE ================= -->
+<!-- ================= HOME ================= -->
 
-<div id="homePage">
+<section id="homePage">
 
-    <!-- TOP GANESH IMAGE -->
-    <div class="top-image">
-        <img src="1000017017.jpg" alt="Ganesh">
+    <div class="imageBox">
+        <img src="1000017017.jpg" alt="Kids Learning">
     </div>
 
-    <header class="hero">
+    <div class="hero">
         <h1>🌈 Kids Learning World 🌈</h1>
         <p>Learn • Play • Enjoy 🎉</p>
-    </header>
+    </div>
 
     <div class="welcome">
         <h2>👋 Welcome Kids!</h2>
         <p>Let's learn something amazing today! 🚀</p>
     </div>
 
-    <!-- MENU -->
     <div class="menu">
 
-        <!-- ALPHABET -->
         <button class="menuBox alphabet" id="alphabetBtn">
-            <span class="bigIcon">🔤</span>
-            <h3>Alphabet Adventure</h3>
+            <span>🔤</span>
+            <h2>Alphabet Adventure</h2>
             <p>Learn A to Z</p>
         </button>
 
-        <!-- NUMBERS -->
         <button class="menuBox numbers" id="numbersBtn">
-            <span class="bigIcon">🔢</span>
-            <h3>Numbers</h3>
+            <span>🔢</span>
+            <h2>Numbers</h2>
             <p>Learn 1 to 1000</p>
         </button>
 
-        <!-- ANIMALS -->
         <button class="menuBox animals" id="animalsBtn">
-            <span class="bigIcon">🐯</span>
-            <h3>Animals</h3>
+            <span>🐯</span>
+            <h2>Animals</h2>
             <p>Learn Animals</p>
         </button>
 
-        <!-- TEST -->
         <button class="menuBox test" id="testBtn">
-            <span class="bigIcon">📝</span>
-            <h3>Test</h3>
+            <span>📝</span>
+            <h2>Test</h2>
             <p>Check Your Knowledge</p>
         </button>
 
     </div>
 
-    <!-- HOME BOTTOM -->
-    <div class="homeRobot">
-        🤖
+    <div class="robot">🤖</div>
+
+    <div class="imageBox">
+        <img src="1000016155.jpg" alt="Kids Learning">
     </div>
 
-    <div class="bottom-image">
-        <img src="1000016155.jpg" alt="Ganesh">
-    </div>
-
-</div>
+</section>
 
 
-<!-- ================= ALPHABET PAGE ================= -->
+<!-- ================= ALPHABET ================= -->
 
-<div id="alphabetPage">
+<section id="alphabetPage" class="page">
 
-    <div class="pageTop">
+    <button class="homeBtn" id="alphabetHome">🏠 Home</button>
 
-        <button class="homeButton" id="homeFromAlphabet">
-            🏠 Home
-        </button>
-
+    <div class="pageHeader">
         <h1>🔤 Alphabet Adventure</h1>
-
-        <p>Learn A to Z with Fun! 🎉</p>
-
+        <p>Learn A to Z with fun! 🎉</p>
     </div>
 
-    <!-- LANGUAGE BUTTONS -->
+    <div class="progressBox">
+        <b>Learned: <span id="learnedCount">0</span>/26</b>
 
-    <div class="languageButtons">
-
-        <button id="englishBtn">🇬🇧 English</button>
-        <button id="hindiBtn">🇮🇳 Hindi</button>
-        <button id="gujaratiBtn">🪔 Gujarati</button>
-
-    </div>
-
-    <!-- PROGRESS -->
-
-    <div class="progressArea">
-
-        <p>
-            Learned:
-            <span id="learnedCount">0</span> / 26
-        </p>
-
-        <div class="progressBar">
+        <div class="progress">
             <div id="progressFill"></div>
+        </div>
+    </div>
+
+
+    <!-- TRACING -->
+
+    <div class="traceBox">
+
+        <h2>✏️ Write the Letter</h2>
+
+        <p>Follow the dotted letter with your finger 👆</p>
+
+        <div class="letterInfo">
+
+            <div id="letterNumber">1 / 26</div>
+
+            <div id="currentLetter">A</div>
+
+            <div id="currentWord">
+                A for Apple 🍎
+            </div>
+
+        </div>
+
+        <div class="canvasBox">
+            <canvas id="traceCanvas"></canvas>
+        </div>
+
+        <div id="traceMessage">
+            ✏️ Start tracing A
+        </div>
+
+        <div class="traceButtons">
+
+            <button id="clearBtn">
+                🔄 Try Again
+            </button>
+
+            <button id="nextBtn">
+                Next ➡️
+            </button>
+
         </div>
 
     </div>
 
-    <!-- ALPHABET -->
 
-    <div id="alphabetGrid" class="alphabetGrid">
+    <!-- A-Z -->
 
-        <!-- A -->
-        <button class="letterCard" data-letter="A" data-word="Apple" data-emoji="🍎">
-            <strong>A</strong>
-            <span>Apple</span>
-            <span>🍎</span>
-        </button>
+    <h2 class="sectionTitle">
+        🔤 Choose a Letter
+    </h2>
 
-        <!-- B -->
-        <button class="letterCard" data-letter="B" data-word="Ball" data-emoji="⚽">
-            <strong>B</strong>
-            <span>Ball</span>
-            <span>⚽</span>
-        </button>
+    <div id="alphabetGrid" class="alphabetGrid"></div>
 
-        <!-- C -->
-        <button class="letterCard" data-letter="C" data-word="Cat" data-emoji="🐱">
-            <strong>C</strong>
-            <span>Cat</span>
-            <span>🐱</span>
-        </button>
+</section>
 
-        <!-- D -->
-        <button class="letterCard" data-letter="D" data-word="Dog" data-emoji="🐶">
-            <strong>D</strong>
-            <span>Dog</span>
-            <span>🐶</span>
-        </button>
 
-        <!-- E -->
-        <button class="letterCard" data-letter="E" data-word="Elephant" data-emoji="🐘">
-            <strong>E</strong>
-            <span>Elephant</span>
-            <span>🐘</span>
-        </button>
+<!-- ================= NUMBERS ================= -->
 
-        <!-- F -->
-        <button class="letterCard" data-letter="F" data-word="Fish" data-emoji="🐟">
-            <strong>F</strong>
-            <span>Fish</span>
-            <span>🐟</span>
-        </button>
+<section id="numbersPage" class="page">
 
-        <!-- G -->
-        <button class="letterCard" data-letter="G" data-word="Grapes" data-emoji="🍇">
-            <strong>G</strong>
-            <span>Grapes</span>
-            <span>🍇</span>
-        </button>
+    <button class="homeBtn" id="numbersHome">🏠 Home</button>
 
-        <!-- H -->
-        <button class="letterCard" data-letter="H" data-word="House" data-emoji="🏠">
-            <strong>H</strong>
-            <span>House</span>
-            <span>🏠</span>
-        </button>
+    <div class="pageHeader">
+        <h1>🔢 Number Adventure</h1>
+        <p>Learn Numbers 1 to 1000 🎉</p>
+    </div>
 
-        <!-- I -->
-        <button class="letterCard" data-letter="I" data-word="Ice Cream" data-emoji="🍦">
-            <strong>I</strong>
-            <span>Ice Cream</span>
-            <span>🍦</span>
-        </button>
+    <div class="numberControl">
 
-        <!-- J -->
-        <button class="letterCard" data-letter="J" data-word="Jar" data-emoji="🫙">
-            <strong>J</strong>
-            <span>Jar</span>
-            <span>🫙</span>
-        </button>
+        <button id="prevNumber">⬅️ Previous</button>
 
-        <!-- K -->
-        <button class="letterCard" data-letter="K" data-word="Kite" data-emoji="🪁">
-            <strong>K</strong>
-            <span>Kite</span>
-            <span>🪁</span>
-        </button>
+        <div class="bigNumber" id="bigNumber">1</div>
 
-        <!-- L -->
-        <button class="letterCard" data-letter="L" data-word="Lion" data-emoji="🦁">
-            <strong>L</strong>
-            <span>Lion</span>
-            <span>🦁</span>
-        </button>
+        <button id="nextNumber">Next ➡️</button>
 
-        <!-- M -->
-        <button class="letterCard" data-letter="M" data-word="Monkey" data-emoji="🐒">
-            <strong>M</strong>
-            <span>Monkey</span>
-            <span>🐒</span>
-        </button>
+    </div>
 
-        <!-- N -->
-        <button class="letterCard" data-letter="N" data-word="Nose" data-emoji="👃">
-            <strong>N</strong>
-            <span>Nose</span>
-            <span>👃</span>
-        </button>
+    <div id="numberBalls" class="numberBalls">
+        ⚽
+    </div>
 
-        <!-- O -->
-        <button class="letterCard" data-letter="O" data-word="Orange" data-emoji="🍊">
-            <strong>O</strong>
-            <span>Orange</span>
-            <span>🍊</span>
-        </button>
+    <div id="numberText" class="numberText">
+        One
+    </div>
 
-        <!-- P -->
-        <button class="letterCard" data-letter="P" data-word="Panda" data-emoji="🐼">
-            <strong>P</strong>
-            <span>Panda</span>
-            <span>🐼</span>
-        </button>
+    <div class="rainbow">
+        🌈 🌈 🌈
+    </div>
 
-        <!-- Q -->
-        <button class="letterCard" data-letter="Q" data-word="Queen" data-emoji="👑">
-            <strong>Q</strong>
-            <span>Queen</span>
-            <span>👑</span>
-        </button>
+</section>
 
-        <!-- R -->
-        <button class="letterCard" data-letter="R" data-word="Rabbit" data-emoji="🐇">
-            <strong>R</strong>
-            <span>Rabbit</span>
-            <span>🐇</span>
-        </button>
 
-        <!-- S -->
-        <button class="letterCard" data-letter="S" data-word="Sun" data-emoji="☀️">
-            <strong>S</strong>
-            <span>Sun</span>
-            <span>☀️</span>
-        </button>
+<!-- ================= ANIMALS ================= -->
 
-        <!-- T -->
-        <button class="letterCard" data-letter="T" data-word="Tiger" data-emoji="🐯">
-            <strong>T</strong>
-            <span>Tiger</span>
-            <span>🐯</span>
-        </button>
+<section id="animalsPage" class="page">
 
-        <!-- U -->
-        <button class="letterCard" data-letter="U" data-word="Umbrella" data-emoji="☂️">
-            <strong>U</strong>
-            <span>Umbrella</span>
-            <span>☂️</span>
-        </button>
+    <button class="homeBtn" id="animalsHome">🏠 Home</button>
 
-        <!-- V -->
-        <button class="letterCard" data-letter="V" data-word="Van" data-emoji="🚐">
-            <strong>V</strong>
-            <span>Van</span>
-            <span>🚐</span>
-        </button>
+    <div class="pageHeader">
+        <h1>🐯 Animal World</h1>
+        <p>Click an animal and learn! 🔊</p>
+    </div>
 
-        <!-- W -->
-        <button class="letterCard" data-letter="W" data-word="Watch" data-emoji="⌚">
-            <strong>W</strong>
-            <span>Watch</span>
-            <span>⌚</span>
-        </button>
+    <div class="animalGrid" id="animalGrid"></div>
 
-        <!-- X -->
-        <button class="letterCard" data-letter="X" data-word="Xylophone" data-emoji="🎵">
-            <strong>X</strong>
-            <span>Xylophone</span>
-            <span>🎵</span>
-        </button>
+</section>
 
-        <!-- Y -->
-        <button class="letterCard" data-letter="Y" data-word="Yo-Yo" data-emoji="🪀">
-            <strong>Y</strong>
-            <span>Yo-Yo</span>
-            <span>🪀</span>
-        </button>
 
-        <!-- Z -->
-        <button class="letterCard" data-letter="Z" data-word="Zebra" data-emoji="🦓">
-            <strong>Z</strong>
-            <span>Zebra</span>
-            <span>🦓</span>
+<!-- ================= TEST ================= -->
+
+<section id="testPage" class="page">
+
+    <button class="homeBtn" id="testHome">🏠 Home</button>
+
+    <div class="pageHeader">
+        <h1>📝 Fun Test</h1>
+        <p>Let's check what you learned! 🎯</p>
+    </div>
+
+    <div class="testBox">
+
+        <div class="testMarks">
+            Marks: <span id="testScore">0</span>/20
+        </div>
+
+        <h2 id="questionNumber">
+            Question 1
+        </h2>
+
+        <div id="questionText">
+            Which letter comes first?
+        </div>
+
+        <div id="answers"></div>
+
+        <div id="testResult"></div>
+
+        <button id="nextQuestion">
+            Next Question ➡️
         </button>
 
     </div>
 
-</div>
+</section>
 
 
 <!-- ================= POPUP ================= -->
 
-<div id="letterPopup" class="popup">
+<div id="popup">
 
-    <div class="popupBox">
+    <div class="popupContent">
 
-        <button id="closePopup" class="closePopup">✖</button>
+        <button id="closePopup">✖</button>
 
-        <div id="popupLetter" class="popupLetter">A</div>
+        <div id="popupLetter">A</div>
 
-        <div id="popupEmoji" class="popupEmoji">🍎</div>
+        <div id="popupEmoji">🍎</div>
 
         <h2 id="popupWord">Apple</h2>
 
-        <p id="popupSentence">
-            A for Apple
-        </p>
+        <p id="popupSentence">A for Apple</p>
 
-        <button id="speakButton" class="speakButton">
+        <button id="speakBtn">
             🔊 Speak
         </button>
 
     </div>
-
-</div>
-
-
-<!-- ================= OTHER PAGE ================= -->
-
-<div id="otherPage">
-
-    <button class="homeButton" id="homeFromOther">
-        🏠 Home
-    </button>
-
-    <h1 id="otherTitle">Coming Soon 🚀</h1>
-
-    <div class="comingIcon">🚧</div>
-
-    <p id="otherText">
-        This learning section is coming soon!
-    </p>
 
 </div>
 
