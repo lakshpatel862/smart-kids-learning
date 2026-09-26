@@ -1,215 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Learning World</title>
 
-<title>Kids Learning World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+<body>
 
-body{
-    font-family:"Comic Sans MS", "Trebuchet MS", sans-serif;
-    min-height:100vh;
-    background:linear-gradient(135deg,#72ddff,#a98cff,#ff9dcc);
-    overflow-x:hidden;
-}
+<!-- ================= HOME PAGE ================= -->
 
-button{
-    font-family:inherit;
-    cursor:pointer;
-}
+<div id="homePage">
 
-/* ================= HOME ================= */
+    <!-- TOP GANESH IMAGE -->
+    <div class="top-image">
+        <img src="1000017017.jpg" alt="Ganesh">
+    </div>
 
-#homePage{
-    display:block;
-    min-height:100vh;
-}
+    <header class="hero">
+        <h1>🌈 Kids Learning World 🌈</h1>
+        <p>Learn • Play • Enjoy 🎉</p>
+    </header>
 
-.top-image{
-    text-align:center;
-    padding:18px 10px 5px;
-}
+    <div class="welcome">
+        <h2>👋 Welcome Kids!</h2>
+        <p>Let's learn something amazing today! 🚀</p>
+    </div>
 
-.top-image img{
-    width:145px;
-    height:145px;
-    object-fit:cover;
-    border-radius:50%;
-    border:6px solid white;
-    box-shadow:0 8px 25px rgba(0,0,0,.22);
-}
+    <!-- MENU -->
+    <div class="menu">
 
-.clouds{
-    text-align:center;
-    font-size:35px;
-    letter-spacing:15px;
-    margin:5px 0;
-}
+        <!-- ALPHABET -->
+        <button class="menuBox alphabet" id="alphabetBtn">
+            <span class="bigIcon">🔤</span>
+            <h3>Alphabet Adventure</h3>
+            <p>Learn A to Z</p>
+        </button>
 
-.home-title{
-    text-align:center;
-    color:white;
-    padding:8px 15px 22px;
-}
+        <!-- NUMBERS -->
+        <button class="menuBox numbers" id="numbersBtn">
+            <span class="bigIcon">🔢</span>
+            <h3>Numbers</h3>
+            <p>Learn 1 to 1000</p>
+        </button>
 
-.home-title h1{
-    font-size:42px;
-    text-shadow:3px 3px 0 #704b9c;
-}
+        <!-- ANIMALS -->
+        <button class="menuBox animals" id="animalsBtn">
+            <span class="bigIcon">🐯</span>
+            <h3>Animals</h3>
+            <p>Learn Animals</p>
+        </button>
 
-.home-title p{
-    font-size:19px;
-    font-weight:bold;
-}
+        <!-- TEST -->
+        <button class="menuBox test" id="testBtn">
+            <span class="bigIcon">📝</span>
+            <h3>Test</h3>
+            <p>Check Your Knowledge</p>
+        </button>
 
-.welcome{
-    width:92%;
-    max-width:1000px;
-    margin:0 auto 25px;
-    padding:28px 20px;
-    text-align:center;
-    border-radius:30px;
-    background:rgba(255,255,255,.3);
-    backdrop-filter:blur(5px);
-}
+    </div>
 
-.welcome h2{
-    color:white;
-    font-size:30px;
-    text-shadow:2px 2px #704b9c;
-}
+    <!-- HOME BOTTOM -->
+    <div class="homeRobot">
+        🤖
+    </div>
 
-.welcome p{
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    margin-top:8px;
-}
+    <div class="bottom-image">
+        <img src="1000016155.jpg" alt="Ganesh">
+    </div>
 
-/* ================= CARDS ================= */
+</div>
 
-.features{
-    width:92%;
-    max-width:1100px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    padding-bottom:30px;
-}
 
-.feature-card{
-    min-height:180px;
-    border:0;
-    border-radius:28px;
-    padding:20px 12px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 9px 22px rgba(0,0,0,.18);
-    transition:.25s;
-}
+<!-- ================= ALPHABET PAGE ================= -->
 
-.feature-card:hover{
-    transform:translateY(-7px) scale(1.02);
-}
+<div id="alphabetPage">
 
-.feature-card:active{
-    transform:scale(.96);
-}
+    <div class="pageTop">
 
-.feature-icon{
-    font-size:58px;
-    margin-bottom:8px;
-}
+        <button class="homeButton" id="homeFromAlphabet">
+            🏠 Home
+        </button>
 
-.feature-card h3{
-    font-size:21px;
-    color:#57358a;
-}
+        <h1>🔤 Alphabet Adventure</h1>
 
-.feature-card p{
-    color:#555;
-    margin-top:5px;
-    font-size:14px;
-}
+        <p>Learn A to Z with Fun! 🎉</p>
 
-.alphabet{
-    background:linear-gradient(135deg,#fff5a2,#ffd067);
-}
+    </div>
 
-.numbers{
-    background:linear-gradient(135deg,#a8f5ff,#72caff);
-}
+    <!-- LANGUAGE BUTTONS -->
 
-.animals{
-    background:linear-gradient(135deg,#baffb2,#70e3a0);
-}
+    <div class="languageButtons">
 
-.colors{
-    background:linear-gradient(135deg,#ffc4f5,#d69aff);
-}
+        <button id="englishBtn">🇬🇧 English</button>
+        <button id="hindiBtn">🇮🇳 Hindi</button>
+        <button id="gujaratiBtn">🪔 Gujarati</button>
 
-.fruits{
-    background:linear-gradient(135deg,#fff0a1,#ffb95f);
-}
+    </div>
 
-.quiz{
-    background:linear-gradient(135deg,#ffb4b4,#ff809d);
-}
+    <!-- PROGRESS -->
 
-.puzzle{
-    background:linear-gradient(135deg,#bbc9ff,#8f9cff);
-}
+    <div class="progressArea">
 
-.draw{
-    background:linear-gradient(135deg,#ffd3e8,#ff9fc9);
-}
+        <p>
+            Learned:
+            <span id="learnedCount">0</span> / 26
+        </p>
 
-.daily{
-    background:linear-gradient(135deg,#fff0ae,#ffc45b);
-}
+        <div class="progressBar">
+            <div id="progressFill"></div>
+        </div>
 
-.bottom-image{
-    text-align:center;
-    padding:15px 10px 30px;
-}
+    </div>
 
-.bottom-image img{
-    width:185px;
-    height:185px;
-    object-fit:cover;
-    border-radius:25px;
-    border:6px solid white;
-    box-shadow:0 8px 25px rgba(0,0,0,.2);
-}
+    <!-- ALPHABET -->
 
-/* ================= ALPHABET PAGE ================= */
+    <div id="alphabetGrid" class="alphabetGrid">
 
-#alphabetPage{
-    display:none;
-    min-height:100vh;
-    padding-bottom:40px;
-}
+        <!-- A -->
+        <button class="letterCard" data-letter="A" data-word="Apple" data-emoji="🍎">
+            <strong>A</strong>
+            <span>Apple</span>
+            <span>🍎</span>
+        </button>
 
-.alphabet-header{
-    text-align:center;
-    padding:20px 15px;
-}
+        <!-- B -->
+        <button class="letterCard" data-letter="B" data-word="Ball" data-emoji="⚽">
+            <strong>B</strong>
+            <span>Ball</span>
+            <span>⚽</span>
+        </button>
 
-.home-btn{
-    background:white;
-    color:#653c91;
-    border:0;
-    border-radius:30px;
-    padding:10px 20px;
-    font-size:17px;
-    font-weight:bold;
+        <!-- C -->
+        <button class="letterCard" data-letter="C" data-word="Cat" data-emoji="🐱">
+            <strong>C</strong>
+            <span>Cat</span>
+            <span>🐱</span>
+        </button>
+
+        <!-- D -->
+        <button class="letterCard" data-letter="D" data-word="Dog" data-emoji="🐶">
+            <strong>D</strong>
+            <span>Dog</span>
+            <span>🐶</span>
+        </button>
+
+        <!-- E -->
+        <button class="letterCard" data-letter="E" data-word="Elephant" data-emoji="🐘">
+            <strong>E</strong>
+            <span>Elephant</span>
+            <span>🐘</span>
+        </button>
+
+        <!-- F -->
+        <button class="letterCard" data-letter="F" data-word="Fish" data-emoji="🐟">
+            <strong>F</strong>
+            <span>Fish</span>
+            <span>🐟</span>
+        </button>
+
+        <!-- G -->
+        <button class="letterCard" data-letter="G" data-word="Grapes" data-emoji="🍇">
+            <strong>G</strong>
+            <span>Grapes</span>
+            <span>🍇</span>
+        </button>
+
+        <!-- H -->
+        <button class="letterCard" data-letter="H" data-word="House" data-emoji="🏠">
+            <strong>H</strong>
+            <span>House</span>
+            <span>🏠</span>
+        </button>
+
+        <!-- I -->
+        <button class="letterCard" data-letter="I" data-word="Ice Cream" data-emoji="🍦">
+            <strong>I</strong>
+            <span>Ice Cream</span>
+            <span>🍦</span>
+        </button>
+
+        <!-- J -->
+        <button class="letterCard" data-letter="J" data-word="Jar" data-emoji="🫙">
+            <strong>J</strong>
+            <span>Jar</span>
+            <span>🫙</span>
+        </button>
+
+        <!-- K -->
+        <button class="letterCard" data-letter="K" data-word="Kite" data-emoji="🪁">
+            <strong>K</strong>
+            <span>Kite</span>
+            <span>🪁</span>
+        </button>
+
+        <!-- L -->
+        <button class="letterCard" data-letter="L" data-word="Lion" data-emoji="🦁">
+            <strong>L</strong>
+            <span>Lion</span>
+            <span>🦁</span>
+        </button>
+
+        <!-- M -->
+        <button class="letterCard" data-letter="M" data-word="Monkey" data-emoji="🐒">
+            <strong>M</strong>
+            <span>Monkey</span>
+            <span>🐒</span>
+        </button>
+
+        <!-- N -->
+        <button class="letterCard" data-letter="N" data-word="Nose" data-emoji="👃">
+            <strong>N</strong>
+            <span>Nose</span>
+            <span>👃</span>
+        </button>
+
+        <!-- O -->
+        <button class="letterCard" data-letter="O" data-word="Orange" data-emoji="🍊">
+            <strong>O</strong>
+            <span>Orange</span>
+            <span>🍊</span>
+        </button>
+
+        <!-- P -->
+        <button class="letterCard" data-letter="P" data-word="Panda" data-emoji="🐼">
+            <strong>P</strong>
+            <span>Panda</span>
+            <span>🐼</span>
+        </button>
+
+        <!-- Q -->
+        <button class="letterCard" data-letter="Q" data-word="Queen" data-emoji="👑">
+            <strong>Q</strong>
+            <span>Queen</span>
+            <span>👑</span>
+        </button>
+
+        <!-- R -->
+        <button class="letterCard" data-letter="R" data-word="Rabbit" data-emoji="🐇">
+            <strong>R</strong>
+            <span>Rabbit</span>
+            <span>🐇</span>
+        </button>
+
+        <!-- S -->
+        <button class="letterCard" data-letter="S" data-word="Sun" data-emoji="☀️">
+            <strong>S</strong>
+            <span>Sun</span>
+            <span>☀️</span>
+        </button>
+
+        <!-- T -->
+        <button class="letterCard" data-letter="T" data-word="Tiger" data-emoji="🐯">
+            <strong>T</strong>
+            <span>Tiger</span>
+            <span>🐯</span>
+        </button>
+
+        <!-- U -->
+        <button class="letterCard" data-letter="U" data-word="Umbrella" data-emoji="☂️">
+            <strong>U</strong>
+            <span>Umbrella</span>
+            <span>☂️</span>
+        </button>
+
+        <!-- V -->
+        <button class="letterCard" data-letter="V" data-word="Van" data-emoji="🚐">
+            <strong>V</strong>
+            <span>Van</span>
+            <span>🚐</span>
+        </button>
+
+        <!-- W -->
+        <button class="letterCard" data-letter="W" data-word="Watch" data-emoji="⌚">
+            <strong>W</strong>
+            <span>Watch</span>
+            <span>⌚</span>
+        </button>
+
+        <!-- X -->
+        <button class="letterCard" data-letter="X" data-word="Xylophone" data-emoji="🎵">
+            <strong>X</strong>
+            <span>Xylophone</span>
+            <span>🎵</span>
+        </button>
+
+        <!-- Y -->
+        <button class="letterCard" data-letter="Y" data-word="Yo-Yo" data-emoji="🪀">
+            <strong>Y</strong>
+            <span>Yo-Yo</span>
+            <span>🪀</span>
+        </button>
+
+        <!-- Z -->
+        <button class="letterCard" data-letter="Z" data-word="Zebra" data-emoji="🦓">
+            <strong>Z</strong>
+            <span>Zebra</span>
+            <span>🦓</span>
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= POPUP ================= -->
+
+<div id="letterPopup" class="popup">
+
+    <div class="popupBox">
+
+        <button id="closePopup" class="closePopup">✖</button>
+
+        <div id="popupLetter" class="popupLetter">A</div>
+
+        <div id="popupEmoji" class="popupEmoji">🍎</div>
+
+        <h2 id="popupWord">Apple</h2>
+
+        <p id="popupSentence">
+            A for Apple
+        </p>
+
+        <button id="speakButton" class="speakButton">
+            🔊 Speak
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= OTHER PAGE ================= -->
+
+<div id="otherPage">
+
+    <button class="homeButton" id="homeFromOther">
+        🏠 Home
+    </button>
+
+    <h1 id="otherTitle">Coming Soon 🚀</h1>
+
+    <div class="comingIcon">🚧</div>
+
+    <p id="otherText">
+        This learning section is coming soon!
+    </p>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
