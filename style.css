@@ -1,280 +1,535 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: "Comic Sans MS", Arial, sans-serif;
-    background: linear-gradient(135deg, #73d8ff, #a88cff, #ff9dca);
+    font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
     min-height: 100vh;
-    text-align: center;
-    color: #333;
+    overflow-x: hidden;
+    background: linear-gradient(
+        #62d9ff 0%,
+        #8ee9ff 35%,
+        #b9f6ff 60%,
+        #8ee28b 100%
+    );
+    color: #263238;
 }
+
+
+/* ================= SKY ================= */
+
+.sky {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* SUN */
+
+.sun {
+    position: absolute;
+    right: 5%;
+    top: 35px;
+    font-size: 90px;
+    animation: sunMove 4s infinite alternate;
+}
+
+@keyframes sunMove {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+
+}
+
+
+/* CLOUDS */
+
+.cloud {
+    position: absolute;
+    font-size: 75px;
+    opacity: 0.85;
+}
+
+.cloud1 {
+    top: 90px;
+    left: -100px;
+    animation: cloudMove 28s linear infinite;
+}
+
+.cloud2 {
+    top: 190px;
+    left: -200px;
+    animation: cloudMove 38s linear infinite;
+}
+
+.cloud3 {
+    top: 40px;
+    left: -300px;
+    animation: cloudMove 45s linear infinite;
+}
+
+@keyframes cloudMove {
+
+    from {
+        transform: translateX(-150px);
+    }
+
+    to {
+        transform: translateX(120vw);
+    }
+
+}
+
+
+/* RAINBOW */
+
+.rainbow {
+    position: absolute;
+    left: 50%;
+    top: 80px;
+    transform: translateX(-50%);
+    font-size: 160px;
+    opacity: 0.7;
+}
+
+
+/* STARS */
+
+.star {
+    position: absolute;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+.star1 {
+    top: 15%;
+    left: 10%;
+    font-size: 25px;
+}
+
+.star2 {
+    top: 28%;
+    left: 30%;
+    font-size: 20px;
+}
+
+.star3 {
+    top: 12%;
+    right: 25%;
+    font-size: 30px;
+}
+
+.star4 {
+    top: 35%;
+    right: 8%;
+    font-size: 23px;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: 0.35;
+        transform: scale(0.8) rotate(0deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3) rotate(15deg);
+    }
+
+}
+
+
+/* BALLOONS */
+
+.balloon {
+    position: absolute;
+    font-size: 65px;
+    animation: balloonFloat 3s ease-in-out infinite alternate;
+}
+
+.balloon1 {
+    left: 3%;
+    top: 42%;
+}
+
+.balloon2 {
+    right: 3%;
+    top: 55%;
+    animation-delay: 1s;
+}
+
+.balloon3 {
+    left: 12%;
+    bottom: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes balloonFloat {
+
+    from {
+        transform: translateY(10px);
+    }
+
+    to {
+        transform: translateY(-25px);
+    }
+
+}
+
+
+/* TREES */
+
+.tree {
+    position: absolute;
+    bottom: 0;
+    font-size: 110px;
+}
+
+.tree1 {
+    left: -10px;
+}
+
+.tree2 {
+    right: -10px;
+}
+
+
+/* ================= HEADER ================= */
 
 header {
-    background: rgba(255,255,255,0.85);
+    position: relative;
+    margin: 18px auto;
+    max-width: 1100px;
+    text-align: center;
+    background: rgba(255,255,255,0.90);
+    border-radius: 35px;
     padding: 20px;
-    border-bottom: 4px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 4px solid white;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 38px;
-    color: #7b2cff;
+.logoTitle {
+    font-size: 34px;
+    font-weight: bold;
+    color: #673ab7;
+    text-shadow: 2px 3px white;
 }
 
-header p {
-    font-size: 21px;
-    margin: 8px;
-}
-
-.stars {
-    display: inline-block;
-    background: #fff3a6;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 18px;
+.subtitle {
+    font-size: 19px;
+    margin-top: 7px;
+    color: #ff4081;
     font-weight: bold;
 }
 
-.menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 18px;
-    max-width: 900px;
-    margin: 35px auto;
+.topInfo {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.starCounter,
+.progressBox {
+    background: #fff2a8;
+    padding: 9px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+
+/* ================= HOME ================= */
+
+main {
+    max-width: 1050px;
+    margin: 30px auto;
     padding: 20px;
 }
 
-.menu button {
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    background: rgba(255,255,255,0.90);
+    border-radius: 35px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.friend {
+    font-size: 75px;
+    animation: friendJump 1.5s infinite alternate;
+}
+
+@keyframes friendJump {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-15px) rotate(4deg);
+    }
+
+}
+
+.welcome h1 {
+    color: #673ab7;
+    font-size: 32px;
+}
+
+.welcome p {
+    font-size: 21px;
+    margin-top: 8px;
+}
+
+.smallText {
+    color: #ff4081;
+    font-size: 16px !important;
+}
+
+
+.startButton {
+    display: block;
+    margin: 30px auto;
     border: none;
-    border-radius: 25px;
-    padding: 25px 10px;
-    background: white;
-    box-shadow: 0 7px 15px rgba(0,0,0,0.18);
+    border-radius: 50px;
+    padding: 20px 35px;
+    font-size: 22px;
+    font-family: inherit;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 45px;
-    transition: 0.2s;
+    background: linear-gradient(90deg, #ff4081, #7c4dff);
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    animation: buttonPulse 1.5s infinite;
 }
 
-.menu button:hover {
-    transform: translateY(-6px) scale(1.03);
+.startButton:hover {
+    transform: scale(1.06);
 }
 
-.menu button span {
+@keyframes buttonPulse {
+
+    50% {
+        box-shadow: 0 0 30px rgba(255,255,255,0.9);
+    }
+
+}
+
+
+.miniFeatures {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.miniFeatures div {
+    background: rgba(255,255,255,0.92);
+    border-radius: 25px;
+    padding: 22px;
+    text-align: center;
+    font-size: 38px;
+    box-shadow: 0 7px 15px rgba(0,0,0,0.12);
+}
+
+.miniFeatures b {
     display: block;
     font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
+    color: #673ab7;
 }
 
-.page {
+.miniFeatures span {
+    display: block;
+    font-size: 13px;
+}
+
+
+/* ================= ALPHABET PAGE ================= */
+
+#alphabetPage {
     display: none;
-    background: rgba(255,255,255,0.92);
-    max-width: 1000px;
+    max-width: 1150px;
     margin: 25px auto;
-    padding: 25px;
-    border-radius: 30px;
+    padding: 20px;
 }
 
-.page h2 {
-    font-size: 30px;
-    color: #702cff;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+.alphabetHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 15px;
+    text-align: center;
 }
+
+.alphabetHeader h2 {
+    color: #673ab7;
+    font-size: 32px;
+}
+
+.alphabetHeader p {
+    color: #ff4081;
+    font-weight: bold;
+}
+
+.homeButton,
+.surpriseButton {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.surpriseButton {
+    background: #fff176;
+}
+
+
+/* LANGUAGE */
+
+.languageButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+    flex-wrap: wrap;
+}
+
+.languageButtons button {
+    border: none;
+    background: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+
+/* ALPHABET GRID */
+
+#alphabetGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+
+/* LETTER CARD */
 
 .letterCard {
-    background: white;
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    position: relative;
+    background: rgba(255,255,255,0.95);
+    border-radius: 30px;
+    padding: 18px 10px;
+    min-height: 210px;
+    text-align: center;
     cursor: pointer;
+    box-shadow: 0 9px 18px rgba(0,0,0,0.15);
+    border: 4px solid white;
+    transition: 0.25s;
+    overflow: hidden;
+}
+
+.letterCard::before {
+    content: "✨";
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    font-size: 18px;
+}
+
+.letterCard:hover {
+    transform: translateY(-10px) rotate(1deg) scale(1.03);
+    box-shadow: 0 18px 30px rgba(0,0,0,0.22);
+}
+
+.letterCard.learned {
+    border-color: #ffd600;
+    background: #fffde7;
 }
 
 .letter {
-    font-size: 50px;
+    font-size: 65px;
+    line-height: 1;
     font-weight: bold;
-    color: #ff4d8d;
+    color: #ff4081;
+    text-shadow: 3px 4px #ffd740;
+}
+
+.cardEmoji {
+    font-size: 55px;
+    margin: 12px;
 }
 
 .word {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
+    color: #3f51b5;
 }
 
-.emoji {
-    font-size: 40px;
+.meaning {
+    font-size: 13px;
+    color: #555;
+    margin-top: 4px;
 }
 
-.numberCards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 10px;
-}
 
-.number {
-    background: white;
-    border-radius: 15px;
-    padding: 15px;
-    font-size: 25px;
+/* MAGIC MESSAGE */
+
+#magicMessage {
+    background: rgba(255,255,255,0.9);
+    margin: 25px auto;
+    max-width: 700px;
+    padding: 18px;
+    border-radius: 30px;
+    text-align: center;
     font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    color: #673ab7;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
 }
 
-.number:hover,
-.letterCard:hover,
-.animalCards div:hover,
-.color:hover {
-    transform: scale(1.05);
-}
 
-.colorCards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
+/* FINISH */
 
-.color {
-    width: 150px;
-    padding: 25px;
-    border-radius: 20px;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-}
-
-.red {
-    background: #ff7777;
-}
-
-.blue {
-    background: #75cfff;
-}
-
-.green {
-    background: #80df91;
-}
-
-.yellow {
-    background: #ffe66d;
-}
-
-.shape {
-    width: 150px;
-    padding: 25px;
-    background: white;
-    border-radius: 20px;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-}
-
-.animalCards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-}
-
-.animalCards div {
-    background: white;
-    border-radius: 25px;
-    padding: 25px;
-    font-size: 65px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-    cursor: pointer;
-}
-
-.animalCards b {
+.finishButton {
     display: block;
-    font-size: 20px;
-}
-
-.quizBox {
-    background: #fff7c7;
-    padding: 25px;
-    border-radius: 25px;
-    max-width: 600px;
-    margin: auto;
-}
-
-.quizBox h3 {
-    font-size: 25px;
-}
-
-.quizBox button {
-    background: white;
-    border: 3px solid #7b2cff;
-    padding: 12px 20px;
-    margin: 8px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 17px;
-}
-
-.quizBox button:hover {
-    background: #e8dfff;
-}
-
-.back {
-    margin-top: 25px;
-    padding: 12px 25px;
+    margin: 20px auto;
     border: none;
-    border-radius: 20px;
-    background: #7b2cff;
+    padding: 16px 25px;
+    border-radius: 30px;
+    background: #00c853;
     color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-footer {
-    padding: 20px;
+    font-family: inherit;
     font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-@media (max-width: 600px) {
 
-    header h1 {
-        font-size: 28px;
-    }
+/* ================= POPUP ================= */
 
-    header p {
-        font-size: 17px;
-    }
-
-    .menu {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 12px;
-    }
-
-    .menu button {
-        padding: 20px 5px;
-        font-size: 35px;
-    }
-
-    .menu button span {
-        font-size: 15px;
-    }
-
-    .page {
-        margin: 12px;
-        padding: 15px;
-    }
-
-    .letter {
-        font-size: 40px;
-    }
-
-    .animalCards div {
-        font-size: 50px;
-    }
-}
+#letterPopup,
+#celebration {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,20,70,0.65);
